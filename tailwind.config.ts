@@ -8,12 +8,21 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        bgColor: '#252B39',
+        customColor: '#34C0C9',
+        gColor: '#818488',
+        boxColor: 'rgba(34, 54, 62,0.3)',
+        hoverColor: 'rgba(40, 50, 61,0.9)'
+      },
+      screens: {
+        'xl': '1280px',
+        'lg': '1024px',
+        'md': '768px',
+        'sm': '640px',
       },
     },
+  
   },
   plugins: [],
 }
