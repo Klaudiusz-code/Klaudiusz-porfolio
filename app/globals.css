@@ -1,3 +1,4 @@
+@import '/components/styles/animations.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,6 +12,8 @@ body{
   font-family: 'Poppins', sans-serif;
   background-color: #252B39;
   overflow: hidden;
-  background-image: url('../public/dot.png');
-  background-position: center;
+  background-image: url('../public/body-bg-2.jpg');
+  background-repeat: no-repeat;
+  background-position: top;
+  
 }
