@@ -1,30 +1,26 @@
+'use client'
+
 import Button from '@/components/Button'
 import Image from 'next/image'
-
+import hero_img from '@/public/lap2.png'
 
 export default function Home() {
   return (
-      <main className='max-w-full xl:max-w-[1400px] h-screen mx-auto flex flex-col'>
-      <div className='flex flex-col items-center mt-24 p-16 bg-repeat-x bg-center'>
-        <div>
-          <h2 className='text-customColor text-[0.9rem] font-semibold lg:text-[1.3rem] xl:text-[2em]'>
-          &lt;Klaudiusz Adamaszek/&gt;
-          </h2>
-        </div>
-        <div className='w-full mx-auto text-center mt-2'>
-            <h1 className='text-customColor font-extrabold text-[2.8rem] lg:text-[4rem] xl:text-[6rem]'>
-              Web Developer
-            </h1>
-        </div>
-        <div className='w-full sm:max-w-[80%] lg:max-w-[60%] xl:max-w-[50%] mx-auto mt-2 xl:mt-1'>
-          <p className='text-gColor font-extralight text-[0.9rem] text-center xl:text-[1rem] '>
-          Od dwóch lat zgłębiam tajniki front-endu i back-endu, rozwijając swoje umiejętności i projektując własne aplikacje. Choć moja droga zawodowa dopiero się zaczyna, jestem pełen zapału do nauki i tworzenia. Przyjrzyj się mojemu portfolio, aby zobaczyć, jak rozwijam się jako programista!
+  
+    <section className=" relative container mx-auto mt-24 lg:flex lg:items-center text-center md:text-left">
+      <div className="lg:w-7/12 lg:pr-8 mt-32">
+          <h1 className="text-customColor text-5xl xl:text-6xl font-extrabold mb-4">Klaudiusz Adamaszek</h1>
+          <h2 className='text-gColor font-bold text-2xl xl:text-3xl'>Web Developer</h2>
+          <p className="lg:w-9/12 text-gColor mt-4 mb-2 font-light text-[0.7rem] md:text-[0.9rem] lg:text-[1rem] leading-7">
+            Pasjonat Full Stack JavaScript, łączący potęgę Node.js na backendzie z elegancją React na froncie. Tworzę innowacyjne rozwiązania, które przekształcają koncepcje w kod. Moje projekty wyróżniają się nie tylko techniczną precyzją, ale także dbałością o doświadczenie użytkownika.
           </p>
-        </div>
-        <div className='mt-6'>
           <Button/>
-        </div>
       </div>
-    </main>
+  </section>
+
   )
 }
+
+
+
+
