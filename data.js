@@ -10,22 +10,22 @@ const MenuLinks = [
     {
         icon: <IoMdHome />,
         link: "/",
-        name:'Home'
+        name: 'Home'
     },
     {
         icon: <GrProjects />,
-        link: "/my-project",
-        name: 'Project'
+        link: "/projects",
+        name: 'Project',
     },
     {
         icon: <GrServices />,
         link: "/services",
-        name: 'Services'
+        name: 'Services',
     },
     {
         icon: <IoIosContact />,
         link: "/contact",
-        name: 'Contact'
+        name: 'Contact',
     },
 ];
 
