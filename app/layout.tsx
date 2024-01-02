@@ -1,27 +1,26 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import { useRouter } from 'next/navigation';
-import Navbar from '@/components/Navbar'
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import { ReactNode } from 'react';
+import './globals.css';
+import Navbar from '@/components/Navbar';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Klaudiusz Adamaszek',
   description: 'Portfolio',
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Navbar/>
-        {children}</body>
-
-    </html>
-  )
+    <>
+      <Navbar />
+      {children}
+    </>
+  );
 }
+
