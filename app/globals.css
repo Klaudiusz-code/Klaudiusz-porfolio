@@ -11,8 +11,6 @@
 body{
   font-family: 'Poppins', sans-serif;
   background-color: #252B39;
-  overflow: hidden;
-  background-image: url('../public/body-bg-2.jpg');
   background-repeat: no-repeat;
   background-position: top;
   
