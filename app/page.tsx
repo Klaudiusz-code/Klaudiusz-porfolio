@@ -1,7 +1,6 @@
 'use client'
 import Button from '@/components/Button'
 import Image from 'next/image'
-import hero_img from '@/public/lap2.png'
 export default function Home() {
   return (
   
