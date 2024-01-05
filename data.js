@@ -1,13 +1,17 @@
 
 import { FaHome, FaClipboardList } from "react-icons/fa";
 import { MdDesignServices } from "react-icons/md";
-import { IoMdHome } from "react-icons/io";
+import { IoMdHome, IoMdMail } from "react-icons/io";
 import { GrProjects } from "react-icons/gr";
 import { HiOutlineMail } from "react-icons/hi";
 import { SlArrowRight } from "react-icons/sl";
 import { FaLaptopCode } from "react-icons/fa";
-import { FaRegCopy } from "react-icons/fa6";
+import { FaRegCopy,  FaPhone } from "react-icons/fa6";
 import { FaChartBar } from "react-icons/fa";
+
+
+//social icons
+import { FaFacebookMessenger, FaDiscord, FaSlack, FaLinkedin, FaGithub } from "react-icons/fa";
 
 const MenuLinks = [
     {
@@ -101,13 +105,42 @@ const MyServices = [
     {
         name: 'Copy Write',
         icon: <FaRegCopy />,
-        desc:'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio sed officiis possimus sit adipisci,',
+        desc:'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio sed officiis possimus sit adipisci',
     },
 ]
 
+const ContactIcon = [
+    {
+        icon: <IoMdMail />,
+        desc: 'testowymail@gmail.com'
+    },
+    {
+        icon: <FaPhone />,
+        desc:'519-668-439'
+    }
+]
+const SocialIcons = [
+    {
+        icon: <FaFacebookMessenger/>
+    },
+    {
+        icon: <FaLinkedin/>
+    },
+    {
+        icon: <FaDiscord/>
+    },
+    {
+        icon: <FaSlack/>
+    },
+    {
+        icon: <FaGithub/>
+    }
+]
 export {
     MenuLinks,
     MySkills,
     MyServices,
-    Learn
+    Learn,
+    ContactIcon,
+    SocialIcons
 };
