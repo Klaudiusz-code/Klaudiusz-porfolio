@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import {MenuLinks} from '@/data';
 import { usePathname } from 'next/navigation';
-import { IconBase } from 'react-icons';
 import Link from 'next/link';
 
 const Navbar = () => {
@@ -32,17 +31,17 @@ const Navbar = () => {
       <h1 className='text-2xl text-white'>
         Klaud<span className='text-customColor text-2xl'>iusz</span>.
       </h1>
-      <div className='flex justify-center items-center border-2 border-customColor w-[150px] h-10 rounded-sm'>
-        <span className='text-zinc-300 font-extralight text-[0.7rem] tracking-wide'>
+      <div className='flex justify-center items-center border border-customColor w-[170px] h-10 rounded-sm'>
+        <span className='text-zinc-300 font-medium text-[0.7rem] tracking-wide'>
           adamaszek404gmail.com
         </span>
       </div>
-      <div className='flex gap-y-5 xl:flex-col items-center xl:justify-center justify-between w-full bg-customColor lg:bg-transparent absolute bottom-0 md:right-0 lg:right-0 rounded-none lg:w-12 xl:w-12 md:px-40 xl:px-0 h-[80px] xl:h-max xl:right-14 xl:top-1/4 py-8 lg:rounded-2xl'>
+      <div className='flex gap-y-5 xl:flex-col items-center xl:justify-center justify-between w-full bg-customColor lg:bg-transparent fixed bottom-0 md:right-0 lg:right-0 rounded-none lg:w-12 xl:w-12 md:px-40 xl:px-0 h-[80px] xl:h-max xl:right-14 xl:top-1/4 py-8 lg:rounded-2xl'>
         {isRouting}
         {MenuLinks.map((link, index) => (
           <div key={index} className='group relative'>
             <Link href={link.link}>
-              <div className={`text-[1.1rem] text-white  bg-whiteOp hover:bg-customColor w-14 h-14 flex items-center justify-center rounded-full transition-all group-hover:opacity-100 ${path === link.link ? 'bg-[#34C0C9' : ''}`}>  
+              <div className={`text-[1.1rem] text-white  bg-whiteOp hover:bg-customColor w-14 h-14 flex items-center justify-center rounded-full transition-all group-hover:opacity-100 ${path === link.link ? 'bg-[#34C0C4]' : ''}`}>  
                 {link.icon}
               </div>
             </Link>
