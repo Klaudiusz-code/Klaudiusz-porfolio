@@ -103,7 +103,7 @@ const MyServices = [
         desc:'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio sed officiis possimus sit adipisci,',
     },
     {
-        name: 'Copy Write',
+        name: 'CopyWrite',
         icon: <FaRegCopy />,
         desc:'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio sed officiis possimus sit adipisci',
     },
@@ -112,7 +112,7 @@ const MyServices = [
 const ContactIcon = [
     {
         icon: <IoMdMail />,
-        desc: 'testowymail@gmail.com'
+        desc: 'adamaszek404@gmail.com'
     },
     {
         icon: <FaPhone />,
@@ -136,11 +136,25 @@ const SocialIcons = [
         icon: <FaGithub/>
     }
 ]
+
+const ProjectsData = [
+    {
+        name: 'Enigma-Dashboard',
+        tit: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit Temporibus, voluptate, delectus tempora consectetur eaque iureveritatis',
+        service: ['React', 'Tailwind', 'ExpressJS', 'MongoDB']
+    },
+    {
+        name: 'Portfolio',
+        tit: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit Temporibus, voluptate, delectus tempora consectetur eaque iureveritatis',
+        service: ['NextJS', 'Tailwind', 'Strapi']
+    }
+]
 export {
     MenuLinks,
     MySkills,
     MyServices,
     Learn,
     ContactIcon,
-    SocialIcons
+    SocialIcons,
+    ProjectsData
 };
