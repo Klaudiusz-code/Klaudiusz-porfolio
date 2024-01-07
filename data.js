@@ -17,7 +17,7 @@ const MenuLinks = [
     {
         icon: <IoMdHome />,
         link: "/",
-        name: 'Home'
+        name: 'home'
     },
     {
         icon: <GrProjects />,
