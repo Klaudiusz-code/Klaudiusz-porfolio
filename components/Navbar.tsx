@@ -43,15 +43,17 @@ const Navbar = () => {
             <Link href={link.link}>
               <div
                 className={`text-[1.1rem] text-white  bg-whiteOp hover:bg-customColor w-14 h-14 flex items-center justify-center rounded-full transition-all group-hover:opacity-100 ${
-                  path === link.link ? "bg-[#34C0C3]" : ""
+                  path === link.link ? "bg-customColor" : "text-white"
                 }`}
               >
                 {link.icon}
               </div>
             </Link>
             <div className="absolute pr-4 right-12 bottom-2 hidden xl:group-hover:flex">
-              <div className="bg-zinc-100 transition-all mt-2 realtive flex items-center p-[8px] rounded-sm">
-                <div className="text-[15px] font-medium">{link.name}</div>
+              <div className="bg-whiteOp transition-all mt-2 realtive flex items-center p-[8px] rounded-sm">
+                <div className="text-[15px] font-medium text-white">
+                  {link.name}
+                </div>
               </div>
             </div>
           </div>
