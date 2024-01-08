@@ -25,12 +25,13 @@ const contact = () => {
                 <span className="flex items-center justify-center col-span-4 self-center bg-gray-700 text-white w-[4rem] h-[4rem] text-3xl rounded-full">
                   {item.icon}
                 </span>
-                <span
+                <a
+                  href={item.link}
                   style={{ marginLeft: "12px" }}
                   className="self-center text-gColor text-1xl font-thin"
                 >
                   {item.desc}
-                </span>
+                </a>
               </li>
             ))}
           </ul>
@@ -38,7 +39,7 @@ const contact = () => {
             <ul className="flex gap-3">
               {SocialIcons.map((item) => (
                 <li className="text-1xl bg-gray-700 p-4 rounded-full text-white hover:bg-customColor transition-all duration-400 cursor-pointer">
-                  {item.icon}
+                  <a href={item.link}>{item.icon}</a>
                 </li>
               ))}
             </ul>
