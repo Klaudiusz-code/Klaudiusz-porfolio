@@ -43,7 +43,7 @@ const Navbar = () => {
             <Link href={link.link}>
               <div
                 className={`text-[1.1rem] text-white  bg-whiteOp hover:bg-customColor w-14 h-14 flex items-center justify-center rounded-full transition-all group-hover:opacity-100 ${
-                  path === link.link ? "bg-customColor" : "text-white"
+                  path === link.link ? "bg-[#34C0C9]" : "text-white"
                 }`}
               >
                 {link.icon}
