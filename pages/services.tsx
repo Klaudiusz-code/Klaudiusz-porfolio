@@ -2,6 +2,7 @@
 import React from "react";
 import { Learn, MySkills } from "@/data";
 import { MyServices } from "@/data";
+import { motion } from "framer-motion";
 
 const services = () => {
   return (
@@ -11,7 +12,13 @@ const services = () => {
           <span className="text-customColor">MY</span> SERVICES
         </h1>
         <div className="flex flex-wrap justify-center mt-14 gap-x-24">
-          <div className="flex flex-col border border-gray-700 hover:border-customColor rounded-lg w-[361px] text-left min-h-[600px]">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            transition={{ ease: "easeInOut", duration: 1.6 }}
+            className="flex flex-col border border-gray-700 hover:border-customColor rounded-lg w-[361px] text-left min-h-[600px]"
+          >
             <div className="ml-10 mt-8">
               <div>
                 <h1 className="text-[20px] font-bold text-white">
@@ -50,8 +57,14 @@ const services = () => {
                 </ul>
               </div>
             </div>
-          </div>
-          <div className="flex flex-col items-center gap-y-6">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            transition={{ ease: "easeInOut", duration: 1 }}
+            className="flex flex-col items-center gap-y-6"
+          >
             {MyServices.map((service, index) => (
               <div
                 key={index}
@@ -64,7 +77,7 @@ const services = () => {
                 </p>
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
