@@ -17,7 +17,7 @@ const MenuLinks = [
     {
         icon: <IoMdHome />,
         link: "/",
-        name: 'home'
+        name: 'Home'
     },
     {
         icon: <GrProjects />,
@@ -111,29 +111,32 @@ const MyServices = [
 
 const ContactIcon = [
     {
-        icon: <IoMdMail />,
-        desc: 'adamaszek404@gmail.com'
+      icon: <IoMdMail />,
+      desc: 'adamaszek404@gmail.com',
+      link: 'mailto:adamaszek404@gmail.com',
     },
     {
-        icon: <FaPhone />,
-        desc:'519-668-439'
-    }
-]
+      icon: <FaPhone />,
+      desc: '519-668-439',
+      link: 'tel:+48519668439',
+    },
+  ]
 const SocialIcons = [
     {
-        icon: <FaFacebookMessenger/>
+        icon: <FaFacebookMessenger/>,
+        link: 'https://m.me/Mumin.010',
     },
     {
-        icon: <FaLinkedin/>
+        icon: <FaLinkedin/>,
+        link: 'https://www.linkedin.com/in/klaudiusz-adamaszek-a81582241/',
     },
     {
-        icon: <FaDiscord/>
+        icon: <FaDiscord/>,
+        link: 'https://discord.com/users/1025762843800379442'
     },
     {
-        icon: <FaSlack/>
-    },
-    {
-        icon: <FaGithub/>
+        icon: <FaGithub/>,
+        link: 'https://github.com/Klaudiusz-code',
     }
 ]
 
