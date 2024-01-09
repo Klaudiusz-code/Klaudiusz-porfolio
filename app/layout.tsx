@@ -11,10 +11,10 @@ const metadata: Metadata = {
   description: "Portfolio",
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({ children, hideNavbar }: { children: ReactNode, hideNavbar: boolean }) {
   return (
     <>
-      <Navbar />
+      {!hideNavbar && <Navbar />}
       {children}
     </>
   );
