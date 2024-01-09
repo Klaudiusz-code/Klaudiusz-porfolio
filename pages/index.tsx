@@ -26,7 +26,10 @@ const Home = () => {
           />
         </h2>
         <p className="lg:w-full mx-auto text-gColor mt-4 mb-2 font-light text-[0.7rem] md:text-[0.9rem] lg:text-[1rem] leading-7">
-        Jestem entuzjastą Full Stack JavaScript, który łączy potęgę Node.js w warstwie backendu z elegancją React w obszarze frontendu. Moje projekty wyróżniają się nie tylko techniczną precyzją, ale także troską o doświadczenie użytkownika
+          Jestem entuzjastą Full Stack JavaScript, który łączy potęgę Node.js w
+          warstwie backendu z elegancją React w obszarze frontendu. Moje
+          projekty wyróżniają się nie tylko techniczną precyzją, ale także
+          troską o doświadczenie użytkownika
         </p>
         <Button />
       </div>
