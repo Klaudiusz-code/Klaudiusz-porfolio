@@ -31,9 +31,15 @@ const Projects = () => {
                   {project.tit}
                 </p>
                 <div className="flex flex-row mt-6 gap-2">
-                  <span className="bg-customColor p-1 text-white rounded-md">
-                    {project.service.join(", ")}
-                  </span>
+                  
+                  {
+                   project.service.map((items) =>(
+                      <span className="bg-customColor p-1 text-white rounded-md">
+                      {items}
+                    </span>     
+                    ))
+                  }
+                  
                 </div>
                 <div className="flex flex-row gap-5 mt-12">
                   <div className="flex items-center justify-center bg-customColor text-white text-xl py-2 w-[5rem] h-[2.5rem] rounded-md">
