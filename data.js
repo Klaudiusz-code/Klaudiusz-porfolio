@@ -1,5 +1,5 @@
 
-import { FaHome, FaClipboardList } from "react-icons/fa";
+import { FaHome, FaClipboardList,FaShoppingCart  } from "react-icons/fa";
 import { MdDesignServices } from "react-icons/md";
 import { IoMdHome, IoMdMail } from "react-icons/io";
 import { GrProjects } from "react-icons/gr";
@@ -17,22 +17,22 @@ const MenuLinks = [
     {
         icon: <IoMdHome />,
         link: "/",
-        name: 'Home'
+        name: 'S.Główna'
     },
     {
         icon: <GrProjects />,
         link: "/projects",
-        name: 'Project',
+        name: 'Projekty',
     },
     {
         icon: <MdDesignServices />,
         link: "/services",
-        name: 'Services',
+        name: 'Usługi',
     },
     {
         icon: <HiOutlineMail />,
         link: "/contact",
-        name: 'Contact',
+        name: 'Kontakt',
     },
 ];
 
@@ -93,19 +93,19 @@ const Learn = [
 ]
 const MyServices = [
     {
-        name: 'Development',
+        name: 'Strony Internetowe',
         icon: <FaLaptopCode />,
-        desc:'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio sed officiis possimus sit adipisci,',
+        desc:'Tworzę strony z istotnymi treściami, zwiększając zaangażowanie użytkownika.'
+    },
+    {
+        name: 'Sklepy Internetowe',
+        icon: <FaShoppingCart  />,
+        desc:'Tworzę dynamiczne sklepy internetowe, zapewniając użytkownikom atrakcyjne doświadczenia zakupowe.'
     },
     {
         name: 'SEO',
         icon: <FaChartBar />,
-        desc:'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio sed officiis possimus sit adipisci,',
-    },
-    {
-        name: 'CopyWrite',
-        icon: <FaRegCopy />,
-        desc:'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio sed officiis possimus sit adipisci',
+        desc:'Optymalizuję witryny pod kątem wyszukiwarek, wykorzystując analizę rynku i słów kluczowych.'
     },
 ]
 
