@@ -8,10 +8,10 @@ const services = () => {
   return (
     <div className="container mx-auto h-screen flex flex-wrap justify-center">
       <div className="w-full mx-auto text-center">
-        <h1 className="text-[4rem] text-white font-bold">
+        <h1 className="text-[2rem] lg:text-[4rem] text-white font-bold">
           <span className="text-customColor">Moje</span> Usługi
         </h1>
-        <div className="flex flex-wrap justify-center mt-14 gap-x-24">
+        <div className="flex flex-wrap justify-center mt-6 lg:mt-12 gap-x-24">
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
