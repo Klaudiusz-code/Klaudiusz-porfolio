@@ -11,7 +11,13 @@ const metadata: Metadata = {
   description: "Portfolio",
 };
 
-export default function RootLayout({ children, hideNavbar }: { children: ReactNode, hideNavbar: boolean }) {
+export default function RootLayout({ 
+  children,
+  hideNavbar,
+}: {
+  children: ReactNode;
+  hideNavbar: boolean;
+}) {
   return (
     <>
       {!hideNavbar && <Navbar />}
