@@ -7,7 +7,7 @@ const Projects = () => {
   return (
     <div className="container mx-auto">
       <div className="w-full text-center">
-        <h1 className="text-[4rem] text-white font-bold">
+        <h1 className="text-[2rem] lg:text-[4rem] text-white font-bold">
           <span className="text-customColor">MY</span> PROJECTS
         </h1>
         <div className="grid grid-cols-1 gap-5 mt-14 w-full">
