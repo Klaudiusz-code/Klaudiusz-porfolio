@@ -1,25 +1,37 @@
-"use client";
-import { ProjectsData } from "@/data";
 import React from "react";
+import { motion } from "framer-motion";
 import { FaEye, FaGithub } from "react-icons/fa";
 import Head from "next/head";
+import { ProjectsData } from "@/data";
 
 const Projects = () => {
   return (
     <>
-     <Head>
-        <title>Projekty - Klaudiusz Adamaszek</title>
+      <Head>
+        <title>
+          Projekty - Strony Internetowe, Sklepy Internetowe, SEO | Lubycza
+          Królewska, Tomaszów Lubelski, Zamość, Lublin | Klaudiusz Adamaszek -
+          Web Developer
+        </title>
       </Head>
       <div className="container mx-auto">
         <div className="w-full text-center">
           <h1 className="text-[2rem] lg:text-[4rem] text-white font-bold">
-            <span className="text-customColor">MY</span> PROJECTS
+            <span className="text-customColor">MOJE</span> PROJEKTY
           </h1>
-          <div className="grid grid-cols-1 gap-5 mt-14 w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 1000 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.6 }}
+            className="grid grid-cols-1 gap-5 mt-14 w-full"
+          >
             {ProjectsData.map((project, index) => (
-              <div
-                className="flex flex-col lg:flex-row items-center mb-4"
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 1000 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.6, delay: index * 0.2 }}
+                className="flex flex-col lg:flex-row items-center mb-4"
               >
                 <div className="border border-gray-700 rounded-sm w-full lg:max-w-[400px] min-h-[380px] flex items-center justify-center">
                   <div className="h-[10rem] w-[10rem] relative">
@@ -51,9 +63,9 @@ const Projects = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </>
