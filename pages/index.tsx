@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import Button from "@/components/Button";
-import Head from 'next/head';
+import Head from "next/head";
 
 import Image from "next/image";
 
@@ -10,9 +10,23 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>Klaudiusz Adamaszek Web Developer</title>
-        <meta name="description" content="Jestem entuzjastą Full Stack JavaScript, który łączy potęgę Node.js w warstwie backendu z elegancją React w obszarze frontendu." />
-        <meta property="og:title" content="Klaudiusz Adamaszek Web Developer" />
+        <title>
+          Strony, Sklepy Internetowe, SEO - Tomaszów Lubelski,
+          Zamość, Lublin
+        </title>
+        <meta
+          name="description"
+          content="Full Stack JavaScript Developer specjalizujący się w tworzeniu stron i sklepów internetowych."
+        />
+        <meta
+          name="keywords"
+          content="strony internetowe, sklepy internetowe, seo, web developer, Lubycza Królewska, Tomaszów Lubelski, Zamość, Lublin"
+        />
+        <meta
+          property="og:title"
+          content="Strony Internetowe, Sklepy Internetowe, Seo | Tomaszów Lubelski, Zamość, Lublin | Klaudiusz Adamaszek - Web Developer"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />{" "}
       </Head>
       <motion.div
         initial={{ opacity: 0, scale: 0.2 }}
