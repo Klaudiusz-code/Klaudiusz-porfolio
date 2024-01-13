@@ -2,14 +2,18 @@
 import React from "react";
 import { Learn, MySkills } from "@/data";
 import { MyServices } from "@/data";
-import Head from 'next/head';
+import Head from "next/head";
 import { motion } from "framer-motion";
 
 const services = () => {
   return (
     <>
       <Head>
-        <title>Usługi - Klaudiusz Adamaszek</title>
+        <title>
+          Usługi - Strony Internetowe, Sklepy Internetowe, SEO | Lubycza
+          Królewska, Tomaszów Lubelski, Zamość, Lublin | Klaudiusz Adamaszek -
+          Web Developer
+        </title>
       </Head>
       <div className="container mx-auto h-screen flex flex-wrap justify-center">
         <div className="w-full mx-auto text-center">
@@ -18,10 +22,10 @@ const services = () => {
           </h1>
           <div className="flex flex-wrap justify-center mt-6 lg:mt-12 gap-x-24">
             <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.5 }}
-              transition={{ ease: "easeInOut", duration: 1.6 }}
+              initial={{ opacity: 0, x: -1000 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -1000 }}
+              transition={{ ease: "easeInOut", duration: 1.3 }}
               className="flex flex-col border border-gray-700 hover:border-customColor duration-150 rounded-lg w-[361px] text-left min-h-[600px]"
             >
               <div className="ml-10 mt-8">
@@ -68,16 +72,16 @@ const services = () => {
               </div>
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.5 }}
-              transition={{ ease: "easeInOut", duration: 1 }}
+              initial={{ opacity: 0, x: 1000 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 1000 }}
+              transition={{ ease: "easeInOut", duration: 1.6 }}
               className="flex flex-col items-center gap-y-6"
             >
               {MyServices.map((service, index) => (
                 <div
                   key={index}
-                  className="flex flex-col items-center text-white border border-gray-700 rounded-md w-[361px] min-h-[183px] transition-all duration-200 hover:bg-customColor"
+                  className="flex flex-col items-center text-white border border-gray-700 rounded-md w-[361px] min-h-[183px] transition-all duration-100 hover:bg-customColor"
                 >
                   <span className="text-[2.4rem] pt-3">{service.icon}</span>
                   <h1 className="mt-2 text-[26px] font-bold">{service.name}</h1>
