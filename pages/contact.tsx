@@ -1,6 +1,6 @@
-"use client";
 import React from "react";
 import Head from "next/head";
+import { motion } from "framer-motion";
 import RootLayout from "@/app/layout";
 import { ContactIcon, SocialIcons } from "@/data";
 
@@ -8,18 +8,29 @@ const contact = () => {
   return (
     <>
       <Head>
-        <title>Kontakt - Klaudiusz Adamaszek</title>
+        <title>
+          Kontakt - Strony Internetowe, Sklepy Internetowe, Seo | Lubycza
+          Królewska, Tomaszów Lubelski, Zamość, Lublin | Klaudiusz Adamaszek -
+          Web Developer
+        </title>
       </Head>
       <div className="container mx-auto">
         <header className="w-full text-center">
           <h1 className="text-[4rem] text-white font-bold">
-            <span className="text-customColor">CONTACT</span> US
+            <span className="text-customColor">KON</span>TAKT
           </h1>
         </header>
-        <section className="flex flex-col lg:flex-row justify-between items-center mt-16">
+        <motion.section
+          initial={{ opacity: 0, y: -1000 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="flex flex-col lg:flex-row justify-between items-center mt-16"
+        >
           <div>
-            <h1 className="text-3xl text-white font-extrabold">Get in touch</h1>
-            <p className="mb-12 text-gColor text-1xl mt-3 max-w-[80%]">
+            <h1 className="text-3xl text-white font-extrabold">
+              Napisz do mnie!
+            </h1>
+            <p className="mb-12 mt-4 text-gColor text-1xl max-w-[80%]">
               Zapraszam do przejrzenia moich projektów i mam nadzieję, że
               będziemy mieli okazję współpracować. Dziękuję za odwiedzenie
               mojego portfolio!
@@ -112,7 +123,7 @@ const contact = () => {
               </div>
             </form>
           </div>
-        </section>
+        </motion.section>
       </div>
     </>
   );
