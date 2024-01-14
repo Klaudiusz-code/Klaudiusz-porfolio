@@ -11,7 +11,7 @@ const Home = () => {
     <>
       <Head>
         <title>
-          Strony, Sklepy Internetowe, SEO - Tomaszów Lubelski,
+          Strony Internetowe, Sklepy Internetowe, SEO - Tomaszów Lubelski,
           Zamość, Lublin
         </title>
         <meta
@@ -35,8 +35,8 @@ const Home = () => {
         className="relative container mx-auto mt-24 flex items-center justify-center text-center flex-col lg:flex-row bg-body-bg"
       >
         <div className="lg:w-7/12 lg:pr-8 mt-27 md:mt-28 xl:mt-32 lg:order-2">
-          <h1 className="text-customColor text-5xl xl:text-7xl font-bold mb-4 text-center">
-            Klaudiusz Adamaszek
+          <h1 className="text-white text-5xl xl:text-7xl font-bold mb-4 text-center">
+            <span className="text-customColor">Klaudiusz</span> Adamaszek
           </h1>
           <h2 className="text-gColor font-bold text-1xl xl:text-xl">
             <TypeAnimation
@@ -48,10 +48,10 @@ const Home = () => {
             />
           </h2>
           <p className="lg:w-full mx-auto text-gColor mt-4 mb-2 font-light text-[0.7rem] md:text-[0.9rem] lg:text-[1rem] leading-7">
-            Jestem entuzjastą Full Stack JavaScript, który łączy potęgę Node.js
-            w warstwie backendu z elegancją React w obszarze frontendu. Moje
-            projekty wyróżniają się nie tylko techniczną precyzją, ale także
-            troską o doświadczenie użytkownika.
+            Witaj na moim portfolio! Jestem pasjonatem web developmentu, tworzę
+            nie tylko estetyczne strony internetowe, lecz także dynamiczne
+            sklepy online. Optymalizuję pod kątem SEO, aby Twoja witryna była
+            widoczna i efektywna.
           </p>
           <Button />
         </div>
