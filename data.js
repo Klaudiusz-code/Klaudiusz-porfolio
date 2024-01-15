@@ -36,6 +36,21 @@ const MenuLinks = [
     },
 ];
 
+const offertsLinks = [
+    {
+        title: 'STRONA INTERNETOWA',
+        link:'/websites'
+    },
+    {
+        title: 'SKLEP INTERNETOWY',
+        link: '/online-stores'
+    },
+    {
+        title: 'SEO - POZYCJONOWANIE',
+        link: '/seo'
+    }
+    
+];
 
 const MySkills = [
     {
@@ -159,5 +174,6 @@ export {
     Learn,
     ContactIcon,
     SocialIcons,
-    ProjectsData
+    ProjectsData,
+    offertsLinks,
 };
