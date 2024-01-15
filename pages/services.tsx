@@ -22,9 +22,9 @@ const services = () => {
           </h1>
           <div className="flex flex-wrap justify-center mt-6 lg:mt-12 gap-x-24">
             <motion.div
-              initial={{ opacity: 0, x: -1000 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -1000 }}
+              initial={{ opacity: 0, y: -1000 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -1000 }}
               transition={{ ease: "easeInOut", duration: 1.3 }}
               className="flex flex-col border border-gray-700 hover:border-customColor duration-150 rounded-lg w-[361px] text-left min-h-[600px]"
             >
@@ -72,9 +72,9 @@ const services = () => {
               </div>
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, x: 1000 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 1000 }}
+              initial={{ opacity: 0, y: 1000 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 1000 }}
               transition={{ ease: "easeInOut", duration: 1.6 }}
               className="flex flex-col items-center gap-y-6"
             >
