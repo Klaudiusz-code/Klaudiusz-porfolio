@@ -21,9 +21,10 @@ const contact = () => {
           </h1>
         </header>
         <motion.section
-          initial={{ opacity: 0, y: -1000 }}
+          initial={{ opacity: 0, y: 1000 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          exit={{ opacity: 0, y: 1000 }}
+          transition={{ ease: "easeInOut", duration: 1.6 }}
           className="flex flex-col lg:flex-row justify-between items-center mt-16"
         >
           <div>
@@ -61,7 +62,13 @@ const contact = () => {
               </ul>
             </div>
           </div>
-          <div className="min-w-[50%] mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 1000 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 1000 }}
+            transition={{ ease: "easeInOut", duration: 1.6 }}
+            className="min-w-[50%] mx-auto"
+          >
             <form className="max-w-full mx-auto border border-gray-700 rounded-lg overflow-hidden shadow-md p-6">
               <div className="mb-4">
                 <label
@@ -122,7 +129,7 @@ const contact = () => {
                 </button>
               </div>
             </form>
-          </div>
+          </motion.div>
         </motion.section>
       </div>
     </>
