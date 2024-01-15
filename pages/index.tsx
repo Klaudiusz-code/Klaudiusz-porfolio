@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import Button from "@/components/Button";
 import Head from "next/head";
-
 import Image from "next/image";
+import Aboutme from "@/components/Aboutme";
 
 const Home = () => {
   return (
@@ -48,14 +48,12 @@ const Home = () => {
             />
           </h2>
           <p className="lg:w-full mx-auto text-gColor mt-4 mb-2 font-light text-[0.7rem] md:text-[0.9rem] lg:text-[1rem] leading-7">
-            Witaj na moim portfolio! Jestem pasjonatem web developmentu, tworzę
-            nie tylko estetyczne strony internetowe, lecz także dynamiczne
-            sklepy online. Optymalizuję pod kątem SEO, aby Twoja witryna była
-            widoczna i efektywna.
+          Witaj! Jestem doświadczonym web developerem, specjalizującym się w tworzeniu nowoczesnych stron i sklepów online z myślą o optymalizacji pod kątem SEO. Zoptymalizujmy razem Twoją obecność w sieci!
           </p>
           <Button />
         </div>
       </motion.div>
+      <Aboutme/>
     </>
   );
 };
