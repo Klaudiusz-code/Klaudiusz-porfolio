@@ -13,6 +13,17 @@ import { FaChartBar } from "react-icons/fa";
 //social icons
 import { FaFacebookMessenger, FaDiscord, FaSlack, FaLinkedin, FaGithub } from "react-icons/fa";
 
+//Bnefits icon
+import { FaEye } from "react-icons/fa";
+import { FaBlackTie } from "react-icons/fa";
+import { GiOpenGate } from "react-icons/gi";
+
+//offertswebsite 
+
+import { FaCalendarCheck } from "react-icons/fa";
+import { BiSolidNotepad } from "react-icons/bi";
+import { FaWallet } from "react-icons/fa";
+
 const MenuLinks = [
     {
         icon: <IoMdHome />,
@@ -167,6 +178,42 @@ const ProjectsData = [
         service: ['NextJS', 'Tailwind', 'Strapi']
     }
 ]
+const BenefitsWeb = [
+    {
+        icon: <FaEye />,
+        title: 'Globalna Widoczność ',
+        description: 'Dzięki stronie internetowej firma staje się dostępna dla klientów na całym świecie, co pozwala na zwiększenie zasięgu i zdobycie nowych rynków. '
+    },
+    {
+        icon: <GiOpenGate />,
+        title: 'Łatwy Dostęp do Informacji',
+        description: 'Klienci mogą szybko i łatwo uzyskać informacje o produktach, usługach, godzinach otwarcia i innych kluczowych aspektach firmy'
+    },
+    {
+        icon: <FaBlackTie />,
+        title: 'Profesjonalny Wizerunek',
+        description: 'Strona internetowa jest wizytówką firmy w świecie online. Profesjonalny i atrakcyjny design strony buduje zaufanie klientów oraz podkreśla profesjonalizm firmy'
+    },
+]
+
+const ServicesWebsite = [
+    {
+      icon: <FaCalendarCheck />,
+      title: 'Terminowość',
+      description: 'Realizuje projekty zgodnie z ustalonym harmonogramem, zawsze szanując Twoją czasową strategię biznesową. ',
+    },
+    {
+      icon: <BiSolidNotepad />,
+      title: 'Długotrwała Współpraca',
+      description: 'Stworzyliśmy Razem Twoją Stronę - Teraz Razem Błyszczmy Online! Z SEO i Skutecznym Marketingiem Osiągniesz Wielki Sukces!',
+    },
+    {
+      icon: <FaWallet />,
+      title: 'Konkurencyjne Ceny',
+      description: 'Twój Sukces w Atrakcyjnej Cenie - Razem Osiągniemy Go Bez Wydawania Fortuny',
+    }
+  ];
+
 export {
     MenuLinks,
     MySkills,
@@ -176,4 +223,6 @@ export {
     SocialIcons,
     ProjectsData,
     offertsLinks,
+    BenefitsWeb,
+    ServicesWebsite,
 };
