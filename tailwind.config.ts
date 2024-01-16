@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        contactBanner: `url('/ContactBanner.png')`,
+        },
       colors: {
         bgColor: '#252B39',
         customColor: '#34C0C9',
