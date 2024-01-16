@@ -15,9 +15,9 @@ const Projects = () => {
         </title>
       </Head>
       <div className="container mx-auto">
-        <div className="w-full text-center">
-          <h1 className="text-[2rem] lg:text-[4rem] text-white font-bold">
-            <span className="text-customColor">MOJE</span> PROJEKTY
+        <div className="w-full mt-14">
+          <h1 className="text-[0.8rem] lg:text-[1.3rem] text-white font-bold">
+            <span className="text-customColor">/</span> PROJEKTY
           </h1>
           <motion.div
             initial={{ opacity: 0, y: 1000 }}
