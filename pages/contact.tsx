@@ -15,9 +15,9 @@ const contact = () => {
         </title>
       </Head>
       <div className="container mx-auto">
-        <header className="w-full text-center">
-          <h1 className="text-[4rem] text-white font-bold">
-            <span className="text-customColor">KON</span>TAKT
+        <header className="w-full mt-14">
+          <h1 className="text-[0.8rem] lg:text-[1.3rem] text-white font-bold">
+            <span className="text-customColor">/</span> KONTAKT
           </h1>
         </header>
         <motion.section
@@ -25,7 +25,7 @@ const contact = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 1000 }}
           transition={{ ease: "easeInOut", duration: 1.6 }}
-          className="flex flex-col lg:flex-row justify-between items-center mt-16"
+          className="flex flex-col lg:flex-row justify-between items-center mt-28"
         >
           <div>
             <h1 className="text-3xl text-white font-extrabold">
