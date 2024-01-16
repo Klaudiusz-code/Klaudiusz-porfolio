@@ -16,9 +16,9 @@ const services = () => {
         </title>
       </Head>
       <div className="container mx-auto h-screen flex flex-wrap justify-center">
-        <div className="w-full mx-auto text-center">
-          <h1 className="text-[2rem] lg:text-[4rem] text-white font-bold">
-            <span className="text-customColor">Moje</span> Usługi
+        <div className="w-full mx-auto mt-14">
+          <h1 className="text-[0.8rem] lg:text-[1.3rem] text-white font-bold">
+            <span className="text-customColor">/</span> USŁUGI
           </h1>
           <div className="flex flex-wrap justify-center mt-6 lg:mt-12 gap-x-24">
             <motion.div
