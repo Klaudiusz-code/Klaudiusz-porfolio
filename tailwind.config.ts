@@ -26,9 +26,17 @@ const config: Config = {
         'md': '768px',
         'sm': '640px',
       },
+      fontFamily: {
+        sans: ["Open Sans", 'sans-serif'],
+        bevan: ["Bevan", 'serif'],
+        archivo: ["Archivo Black", 'sans-serif'],
+        rubik: ["Rubik Mono One", 'monospace']
+      },
     },
   
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-3d'),
+  ],
 }
 export default config
