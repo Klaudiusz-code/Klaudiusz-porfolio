@@ -24,6 +24,13 @@ import { FaCalendarCheck } from "react-icons/fa";
 import { BiSolidNotepad } from "react-icons/bi";
 import { FaWallet } from "react-icons/fa";
 
+
+//online-stores
+
+import { FaClockRotateLeft } from "react-icons/fa6";
+import { CiShoppingCart } from "react-icons/ci";
+import { FaChartLine } from "react-icons/fa";
+
 const MenuLinks = [
     {
         icon: <IoMdHome />,
@@ -214,6 +221,24 @@ const ServicesWebsite = [
     }
   ];
 
+  const BenefitsStores = [
+    {
+        icon: <FaClockRotateLeft />,
+        title: 'Dostępność Bez Granic Czasowych',
+        description: 'Nasze sklepy internetowe są dostępne 24/7, co umożliwia klientom zakupy o dowolnej porze, idealne dla osób o zmieniających się grafikach pracy.',
+      },
+      {
+        icon: <CiShoppingCart />,
+        title: 'Globalne Rozwinięcie Biznesu',
+        description: 'Sklep internetowy usuwa ograniczenia lokalne, umożliwiając firmie dotarcie do klientów na całym świecie.',
+      },
+      {
+        icon: <FaChartLine />,
+        title: 'Zakupy Bez Granic Wygody',
+        description: 'Wygoda klientów w naszym sklepie to kluczowe doświadczenie: porównuj, czytaj, kupuj online.'
+      }
+  ]
+
 export {
     MenuLinks,
     MySkills,
@@ -225,4 +250,5 @@ export {
     offertsLinks,
     BenefitsWeb,
     ServicesWebsite,
+    BenefitsStores,
 };
