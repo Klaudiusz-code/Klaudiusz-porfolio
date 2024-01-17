@@ -32,13 +32,14 @@ const Home = () => {
         initial={{ opacity: 0, scale: 0.2 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.6 }}
-        className="relative container mx-auto mt-24 flex items-center justify-center text-center flex-col lg:flex-row bg-body-bg"
+        className="w-full relative container mx-auto mt-24 flex items-center justify-center text-center flex-col lg:flex-row bg-body-bg "
       >
-        <div className="lg:w-7/12 lg:pr-8 mt-27 md:mt-28 xl:mt-32 lg:order-2">
-          <h1 className="text-white text-5xl xl:text-7xl font-bold mb-4 text-center">
+        <div className="w-full  lg:pr-8 mt-27 md:mt-28 xl:mt-32 lg:order-2">
+          {" "}
+          <h1 className="text-white text-[5rem] mb-4 text-center font-rubik font-bold tracking-wide">
             <span className="text-customColor">Klaudiusz</span> Adamaszek
           </h1>
-          <h2 className="text-gColor font-bold text-1xl xl:text-xl">
+          <h2 className="text-white font-rubik font-[900] text-[1.6rem] ">
             <TypeAnimation
               sequence={["Web Developer", 5000]}
               wrapper="span"
@@ -47,12 +48,6 @@ const Home = () => {
               repeat={Infinity}
             />
           </h2>
-          <p className="lg:w-full mx-auto text-gColor mt-4 mb-2 font-light text-[0.7rem] md:text-[0.9rem] lg:text-[1rem] leading-7">
-            Witaj! Jestem doświadczonym web developerem, specjalizującym się w
-            tworzeniu nowoczesnych stron i sklepów online z myślą o
-            optymalizacji pod kątem SEO. Zoptymalizujmy razem Twoją obecność w
-            sieci!
-          </p>
           <Button />
         </div>
       </motion.div>
