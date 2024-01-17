@@ -10,22 +10,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const [isLoading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const handlePageLoading = () => {
-      setTimeout(() => {
-        setLoading(false);
-      }, 2000);
-    };
 
-    handlePageLoading();
-  }, []);
 
   return (
     <RootLayout hideNavbar={isLoading}>
       <AnimatePresence mode="wait">
-        {isLoading ? (
-          <Loader />
-        ) : (
           <motion.div
             key={router.route}
             initial="initial"
@@ -35,7 +24,6 @@ function MyApp({ Component, pageProps }: AppProps) {
             <Transition />
             <Component {...pageProps} />
           </motion.div>
-        )}
       </AnimatePresence>
     </RootLayout>
   );
