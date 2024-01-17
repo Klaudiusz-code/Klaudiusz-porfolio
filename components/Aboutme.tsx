@@ -6,7 +6,7 @@ import { offertsLinks } from "@/data";
 
 const Aboutme = () => {
   return (
-    <section className="container mx-auto mb-12 p-2 mt-16">
+    <section className="container mx-auto mb-12 p-2 mt-14">
       <div className="flex flex-col justify-center lg:flex-row lg:justify-between  mt-32 border border-gray-700 rounded-xl p-8">
         <div className="max-w-full md:max-w-[80%] lg:max-w-[50%]">
           <span className="text-white text-2xl font-semibold">
@@ -15,7 +15,7 @@ const Aboutme = () => {
           <h1 className="mt-6 text-white text-[1.7rem] font-extrabold">
             KIM JESTEM?
           </h1>
-          <p className="mt-2 text-gColor text-[1.2rem] font-thin leading-7">
+          <p className="mt-2 text-gColor text-[1.2rem] font-thin leading-7 font-sans">
             Cześć! Jestem entuzjastą programowania, specjalizującym się zarówno
             w front-endzie, jak i backendzie, a także posiadającym umiejętności
             w obszarze SEO. Moja pasja do tworzenia projektów, które wyróżniają
@@ -29,14 +29,14 @@ const Aboutme = () => {
           <span className="text-white text-2xl font-semibold">
             <span className="text-customColor">/</span> Wybierz Ofertę
           </span>
-          <div className="mt-6 flex flex-col justify-center">
+          <div className="mt-6 flex flex-col justify-center font-sans">
             {offertsLinks.map((item, index) => (
               <Link
                 href={item.link}
                 key={index}
                 className="hover:scale-110 duration-150"
               >
-                <span className="text-[3.5rem] underline font-black text-[#3e6a78]  hover:text-white transition-all">
+                <span className="text-[3.5rem] underline font-black text-[#4ea1af]  hover:text-white transition-all">
                   {item.title}
                 </span>
               </Link>
