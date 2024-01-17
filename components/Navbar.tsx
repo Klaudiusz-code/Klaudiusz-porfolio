@@ -4,6 +4,7 @@ import { MenuLinks } from "@/data";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import ButtonContact from "./ButtonContact";
 
 const Navbar = () => {
   const router = useRouter();
@@ -15,13 +16,7 @@ const Navbar = () => {
           Klaud<span className="text-customColor text-2xl">iusz</span>.
         </a>
       </h1>
-      <div className="flex justify-center items-center border border-customColor w-[170px] h-10 rounded-sm">
-        <a href="mailto:adamaszek404gmail.com">
-          <span className="text-zinc-300 font-medium text-[0.7rem] tracking-wide">
-            adamaszek404gmail.com
-          </span>
-        </a>
-      </div>
+        <ButtonContact/>
       <div className="flex gap-y-5 xl:flex-col items-center xl:justify-center justify-between w-full bg-customColor lg:bg-transparent fixed bottom-0 md:right-0 lg:right-0 rounded-none lg:w-12 xl:w-12 md:px-40 xl:px-0 h-[80px] xl:h-max xl:right-14 xl:top-1/4 py-8 lg:rounded-2xl">
         {MenuLinks.map((link, index) => {
           return (
