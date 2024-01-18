@@ -16,7 +16,7 @@ const Navbar = () => {
           Klaud<span className="text-customColor text-2xl">iusz</span>.
         </a>
       </h1>
-        <ButtonContact/>
+      <ButtonContact />
       <div className="flex gap-y-5 xl:flex-col items-center xl:justify-center justify-between w-full bg-customColor lg:bg-transparent fixed bottom-0 md:right-0 lg:right-0 rounded-none lg:w-12 xl:w-12 md:px-40 xl:px-0 h-[80px] xl:h-max xl:right-14 xl:top-1/4 py-8 lg:rounded-2xl">
         {MenuLinks.map((link, index) => {
           return (
