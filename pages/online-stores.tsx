@@ -1,7 +1,10 @@
+import React from "react";
+import Acordion from "@/components/Acordin/Acordion";
 import ContactBaner from "@/components/ContactBaner";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import { BenefitsStores } from "@/data";
-import React from "react";
+import benefitsimg from "@/public/benefitsimg.webp";
+import Image from "next/image";
 
 const onlineStores = () => {
   return (
@@ -10,37 +13,29 @@ const onlineStores = () => {
         <h1 className="text-white font-bold text-6xl mb-3 font-archivo">
           Sklep Internetowy
         </h1>
-        <p className="text-white text-[1.3rem] mt-4">
+        <p className="text-white mt-4">
           Rozwijam Szybkie Strony e-Commerce z Efektywnymi Rozwiązaniami.
         </p>
       </div>
-      <div className="w-full mx-auto text-center mt-24">
+      <div className="w-full mx-auto text-center mt-24 transition-all duration-200">
         <span className="p-3 bg-gray-700 text-white font-bold rounded-md">
-          Jakie Są Korzyści Ze Strony Internetowej?
+          Jakie Korzyści Przynosi Sklep Online?
         </span>
-
-        <div className="mt-32 bg-gray-800 border border-customColor rounded-lg grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 place-items-center place-content-center font-sans">
-          {BenefitsStores.map((item, index) => (
-            <div
-              className="w-[370px] min-h-[160px] mt-6 p-2 flex flex-row text-left rounded-md"
-              key={index}
-            >
-              <span className=" text-5xl text-customColor">{item.icon}</span>
-              <div className="ml-1 lg:ml-4">
-                <span className="text-[1rem] text-white font-bold">
-                  {item.title}
-                </span>{" "}
-                <span className="text-customColor font-bold">-</span>{" "}
-                <span className="font-thin text-[1rem] text-gray-400">
-                  {item.description}
-                </span>
-              </div>
-            </div>
-          ))}
+        <div className="w-full flex flex-row  items-center mt-14 bg-white rounded-md justify-center py-6 border-2 border-customColor">
+          <div className="w-[80%]">
+            <Acordion />
+          </div>
+          <div className="bg-red-500 hidden lg:block">
+            <Image
+              src={benefitsimg}
+              alt="Obrazek - benefity sklepu internetowego"
+            ></Image>
+          </div>
         </div>
       </div>
+
       <WhyChooseUs />
-      <ContactBaner/>
+      <ContactBaner />
     </section>
   );
 };
