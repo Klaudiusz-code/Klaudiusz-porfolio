@@ -11,9 +11,9 @@ const AccordionUi = ({ title, answer }) => {
         onClick={() => setAccordionOpen(!accordionOpen)}
         className="flex justify-between w-full border-b  border-b-gray-200 transition-all duration-150 p-2"
       >
-        <span className="text-[#6382bd]">{title}</span>
+        <span className="text-[#4d628a] text-[1.1rem]">{title}</span>
         {accordionOpen ? (
-          <HiX className="text-[#6382bd] shrink-0 ml-8" size={20} />
+          <HiX className="text-[#6382bd] shrink-0 ml-8 text-[1.1rem]" size={20} />
         ) : (
           <IoIosArrowDown className="text-[#6382bd] shrink-0 ml-8" size={20} />
         )}
