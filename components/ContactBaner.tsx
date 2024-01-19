@@ -3,7 +3,7 @@ import ButtonContact from "./ButtonContact";
 
 const ContactBaner = () => {
   return (
-    <div className="h-[300px] border border-customColor flex items-center justify-center bg-cover mt-32 mb-12 bg-center bg-contactBanner rounded-lg">
+    <div className="h-[300px] flex items-center justify-center bg-cover mt-32 mb-12 bg-center bg-contactBanner rounded-lg">
       <div className="text-center text-white">
         <h2 className="text-4xl font-bold mb-4 font-sans">
           POROZMAWIAJMY O TWOIM{" "}
