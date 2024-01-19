@@ -21,7 +21,7 @@ const onlineStores = () => {
         <span className="p-3 bg-gray-700 text-white font-bold rounded-md">
           Jakie Korzyści Przynosi Sklep Online?
         </span>
-        <div className="w-full flex flex-row  items-center mt-14 bg-white rounded-md justify-center py-6 border-2 border-customColor">
+        <div className="w-full flex flex-row  items-center mt-14 bg-white rounded-md justify-center py-6">
           <div className="w-[80%]">
             <Acordion />
           </div>
