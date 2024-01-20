@@ -32,7 +32,7 @@ const Home = () => {
         initial={{ opacity: 0, scale: 0.2 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.6 }}
-        className="w-full relative container mx-auto mt-24 flex items-center justify-center text-center flex-col lg:flex-row bg-body-bg "
+        className="w-full relative container mx-auto mt-16 flex items-center justify-center text-center flex-col lg:flex-row bg-body-bg "
       >
         <div className="w-full  lg:pr-8 mt-27 md:mt-28 xl:mt-32 lg:order-2">
           {" "}
