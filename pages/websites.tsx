@@ -36,8 +36,8 @@ const Websites = () => {
         </p>
       </div>
 
-      <div className="w-full mx-auto text-center mt-24">
-        <div className="mt-32 bg-[#0077cc] p-4 rounded-lg font-sans">
+      <div className="w-full mx-auto text-center mt-16">
+        <div className="mt-16 bg-[#0077cc] p-4 rounded-lg font-sans">
           <div className="flex p-3">
             <div className="flex flex-col text-left ml-3">
               <h1 className="text-[2rem] mb-1 font-sans text-white font-[900]">
