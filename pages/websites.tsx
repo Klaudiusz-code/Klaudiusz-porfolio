@@ -25,19 +25,65 @@ const Websites = () => {
     },
   ];
 
+  const websiteServiceOptions  = [
+    {
+      title: "zakup serwera i domeny",
+    },
+    {
+      title:
+        "Projektowanie strony przy użyciu systemu zarządzania treścią WordPress, Strapi",
+    },
+    {
+      title: "Konfiguracja kont pocztowych",
+    },
+    {
+      title: "Wdrożenie formularzy kontaktowych",
+    },
+    {
+      title:
+        "Integracja Google Analytics i Google Search Console dla śledzenia ruchu na stronie",
+    },
+    {
+      title: "Wzmocnienie zabezpieczeń strony",
+    },
+    {
+      title: "Uzupełnienie treścią dostarczoną przez Ciebie",
+    },
+  ];
+
   return (
     <section className="container mx-auto">
       <div className=" rounded-md text-center p-6">
-        <h1 className="text-white font-bold text-6xl mb-3 font-archivo">
+        <h1 className="text-customColor font-[500] font-sans text-6xl mb-2 tracking-wide">
           Strona Internetowa
         </h1>
-        <p className="text-white text-[1.3rem] mt-4">
-          Tworzę szybkie i skuteczne strony www.
-        </p>
       </div>
-
-      <div className="w-full mx-auto text-center mt-16">
-        <div className="mt-16 bg-[#0077cc] p-4 rounded-lg font-sans">
+      <div className="w-full py-2 mt-14 mb-6">
+        <h1 className="text-white font-sans font-[600] text-[2.2rem]">
+          Moja Oferta dla Twojej Strony Internetowej:{" "}
+        </h1>
+        <div className="mt-8">
+          <h2 className="mt-2 text-white font-sans font-normal text-[1.4rem] sm:text-[1.2rem]">
+            Zapewniam kompleksową opiekę nad Twoją stroną internetową z każdej
+            strony!
+          </h2>
+          <ul className="list-disc mt-3 ml-6">
+            {websiteServiceOptions.map((item) => (
+              <li className="mt-2 text-[1.2rem] tracking-wide font-thin text-gColor font-sans sm:text-[1rem]">
+                {item.title}
+              </li>
+            ))}
+          </ul>
+          <div className="w-full items-center sm:items-start mt-6 sm:mt-10 flex flex-col">
+            <span className=" text-white text-[1.1rem] mb-6 font-[600] sm:text-[1rem]">
+              Masz Pytanie?
+            </span>
+            <ButtonContact />
+          </div>
+        </div>
+      </div>
+      <div className="w-full mx-auto text-center mt-24">
+        <div className="mt-24 bg-[#0077cc] p-4 rounded-lg font-sans">
           <div className="flex p-3">
             <div className="flex flex-col text-left ml-3">
               <h1 className="text-[2rem] mb-1 font-sans text-white font-[900]">
