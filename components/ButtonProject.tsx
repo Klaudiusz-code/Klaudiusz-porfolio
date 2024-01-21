@@ -1,13 +1,17 @@
 import React from "react";
 import Link from "next/link";
+import { FaArrowRight } from "react-icons/fa6";
 
 const Button = () => {
   return (
-    <button className="border border-customColor mt-6 max-w-[120px] md:max-w-[130px] p-2 xl:min-w-[150px] h-12 rounded-md transitio hover:text-customColor hover:bg-navcolor transition-all duration-150">
+    <button className="border  border-customColor mt-8 max-w-[120px] md:max-w-[130px] p-2 xl:min-w-[150px] h-12 rounded-md transitio hover:text-customColor hover:bg-navcolor transition-all duration-150">
       <Link href="/projects" passHref>
-        <span className="text-[14px] text-white xl:text-[16px] font-bold">
+        <div className="flex items-center justify-center text-[14px] text-white xl:text-[16px] font-bold">
           Projekty
-        </span>
+          <span className="ml-2">
+            <FaArrowRight />
+          </span>
+        </div>
       </Link>
     </button>
   );
