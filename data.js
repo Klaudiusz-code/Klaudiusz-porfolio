@@ -62,10 +62,6 @@ const offertsLinks = [
     {
         title: 'SKLEP INTERNETOWY',
         link: '/online-stores'
-    },
-    {
-        title: 'SEO - POZYCJONOWANIE',
-        link: '/seo'
     }
     
 ];
