@@ -10,7 +10,19 @@ import Logo from "@/public/logo2.png";
 
 const Navbar = () => {
   const router = useRouter();
-  const pathname = router.pathname;
+  const [currentPathname, setCurrentPathname] = useState(router.pathname);
+
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      setCurrentPathname(url);
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
   return (
     <nav className="container mx-auto flex items-center justify-between pt-6 pb-9 relative z-10">
       <div className="flex flex-col items-center justify-center text-2xl text-white">
@@ -24,7 +36,7 @@ const Navbar = () => {
           return (
             <Link
               className={`${
-                link.link === pathname && "bg-teal-500"
+                link.link === currentPathname && "bg-teal-400"
               } text-[1.1rem] text-white  bg-whiteOp hover:bg-customColor w-14 h-14 flex items-center justify-center rounded-full transition-all group-hover:opacity-1000`}
               href={link.link}
               key={index}
