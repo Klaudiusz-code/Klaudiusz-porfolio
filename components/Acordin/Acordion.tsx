@@ -3,22 +3,26 @@ import AcordinUi from "./AcordinUi";
 
 const Acordion = () => {
   return (
-    <div className="p-4 rounded-lg">
+    <div>
       <AcordinUi
-        title="Wygodne Zakupy Z Dowolnego Miejsca"
-        answer="Sklepy internetowe umożliwiają łatwe i szybkie dokonywanie zakupów z dowolnego miejsca, co eliminuje potrzebę wychodzenia z domu. Komfortowy proces zakupowy dostępny 24/7"
+        title="Jakie technologie i języki programowania stosuję w swoich projektach?"
+        answer="Nasze projekty opieramy na najnowszych technologiach i językach programowania, takich jak HTML5, CSS3, JavaScript, oraz korzystamy z popularnych frameworków, aby dostarczyć innowacyjne i responsywne strony internetowe."
       />
       <AcordinUi
-        title="Bogaty Asortyment i Szeroki Wybór"
-        answer="Sklepy online oferują ogromny wybór produktów i marek, umożliwiając klientom porównywanie opcji."
+        title="Czy mogę samodzielnie zarządzać treścią mojej strony po jej utworzeniu?"
+        answer="Tak, projektuje strony internetowe z myślą o łatwym zarządzaniu treściami. Oferuje również szkolenie w obszarze korzystania z systemów zarządzania treścią (CMS), aby umożliwić klientom samodzielne aktualizowanie treści."
       />
       <AcordinUi
-        title="Atrakcyjne Promocje i Zniżki"
-        answer="Klienci mogą skorzystać z licznych promocji, rabatów i okazji, co pozwala zaoszczędzić pieniądze."
+        title="Czy oferuje także hosting i utrzymanie stron internetowych?"
+        answer="Obecnie skupiam się głównie na projektowaniu stron internetowych. Oferuję kompleksowe wsparcie w utrzymaniu i rozwijaniu Twojej witryny. Jeśli chodzi o hosting, chętnie doradzę Ci w wyborze najbardziej odpowiedniej opcji"
       />
       <AcordinUi
-        title="Szybka Dostawa i Śledzenie Przesyłki"
-        answer="Sklepy online zapewniają szybką dostawę, a klient ma możliwość śledzenia przesyłki w czasie rzeczywistym. "
+        title="Czy moja strona będzie dostosowana do urządzeń mobilnych?"
+        answer="Tak, projektuje strony internetowe z myślą o responsywności, co oznacza, że są one zoptymalizowane dla różnych urządzeń, w tym smartfonów i tabletów."
+      />
+      <AcordinUi
+        title="Jak długo trwa proces tworzenia strony internetowej?"
+        answer="Czas potrzebny do stworzenia strony internetowej zależy od skomplikowania projektu. Oferuje elastyczne harmonogramy i trzymam się ustalonych terminów."
       />
     </div>
   );
