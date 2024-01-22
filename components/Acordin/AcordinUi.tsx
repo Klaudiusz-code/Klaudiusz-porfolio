@@ -6,20 +6,20 @@ const AccordionUi = ({ title, answer }) => {
   const [accordionOpen, setAccordionOpen] = useState(false);
 
   return (
-    <div className="py-2 font-sans">
+    <div className="py-3 font-sans">
       <button
         onClick={() => setAccordionOpen(!accordionOpen)}
-        className="flex justify-between w-full border-b  border-b-gray-200 transition-all duration-150 p-2"
+        className="flex justify-between w-full rounded-md border border-gray-700  transition-all duration-150 p-4"
       >
-        <span className="text-[#4d628a] text-[1.1rem]">{title}</span>
+        <span className="text-gColor text-[1.1rem]">{title}</span>
         {accordionOpen ? (
-          <HiX className="text-[#6382bd] shrink-0 ml-8 text-[1.1rem]" size={20} />
+          <HiX className="text-gColor shrink-0 ml-8 text-[1.1rem]" size={20} />
         ) : (
-          <IoIosArrowDown className="text-[#6382bd] shrink-0 ml-8" size={20} />
+          <IoIosArrowDown className="text-gColor shrink-0 ml-8" size={20} />
         )}
       </button>
       <div
-        className={`grid overflow-hidden transition-all duration-300 ease-in-out bg-slate-300 text-[#6382bd] py-1 font-medium text-sm ${
+        className={`grid overflow-hidden mt-1 transition-all duration-300 ease-in-out text-[#0077cc] font-medium text-sm ${
           accordionOpen
             ? "grid-rows-[1fr] opacity-100"
             : "grid-rows-[0fr] opacity-0"
