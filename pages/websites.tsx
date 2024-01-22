@@ -5,6 +5,7 @@ import Image from "next/image";
 import { BenefitsWeb, ServicesWebsite } from "@/data";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import ImgAdvantages from "@/public/advantage_img.svg";
+import Acordion from "@/components/Acordin/Acordion";
 
 const Websites = () => {
   const data = [
@@ -75,7 +76,7 @@ const Websites = () => {
             ))}
           </ul>
           <div className="w-full items-center sm:items-start mt-6 sm:mt-10 flex flex-col">
-            <span className=" text-white text-[1.1rem] mb-6 font-[600] sm:text-[1rem]">
+            <span className=" text-gColor tracking-wide text-[1.1rem] mb-6 font-[600] sm:text-[1rem]">
               Masz Pytanie?
             </span>
             <ButtonContact />
@@ -105,6 +106,15 @@ const Websites = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="mt-24">
+        <div className="text-center mb-10">
+            <h1 className="text-[2rem] font-sans font-[600] text-white">
+              FAQ
+            </h1>
+            <p className="text-gray-500 font-[400] mt-2 font-sans">O to najczęściej zadawane pytania!</p>
+        </div>
+       <Acordion/>
       </div>
       <WhyChooseUs />
       <ContactBaner />
