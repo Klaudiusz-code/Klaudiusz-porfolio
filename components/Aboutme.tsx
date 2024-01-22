@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import Link from "next/link";
 import { offertsLinks } from "@/data";
@@ -29,14 +28,14 @@ const Aboutme = () => {
           <span className="text-white text-2xl font-semibold">
             <span className="text-customColor">/</span> Wybierz Ofertę
           </span>
-          <div className="mt-6 flex flex-col justify-center font-sans">
+          <div className="mt-12 flex flex-col justify-center font-sans">
             {offertsLinks.map((item, index) => (
               <Link
                 href={item.link}
                 key={index}
                 className="hover:scale-110 duration-150"
               >
-                <span className="text-[3.5rem] underline font-black text-[#4ea1af]  hover:text-white transition-all">
+                <span className="text-[3.5rem] underline font-black text-[#a5a5a5] hover:text-white transition-all">
                   {item.title}
                 </span>
               </Link>
