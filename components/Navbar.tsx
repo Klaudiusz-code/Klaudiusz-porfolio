@@ -13,7 +13,7 @@ const Navbar = () => {
   const [currentPathname, setCurrentPathname] = useState(router.pathname);
 
   useEffect(() => {
-    const handleRouteChange = (url) => {
+    const handleRouteChange = (url: string) => {
       setCurrentPathname(url);
     };
 
@@ -31,13 +31,13 @@ const Navbar = () => {
         </a>
       </div>
       <ButtonContact />
-      <div className="flex gap-y-5 xl:flex-col items-center xl:justify-center justify-between w-full bg-customColor lg:bg-transparent fixed bottom-0 md:right-0 lg:right-0 rounded-none lg:w-12 xl:w-12 md:px-40 xl:px-0 h-[80px] xl:h-max xl:right-14 xl:top-1/4 py-8 lg:rounded-2xl">
+      <div className="flex gap-y-4 xl:flex-col items-center justify-center gap-x-5 xl:gap-x-0  xl:justify-between w-full  lg:bg-transparent fixed bottom-0 md:right-0 right-0  xl:w-12 md:px-40 xl:px-0 h-[80px] xl:h-max xl:right-14 xl:top-1/4 py-8 lg:rounded-2xl">
         {MenuLinks.map((link, index) => {
           return (
             <Link
               className={`${
                 link.link === currentPathname && "bg-teal-400"
-              } text-[1.1rem] text-white  bg-whiteOp hover:bg-customColor w-14 h-14 flex items-center justify-center rounded-full transition-all group-hover:opacity-1000`}
+              } text-[0.8rem] lg:text-[1rem] xl:text-[1.1rem] text-white  hover:bg-customColor w-11 h-11 lg:w-14 lg:h-14 flex items-center justify-center rounded-full transition-all group-hover:opacity-1000`}
               href={link.link}
               key={index}
             >
