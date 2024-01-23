@@ -4,7 +4,7 @@ import React from "react";
 const WhyChooseUs = () => {
   return (
     <div className="w-full mx-auto text-center mt-28 mb-12">
-      <span className="p-3 bg-gray-700 text-white font-bold rounded-md">
+      <span className="p-3 text-[0.7rem] md:text-[0.9rem] lg:text-[1rem] bg-gray-700 text-white font-bold rounded-md">
         Dlaczego Warto Skorzystać z Moich Usług?
       </span>
 
@@ -15,13 +15,13 @@ const WhyChooseUs = () => {
             className="flex flex-col items-center text-white rounded-md w-[370px] min-h-[190px]"
             key={index}
           >
-            <span className="text-[3rem] pt-3 text-customColor">
+            <span className="text-[2rem] md:text-[2.5rem] lg:text-[3rem] pt-3 text-customColor">
               {service.icon}
             </span>
-            <h1 className="mt-2 text-[1.3rem] font-bold font-sans">
+            <h1 className="mt-1 text-[1rem] md:txt-[1.1rem] lg:text-[1.3rem] font-bold font-sans">
               {service.title}
             </h1>
-            <p className="max-w-[80%] mt-1 text-gray-400 font-[600] text-[0.8rem]">
+            <p className="max-w-[80%] mt-1 text-gray-400 font-[600] text-[0.7rem] lg:text-[0.8rem]">
               {service.description}
             </p>
           </div>
