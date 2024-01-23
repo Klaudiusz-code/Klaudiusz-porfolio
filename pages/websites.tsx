@@ -26,7 +26,7 @@ const Websites = () => {
     },
   ];
 
-  const websiteServiceOptions  = [
+  const websiteServiceOptions = [
     {
       title: "zakup serwera i domeny",
     },
@@ -54,28 +54,28 @@ const Websites = () => {
 
   return (
     <section className="container mx-auto">
-      <div className=" rounded-md text-center p-6">
-        <h1 className="text-customColor font-[500] font-sans text-6xl mb-2 tracking-wide">
+      <div className=" rounded-md text-left py-4">
+        <h1 className="text-customColor font-[500] font-sans text-[2rem] md:text-[2.5rem] xl:text-[3.7rem] mb-2 tracking-wide">
           Strona Internetowa
         </h1>
       </div>
-      <div className="w-full py-2 mt-14 mb-6">
-        <h1 className="text-white font-sans font-[600] text-[2.2rem]">
+      <div className="w-full py-2 mt-6 md:mt-8 xl:mt-14 mb-6 ml-3 md:ml-1 lg:ml-0">
+        <h1 className="text-white text-left font-sans font-[600] text-[1.5rem] md:text-[1.6rem] xl:text-[1.8rem]">
           Moja Oferta dla Twojej Strony Internetowej:{" "}
         </h1>
         <div className="mt-8">
-          <h2 className="mt-2 text-white font-sans font-normal text-[1.4rem] sm:text-[1.2rem]">
+          <h2 className="mt-2 text-left text-gColor font-sans font-normal text-[0.9rem] md:text-[1.1rem]  xl:text-[1.3rem]">
             Zapewniam kompleksową opiekę nad Twoją stroną internetową z każdej
             strony!
           </h2>
-          <ul className="list-disc mt-3 ml-6">
+          <ul className="list-disc mt-3 ml-3 md:ml-4 lg:ml-6">
             {websiteServiceOptions.map((item) => (
-              <li className="mt-2 text-[1.2rem] tracking-wide font-thin text-gColor font-sans sm:text-[1rem]">
+              <li className="mt-2 text-[0.9rem] tracking-wide font-thin text-gColor font-sans sm:text-[1rem]">
                 {item.title}
               </li>
             ))}
           </ul>
-          <div className="w-full items-center sm:items-start mt-6 sm:mt-10 flex flex-col">
+          <div className="w-full mt-6 sm:mt-10 flex flex-col">
             <span className=" text-gColor tracking-wide text-[1.1rem] mb-6 font-[600] sm:text-[1rem]">
               Masz Pytanie?
             </span>
@@ -87,15 +87,15 @@ const Websites = () => {
         <div className="mt-24 bg-[#0077cc] p-4 rounded-lg font-sans">
           <div className="flex p-3">
             <div className="flex flex-col text-left ml-3">
-              <h1 className="text-[2rem] mb-1 font-sans text-white font-[900]">
+              <h1 className="text-[1rem] md:text-[1.3rem] lg:text-[2rem] mb-1 font-sans text-white font-[900]">
                 Korzyści Ze Strony Internetowej
               </h1>
               {data.map((item) => (
-                <div className="w-[50%] mt-5">
-                  <h1 className="text-[1.2rem] text-white font-sans font-[600]">
+                <div className="w-full md:max-w-[80%] lg:max-w-[60%] mt-5">
+                  <h1 className="text-[0.9rem] lg:text-[1.2rem] text-white font-sans font-[600]">
                     {item.title}
                   </h1>
-                  <p className="text-white text-[0.8rem] mt-1">
+                  <p className="text-white text-[0.8rem] lg:mt-[0.8] mt-1">
                     {item.description}
                   </p>
                 </div>
@@ -109,12 +109,12 @@ const Websites = () => {
       </div>
       <div className="mt-24">
         <div className="text-center mb-10">
-            <h1 className="text-[2rem] font-sans font-[600] text-white">
-              FAQ
-            </h1>
-            <p className="text-gray-500 font-[400] mt-2 font-sans">O to najczęściej zadawane pytania!</p>
+          <h1 className="text-[2rem] font-sans font-[600] text-white">FAQ</h1>
+          <p className="text-gray-500 font-[400] mt-2 font-sans">
+            O to najczęściej zadawane pytania!
+          </p>
         </div>
-       <Acordion/>
+        <Acordion />
       </div>
       <WhyChooseUs />
       <ContactBaner />
