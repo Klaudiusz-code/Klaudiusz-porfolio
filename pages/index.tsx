@@ -39,25 +39,16 @@ const Home = () => {
           {/* <h1 className="text-white text-[5rem] mb-4 text-center font-rubik font-bold tracking-wide">
             <span className="text-customColor">Klaudiusz</span> Adamaszek
           </h1> */}
-          <h1 className="mx-auto font-[900] text-white max-w-[75%] font-sans text-[2.9rem] mb-4 tracking-wide">
+          <h1 className="mx-auto font-[900] text-white w-full  sm:max-w-[75%] font-sans text-[1.8rem] sm:text-[2rem] lg:text-[2.9rem] mb-4 tracking-wide">
             Ciekawi Cię, jak{" "}
             <span className="underline underline-offset-4 ">skutecznie</span>{" "}
             wypromować swoją firmę czy projekt w sieci?
           </h1>
-          <h2 className="mx-auto max-w-[60%] mt-8 text-gColor font-medium text-[1.1rem] font-sans">
+          <h2 className="mx-auto w-full md:max-w-[60%] mt-8 text-gColor font-medium text-[0.8rem] md:text-[1rem] lg:text-[1.1rem] font-sans">
             Odpowiedź jest prosta – z wykorzystaniem profesjonalnej strony
             internetowej! Jestem pasjonatem web developmentu i chętnie pomogę Ci
             w stworzeniu unikalnej przestrzeni online.
           </h2>
-          {/* <p className="text-white font-rubik font-[900] text-[1.6rem] ">
-            <TypeAnimation
-              sequence={["Web Developer", 5000]}
-              wrapper="span"
-              speed={1}
-              style={{ fontSize: "1.8em", display: "inline-block" }}
-              repeat={Infinity}
-            />
-          </p> */}
           <Button />
         </div>
       </motion.div>
