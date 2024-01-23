@@ -6,7 +6,7 @@ const Acordion = () => {
     <div>
       <AcordinUi
         title="Jakie technologie i języki programowania stosuję w swoich projektach?"
-        answer="Nasze projekty opieramy na najnowszych technologiach i językach programowania, takich jak HTML5, CSS3, JavaScript, oraz korzystamy z popularnych frameworków, aby dostarczyć innowacyjne i responsywne strony internetowe."
+        answer="Nasze projekty opieram na najnowszych technologiach i językach programowania, takich jak HTML5, CSS3, JavaScript, oraz korzystam z popularnych frameworków, aby dostarczyć innowacyjne i responsywne strony internetowe."
       />
       <AcordinUi
         title="Czy mogę samodzielnie zarządzać treścią mojej strony po jej utworzeniu?"
