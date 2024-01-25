@@ -5,8 +5,8 @@ import { offertsLinks } from "@/data";
 
 const Aboutme = () => {
   return (
-    <section className="container mx-auto mb-12 p-2 mt-4 md:mt-8 xl:mt-12">
-      <div className="flex flex-col justify-center lg:flex-row lg:justify-between  mt-24  border border-gray-700 rounded-xl p-8">
+    <section className="container mx-auto mb-16 p-2 mt-4 md:mt-8 xl:mt-12">
+      <div className="flex flex-col justify-center lg:flex-row lg:justify-between mt-24  border border-gray-700 rounded-xl p-8">
         <div className="max-w-full md:max-w-[80%] lg:max-w-[50%]">
           <span className="text-white text-2xl font-semibold text-[1rem] md:text-[1.1rem] lg:text-[1.4rem]">
             <span className="text-customColor">/</span> O Mnie
