@@ -79,7 +79,7 @@ const Websites = () => {
             <span className=" text-gColor tracking-wide text-[1.1rem] mb-6 font-[600] sm:text-[1rem]">
               Masz Pytanie?
             </span>
-            <ButtonContact />
+            <ButtonContact buttonText="Napisz do mnie" />
           </div>
         </div>
       </div>
