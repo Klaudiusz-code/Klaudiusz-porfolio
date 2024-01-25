@@ -18,7 +18,7 @@ const Navbar = () => {
             <Image src={Logo} width={110} height={110} alt="Logo"></Image>
           </a>
         </div>
-        <ButtonContact />
+        <ButtonContact buttonText="Darmowa Wycena"/>
         <div className="flex gap-y-4 xl:flex-col items-center justify-center gap-x-5 xl:gap-x-0  xl:justify-between w-full  lg:bg-transparent fixed bottom-0 md:right-0 right-0  xl:w-12 md:px-40 xl:px-0 h-[80px] xl:h-max xl:right-14 xl:top-1/4 py-8 lg:rounded-2xl">
           {MenuLinks.map((link, index) => {
             return (
