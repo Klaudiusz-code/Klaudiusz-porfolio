@@ -213,7 +213,7 @@ const ServicesWebsite = [
     {
       icon: <FaWallet />,
       title: 'Konkurencyjne Ceny',
-      description: 'Twój Sukces w Atrakcyjnej Cenie - Razem Osiągniemy Go Bez Wydawania Fortuny',
+      description: 'Twój sukces jest dla mnie ważny, i chce go osiągnąć razem, bez nadmiernego obciążania budżetu.',
     }
   ];
 
