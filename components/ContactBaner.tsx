@@ -12,7 +12,7 @@ const ContactBaner = () => {
         <p className="text-[0.9rem] md:text-[1rem] lg:text-[1.1rem] mb-8">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
-        <ButtonContact />
+        <ButtonContact buttonText="Napisz do mnie!" />
       </div>
     </div>
   );
