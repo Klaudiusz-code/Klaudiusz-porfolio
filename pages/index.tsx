@@ -5,7 +5,7 @@ import Button from "@/components/ButtonProject";
 import Head from "next/head";
 import Image from "next/image";
 import Aboutme from "@/components/Aboutme";
-
+import WebsiteDesignProcess from "@/components/WebsiteDesignProcess";
 const Home = () => {
   return (
     <>
@@ -53,6 +53,9 @@ const Home = () => {
         </div>
       </motion.div>
       <Aboutme />
+      <div className="mt-32">
+        <WebsiteDesignProcess />
+      </div>
     </>
   );
 };
