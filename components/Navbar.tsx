@@ -24,8 +24,8 @@ const Navbar = () => {
             return (
               <Link
                 className={`${
-                  link.link === currentPathname && "bg-teal-400"
-                } text-[0.8rem] lg:text-[1rem] xl:text-[1.1rem] text-white  hover:bg-customColor w-11 h-11 lg:w-14 lg:h-14 flex items-center justify-center rounded-full transition-all group-hover:opacity-1000`}
+                  link.link === currentPathname && "bg-[#34C0C9]"
+                } text-[0.8rem] lg:text-[1rem] xl:text-[1.1rem] text-white hover:bg-customColor w-11 h-11 lg:w-14 lg:h-14 flex items-center justify-center rounded-full transition-all group-hover:opacity-1000`}
                 href={link.link}
                 key={index}
               >
