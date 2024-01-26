@@ -1,6 +1,7 @@
 import { m } from "framer-motion";
 import { title } from "process";
 import React from "react";
+import ButtonContact from "./ButtonContact";
 
 const WebsiteDesignProcess = () => {
   const data = [
@@ -32,7 +33,7 @@ const WebsiteDesignProcess = () => {
   return (
     <div className="container mx-auto mb-8 lg:mb-14 mt-10 lg:mt-16">
       <div className="max-w-[90%] mx-auto flex flex-col items-center justify-center">
-        <h1 className="text-center text-[#FFFF00] text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 font-sans lg:mb-8">
+        <h1 className="text-center bg-slate-700 rounded-lg p-3 text-[#fff] text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 font-sans lg:mb-8">
           Twój Sukces Online Jest Moim Priorytetem
         </h1>
         <p className="text-center max-w-full  lg:max-w-[80%] mx-auto text-lg lg:text-xl xl:text-1xl text-gColor font-sans font-[400] mb-8 lg:mb-10">
@@ -41,7 +42,7 @@ const WebsiteDesignProcess = () => {
           stworzyć teksty i projekt strony, który przyciągnie uwagę i zostanie
           zapamiętany
         </p>
-        <div className="w-full mx-auto mt-8">
+        <div className="w-full mx-auto mt-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {data.map((item, index) => (
               <div
@@ -49,7 +50,7 @@ const WebsiteDesignProcess = () => {
                 className="flex items-center flex-col flex-wrap mx-auto mt-6 text-center"
               >
                 <div className="bg-customColor h-16 w-16 flex items-center justify-center rounded-full">
-                  <span className="text-white font-sans font-[900] text-[1.3rem]">
+                  <span className="text-white font-sans font-[600] text-[1.3rem]">
                     {item.num}
                   </span>
                 </div>
@@ -60,6 +61,7 @@ const WebsiteDesignProcess = () => {
                   <p className="text-[#9b9b9b] text-[0.875rem] lg:text-[0.9rem] xl:text-[1rem] font-sans mt-2 mb-4 max-w-[90%] mx-auto">
                     {item.description}
                   </p>
+                  {index === 0 && <ButtonContact buttonText="Darmowa Wycena"/>}
                 </div>
               </div>
             ))}
