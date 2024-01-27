@@ -10,9 +10,9 @@ const inter = Inter({ subsets: ["latin"] });
 const metadata: Metadata = {
   title: "Klaudiusz Adamaszek",
   description: "Portfolio",
-};
-
-export default function RootLayout({ 
+  icons: './public/favicon.ico'
+}
+export default function RootLayout({
   children,
   hideNavbar,
 }: {
@@ -21,9 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <Navbar/>
+      <Navbar />
       {children}
-      <Footer/>
+      <Footer />
     </>
   );
 }

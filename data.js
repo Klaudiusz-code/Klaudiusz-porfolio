@@ -10,6 +10,13 @@ import { FaRegCopy,  FaPhone } from "react-icons/fa6";
 import { FaChartBar } from "react-icons/fa";
 
 
+//my-services
+
+import { IoSettingsOutline } from "react-icons/io5";
+import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import { FaUsers } from "react-icons/fa";
+import { TfiWrite } from "react-icons/tfi";
+
 //social icons
 import { FaFacebookMessenger, FaDiscord, FaSlack, FaLinkedin, FaGithub } from "react-icons/fa";
 
@@ -69,57 +76,60 @@ const offertsLinks = [
 const MySkills = [
     {
         name: 'HTML',
-        icon: <SlArrowRight />
+        icon: <SlArrowRight />,
+        width: '95%'
     },
     {
         name: 'SCSS',
-        icon: <SlArrowRight />
+        icon: <SlArrowRight />,
+        width: '95%'
     },
     {
         name: 'TAILWIND',
-        icon: <SlArrowRight />
+        icon: <SlArrowRight />,
+        width: '95%'
     },
     {
         name: 'JavaScript',
-        icon: <SlArrowRight />
+        width: '95%'
     },
     {
         name: 'React',
-        icon: <SlArrowRight />
+        width: '95%'
+ 
     },
     {
         name: 'NodeJS',
-        icon: <SlArrowRight />
+        width: '95%'
     },
     {
         name: 'ExpressJS',
-        icon: <SlArrowRight />
+        width: '95%'
     },
     {
         name: 'Strapi',
-        icon: <SlArrowRight />
+        width: '95%'
     },
     {
         name: 'MongoDB',
-        icon: <SlArrowRight />
+        width: '80%'
     },
     {
         name: 'Figma',
-        icon: <SlArrowRight />
-    },
-]
-const Learn = [
-    
-    {
-       name: 'TypeScript',
-       icon: <SlArrowRight />
+        width: '65%'
+        
     },
     {
-       name: 'NextJS',
-       icon: <SlArrowRight />
-    },
-   
+        name: 'TypeScript',
+        width: '75%'
+     },
+     {
+        name: 'NextJS',
+        width: '65%'
+
+     },
 ]
+
 const MyServices = [
     {
         name: 'Strony Internetowe',
@@ -136,6 +146,22 @@ const MyServices = [
         icon: <FaChartBar />,
         desc:'Optymalizuję witryny pod kątem wyszukiwarek, wykorzystując analizę rynku i słów kluczowych.'
     },
+    {
+        name: 'Copywriting',
+        icon: <TfiWrite />,
+        desc:'Twój biznes zasługuje na teksty, które wyróżnią go w internecie. Mój copywriting to klucz do sukcesu online'
+    },
+    {
+        name: 'Administracja strony',
+        icon: <IoMdCheckmarkCircleOutline />,
+        desc:'Oferuję kompleksową obsługę stron www, obejmującą regularne tworzenie kopii bezpieczeństwa, administrację oraz aktualizację'
+    },
+    {
+        name: 'Modernizacja strony',
+        icon: <IoSettingsOutline />,
+        desc:'Zajmuję się modernizacją strony, wprowadzając poprawki i dodając nowe funkcje'
+    },
+   
 ]
 
 const ContactIcon = [
@@ -239,7 +265,6 @@ export {
     MenuLinks,
     MySkills,
     MyServices,
-    Learn,
     ContactIcon,
     SocialIcons,
     ProjectsData,
