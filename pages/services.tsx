@@ -18,48 +18,42 @@ const services = () => {
           Web Developer
         </title>
       </Head>
-      <div className="container mx-auto flex flex-wrap justify-center font-sans">
-        <div className="w-full mx-auto text-center mt-14">
-          <h1 className="text-[0.8rem] lg:text-[2.8rem] text-white font-bold">
-            OFERTA & NARZĘDZIA
-          </h1>
-          <h2 className="text-gColor font-sans mt-2 text-[1.5rem]">
-            Co mogę dla ciebie zrobić?
-          </h2>
-          <div className="w-full flex justify-center mt-6 lg:mt-12 gap-x-11">
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-16 gap-x-8 gap-y-6">
-              {MyServices.map((service, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col items-center text-white border border-gray-700 rounded-md w-[361px] min-h-[183px] transition-all duration-100 hover:bg-customColor"
-                >
-                  <span className="text-[2.4rem] pt-3">{service.icon}</span>
-                  <h1 className="mt-2 text-[26px] font-bold">{service.name}</h1>
-                  <p className="max-w-[80%] mt-1 text-white font-light text-[0.9rem]">
-                    {service.desc}
-                  </p>
-                </div>
-              ))}
+      <div className="container mx-auto font-sans">
+        <div className="w-full text-center mt-2">
+          <h1 className="tex-white font-sans font-[900] text-white text-[1.8rem] md:text-[2.1rem] lg:text-[2.8rem] tracking-wide">OFERTA & NARZĘDZIA</h1>
+          <p className="text-gColor text-[0.9rem] md:text-[1rem] lg:text-[1.3rem] font-sans font-[400]">Co mogę dla ciebie zrobić!</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mt-8 justify-center">
+          {MyServices.map((service, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center text-center text-white border border-gray-700 rounded-md min-h-[183px] transition-all duration-100 even:bg-customColor hover:bg-customColor"
+            >
+              <span className="text-[2.4rem] pt-3">{service.icon}</span>
+              <h1 className="mt-2 text-[26px] font-bold">{service.name}</h1>
+              <p className="max-w-[80%] mt-1 text-white font-light text-[0.9rem]">
+                {service.desc}
+              </p>
             </div>
-          </div>
+          ))}
         </div>
       </div>
 
-      <div className="container mx-auto mt-10 mb-10 shadow-lg rounded-lg p-8">
-        <div className="grid grid-cols-3 gap-4">
+      <div className="container mx-auto mt-10 mb-10 shadow-lg rounded-lg p-1">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 gap-x-24 justify-center">
           {MySkills.map((item, index) => (
-            <div className="flex flex-col" key={index}>
-              <h2 className="text-lg font-semibold text-white mb-2">
-                {item.name}
-              </h2>
-              <div className="relative w-[20rem] h-6 border border-gray-600 rounded-full overflow-hidden">
+            <div className="flex flex-col items-center" key={index}>
+              <div className="flex w-full  items-center justify-between mb-1">
+                <h2 className="text-[1rem] font-[500] text-white">
+                  {item.name}
+                </h2>
+                <span className="text-white text-sm font-sans font-[500]">{item.width}</span>
+              </div>
+              <div className="relative w-full h-6 bg-white rounded-md overflow-hidden">
                 <div
                   className="absolute top-0 left-0 h-full bg-customColor transition-all duration-500 ease-in-out"
                   style={{ width: item.width }}
                 />
-                <span className="absolute z-50 -top-5 -mt-4 text-gray-600 text-sm">
-                  {item.width}
-                </span>
               </div>
             </div>
           ))}
