@@ -77,38 +77,38 @@ const MySkills = [
     {
         name: 'HTML',
         icon: <SlArrowRight />,
-        width: '95%'
+        width: '90%'
     },
     {
         name: 'SCSS',
         icon: <SlArrowRight />,
-        width: '95%'
+        width: '85%'
     },
     {
         name: 'TAILWIND',
         icon: <SlArrowRight />,
-        width: '95%'
+        width: '90%'
     },
     {
         name: 'JavaScript',
-        width: '95%'
+        width: '85%'
     },
     {
-        name: 'React',
-        width: '95%'
+        name: 'ExpressJS',
+        width: '80%'
  
     },
     {
         name: 'NodeJS',
-        width: '95%'
+        width: '85%'
     },
     {
-        name: 'ExpressJS',
-        width: '95%'
+        name: 'React',
+        width: '75%'
     },
     {
         name: 'Strapi',
-        width: '95%'
+        width: '80%'
     },
     {
         name: 'MongoDB',
@@ -154,7 +154,7 @@ const MyServices = [
     {
         name: 'Administracja strony',
         icon: <IoMdCheckmarkCircleOutline />,
-        desc:'Oferuję kompleksową obsługę stron www, obejmującą regularne tworzenie kopii bezpieczeństwa, administrację oraz aktualizację'
+        desc:'Oferuję kompleksową opiekę nad stronami internetowymi, włącznie z regularnymi kopiami zapasowymi, administracją i aktualizacjami.'
     },
     {
         name: 'Modernizacja strony',
