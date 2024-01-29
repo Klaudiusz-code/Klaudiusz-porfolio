@@ -33,7 +33,7 @@ const WebsiteDesignProcess = () => {
   return (
     <div className="container mx-auto mb-8 lg:mb-14 mt-10 lg:mt-16">
       <div className="max-w-[90%] mx-auto flex flex-col items-center justify-center">
-        <h1 className="text-center bg-slate-700 rounded-lg p-3 text-[#fff] text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 font-sans lg:mb-8">
+        <h1 className="text-center bg-customColor  rounded-lg p-3 text-[#fff] text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 font-sans lg:mb-8">
           Twój Sukces Online Jest Moim Priorytetem
         </h1>
         <p className="text-center max-w-full  lg:max-w-[80%] mx-auto text-lg lg:text-xl xl:text-1xl text-gColor font-sans font-[400] mb-8 lg:mb-10">
