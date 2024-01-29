@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { FaEye, FaGithub } from "react-icons/fa";
 import Head from "next/head";
 import { ProjectsData } from "@/data";
+import ButtonContact from "@/components/ButtonContact";
+import ProjectQuoteButton from "@/components/ProjectQuoteButton";
 
 const Projects = () => {
   return (
@@ -15,57 +17,45 @@ const Projects = () => {
         </title>
       </Head>
       <div className="container mx-auto">
-        <div className="w-full mt-14">
-          <h1 className="text-[0.8rem] lg:text-[1.3rem] text-white font-bold">
-            <span className="text-customColor">/</span> PROJEKTY
-          </h1>
-          <motion.div
-            initial={{ opacity: 0, y: 1000 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.6 }}
-            className="grid grid-cols-1 gap-5 mt-14 w-full"
-          >
-            {ProjectsData.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 1000 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.6, delay: index * 0.2 }}
-                className="flex flex-col lg:flex-row items-center mb-4"
-              >
-                <div className="border border-gray-700 rounded-sm w-full lg:max-w-[400px] min-h-[380px] flex items-center justify-center">
-                  <div className="h-[10rem] w-[10rem] relative">
-                    <div className="absolute h-[0.03rem] w-full bg-gray-700 transform rotate-45 origin-center"></div>
-                    <div className="absolute h-[0.03rem] w-full bg-gray-700 transform -rotate-45 origin-center"></div>
-                  </div>
-                </div>
-
-                <div className="flex flex-col items-start ml-2 lg:ml-4 xl:ml-24 mt-4 xl:mt-6">
-                  <h1 className="text-3xl text-white font-bold mb-1">
-                    {project.name}
-                  </h1>
-                  <p className="text-left mt-2 text-gColor max-w-[60%]">
-                    {project.tit}
-                  </p>
-                  <div className="flex flex-row mt-6 gap-2">
-                    {project.service.map((items) => (
-                      <span className="bg-customColor p-1 text-white rounded-md">
-                        {items}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex flex-row gap-5 mt-12">
-                    <div className="flex items-center justify-center bg-customColor text-white text-xl py-2 w-[5rem] h-[2.5rem] rounded-md">
-                      <FaEye />
-                    </div>
-                    <div className="flex items-center justify-center bg-customColor text-white text-xl py-2 w-[5rem] h-[2.5rem] rounded-md">
-                      <FaGithub />
+        <div className="w-full mt-24">
+          <div className="bg-[#0077cc] rounded-2xl px-6 py-12 lg:p-14">
+            <h1 className="text-[1.6rem] lg:text-[2.6rem] font-[600] tracking-wide text-[#fff]">
+              Zrealizowane projekty
+            </h1>
+            <p className="text-[#e7e7e7] leading-8 mt-3 mb-6 font-sans font-[400] text-[1rem] md:text-[1.2rem] lg:text-[1.4rem] w-full md:max-w-[80%] lg:max-w-[70%] tracking-wide">
+              Jestem w stanie stworzyć dla ciebie unikalną i funkcjonalną{" "}
+              <span className="underline underline-offset-2 hover:text-hoverColor">
+                Strone,{" "}
+              </span>
+              lub{" "}
+              <span className="underline underline-offset-2">
+                Sklep Internetowy
+              </span>
+              , który przyciągnie uwagę Twoich klientów i zapewni sukces twojej
+              działalności online. Daj mi szansę, a razem zrealizujemy Twój
+              projekt marzeń!
+            </p>
+            <div className="mt-6 text-center md:text-left ">
+              <ProjectQuoteButton />
+            </div>
+          </div>
+          <div className="w-full mx-auto mt-14">
+            <h1 className="text-cyan-50 font-[900] text-[2.2rem] md:text-[2.8rem] lg:text-[3rem] mt-16 text-center">
+              Moje Projekty
+            </h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-14 w-full gap-x-6">
+              {ProjectsData.map((project, index) => (
+                <div className="flex flex-row mb-4">
+                  <div className="border border-gray-700 rounded-sm w-full min-h-[350px] flex items-center justify-center">
+                    <div className="h-[10rem] w-[10rem] relative"> 
+                      <div className="absolute h-[0.03rem] w-full bg-gray-700 transform rotate-45 origin-center"></div>
+                      <div className="absolute h-[0.03rem] w-full bg-gray-700 transform -rotate-45 origin-center"></div>
                     </div>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </>
