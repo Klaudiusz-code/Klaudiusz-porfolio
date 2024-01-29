@@ -49,7 +49,7 @@ const services = () => {
                 </h2>
                 <span className="text-white text-sm font-sans font-[500]">{item.width}</span>
               </div>
-              <div className="relative w-full h-6 bg-white rounded-md overflow-hidden">
+              <div className="relative w-full h-[1.3rem] bg-white rounded-md overflow-hidden">
                 <div
                   className="absolute top-0 left-0 h-full bg-customColor transition-all duration-500 ease-in-out"
                   style={{ width: item.width }}
