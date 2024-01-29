@@ -205,7 +205,27 @@ const ProjectsData = [
         name: 'Portfolio',
         tit: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit Temporibus, voluptate, delectus tempora consectetur eaque iureveritatis',
         service: ['NextJS', 'Tailwind', 'Strapi']
-    }
+    },{
+        name: 'Portfolio',
+        tit: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit Temporibus, voluptate, delectus tempora consectetur eaque iureveritatis',
+        service: ['NextJS', 'Tailwind', 'Strapi']
+    },
+    {
+        name: 'Portfolio',
+        tit: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit Temporibus, voluptate, delectus tempora consectetur eaque iureveritatis',
+        service: ['NextJS', 'Tailwind', 'Strapi']
+    },
+    {
+        name: 'Portfolio',
+        tit: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit Temporibus, voluptate, delectus tempora consectetur eaque iureveritatis',
+        service: ['NextJS', 'Tailwind', 'Strapi']
+    },
+    {
+        name: 'Portfolio',
+        tit: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit Temporibus, voluptate, delectus tempora consectetur eaque iureveritatis',
+        service: ['NextJS', 'Tailwind', 'Strapi']
+    },
+
 ]
 const BenefitsWeb = [
     {
