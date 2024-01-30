@@ -84,7 +84,7 @@ const Websites = () => {
         </div>
       </div>
       <div className="w-full mx-auto text-center mt-24">
-        <div className="mt-24 bg-[#0077cc] p-4 rounded-lg font-sans">
+        <div className="mt-24 bg-[#0077cc] p-4 rounded-2xl font-sans">
           <div className="flex p-3">
             <div className="flex flex-col text-left ml-3">
               <h1 className="text-[1rem] md:text-[1.3rem] lg:text-[2rem] mb-1 font-sans text-white font-[900]">
@@ -92,17 +92,17 @@ const Websites = () => {
               </h1>
               {data.map((item) => (
                 <div className="w-full md:max-w-[80%] lg:max-w-[60%] mt-5">
-                  <h1 className="text-[0.9rem] lg:text-[1.2rem] text-white font-sans font-[600]">
+                  <h1 className="text-[1rem] lg:text-[1.3rem] text-white font-sans font-[600]">
                     {item.title}
                   </h1>
-                  <p className="text-white text-[0.8rem] lg:mt-[0.8] mt-1">
+                  <p className="text-white font-sans text-[0.8rem] lg:mt-[1rem] mt-1">
                     {item.description}
                   </p>
                 </div>
               ))}
             </div>
             <div className="hidden lg:block">
-              <Image src={ImgAdvantages} alt="obrazek"></Image>
+              <Image src={ImgAdvantages} className="md:h-full" alt="obrazek"></Image>
             </div>
           </div>
         </div>
