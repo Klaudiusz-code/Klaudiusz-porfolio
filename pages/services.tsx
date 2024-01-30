@@ -7,6 +7,7 @@ import { SlArrowRight } from "react-icons/sl";
 
 import { motion } from "framer-motion";
 import ButtonContact from "@/components/ButtonContact";
+import ContactBaner from "@/components/ContactBaner";
 
 const services = () => {
   return (
@@ -20,8 +21,12 @@ const services = () => {
       </Head>
       <div className="container mx-auto font-sans">
         <div className="w-full text-center mt-2">
-          <h1 className="tex-white font-sans font-[900] text-white text-[1.8rem] md:text-[2.1rem] lg:text-[2.8rem] tracking-wide">OFERTA & NARZĘDZIA</h1>
-          <p className="text-gColor text-[0.9rem] md:text-[1rem] lg:text-[1.3rem] font-sans font-[400]">Co mogę dla ciebie zrobić!</p>
+          <h1 className="tex-white font-sans font-[900] text-white text-[1.8rem] md:text-[2.1rem] lg:text-[2.8rem] tracking-wide">
+            OFERTA & NARZĘDZIA
+          </h1>
+          <p className="text-gColor text-[0.9rem] md:text-[1rem] lg:text-[1.3rem] font-sans font-[400]">
+            Co mogę dla ciebie zrobić!
+          </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mt-8 justify-center">
           {MyServices.map((service, index) => (
@@ -39,7 +44,7 @@ const services = () => {
         </div>
       </div>
 
-      <div className="container mx-auto mt-10 mb-10 shadow-lg rounded-lg p-1">
+      <div className="container mx-auto mt-10 mb-5  rounded-lg p-1">
         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 gap-x-24 justify-center">
           {MySkills.map((item, index) => (
             <div className="flex flex-col items-center" key={index}>
@@ -47,7 +52,9 @@ const services = () => {
                 <h2 className="text-[1rem] font-[500] text-white">
                   {item.name}
                 </h2>
-                <span className="text-white text-sm font-sans font-[500]">{item.width}</span>
+                <span className="text-white text-sm font-sans font-[500]">
+                  {item.width}
+                </span>
               </div>
               <div className="relative w-full h-[1.3rem] bg-white rounded-md overflow-hidden">
                 <div
@@ -58,6 +65,7 @@ const services = () => {
             </div>
           ))}
         </div>
+        <ContactBaner />
       </div>
     </>
   );
