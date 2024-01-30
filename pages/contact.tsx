@@ -3,6 +3,7 @@ import Head from "next/head";
 import { motion } from "framer-motion";
 import RootLayout from "@/app/layout";
 import { ContactIcon, SocialIcons } from "@/data";
+import CustomButton from "@/components/CustomButton";
 
 const contact = () => {
   return (
@@ -16,22 +17,27 @@ const contact = () => {
       </Head>
       <div className="container mx-auto">
         <header className="w-full mt-14">
-          <h1 className="text-[0.8rem] lg:text-[1.3rem] text-white font-bold">
-            <span className="text-customColor">/</span> KONTAKT
-          </h1>
+          <div className="bg-[#0077cc] rounded-2xl px-6 py-12 lg:p-14">
+            <h1 className="text-[1.4rem] lg:text-[2.6rem] font-[600] tracking-wide text-[#fff]">
+              Gotowy na współpracę? Skontaktuj się ze mną już teraz!
+            </h1>
+            <p className="text-[#e7e7e7] mt-1 leading-8  mb-6 font-sans font-[400] text-[0.9rem] md:text-[1.1rem] lg:text-[1.2rem] w-full md:max-w-[80%] lg:max-w-[70%] tracking-wide">
+              Wypełnij formularz kontaktowy poniżej, aby omówić Twoje potrzeby.
+              Jestem tu, aby Ci pomóc w realizacji projektu. Zapoznaj się z
+              moimi usługami i zaufaj mojemu doświadczeniu, abyśmy wspólnie
+              stworzyli coś wyjątkowego dla Twojej marki!
+            </p>
+            <div className="mt-6 text-center md:text-left ">
+              <CustomButton text="Sprawdź Moje Usługi" link="/services" />
+            </div>
+          </div>
         </header>
-        <motion.section
-          initial={{ opacity: 0, y: 1000 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 1000 }}
-          transition={{ ease: "easeInOut", duration: 1.6 }}
-          className="flex flex-col lg:flex-row justify-between items-center mt-28"
-        >
-          <div>
+        <div className="flex flex-col lg:flex-row justify-between items-center mt-28 mb-24">
+          <div className="ml-4 lg:ml-0">
             <h1 className="text-3xl text-white font-extrabold">
               Napisz do mnie!
             </h1>
-            <p className="mb-12 mt-4 text-gColor text-1xl max-w-[80%]">
+            <p className="mb-12 mt-4 text-gColor text-1xl max-w-[80%] lg:max-w-[60%]">
               Zapraszam do przejrzenia moich projektów i mam nadzieję, że
               będziemy mieli okazję współpracować. Dziękuję za odwiedzenie
               mojego portfolio!
@@ -39,7 +45,7 @@ const contact = () => {
             <ul className="grid grid-cols-1 mt-4 gap-y-4">
               {ContactIcon.map((item, index) => (
                 <li key={index} className="flex flex-row items-start">
-                  <span className="flex items-center justify-center col-span-4 self-center bg-gray-700 text-white w-[4rem] h-[4rem] text-3xl rounded-full">
+                  <span className="flex items-center justify-center col-span-4 self-center bg-gray-700 text-white w-[3rem] h-[3rem] text-xl rounded-full">
                     {item.icon}
                   </span>
                   <a
@@ -62,13 +68,7 @@ const contact = () => {
               </ul>
             </div>
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: 1000 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 1000 }}
-            transition={{ ease: "easeInOut", duration: 1.6 }}
-            className="min-w-[50%] mx-auto"
-          >
+          <div className="min-w-full  lg:min-w-[50%] mt-16 lg:mt-0">
             <form className="max-w-full mx-auto border border-gray-700 rounded-lg overflow-hidden shadow-md p-6">
               <div className="mb-4">
                 <label
@@ -129,8 +129,8 @@ const contact = () => {
                 </button>
               </div>
             </form>
-          </motion.div>
-        </motion.section>
+          </div>
+        </div>
       </div>
     </>
   );
