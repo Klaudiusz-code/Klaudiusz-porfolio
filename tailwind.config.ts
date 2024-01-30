@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        contactBanner: `url('/ContactBanner.png')`,
+        contactBanner: `url('/ContactBanner1.png')`,
         },
       colors: {
         bgColor: '#252B39',
