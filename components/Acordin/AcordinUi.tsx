@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { HiArrowCircleDown, HiX } from "react-icons/hi";
 import { IoIosArrowDown } from "react-icons/io";
 
-const AccordionUi = ({ title, answer }) => {
+interface AccordionUiProps {
+  title: string;
+  answer: string;
+}
+
+const AccordionUi: React.FC<AccordionUiProps> = ({ title, answer }) => {
   const [accordionOpen, setAccordionOpen] = useState(false);
 
   return (
