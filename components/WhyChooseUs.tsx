@@ -12,10 +12,10 @@ const WhyChooseUs = () => {
         {" "}
         {ServicesWebsite.map((service, index) => (
           <div
-            className="flex flex-col items-center text-white rounded-md w-[370px] min-h-[190px]"
+            className="flex flex-col items-center justify-center text-white rounded-md max-w-[370px] min-h-[190px]"
             key={index}
           >
-            <span className="text-[2rem] md:text-[2.5rem] lg:text-[3rem] pt-3 text-customColor">
+            <span className="text-[2rem] md:text-[2.5rem] lg:text-[3rem] pt-1  text-customColor">
               {service.icon}
             </span>
             <h1 className="mt-1 text-[1rem] md:txt-[1.1rem] lg:text-[1.3rem] font-bold font-sans">
