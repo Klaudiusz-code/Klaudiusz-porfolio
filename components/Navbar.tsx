@@ -14,9 +14,9 @@ const Navbar = () => {
     <>
       <nav className="container mx-auto flex items-center justify-between pt-6 pb-9 relative z-10">
         <div className="flex flex-col items-center justify-center text-2xl text-white">
-          <a href="/">
+          <Link href="/">
             <Image src={Logo} width={110} height={110} alt="Logo"></Image>
-          </a>
+          </Link>
         </div>
         <ButtonContact buttonText="Darmowa Wycena" />
         <div className="flex gap-y-4 bg-gray-700 xl:flex-col items-center justify-center h-[10px] md:h-12 gap-x-5 xl:gap-x-0  xl:justify-between w-full  fixed bottom-0 md:right-0 right-0  xl:w-12 md:px-40 xl:px-8  xl:h-max xl:right-14 xl:top-1/4 py-5 lg:rounded-[1.8rem]">
