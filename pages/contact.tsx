@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import RootLayout from "@/app/layout";
 import { ContactIcon, SocialIcons } from "@/data";
 import CustomButton from "@/components/CustomButton";
+import Link from "next/link";
 
 const contact = () => {
   return (
@@ -48,20 +49,22 @@ const contact = () => {
                   <span className="flex items-center justify-center col-span-4 self-center bg-gray-700 text-white w-[3rem] h-[3rem] text-xl rounded-full">
                     {item.icon}
                   </span>
-                  <a
+                  <Link
                     href={item.link}
                     style={{ marginLeft: "12px" }}
                     className="self-center text-gColor text-1xl font-thin"
                   >
                     {item.desc}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
             <div className="mt-8">
               <ul className="flex gap-3">
-                {SocialIcons.map((item) => (
-                  <li className="text-1xl bg-gray-700 p-4 rounded-full text-white hover:bg-customColor transition-all duration-400 cursor-pointer">
+                {SocialIcons.map((item, index) => (
+                  <li 
+                  key={index}
+                  className="text-1xl bg-gray-700 p-4 rounded-full text-white hover:bg-customColor transition-all duration-400 cursor-pointer">
                     <a href={item.link}>{item.icon}</a>
                   </li>
                 ))}
