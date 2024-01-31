@@ -1,6 +1,12 @@
 import Link from "next/link";
 import React from "react";
-const CustomButton = ({text, link}) => {
+
+interface CustomButtonProps {
+  text: string;
+  link: string;
+}
+
+const CustomButton: React.FC<CustomButtonProps> = ({text, link}) => {
   return (
     <button className="mt-2 bg-white p-3 lg:p-5 h-13 rounded-3xl hover:text-customColor hover:bg-slate-200 transition-all duration-150">
       <Link href={link} passHref>
