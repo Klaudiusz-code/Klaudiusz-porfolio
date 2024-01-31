@@ -69,8 +69,10 @@ const Websites = () => {
             strony!
           </h2>
           <ul className="list-disc mt-3 ml-3 md:ml-4 lg:ml-6">
-            {websiteServiceOptions.map((item) => (
-              <li className="mt-2 text-[0.9rem] tracking-wide font-thin text-gColor font-sans sm:text-[1rem]">
+            {websiteServiceOptions.map((item,index) => (
+              <li 
+              key={index}
+              className="mt-2 text-[0.9rem] tracking-wide font-thin text-gColor font-sans sm:text-[1rem]">
                 {item.title}
               </li>
             ))}
@@ -90,8 +92,10 @@ const Websites = () => {
               <h1 className="text-[1rem] md:text-[1.3rem] lg:text-[2rem] mb-1 font-sans text-white font-[900]">
                 Korzyści Ze Strony Internetowej
               </h1>
-              {data.map((item) => (
-                <div className="w-full md:max-w-[80%] lg:max-w-[60%] mt-5">
+              {data.map((item, index) => (
+                <div 
+                key={index}
+                className="w-full md:max-w-[80%] lg:max-w-[60%] mt-5">
                   <h1 className="text-[1rem] lg:text-[1.3rem] text-white font-sans font-[600]">
                     {item.title}
                   </h1>
