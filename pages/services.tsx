@@ -4,7 +4,6 @@ import { MySkills } from "@/data";
 import { MyServices } from "@/data";
 import Head from "next/head";
 import { SlArrowRight } from "react-icons/sl";
-
 import { motion } from "framer-motion";
 import ButtonContact from "@/components/ButtonContact";
 import ContactBaner from "@/components/ContactBaner";
@@ -32,7 +31,7 @@ const services = () => {
           {MyServices.map((service, index) => (
             <div
               key={index}
-              className="flex flex-col items-center text-center text-white border border-gray-700 rounded-md min-h-[183px] transition-all duration-100 even:bg-customColor hover:bg-customColor"
+              className="flex flex-col items-center text-center text-white border border-gray-700 rounded-md min-h-[183px] transition-all duration-100 even:bg-customColor"
             >
               <span className="text-[2.4rem] pt-3">{service.icon}</span>
               <h1 className="mt-2 text-[26px] font-bold">{service.name}</h1>
@@ -48,7 +47,7 @@ const services = () => {
         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 gap-x-24 justify-center">
           {MySkills.map((item, index) => (
             <div className="flex flex-col items-center" key={index}>
-              <div className="flex w-full  items-center justify-between mb-1">
+              <div className="flex w-full items-center justify-between mb-1">
                 <h2 className="text-[1rem] font-[500] text-white">
                   {item.name}
                 </h2>
@@ -57,9 +56,12 @@ const services = () => {
                 </span>
               </div>
               <div className="relative w-full h-[1.3rem] bg-white rounded-md overflow-hidden">
-                <div
-                  className="absolute top-0 left-0 h-full bg-customColor transition-all duration-500 ease-in-out"
+                <motion.div
+                  className="absolute top-0 left-0 h-full bg-customColor"
                   style={{ width: item.width }}
+                  initial={{ width: "0%" }}
+                  animate={{ width: item.width }}
+                  transition={{ duration: 1 }}
                 />
               </div>
             </div>
