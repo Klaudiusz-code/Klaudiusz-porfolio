@@ -11,7 +11,7 @@ const transitionVariants = {
         width: '0%',
         transition: {
             delay: 0.2,
-            duration: 0.6,
+            duration: 0.4,
             ease: 'easeInOut'
         }
     },
@@ -19,7 +19,7 @@ const transitionVariants = {
         x: ['0%', '100%'],
         width: ['0%', '100%'],
         transition: {
-            duration: 0.4,
+            duration: 0.2,
             ease: 'easeInOut'
         }
     }
