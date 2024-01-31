@@ -45,7 +45,9 @@ const Projects = () => {
             </h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-14 w-full gap-x-6">
               {ProjectsData.map((project, index) => (
-                <div className="flex flex-row mb-4">
+                <div
+                key={index}
+                className="flex flex-row mb-4">
                   <div className="border border-gray-700 rounded-sm w-full min-h-[350px] flex items-center justify-center">
                     <div className="h-[10rem] w-[10rem] relative">
                       <div className="absolute h-[0.03rem] w-full bg-gray-700 transform rotate-45 origin-center"></div>
