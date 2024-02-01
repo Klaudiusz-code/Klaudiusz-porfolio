@@ -56,7 +56,7 @@ const Websites = () => {
   return (
     <section className="container mx-auto">
       <div className=" rounded-md text-left py-4">
-        <h1 className="text-customColor font-[500] font-sans text-[2rem] md:text-[2.5rem] xl:text-[3.7rem] mb-2 tracking-wide">
+        <h1 className="text-customColor font-[500] font-sans text-[2rem] md:text-[2.5rem] xl:text-[3.7rem] ml-3 md:ml-1 lg:ml-0 mb-2 tracking-wide">
           Strona Internetowa
         </h1>
       </div>
@@ -65,7 +65,7 @@ const Websites = () => {
           Moja Oferta dla Twojej Strony Internetowej:{" "}
         </h1>
         <div className="mt-8">
-          <h2 className="mt-2 text-left text-gColor font-sans font-normal text-[0.9rem] md:text-[1.1rem]  xl:text-[1.3rem]">
+          <h2 className="mt-2 text-left text-[#f1f1f1] font-sans font-normal text-[1rem] md:text-[1.1rem]  xl:text-[1.3rem]">
             Zapewniam kompleksową opiekę nad Twoją stroną internetową z każdej
             strony!
           </h2>
@@ -73,7 +73,7 @@ const Websites = () => {
             {websiteServiceOptions.map((item, index) => (
               <li
                 key={index}
-                className="mt-2 text-[0.9rem] tracking-wide font-thin text-gColor font-sans sm:text-[1rem]"
+                className="mt-2 text-[1rem] tracking-wide font-thin text-gColor font-sans sm:text-[1.1rem]"
               >
                 {item.title}
               </li>
@@ -81,7 +81,7 @@ const Websites = () => {
           </ul>
           <div className="w-full mt-6 sm:mt-10 flex flex-row flex-wrap items-center font-sans">
             <span className=" text-white text-[1rem] sm:text-[1.2rem] lg:[1.3rem]  font-[600] ">
-              Masz Pytanie?
+              Ciekawa Oferta?
             </span>
             <Link
               href="/contact"
@@ -93,10 +93,10 @@ const Websites = () => {
         </div>
       </div>
       <div className="w-full mx-auto text-center mt-16">
-        <div className="mt-16 lg:mt-20 bg-[#0077cc] p-4 rounded-2xl font-sans">
+        <div className="mt-16 lg:mt-20 bg-[#0077cc] p-2 lg:p-3 rounded-2xl font-sans">
           <div className="flex p-3">
             <div className="flex flex-col text-left ml-3">
-              <h1 className="text-[1.2rem] md:text-[1.3rem] lg:text-[2rem] mb-1 font-sans text-white font-[900]">
+              <h1 className="text-[1.3rem] md:text-[1.4rem] lg:text-[2rem] mb-1 font-sans text-white font-[900]">
                 Korzyści Ze Strony Internetowej
               </h1>
               {data.map((item, index) => (
@@ -104,10 +104,10 @@ const Websites = () => {
                   key={index}
                   className="w-full md:max-w-[80%] lg:max-w-[60%] mt-5"
                 >
-                  <h1 className="text-[1rem] lg:text-[1.3rem] text-white font-sans font-[600]">
+                  <h1 className="text-[1.3rem] lg:text-[1.3rem] text-white font-sans font-[600]">
                     {item.title}
                   </h1>
-                  <p className="text-white font-sans text-[0.8rem] lg:mt-[1rem] mt-1">
+                  <p className="text-[#f1f1f1] font-sans text-[1rem] lg:text-[1.1rem] mt-1">
                     {item.description}
                   </p>
                 </div>
@@ -123,7 +123,7 @@ const Websites = () => {
           </div>
         </div>
       </div>
-      <div className="mt-24">
+      <div className="mt-16 md:mt-20 lg:mt-24">
         <div className="text-center mb-10">
           <h1 className="text-[2rem] font-sans font-[600] text-white">FAQ</h1>
           <p className="text-gray-500 font-[400] mt-2 font-sans">
