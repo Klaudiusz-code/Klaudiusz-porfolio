@@ -18,7 +18,7 @@ const contact = () => {
       </Head>
       <div className="container mx-auto">
         <header className="w-full mt-14">
-          <div className="bg-[#0077cc] rounded-2xl px-6 py-12 lg:p-14">
+          <div className="bg-[#0077cc] rounded-2xl px-6 py-10 lg:py-12 lg:p-14">
             <h1 className="text-[1.5rem] lg:text-[2.6rem] font-[600] tracking-wide text-[#fff]">
               Gotowy na współpracę? Skontaktuj się ze mną już teraz!
             </h1>
@@ -33,7 +33,7 @@ const contact = () => {
             </div>
           </div>
         </header>
-        <div className="flex flex-col lg:flex-row justify-between items-center mt-16 lg:mt-24 mb-24">
+        <div className="flex flex-col lg:flex-row justify-between items-center mt-10 lg:mt-24 mb-24">
           <div className="ml-4 lg:ml-0">
             <h1 className="text-3xl text-white font-extrabold">
               Napisz do mnie!
