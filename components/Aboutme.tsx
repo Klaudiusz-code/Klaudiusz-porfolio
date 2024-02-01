@@ -35,7 +35,7 @@ const Aboutme = () => {
                 key={index}
                 className="hover:scale-110 duration-150"
               >
-                <span className="text-[1.55rem] sm:text-[1.8rem] md:text-[2.3rem] lg:text-[2.8rem] xl:text-[3.2rem] underline font-black text-[#a5a5a5] hover:text-white transition-all">
+                <span className="text-[1.7rem] sm:text-[1.8rem] md:text-[2.3rem] lg:text-[2.8rem] xl:text-[3.2rem] underline font-black text-[#a5a5a5] hover:text-white transition-all">
                   {item.title}
                 </span>
               </Link>
