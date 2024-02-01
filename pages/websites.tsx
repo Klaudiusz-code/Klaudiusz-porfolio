@@ -6,6 +6,7 @@ import { BenefitsWeb, ServicesWebsite } from "@/data";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import ImgAdvantages from "@/public/advantage_img.svg";
 import Acordion from "@/components/Acordin/Acordion";
+import Link from "next/link";
 
 const Websites = () => {
   const data = [
@@ -68,34 +69,41 @@ const Websites = () => {
             Zapewniam kompleksową opiekę nad Twoją stroną internetową z każdej
             strony!
           </h2>
-          <ul className="list-disc mt-3 ml-3 md:ml-4 lg:ml-6">
-            {websiteServiceOptions.map((item,index) => (
-              <li 
-              key={index}
-              className="mt-2 text-[0.9rem] tracking-wide font-thin text-gColor font-sans sm:text-[1rem]">
+          <ul className="list-disc mt-3 ml-3 md:ml-3 lg:ml-4">
+            {websiteServiceOptions.map((item, index) => (
+              <li
+                key={index}
+                className="mt-2 text-[0.9rem] tracking-wide font-thin text-gColor font-sans sm:text-[1rem]"
+              >
                 {item.title}
               </li>
             ))}
           </ul>
-          <div className="w-full mt-6 sm:mt-10 flex flex-col">
-            <span className=" text-gColor tracking-wide text-[1.1rem] mb-6 font-[600] sm:text-[1rem]">
+          <div className="w-full mt-6 sm:mt-10 flex flex-row flex-wrap items-center font-sans">
+            <span className=" text-white text-[1rem] sm:text-[1.2rem] lg:[1.3rem]  font-[600] ">
               Masz Pytanie?
             </span>
-            <ButtonContact buttonText="Napisz do mnie" />
+            <Link
+              href="/contact"
+              className="text-customColor text-[1rem] sm:text-[1.2rem] lg:[1.3rem]   underline font-bold ml-3 hover:text-white duration-150 transition-all cursor-pointer"
+            >
+              Napisz do mnie!
+            </Link>
           </div>
         </div>
       </div>
-      <div className="w-full mx-auto text-center mt-24">
-        <div className="mt-24 bg-[#0077cc] p-4 rounded-2xl font-sans">
+      <div className="w-full mx-auto text-center mt-16">
+        <div className="mt-16 lg:mt-20 bg-[#0077cc] p-4 rounded-2xl font-sans">
           <div className="flex p-3">
             <div className="flex flex-col text-left ml-3">
-              <h1 className="text-[1rem] md:text-[1.3rem] lg:text-[2rem] mb-1 font-sans text-white font-[900]">
+              <h1 className="text-[1.2rem] md:text-[1.3rem] lg:text-[2rem] mb-1 font-sans text-white font-[900]">
                 Korzyści Ze Strony Internetowej
               </h1>
               {data.map((item, index) => (
-                <div 
-                key={index}
-                className="w-full md:max-w-[80%] lg:max-w-[60%] mt-5">
+                <div
+                  key={index}
+                  className="w-full md:max-w-[80%] lg:max-w-[60%] mt-5"
+                >
                   <h1 className="text-[1rem] lg:text-[1.3rem] text-white font-sans font-[600]">
                     {item.title}
                   </h1>
@@ -106,7 +114,11 @@ const Websites = () => {
               ))}
             </div>
             <div className="hidden lg:block">
-              <Image src={ImgAdvantages} className="md:h-full" alt="obrazek"></Image>
+              <Image
+                src={ImgAdvantages}
+                className="md:h-full"
+                alt="obrazek"
+              ></Image>
             </div>
           </div>
         </div>
