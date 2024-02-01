@@ -4,7 +4,7 @@ import React from "react";
 const WhyChooseUs = () => {
   return (
     <div className="w-full mx-auto text-center mt-28 mb-12">
-      <span className="p-3 text-[0.7rem] md:text-[0.9rem] lg:text-[1rem] bg-gray-700 text-white font-bold rounded-md">
+      <span className="px-2 py-3 text-[0.9rem] md:text-[0.1rem] lg:text-[1.1rem] bg-gray-700 text-white font-bold rounded-md">
         Dlaczego Warto Skorzystać z Moich Usług?
       </span>
 
