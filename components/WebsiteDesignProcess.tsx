@@ -1,6 +1,6 @@
 import { motion, useAnimation } from "framer-motion";
-import { title } from "process";
-import { useEffect} from "react";
+import { useEffect, useRef } from "react";
+import { useInView } from "react-intersection-observer";
 import ButtonContact from "./ButtonContact";
 
 const WebsiteDesignProcess = () => {
@@ -31,8 +31,22 @@ const WebsiteDesignProcess = () => {
     },
   ];
 
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ threshold: 0.6 });
+  useEffect(() => {
+    if (inView) {
+      controls.start((i) => ({
+        opacity: 1,
+        y: 0,
+        transition: {
+          delay: i * 0.8,
+        },
+      }));
+    }
+  }, [controls, inView]);
+
   return (
-    <div className="container mx-auto mb-8 lg:mb-14 mt-10 lg:mt-16">
+    <div ref={ref} className="container mx-auto mb-8 lg:mb-14 mt-8 lg:mt-14">
       <div className="max-w-[90%] mx-auto flex flex-col items-center justify-center">
         <h1 className="text-center bg-customColor rounded-lg p-3 text-[#fff] text-2xl lg:text-4xl xl:text-5xl font-bold mb-6 font-sans lg:mb-8">
           Twój Sukces Online Jest Moim Priorytetem
@@ -43,12 +57,16 @@ const WebsiteDesignProcess = () => {
           stworzyć teksty i projekt strony, który przyciągnie uwagę i zostanie
           zapamiętany
         </p>
-        <div className="w-full mx-auto mt-6">
+        <div className="w-full mx-auto mt-">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {data.map((item, index) => (
-              <div
-              key={index}
-              className="flex items-center flex-col flex-wrap mx-auto mt-6 text-center">
+              <motion.div
+                key={index}
+                custom={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={controls}
+                className="flex items-center flex-col flex-wrap mx-auto mt-6 text-center"
+              >
                 <div className="bg-customColor h-16 w-16 flex items-center justify-center rounded-full">
                   <span className="text-white font-sans font-[600] text-[1.3rem]">
                     {item.num}
@@ -63,7 +81,7 @@ const WebsiteDesignProcess = () => {
                   </p>
                   {index === 0 && <ButtonContact buttonText="Darmowa Wycena" />}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
