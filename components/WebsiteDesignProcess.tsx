@@ -32,7 +32,7 @@ const WebsiteDesignProcess = () => {
   ];
 
   const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.6 });
+  const [ref, inView] = useInView({ threshold: 0.5 });
   useEffect(() => {
     if (inView) {
       controls.start((i) => ({
