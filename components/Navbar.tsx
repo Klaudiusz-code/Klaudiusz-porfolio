@@ -12,16 +12,14 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="container mx-auto flex items-center justify-between pt-6 pb-9 relative z-10">
+      <section className="container mx-auto flex items-center justify-between pt-6 pb-9 px-2 relative z-10">
         <div className="flex flex-col items-center justify-center text-2xl text-white">
           <Link href="/">
             <Image src={Logo} width={110} height={110} alt="Logo"></Image>
           </Link>
         </div>
-        <div className="mr-2 lg:mr-0">
-          <ButtonContact buttonText="Darmowa Wycena" />
-        </div>
-        <div className="flex gap-y-4 bg-gray-700 xl:flex-col items-center justify-center h-[12px] md:h-13 gap-x-5 xl:gap-x-0  xl:justify-between w-full  fixed bottom-0 md:right-0 right-0  xl:w-12 md:px-40 xl:px-8  xl:h-max xl:right-14 xl:top-1/4 py-5 lg:rounded-[1.8rem]">
+        <ButtonContact buttonText="Darmowa Wycena" />
+        <nav className="flex gap-y-4 bg-gray-700 xl:flex-col items-center justify-center h-[12px] md:h-13 gap-x-5 xl:gap-x-0  xl:justify-between w-full  fixed bottom-0 md:right-0 right-0  xl:w-12 md:px-40 xl:px-8  xl:h-max xl:right-14 xl:top-1/4 py-5 lg:rounded-[1.8rem]">
           {MenuLinks.map((link, index) => {
             return (
               <Link
@@ -35,8 +33,8 @@ const Navbar = () => {
               </Link>
             );
           })}
-        </div>
-      </nav>
+        </nav>
+      </section>
     </>
   );
 };
