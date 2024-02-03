@@ -14,7 +14,7 @@ const config: Config = {
       colors: {
         bgColor: '#252B39',
         customColor: '#34C0C9',
-        gColor: '#818488',
+        gColor: '#9ea0a3',
         boxColor: 'rgba(34, 54, 62,0.3)',
         hoverColor: 'rgba(40, 50, 61,0.9)',
         navcolor: 'rgba(52, 192, 201,0.9)',
