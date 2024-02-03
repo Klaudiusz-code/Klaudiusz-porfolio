@@ -11,9 +11,9 @@ const Aboutme = () => {
           <span className="text-white text-[1.4rem] font-semibold md:text-[1.5rem] lg:text-[1.6rem]">
             <span className="text-customColor">/</span> O Mnie
           </span>
-          <h1 className="mt-6 text-white text-[1.2rem] md:text-[1.5rem] lg:text-[1.7rem] font-extrabold">
+          <h2 className="mt-6 text-white text-[1.2rem] md:text-[1.5rem] lg:text-[1.7rem] font-extrabold">
             KIM JESTEM?
-          </h1>
+          </h2>
           <p className="mt-2 text-gColor text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] font-thin leading-7 font-sans">
             Cześć! Jestem entuzjastą programowania, specjalizującym się zarówno
             w front-endzie, jak i backendzie, a także posiadającym umiejętności
@@ -33,11 +33,12 @@ const Aboutme = () => {
               <Link
                 href={item.link}
                 key={index}
-                className="hover:scale-110 duration-150"
+                className="relative overflow-hidden group"
               >
-                <span className="text-[1.5rem] sm:text-[1.8rem] md:text-[2.3rem] lg:text-[2.8rem] xl:text-[3.2rem] underline font-black text-[#a5a5a5] hover:text-white transition-all">
+                <span className="text-[1.5rem] sm:text-[1.8rem] md:text-[2.3rem] lg:text-[2.8rem] xl:text-[3.2rem] font-black text-[#a5a5a5] group-hover:text-white transition-all">
                   {item.title}
                 </span>
+                <span className="absolute left-0 bottom-0 h-1 rounded-xl bg-customColor w-0 transition-all group-hover:w-full group-hover:left-0 duration-200 group-hover:bottom-0"></span>
               </Link>
             ))}
           </div>
