@@ -54,21 +54,21 @@ const Websites = () => {
   ];
 
   return (
-    <section className="container mx-auto">
-      <div className=" rounded-md text-left py-4">
+    <section className="container mx-auto px-2">
+      <header>
         <h1 className="text-customColor font-[500] font-sans text-[2rem] md:text-[2.5rem] xl:text-[3.7rem] ml-3 md:ml-1 lg:ml-0 mb-2 tracking-wide">
           Strona Internetowa
         </h1>
-      </div>
-      <div className="w-full py-2 mt-6 md:mt-8 xl:mt-14 mb-6 ml-3 md:ml-1 lg:ml-0">
-        <h1 className="text-white text-left font-sans font-[600] text-[1.5rem] md:text-[1.6rem] xl:text-[1.8rem]">
+      </header>
+      <div className="w-full py-2 mt-6 md:mt-8 xl:mt-10 mb-6 ml-3 md:ml-1 lg:ml-0">
+        <h2 className="text-white text-left font-sans font-[600] text-[1.5rem] md:text-[1.6rem] xl:text-[1.8rem]">
           Moja Oferta dla Twojej Strony Internetowej:{" "}
-        </h1>
+        </h2>
         <div className="mt-8">
-          <h2 className="mt-2 text-left text-[#f1f1f1] font-sans font-normal text-[1rem] md:text-[1.1rem]  xl:text-[1.3rem]">
+          <h3 className="mt-2 text-left text-[#f1f1f1] font-sans font-normal text-[1rem] md:text-[1.1rem]  xl:text-[1.3rem]">
             Zapewniam kompleksową opiekę nad Twoją stroną internetową z każdej
             strony!
-          </h2>
+          </h3>
           <ul className="list-disc mt-3 ml-3 md:ml-3 lg:ml-4">
             {websiteServiceOptions.map((item, index) => (
               <li
@@ -80,7 +80,7 @@ const Websites = () => {
             ))}
           </ul>
           <div className="w-full mt-6 sm:mt-10 flex flex-row flex-wrap items-center font-sans">
-            <span className=" text-white text-[1rem] sm:text-[1.2rem] lg:[1.3rem]  font-[600] ">
+            <span className="text-white text-[1rem] sm:text-[1.2rem] lg:[1.3rem]  font-[600] ">
               Ciekawa Oferta?
             </span>
             <Link
@@ -96,17 +96,17 @@ const Websites = () => {
         <div className="mt-16 lg:mt-20 bg-[#0077cc] p-2 lg:p-3 rounded-2xl font-sans">
           <div className="flex p-3">
             <div className="flex flex-col text-left ml-3">
-              <h1 className="text-[1.3rem] md:text-[1.4rem] lg:text-[2rem] mb-1 font-sans text-white font-[900]">
+              <h2 className="text-[1.3rem] md:text-[1.4rem] lg:text-[2rem] mb-1 font-sans text-white font-[900]">
                 Korzyści Ze Strony Internetowej
-              </h1>
+              </h2>
               {data.map((item, index) => (
                 <div
                   key={index}
                   className="w-full md:max-w-[80%] lg:max-w-[60%] mt-5"
                 >
-                  <h1 className="text-[1.3rem] lg:text-[1.3rem] text-white font-sans font-[600]">
+                  <h3 className="text-[1.3rem] lg:text-[1.3rem] text-white font-sans font-[600]">
                     {item.title}
-                  </h1>
+                  </h3>
                   <p className="text-[#f1f1f1] font-sans text-[1rem] lg:text-[1.1rem] mt-1">
                     {item.description}
                   </p>
@@ -117,15 +117,15 @@ const Websites = () => {
               <Image
                 src={ImgAdvantages}
                 className="md:h-full"
-                alt="obrazek"
-              ></Image>
+                alt="Obrazek korzyści ze strony internetowej"
+              />
             </div>
           </div>
         </div>
       </div>
       <div className="mt-16 md:mt-20 lg:mt-24">
         <div className="text-center mb-10">
-          <h1 className="text-[2rem] font-sans font-[600] text-white">FAQ</h1>
+          <h3 className="text-[2rem] font-sans font-[600] text-white">FAQ</h3>
           <p className="text-gray-500 font-[400] mt-2 font-sans">
             O to najczęściej zadawane pytania!
           </p>
