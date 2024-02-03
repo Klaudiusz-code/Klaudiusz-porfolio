@@ -48,9 +48,9 @@ const WebsiteDesignProcess = () => {
   return (
     <div ref={ref} className="container mx-auto mb-8 lg:mb-14 mt-8 lg:mt-14">
       <div className="max-w-[90%] mx-auto flex flex-col items-center justify-center">
-        <h1 className="text-center bg-customColor rounded-lg p-3 text-[#fff] text-2xl lg:text-4xl xl:text-5xl font-bold mb-6 font-sans lg:mb-8">
+        <h2 className="text-center bg-customColor rounded-lg p-3 text-[#fff] text-2xl lg:text-4xl xl:text-5xl font-bold mb-6 font-sans lg:mb-8">
           Twój Sukces Online Jest Moim Priorytetem
-        </h1>
+        </h2>
         <p className="text-center max-w-full  lg:max-w-[80%] mx-auto text-[1rem] lg:text-xl xl:text-1xl leading-7 text-gColor font-sans font-[400] mb-8 lg:mb-10">
           Zaangażowanie w Twój Projekt zaczynamy od gruntownego zrozumienia
           Twojej oferty. Kiedy zgłębię wszelkie szczegóły, jestem w stanie
@@ -73,9 +73,9 @@ const WebsiteDesignProcess = () => {
                   </span>
                 </div>
                 <div>
-                  <p className="text-white mt-2 font-sans text-[1.1rem] font-[600]">
+                  <h2 className="text-white mt-2 font-sans text-[1.1rem] font-[600]">
                     {item.title}
-                  </p>
+                  </h2>
                   <p className="text-[#9b9b9b] text-[0.875rem] lg:text-[0.9rem] xl:text-[1rem] font-sans mt-2 mb-4 max-w-[90%] mx-auto">
                     {item.description}
                   </p>
