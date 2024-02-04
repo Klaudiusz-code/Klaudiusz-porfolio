@@ -8,7 +8,7 @@ const WhyChooseUs = () => {
         Dlaczego Warto Skorzystać z Moich Usług?
       </span>
 
-      <div className="w-full border border-customColor bg-gray-800 rounded-lg  mx-auto font-sans mt-16 md:mt-24 lg:mt-32 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 items-center gap-y-4 md:gap-y-0 place-items-center place-content-center">
+      <div className="w-full border border-customColor bg-gray-800 rounded-lg  mx-auto font-sans mt-16 md:mt-20 lg:mt-24 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 items-center gap-y-4 md:gap-y-0 place-items-center place-content-center">
         {" "}
         {ServicesWebsite.map((service, index) => (
           <div
