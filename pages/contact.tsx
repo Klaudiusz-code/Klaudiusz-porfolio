@@ -17,7 +17,11 @@ const contact = () => {
         </title>
       </Head>
 
-      <div className="bg-[#0077cc] rounded-2xl mt-8 px-6 py-12 lg:p-14">
+      <motion.div
+      initial={{ opacity: 0, y: -100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: 0.7 }}
+       className="bg-[#0077cc] rounded-2xl mt-8 px-6 py-12 lg:p-14">
         <h1 className="text-[1.5rem] lg:text-[2.6rem] font-[600] tracking-wide text-[#fff]">
           Gotowy na współpracę? Skontaktuj się ze mną już teraz!
         </h1>
@@ -30,9 +34,13 @@ const contact = () => {
         <div className="mt-6 text-center md:text-left ">
           <CustomButton text="Sprawdź Moje Usługi" link="/services" />
         </div>
-      </div>
+      </motion.div>
 
-      <div className="flex flex-col lg:flex-row justify-between items-center mt-10 lg:mt-24 mb-24">
+      <motion.div
+      initial={{ opacity: 0, y: -100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: 1.3 }} 
+      className="flex flex-col lg:flex-row justify-between items-center mt-10 lg:mt-24 mb-24">
         <div className="ml-2 lg:ml-0">
           <h3 className="text-3xl text-white font-extrabold">
             Napisz do mnie!
@@ -132,7 +140,7 @@ const contact = () => {
             </div>
           </form>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
