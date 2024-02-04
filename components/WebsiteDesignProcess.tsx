@@ -61,7 +61,7 @@ const WebsiteDesignProcess = () => {
           zapamiętany
         </p>
 
-        <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-8 gap-8 lg:gap-8 mx-auto">
+        <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-8 gap-8 mx-auto">
           {data.map((item, index) => (
             <motion.div
               key={index}
