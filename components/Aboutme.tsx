@@ -33,12 +33,12 @@ const Aboutme = () => {
               <Link
                 href={item.link}
                 key={index}
-                className="relative overflow-hidden group"
+                className="relative overflow-hidden group transition-all duration-200"
               >
                 <span className="text-[1.5rem] sm:text-[1.8rem] md:text-[2.3rem] lg:text-[2.8rem] xl:text-[3.2rem] font-black text-[#a5a5a5] group-hover:text-white transition-all">
                   {item.title}
                 </span>
-                <span className="absolute left-0 bottom-0 h-1 rounded-xl bg-customColor w-0 transition-all group-hover:w-full group-hover:left-0 duration-200 group-hover:bottom-0"></span>
+                <span className="absolute left-0 bottom-0 h-1 rounded-xl bg-customColor w-0 transition-all group-hover:w-full group-hover:left-0 duration-500 group-hover:bottom-0"></span>
               </Link>
             ))}
           </div>
