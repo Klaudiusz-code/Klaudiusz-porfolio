@@ -62,7 +62,7 @@ const Home = () => {
         </div>
       </section>
       <Aboutme />
-      <div className="mt-16 md:mt-20 lg:mt-42 mb-28">
+      <div className="mb-28">
         <WebsiteDesignProcess />
       </div>
     </>
