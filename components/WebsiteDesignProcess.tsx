@@ -46,8 +46,11 @@ const WebsiteDesignProcess = () => {
   }, [controls, inView]);
 
   return (
-    <div ref={ref} className="container mx-auto mb-8 lg:mb-14 mt-8 lg:mt-14">
-      <div className="max-w-[90%] mx-auto flex flex-col items-center justify-center">
+    <div
+      ref={ref}
+      className="container mx-auto mb-8 lg:mb-14 mt-8 lg:mt-14 px-2"
+    >
+      <div className="flex flex-col items-center">
         <h2 className="text-center bg-customColor rounded-lg p-3 text-[#fff] text-2xl lg:text-4xl xl:text-5xl font-bold mb-6 font-sans lg:mb-8">
           Twój Sukces Online Jest Moim Priorytetem
         </h2>
@@ -57,33 +60,32 @@ const WebsiteDesignProcess = () => {
           stworzyć teksty i projekt strony, który przyciągnie uwagę i zostanie
           zapamiętany
         </p>
-        <div className="w-full mx-auto mt-">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {data.map((item, index) => (
-              <motion.div
-                key={index}
-                custom={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={controls}
-                className="flex items-center flex-col flex-wrap mx-auto mt-6 text-center"
-              >
-                <div className="bg-customColor h-16 w-16 flex items-center justify-center rounded-full">
-                  <span className="text-white font-sans font-[600] text-[1.3rem]">
-                    {item.num}
-                  </span>
-                </div>
-                <div>
-                  <h2 className="text-white mt-2 font-sans text-[1.1rem] font-[600]">
-                    {item.title}
-                  </h2>
-                  <p className="text-[#9b9b9b] text-[0.875rem] lg:text-[0.9rem] xl:text-[1rem] font-sans mt-2 mb-4 max-w-[90%] mx-auto">
-                    {item.description}
-                  </p>
-                  {index === 0 && <ButtonContact buttonText="Darmowa Wycena" />}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+
+        <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-8  lg:gap-8 mx-auto">
+          {data.map((item, index) => (
+            <motion.div
+              key={index}
+              custom={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={controls}
+              className="relative flex items-center flex-col flex-wrap justify-center mt-6 text-center p-2 lg:p-4 max-w-[380px] min-h-[350px] xl:min-h-[420px] rounded-lg bg-[#2a3245] group"
+            >
+              <div className="absolute -top-8 bg-customColor h-16 w-20 flex items-center justify-center  rounded-lg group-hover:bg-[#fff] transition-all duration-300">
+                <span className="text-white font-sans font-[600] text-[1.5rem] group-hover:text-customColor">
+                  {item.num}
+                </span>
+              </div>
+              <div>
+                <h2 className="mt-8 text-white font-sans text-[1.5rem] font-[600]">
+                  {item.title}
+                </h2>
+                <p className="text-[#9b9b9b] text-[0.875rem] lg:text-[0.9rem] xl:text-[1.1rem] font-sans mt-2 mb-4 max-w-[90%] mx-auto leading-8">
+                  {item.description}
+                </p>
+                {index === 0 && <ButtonContact buttonText="Darmowa Wycena" />}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </div>
