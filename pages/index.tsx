@@ -29,7 +29,7 @@ const Home = () => {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />{" "}
       </Head>
-      <section className="w-full relative container mx-auto mt-16 flex items-center justify-center text-center flex-col lg:flex-row bg-body-bg ">
+      <section className="w-full relative container mx-auto mt-16 flex items-center justify-center text-center flex-col lg:flex-row bg-body-bg px-2">
         <div className="w-full lg:pr-8 mt-27 md:mt-28 xl:mt-32 lg:order-2">
           <motion.h1
             initial={{ opacity: 0, x: -100 }}
