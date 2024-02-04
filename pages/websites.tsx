@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import ButtonContact from "@/components/ButtonContact";
 import ContactBaner from "@/components/ContactBaner";
 import Image from "next/image";
@@ -49,7 +50,8 @@ const Websites = () => {
       title: "Wzmocnienie zabezpieczeń strony",
     },
     {
-      title: "Uzupełnienie treścią dostarczoną przez Ciebie",
+      title:
+        "Uzupełnienie treścią dostarczoną przez ciebie, lub stworzonej przeze mnie",
     },
   ];
 
@@ -60,39 +62,45 @@ const Websites = () => {
           Strona Internetowa
         </h1>
       </header>
-      <div className="w-full py-2 mt-6 md:mt-8 xl:mt-10 mb-6 ml-3 md:ml-1 lg:ml-0">
-        <h2 className="text-white text-left font-sans font-[600] text-[1.5rem] md:text-[1.6rem] xl:text-[1.8rem]">
+      <motion.div
+        initial={{ opacity: 0, y: -100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 0.7 }}
+        className="w-full p-8 md:p-10 lg:p-14 bg-white mt-6 rounded-xl md:mt-8 xl:mt-10 mb-6"
+      >
+        <h2 className="text-[#2f3d66] text-left font-sans font-[600] text-[1.5rem] md:text-[1.6rem] xl:text-[1.8rem]">
           Moja Oferta dla Twojej Strony Internetowej:{" "}
         </h2>
         <div className="mt-8">
-          <h3 className="mt-2 text-left text-[#f1f1f1] font-sans font-normal text-[1rem] md:text-[1.1rem]  xl:text-[1.3rem]">
-            Zapewniam kompleksową opiekę nad Twoją stroną internetową z każdej
-            strony!
-          </h3>
           <ul className="list-disc mt-3 ml-3 md:ml-3 lg:ml-4">
             {websiteServiceOptions.map((item, index) => (
               <li
                 key={index}
-                className="mt-2 text-[1rem] tracking-wide font-thin text-gColor font-sans sm:text-[1.1rem]"
+                className="mt-2 text-[0.9rem] sm:text-[1.1rem] lg:text-[1.2rem] font-[400] tracking-wide text-[#2f3d66] font-sans "
               >
                 {item.title}
               </li>
             ))}
           </ul>
           <div className="w-full mt-6 sm:mt-10 flex flex-row flex-wrap items-center font-sans">
-            <span className="text-white text-[1rem] sm:text-[1.2rem] lg:[1.3rem]  font-[600] ">
+            <span className="text-[#2f3d66] text-[1rem] sm:text-[1.2rem] lg:[1.3rem]  font-[600] ">
               Ciekawa Oferta?
             </span>
             <Link
               href="/contact"
-              className="text-customColor text-[1rem] sm:text-[1.2rem] lg:[1.3rem]   underline font-bold ml-3 hover:text-white duration-150 transition-all cursor-pointer"
+              className="text-customColor text-[1rem] sm:text-[1.2rem] lg:[1.3rem] underline font-bold ml-3 hover:text-navcolor duration-150 transition-all cursor-pointer"
             >
               Napisz do mnie!
             </Link>
           </div>
         </div>
-      </div>
-      <div className="w-full mx-auto text-center mt-16">
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: -100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 1.3 }}
+        className="w-full mx-auto text-center mt-16"
+      >
         <div className="mt-16 lg:mt-20 bg-[#0077cc] p-2 lg:p-3 rounded-2xl font-sans">
           <div className="flex p-3">
             <div className="flex flex-col text-left ml-3">
@@ -122,14 +130,8 @@ const Websites = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
       <div className="mt-16 md:mt-20 lg:mt-24">
-        <div className="text-center mb-10">
-          <h3 className="text-[2rem] font-sans font-[600] text-white">FAQ</h3>
-          <p className="text-gray-500 font-[400] mt-2 font-sans">
-            O to najczęściej zadawane pytania!
-          </p>
-        </div>
         <Acordion />
       </div>
       <WhyChooseUs />
