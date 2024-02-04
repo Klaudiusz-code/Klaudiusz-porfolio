@@ -17,7 +17,12 @@ const Projects = () => {
         </title>
       </Head>
       <div className="container mx-auto px-2">
-        <div className="bg-[#0077cc] rounded-2xl mt-8 px-6 py-12 lg:p-14">
+        <motion.div
+          initial={{ opacity: 0, y: -100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.7 }}
+          className="bg-[#0077cc] rounded-2xl mt-8 px-6 py-12 lg:p-14"
+        >
           <h1 className="text-[1.6rem] lg:text-[2.6rem] font-[600] tracking-wide text-[#fff]">
             Zrealizowane projekty
           </h1>
@@ -37,8 +42,13 @@ const Projects = () => {
           <div className="mt-6 text-center md:text-left ">
             <CustomButton text="Darmowa Wycena Projektu" link="/contact" />
           </div>
-        </div>
-        <div className="w-full mx-auto mt-14">
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: -100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 1.3 }}
+          className="w-full mx-auto mt-14"
+        >
           <h2 className="text-cyan-50 font-[900] text-[2.2rem] md:text-[2.8rem] lg:text-[3rem] mt-16 text-center">
             Moje Projekty
           </h2>
@@ -54,7 +64,7 @@ const Projects = () => {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </>
   );
