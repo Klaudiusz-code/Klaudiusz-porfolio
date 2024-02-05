@@ -1,13 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
-import ButtonContact from "@/components/ButtonContact";
 import ContactBaner from "@/components/ContactBaner";
 import Image from "next/image";
-import { BenefitsWeb, ServicesWebsite } from "@/data";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import ImgAdvantages from "@/public/advantage_img.svg";
 import Acordion from "@/components/Acordin/Acordion";
-import Link from "next/link";
+import { AiFillCheckSquare } from "react-icons/ai";
+import CustomButton from "@/components/CustomButton";
 
 const Websites = () => {
   const data = [
@@ -72,26 +71,26 @@ const Websites = () => {
           Moja Oferta dla Twojej Strony Internetowej:{" "}
         </h2>
         <div className="mt-8">
-          <ul className="list-disc mt-3 ml-3 md:ml-3 lg:ml-4">
+          <ul className="mt-3flex flex-wrap">
             {websiteServiceOptions.map((item, index) => (
               <li
                 key={index}
-                className="mt-2 text-[0.9rem] sm:text-[1.1rem] lg:text-[1.2rem] font-[400] tracking-wide text-[#2f3d66] font-sans "
+                className="mt-2 ml-2 text-[0.9rem] sm:text-[1.1rem] lg:text-[1.2rem] font-[400] tracking-wide text-[#2f3d66] font-sans mb-3 flex items-start"
               >
-                {item.title}
+                <span className="text-[1.3rem] text-[#0077cc] flex-shrink-0 mr-2 mt-1">
+                  <AiFillCheckSquare />
+                </span>
+                <span className="whitespace-normal">{item.title}</span>
               </li>
             ))}
           </ul>
-          <div className="w-full mt-6 sm:mt-10 flex flex-row flex-wrap items-center font-sans">
-            <span className="text-[#2f3d66] text-[1rem] sm:text-[1.2rem] lg:[1.3rem]  font-[600] ">
-              Ciekawa Oferta?
-            </span>
-            <Link
-              href="/contact"
-              className="text-customColor text-[1rem] sm:text-[1.2rem] lg:[1.3rem] underline font-bold ml-3 hover:text-navcolor duration-150 transition-all cursor-pointer"
-            >
-              Napisz do mnie!
-            </Link>
+          <div className="flex justify-center md:justify-start mt-6">
+            <CustomButton
+              text="Darmowa Wycena Projektu"
+              bgColor="#0077cc"
+              textColor="#fff"
+              link="/contact"
+            />
           </div>
         </div>
       </motion.div>
@@ -101,33 +100,28 @@ const Websites = () => {
         transition={{ duration: 0.4, delay: 1.3 }}
         className="w-full mx-auto text-center mt-16"
       >
-        <div className="mt-16 lg:mt-20 bg-[#0077cc] p-2 lg:p-3 rounded-2xl font-sans">
-          <div className="flex p-3">
-            <div className="flex flex-col text-left ml-3">
-              <h2 className="text-[1.3rem] md:text-[1.4rem] lg:text-[2rem] mb-1 font-sans text-white font-[900]">
-                Korzyści Ze Strony Internetowej
-              </h2>
-              {data.map((item, index) => (
-                <div
-                  key={index}
-                  className="w-full md:max-w-[80%] lg:max-w-[60%] mt-5"
-                >
-                  <h3 className="text-[1.3rem] lg:text-[1.3rem] text-white font-sans font-[600]">
-                    {item.title}
-                  </h3>
-                  <p className="text-[#f1f1f1] font-sans text-[1rem] lg:text-[1.1rem] mt-1">
-                    {item.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-            <div className="hidden lg:block">
-              <Image
-                src={ImgAdvantages}
-                className="md:h-full"
-                alt="Obrazek korzyści ze strony internetowej"
-              />
-            </div>
+        <div className="mt-16 lg:mt-20 bg-[#0077cc] p-8 md:p-10 lg:p-14 rounded-2xl font-sans flex flex-col lg:flex-row">
+          <div className="flex flex-col text-left lg:w-2/3 lg:pr-6">
+            <h2 className="text-[1.3rem] md:text-[1.4rem] lg:text-[2rem] mb-1 font-sans text-white font-[900]">
+              Korzyści Ze Strony Internetowej
+            </h2>
+            {data.map((item, index) => (
+              <div key={index} className="mt-5">
+                <h3 className="text-[1.3rem] lg:text-[1.3rem] text-white font-sans font-[600]">
+                  {item.title}
+                </h3>
+                <p className="text-[#f1f1f1] leading-7 w-full md:max-w-[80%] font-sans text-[1rem] lg:text-[1.1rem] mt-1">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="hidden lg:block lg:w-1/3">
+            <Image
+              src={ImgAdvantages}
+              className="object-cover h-full w-full"
+              alt="Obrazek korzyści ze strony internetowej"
+            />
           </div>
         </div>
       </motion.div>
