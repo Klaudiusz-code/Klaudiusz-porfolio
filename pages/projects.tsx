@@ -40,7 +40,7 @@ const Projects = () => {
             projekt marzeń!
           </p>
           <div className="mt-6 text-center md:text-left ">
-            <CustomButton text="Darmowa Wycena Projektu" link="/contact" />
+            <CustomButton bgColor="#fff" textColor="#0077cc" text="Darmowa Wycena Projektu" link="/contact"  />
           </div>
         </motion.div>
         <motion.div
