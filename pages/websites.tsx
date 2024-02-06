@@ -1,29 +1,42 @@
 import React from "react";
 import { motion } from "framer-motion";
 import ContactBaner from "@/components/ContactBaner";
+import BenefitsWebsiteImg from "@/public/benefitsWebsite.svg";
 import Image from "next/image";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import ImgAdvantages from "@/public/advantage_img.svg";
 import Acordion from "@/components/Acordin/Acordion";
 import { AiFillCheckSquare } from "react-icons/ai";
 import CustomButton from "@/components/CustomButton";
-
+import OfferPageTypes from "@/components/OfferPageTypes";
 const Websites = () => {
   const data = [
     {
-      title: "Globalna Widoczność",
+      id: 1,
       description:
-        "Dzięki stronie internetowej firma staje się dostępna dla klientów na całym świecie, co pozwala na zwiększenie zasięgu i zdobycie nowych rynków.",
+        "Dotarcie do globalnej publiczności, zwiększając zasięg i wpływ działalności na międzynarodową skalę.",
     },
     {
-      title: "Profesjonalny Wizerunek",
+      id: 2,
       description:
-        "Strona internetowa jest wizytówką firmy w świecie online. Profesjonalny i atrakcyjny design strony buduje zaufanie klientów oraz podkreśla profesjonalizm firmy.",
+        "Szybki i łatwy dostęp do różnorodnych informacji na temat firmy, produktów, usług, itp.",
     },
     {
-      title: "Łatwy Dostęp Do Informacji",
+      id: 3,
+      description: "Skuteczne narzędzie do promocji firmy i jej oferty.",
+    },
+    {
+      id: 4,
       description:
-        "Klienci mogą szybko i łatwo uzyskać informacje o produktach, usługach, godzinach otwarcia i innych kluczowych aspektach firmy.",
+        "Dotarcie do szerszej grupy odbiorców, zarówno na lokalnym, jak i globalnym rynku.",
+    },
+    {
+      id: 5,
+      description: "Dwukierunkowa komunikacja z klientami.",
+    },
+    {
+      id: 6,
+      description:
+        "Budowanie pozytywnego wizerunku marki poprzez profesjonalną stronę internetową.",
     },
   ];
 
@@ -55,7 +68,7 @@ const Websites = () => {
   ];
 
   return (
-    <section className="container mx-auto px-2">
+    <div className="container mx-auto px-2">
       <header>
         <h1 className="text-customColor font-[500] font-sans text-[2rem] md:text-[2.5rem] xl:text-[3.7rem] ml-3 md:ml-1 lg:ml-0 mb-2 tracking-wide">
           Strona Internetowa
@@ -67,7 +80,7 @@ const Websites = () => {
         transition={{ duration: 0.4, delay: 0.7 }}
         className="w-full p-8 md:p-10 lg:p-14 bg-white mt-6 rounded-xl md:mt-8 xl:mt-10 mb-6"
       >
-        <h2 className="text-[#2f3d66] text-left font-sans font-[600] text-[1.5rem] md:text-[1.6rem] xl:text-[1.8rem]">
+        <h2 className="text-[#2f3d66] text-[1.8rem] md:text-[1.6rem] xl:text-[2.4rem]">
           Moja Oferta dla Twojej Strony Internetowej:{" "}
         </h2>
         <div className="mt-8">
@@ -75,7 +88,7 @@ const Websites = () => {
             {websiteServiceOptions.map((item, index) => (
               <li
                 key={index}
-                className="mt-2 ml-2 text-[0.9rem] sm:text-[1.1rem] lg:text-[1.2rem] font-[400] tracking-wide text-[#2f3d66] font-sans mb-3 flex items-start"
+                className="mt-2 ml-2 text-[0.9rem] sm:text-[1.1rem] lg:text-[1.2rem] font-[400] tracking-wide text-[#0077cc] font-sans mb-3 flex items-start"
               >
                 <span className="text-[1.3rem] text-[#0077cc] flex-shrink-0 mr-2 mt-1">
                   <AiFillCheckSquare />
@@ -94,43 +107,48 @@ const Websites = () => {
           </div>
         </div>
       </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: -100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, delay: 1.3 }}
-        className="w-full mx-auto text-center mt-16"
-      >
-        <div className="mt-16 lg:mt-20 bg-[#0077cc] p-8 md:p-10 lg:p-14 rounded-2xl font-sans flex flex-col lg:flex-row">
-          <div className="flex flex-col text-left lg:w-2/3 lg:pr-6">
-            <h2 className="text-[1.3rem] md:text-[1.4rem] lg:text-[2rem] mb-1 font-sans text-white font-[900]">
-              Korzyści Ze Strony Internetowej
-            </h2>
-            {data.map((item, index) => (
-              <div key={index} className="mt-5">
-                <h3 className="text-[1.3rem] lg:text-[1.3rem] text-white font-sans font-[600]">
-                  {item.title}
-                </h3>
-                <p className="text-[#f1f1f1] leading-7 w-full md:max-w-[80%] font-sans text-[1rem] lg:text-[1.1rem] mt-1">
-                  {item.description}
-                </p>
-              </div>
+      <div className="flex flex-row items-center justify-between font-sans mt-28 p-8 md:p-10 lg:p-14 min-h-[500px] bg-[#fff] rounded-xl group relative">
+        <div className="w-full lg:max-w-[60%] ">
+          <h2 className="text-[#2f3d66] text-[1.8rem] md:text-[1.6rem] xl:text-[2.4rem]">
+            Korzyści z Posiadania Sklepu Online
+          </h2>
+          <ul className="mt-5 list-disc pl-4 lg:pl-6">
+            {data.map((data, index) => (
+              <li
+                key={index}
+                className="text-[0.9rem] sm:text-[1.1rem] lg:text-[1.2rem] mt-3 text-[#0077cc] tracking-wide leading-6"
+              >
+                {data.description}
+              </li>
             ))}
-          </div>
-          <div className="hidden lg:block lg:w-1/3">
-            <Image
-              src={ImgAdvantages}
-              className="object-cover h-full w-full"
-              alt="Obrazek korzyści ze strony internetowej"
+          </ul>
+          <div className="flex justify-center md:justify-start mt-6">
+            <CustomButton
+              text="Darmowa Wycena Projektu"
+              bgColor="#0077cc"
+              textColor="#fff"
+              link="/contact"
             />
           </div>
         </div>
-      </motion.div>
+
+        <div className="absolute -top-12 right-6 max-w-[50%] h-full hidden lg:block">
+          <Image
+            src={BenefitsWebsiteImg}
+            width={500}
+            height={200}
+            className="mx-auto group-hover:-translate-y-4 transition-all duration-500"
+            alt="Korzysci Ze Strony Internetowej"
+          />
+        </div>
+      </div>
+      <OfferPageTypes />
       <div className="mt-16 md:mt-20 lg:mt-24">
         <Acordion />
       </div>
       <WhyChooseUs />
       <ContactBaner />
-    </section>
+    </div>
   );
 };
 
