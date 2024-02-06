@@ -32,7 +32,7 @@ const contact = () => {
           wyjątkowego dla Twojej marki!
         </p>
         <div className="mt-6 text-center md:text-left ">
-          <CustomButton text="Sprawdź Moje Usługi" link="/services" />
+          <CustomButton bgColor="#fff" textColor="#0077cc" text="Sprawdź Moje Usługi" link="/services" />
         </div>
       </motion.div>
 
