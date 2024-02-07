@@ -11,7 +11,7 @@ const AccordionUi: React.FC<AccordionUiProps> = ({ title, answer }) => {
   const [accordionOpen, setAccordionOpen] = useState(false);
 
   return (
-    <section className="container w-full lg:max-w-[90%] py-3 font-sans">
+    <section className="container w-full mx-auto px-2 lg:max-w-[90%] py-3 font-sans">
       <button
         onClick={() => setAccordionOpen(!accordionOpen)}
         className="flex justify-between w-full items-center  border-b-2 border-b-gray-700  transition-all duration-300 p-4 hover:border-customColor "
