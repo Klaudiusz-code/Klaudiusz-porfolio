@@ -110,7 +110,7 @@ const Websites = () => {
       <div className="flex flex-row items-center justify-between font-sans mt-28 p-8 md:p-10 lg:p-14 min-h-[500px] bg-[#fff] rounded-xl group relative">
         <div className="w-full lg:max-w-[60%] ">
           <h2 className="text-[#2f3d66] text-[1.8rem] md:text-[1.6rem] xl:text-[2.4rem]">
-            Korzyści z Posiadania Sklepu Online
+            Korzyści z Posiadania Strony WWW
           </h2>
           <ul className="mt-5 list-disc pl-4 lg:pl-6">
             {data.map((data, index) => (
