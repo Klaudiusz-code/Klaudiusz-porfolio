@@ -68,7 +68,8 @@ const Websites = () => {
   ];
 
   return (
-    <div className="container mx-auto px-2">
+    <section className="cnt mx-auto">
+      <div>
       <header>
         <h1 className="text-customColor font-[500] font-sans text-[2rem] md:text-[2.5rem] xl:text-[3.7rem] ml-3 md:ml-1 lg:ml-0 mb-2 tracking-wide">
           Strona Internetowa
@@ -78,7 +79,7 @@ const Websites = () => {
         initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.7 }}
-        className="w-full p-8 md:p-10 lg:p-14 bg-white mt-6 rounded-xl md:mt-8 xl:mt-10 mb-6"
+        className="w-full p-8 md:p-10 lg:p-14 bg-white shadow-lg rounded-2xl shadow-[#cfcfcf] mt-6  md:mt-8 xl:mt-10 mb-6"
       >
         <h2 className="text-[#2f3d66] text-[1.8rem] md:text-[1.6rem] xl:text-[2.4rem]">
           Moja Oferta dla Twojej Strony Internetowej:{" "}
@@ -107,10 +108,10 @@ const Websites = () => {
           </div>
         </div>
       </motion.div>
-      <div className="flex flex-row items-center justify-between font-sans mt-28 p-8 md:p-10 lg:p-14 min-h-[500px] bg-[#fff] rounded-xl group relative">
-        <div className="w-full lg:max-w-[60%] ">
+      <div className="flex flex-row items-center justify-between font-sans mt-28 p-8 md:p-10 lg:p-14 min-h-[500px] bg-white shadow-lg rounded-2xl shadow-[#cfcfcf] l group relative">
+        <div className="w-full lg:max-w-[50%] ">
           <h2 className="text-[#2f3d66] text-[1.8rem] md:text-[1.6rem] xl:text-[2.4rem]">
-            Korzyści z Posiadania Strony WWW
+            Korzyści z Posiadania Strony
           </h2>
           <ul className="mt-5 list-disc pl-4 lg:pl-6">
             {data.map((data, index) => (
@@ -132,12 +133,12 @@ const Websites = () => {
           </div>
         </div>
 
-        <div className="absolute -top-12 right-6 max-w-[50%] h-full hidden lg:block">
+        <div className="absolute  right-6 max-w-[50%] h-full hidden lg:block">
           <Image
             src={BenefitsWebsiteImg}
             width={500}
             height={200}
-            className="mx-auto group-hover:-translate-y-4 transition-all duration-500"
+            className="mx-auto w-full group-hover:-translate-y-4 transition-all duration-500"
             alt="Korzysci Ze Strony Internetowej"
           />
         </div>
@@ -148,7 +149,8 @@ const Websites = () => {
       </div>
       <WhyChooseUs />
       <ContactBaner />
-    </div>
+      </div>
+    </section>
   );
 };
 

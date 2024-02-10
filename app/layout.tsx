@@ -1,3 +1,4 @@
+"use client";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ReactNode } from "react";
@@ -10,8 +11,8 @@ const inter = Inter({ subsets: ["latin"] });
 const metadata: Metadata = {
   title: "Klaudiusz Adamaszek",
   description: "Portfolio",
-  icons: './public/favicon.ico'
-}
+  icons: "./public/favicon.ico",
+};
 export default function RootLayout({
   children,
   hideNavbar,

@@ -3,8 +3,7 @@ import RootLayout from "@/app/layout";
 import Transition from "@/components/Transition";
 import { useRouter } from "next/router";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState, useEffect } from "react";
-import Loader from "@/components/Loader";
+import { useState} from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();

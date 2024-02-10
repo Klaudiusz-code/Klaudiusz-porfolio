@@ -1,39 +1,72 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { usePathname } from "next/navigation";
 import { MenuLinks } from "@/data";
 import Link from "next/link";
 import ButtonContact from "./ButtonContact";
-import Image from "next/image";
-import Logo from "@/public/logo2.png";
+import { IoIosMenu } from "react-icons/io";
 
 const Navbar = () => {
+  const [isNavOpen, setIsNavOpen] = useState(false);
   const currentPathname = usePathname();
+
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+
+  const closeNav = () => {
+    setIsNavOpen(false);
+  };
 
   return (
     <>
-      <section className="container mx-auto flex items-center justify-between pt-6 pb-9 px-2 relative z-10">
+      <section className="cnt flex items-center justify-between pt-6 pb-6 relative z-10">
         <div className="flex flex-col items-center justify-center text-2xl text-white">
           <Link href="/">
-            <Image src={Logo} width={110} height={110} alt="Logo"></Image>
+            <span className="text-customColor text-[1.4rem] font-[600] font-sans">
+              Klaudiusz.
+            </span>
           </Link>
         </div>
-        <ButtonContact buttonText="Darmowa Wycena" />
-        <nav className="flex gap-y-4 bg-gray-700 xl:flex-col items-center justify-center h-[12px] md:h-13 gap-x-5 xl:gap-x-0  xl:justify-between w-full  fixed bottom-0 md:right-0 right-0  xl:w-12 md:px-40 xl:px-8  xl:h-max xl:right-14 xl:top-1/4 py-5 lg:rounded-[1.8rem]">
-          {MenuLinks.map((link, index) => {
-            return (
+        <div className="flex items-center">
+          <nav className="hidden md:flex gap-y-4 gap-x-9 flex-row items-center justify-center font-sans">
+            {MenuLinks.map((link, index) => (
               <Link
                 className={`${
-                  link.link === currentPathname && "bg-[#34C0C9]"
-                } text-[0.9rem] lg:text-[1rem] xl:text-[1.1rem] text-white hover:bg-customColor w-9 h-9 lg:w-12 lg:h-12 flex items-center justify-center rounded-full transition-all group-hover:opacity-1000`}
+                  link.link === currentPathname && "text-[#34C0C9]"
+                } text-[0.9rem] lg:text-[1rem] xl:text-[1.1rem] text-bgColor hover:text-customColor`}
                 href={link.link}
                 key={index}
               >
-                <div>{link.icon}</div>
+                <span className="font-[400] text-customColor">{link.name}</span>
               </Link>
-            );
-          })}
-        </nav>
+            ))}
+          </nav>
+          <div className="md:hidden">
+            <button
+              className="inline-flex items-center justify-center p-2 text-[1.9rem] rounded-md text-customColor focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              onClick={toggleNav}
+            >
+              <IoIosMenu />
+            </button>
+            {isNavOpen && (
+              <nav className="absolute top-full left-0 w-full  bg-white p-4">
+                {MenuLinks.map((link, index) => (
+                  <Link
+                    className={`block py-2 text-center ${
+                      link.link === currentPathname && "text-[#0077cc]"
+                    } hover:text-customColor`}
+                    href={link.link}
+                    key={index}
+                    onClick={closeNav}
+                  >
+                    <span className="text-customColor font-[400]">{link.name}</span>
+                  </Link>
+                ))}
+              </nav>
+            )}
+          </div>
+        </div>
+        <ButtonContact buttonText="Darmowa Wycena" />
       </section>
     </>
   );

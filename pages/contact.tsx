@@ -1,14 +1,13 @@
 import React from "react";
 import Head from "next/head";
 import { motion } from "framer-motion";
-import RootLayout from "@/app/layout";
 import { ContactIcon, SocialIcons } from "@/data";
 import CustomButton from "@/components/CustomButton";
 import Link from "next/link";
 
 const contact = () => {
   return (
-    <section className="container mx-auto px-2 font-sans">
+    <section className="cnt mx-auto font-sans">
       <Head>
         <title>
           Kontakt - Strony Internetowe, Sklepy Internetowe, Seo | Lubycza
@@ -42,7 +41,7 @@ const contact = () => {
       transition={{ duration: 0.4, delay: 1.3 }} 
       className="flex flex-col lg:flex-row justify-between items-center mt-10 lg:mt-24 mb-24">
         <div className="ml-2 lg:ml-0">
-          <h3 className="text-3xl text-white font-extrabold">
+          <h3 className="text-3xl text-bgColor font-extrabold">
             Napisz do mnie!
           </h3>
           <p className="mb-12 mt-4 text-gColor text-1xl max-w-[80%] lg:max-w-[60%]">
@@ -55,7 +54,7 @@ const contact = () => {
               <li key={index}>
                 <Link
                   href={item.link}
-                  className="self-center flex flex-row items-center gap-x-2 text-gColor text-1xl font-thin hover:text-white transition-all duration-200"
+                  className="self-center flex flex-row items-center gap-x-2 text-gColor text-1xl font-thin hover:text-gray-800 transition-all duration-200"
                 >
                   <span className="flex items-center justify-center col-span-4 self-center bg-gray-700 text-white w-[3rem] h-[3rem] text-xl rounded-full">
                     {item.icon}
@@ -79,7 +78,7 @@ const contact = () => {
           </div>
         </div>
         <div className="min-w-full  lg:min-w-[50%] mt-16 lg:mt-0">
-          <form className="max-w-full mx-auto border border-gray-700 rounded-lg overflow-hidden shadow-md p-6">
+          <form className="max-w-full mx-auto border rounded-lg overflow-hidden shadow-md shadow-gray-200 p-6">
             <div className="mb-4">
               <label
                 htmlFor="name"
@@ -91,7 +90,7 @@ const contact = () => {
                 type="text"
                 id="name"
                 name="name"
-                className=" bg-transparent w-full py-2 border-b border-gray-700"
+                className=" bg-transparent w-full py-2 border-b shadow-gray-300"
                 placeholder="Twoje imię i nazwisko"
                 required
               />
@@ -108,7 +107,7 @@ const contact = () => {
                 type="email"
                 id="email"
                 name="email"
-                className="bg-transparent w-full py-2 border-b border-gray-700"
+                className="bg-transparent w-full py-2 border-b shadow-gray-300"
                 placeholder="Twój adres e-mail"
                 required
               />
@@ -124,7 +123,7 @@ const contact = () => {
               <textarea
                 id="message"
                 name="message"
-                className="bg-transparent w-full py-2 border-b border-gray-700"
+                className="bg-transparent w-full py-2 border-b shadow-gray-300"
                 placeholder="Twoja wiadomość"
                 required
               ></textarea>

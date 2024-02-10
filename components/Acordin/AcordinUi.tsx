@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { HiArrowCircleDown, HiX } from "react-icons/hi";
+import { FaPlus } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 
 interface AccordionUiProps {
@@ -11,12 +12,12 @@ const AccordionUi: React.FC<AccordionUiProps> = ({ title, answer }) => {
   const [accordionOpen, setAccordionOpen] = useState(false);
 
   return (
-    <section className="container w-full mx-auto px-2 lg:max-w-[90%] py-3 font-sans">
+    <section className="cnt lg:max-w-[70%] py-3 font-sans">
       <button
         onClick={() => setAccordionOpen(!accordionOpen)}
-        className="flex justify-between w-full items-center  border-b-2 border-b-gray-700  transition-all duration-300 p-4 hover:border-customColor "
+        className="flex justify-between w-full items-center bg-[#ffffff] p-4 shadow-lg transition-all  rounded-xl duration-300 shadow-[#e0e0e0] hover:shadow-gColor  "
       >
-        <span className="text-customColor text-[0.9rem] text-left font-thin mt-2 lg:text-[2rem]">
+        <span className="text-customColor text-[0.9rem] text-left font-[400] mt-2 lg:text-[1.2rem]">
           {title}
         </span>
         {accordionOpen ? (
@@ -25,14 +26,14 @@ const AccordionUi: React.FC<AccordionUiProps> = ({ title, answer }) => {
             size={20}
           />
         ) : (
-          <IoIosArrowDown
+          <FaPlus
             className="text-customColor shrink-0 ml-8"
             size={20}
           />
         )}
       </button>
       <div
-        className={`grid overflow-hidden mt-1 transition-all duration-300 ease-in-out text-gColor  text-[0.8rem] lg:text-[1.3rem] text-center md:text-left ${
+        className={`grid overflow-hidden mt-1 transition-all duration-300 ease-in-out text-customColor  text-[0.8rem] lg:text-[1rem] text-center md:text-left ${
           accordionOpen
             ? "grid-rows-[1fr] opacity-100"
             : "grid-rows-[0fr] opacity-0"

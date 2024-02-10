@@ -4,7 +4,7 @@ import CustomButton from "./CustomButton";
 
 const ContactBaner = () => {
   return (
-    <section className="container mx-auto min-h-[400px] flex items-center justify-center bg-cover mt-32  bg-center border-spacing-6 border-[1px] border-customColor mb-8 bg-contactBanner">
+    <section className="min-h-[400px] flex items-center justify-center bg-cover mt-32  bg-center border-spacing-6  mb-0 bg-contactBanner">
       <div className="text-center text-white">
         <h2 className="text-[1.4rem] md:text-[1.5rem] lg:text-[2.2rem] font-bold mb-4 font-sans">
           POROZMAWIAJMY O TWOIM{" "}

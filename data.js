@@ -40,22 +40,19 @@ import { FaChartLine } from "react-icons/fa";
 
 const MenuLinks = [
     {
-        icon: <IoMdHome />,
         link: "/",
-        name: 'S.Główna'
+        name: 'Start'
     },
     {
-        icon: <GrProjects />,
+        link: "/oferta",
+        name: 'Oferta'
+    },
+    {
         link: "/projects",
-        name: 'Projekty',
+        name: 'Realizacje',
     },
+    
     {
-        icon: <MdDesignServices />,
-        link: "/services",
-        name: 'Usługi',
-    },
-    {
-        icon: <HiOutlineMail />,
         link: "/contact",
         name: 'Kontakt',
     },

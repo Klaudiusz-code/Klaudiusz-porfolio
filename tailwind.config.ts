@@ -10,10 +10,10 @@ const config: Config = {
     extend: {
       backgroundImage: {
         contactBanner: `url('/ContactBanner1.png')`,
-        },
+      },
       colors: {
-        bgColor: '#252B39',
-        customColor: '#34C0C9',
+        bgColor: '#1a1e29',
+        customColor: '#0077cc',
         gColor: '#9ea0a3',
         boxColor: 'rgba(34, 54, 62,0.3)',
         hoverColor: 'rgba(40, 50, 61,0.9)',
