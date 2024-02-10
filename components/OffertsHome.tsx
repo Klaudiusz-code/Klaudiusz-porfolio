@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import OffertsWebsite from "@/public/OffertsWebsite.png";
-import OffertsStores from "@/public/OffertsStore.png";
+import OffertsStore from "@/public/OffertsStore.png";
 import OffertsSeo from "@/public/OffertsSeo.png";
 import OffertsCopyWriting from "@/public/OffertsCopyWriting.png";
 import OffertsModernization from "@/public/OffertsModernization.png";
@@ -17,7 +17,7 @@ const sectionsData = [
     buttonLink: "/websites",
   },
   {
-    image: OffertsStores,
+    image: OffertsStore,
     title: "Sklep Internetowy",
     description:
       "Rozpocznij sprzedaż online dzięki naszemu sklepowi internetowemu. Z moją pomocą Twoje produkty będą dostępne dla klientów na całym świecie. Zaufaj mnie, abyś mógł rozwijać swoją jednoosobową firmę w e-commerce.",
@@ -60,9 +60,7 @@ const OffertsHome = () => {
             key={index}
           >
             <div
-              className={`flex justify-center md:max-w-[70%] lg:max-w-[50%] lg:order-${
-                index % 2 === 0 ? 1 : 2
-              }`}
+              className={`flex justify-center md:max-w-[70%] lg:max-w-[50%] lg:order-${index % 2 === 0 ? 1 : 2}`}
             >
               <Image
                 src={section.image}
@@ -73,9 +71,7 @@ const OffertsHome = () => {
               />
             </div>
             <div
-              className={`flex flex-col text-center md:text-left max-w-[90%] lg:max-w-[50%] lg:order-${
-                index % 2 === 0 ? 2 : 1
-              } group`}
+              className={`flex flex-col text-center md:text-left max-w-[90%] lg:max-w-[50%] lg:order-${index % 2 === 0 ? 2 : 1} group`}
             >
               <h1 className="text-[2.2rem] text-white font-[400]">
                 {section.title}
