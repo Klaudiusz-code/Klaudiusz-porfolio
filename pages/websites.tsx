@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import ContactBaner from "@/components/ContactBaner";
-import BenefitsWebsiteImg from "@/public/benefitsWebsite.svg";
+import BenefitsWebsiteImg from "@/public/OffertsWebsite.png";
 import Image from "next/image";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Acordion from "@/components/Acordin/Acordion";
