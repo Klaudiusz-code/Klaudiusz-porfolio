@@ -56,11 +56,15 @@ const OffertsHome = () => {
       <div className="cnt mx-auto py-6">
         {sectionsData.map((section, index) => (
           <div
-            className="flex flex-col lg:flex-row mt-6 justify-center lg:justify-between items-center"
+            className={`flex flex-col lg:flex-row mt-6 justify-center lg:justify-between items-center ${
+              index % 1 === 1? "" : "lg:flex-row-reverse"
+            }`}
             key={index}
           >
             <div
-              className={`flex justify-center md:max-w-[70%] lg:max-w-[50%] lg:order-${index % 2 === 0 ? 1 : 2}`}
+              className={`flex justify-center md:max-w-[70%] lg:max-w-[50%] ${
+                index % 2 === 0 ? "" : "lg:order-2"
+              }`}
             >
               <Image
                 src={section.image}
@@ -71,7 +75,9 @@ const OffertsHome = () => {
               />
             </div>
             <div
-              className={`flex flex-col text-center md:text-left max-w-[90%] lg:max-w-[50%] lg:order-${index % 2 === 0 ? 2 : 1} group`}
+              className={`flex flex-col text-center md:text-left max-w-[90%] lg:max-w-[50%] ${
+                index % 2 === 0 ? "lg:order-2" : ""
+              } group`}
             >
               <h1 className="text-[2.2rem] text-white font-[400]">
                 {section.title}
