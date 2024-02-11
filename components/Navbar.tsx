@@ -40,6 +40,7 @@ const Navbar = () => {
                 <span className="font-[400] text-customColor">{link.name}</span>
               </Link>
             ))}
+            <ButtonContact buttonText="Darmowa Wycena" />
           </nav>
           <div className="md:hidden">
             <button
@@ -59,14 +60,18 @@ const Navbar = () => {
                     key={index}
                     onClick={closeNav}
                   >
-                    <span className="text-customColor font-[400]">{link.name}</span>
+                    <span className="text-customColor font-[400]">
+                      {link.name}
+                    </span>
                   </Link>
                 ))}
+                <div className="w-full mx-auto block text-center">
+                  <ButtonContact buttonText="Darmowa Wycena" />
+                </div>
               </nav>
             )}
           </div>
         </div>
-        <ButtonContact buttonText="Darmowa Wycena" />
       </section>
     </>
   );
