@@ -5,7 +5,7 @@ import { MySkills } from "@/data";
 
 const Tools = () => {
   return (
-    <div className="cnt mt-16 mb-4 text-center">
+    <div className="cnt mt-16 mb-4 text-center mx-auto">
       <h2 className="text-[1.8rem] md:text-[2rem] lg:text-[2.4rem] font-thin text-[#10152e] mt-12 tracking-wide">
         <span className="text-customColor font-bold">Moje </span>
         Narzędzia i Technologie
@@ -17,7 +17,7 @@ const Tools = () => {
         tworzenie wysokiej jakości aplikacji internetowych. Poniżej znajdziesz
         listę niektórych z nich..
       </p>{" "}
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 gap-x-24 justify-center">
+      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 gap-x-24 justify-center">
         {MySkills.map((skill, index) => (
           <SkillItem key={index} skill={skill} />
         ))}
