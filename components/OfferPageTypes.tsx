@@ -34,15 +34,15 @@ const OfferPageTypes = () => {
         {data.map((item, index) => (
           <div
             key={index}
-            className="relative flex flex-col items-center  text-center text-customColor py-6 min-h-[250px] max-w-[350px]  xl:min-h-[450px] rounded-lg bg-[#4e58eb] group"
+            className="relative flex flex-col items-center  text-center text-customColor py-6 min-h-[250px] max-w-[350px] bg-slate-100  xl:min-h-[450px] rounded-lg shadow-lg  shadow-[#e0e0e0] hover:shadow-gColor group"
           >
-            <div className="absolute -top-8 bg-customColor h-16 w-20 flex items-center justify-center  rounded-lg group-hover:bg-[#fff] transition-all duration-300">
+            <div className="absolute -top-8 bg-customColor h-16 w-20 flex items-center justify-center  rounded-lg group-hover:bg-bgColor transition-all duration-300">
               <span className="text-white font-sans font-[600] text-[1.5rem] group-hover:text-customColor">
                 {item.num}
               </span>
             </div>
             <div>
-              <h2 className="mt-8 text-white font-sans text-[2rem] font-[600]">
+              <h2 className="mt-8 text-bgColor font-sans text-[2rem] font-[600]">
                 {item.title}
               </h2>
               <p className="text-[#9b9b9b] text-[0.875rem] lg:text-[1.4rem] xl:text-[1.1rem] font-sans mt-2 mb-4 max-w-[90%] mx-auto leading-8">
@@ -50,8 +50,8 @@ const OfferPageTypes = () => {
               </p>
               <div className="mb-6 lg:mb-3">
                 <CustomButton
-                  bgColor="#fff"
-                  textColor="#2a3245"
+                  bgColor="#0077cc"
+                  textColor="#fff"
                   text="Darmowa Wycena Projektu"
                   link="/contact"
                 />
@@ -60,7 +60,7 @@ const OfferPageTypes = () => {
           </div>
         ))}
       </div>
-      <FreeProjectEstimation/>
+      <FreeProjectEstimation />
     </section>
   );
 };
