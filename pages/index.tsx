@@ -42,7 +42,7 @@ const Home = () => {
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="mx-auto font-[700] text-white w-full font-sans text-[1.7rem] mt-4 md:max-w-[80%] sm:text-[2rem] lg:text-[2.9rem] mb-4 tracking-wide"
+              className="mx-auto font-[700] text-white w-full font-sans text-[1.7rem] mt-2 md:max-w-[80%] sm:text-[2rem] lg:text-[2.9rem] mb-4 tracking-wide"
             >
               Ciekawi Cię, jak skutecznie wypromować swoją firmę czy projekt w
               sieci?
