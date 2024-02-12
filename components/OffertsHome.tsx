@@ -56,7 +56,7 @@ const OffertsHome = () => {
       <div className="cnt mx-auto py-6">
         {sectionsData.map((section, index) => (
           <div
-            className={`flex flex-col lg:flex-row mt-6 justify-center lg:justify-between items-center ${
+            className={`flex flex-col lg:flex-row mt-12 lg:mt-6 max-w-[95%] mx-auto justify-center lg:justify-between items-center ${
               index % 1 === 1? "" : "lg:flex-row-reverse"
             }`}
             key={index}
@@ -79,7 +79,7 @@ const OffertsHome = () => {
                 index % 2 === 0 ? "lg:order-2" : ""
               } group`}
             >
-              <h1 className="text-[2.2rem] text-white font-[400]">
+              <h1 className="text-[1.9rem] lg:text-[2.2rem] text-white font-[400] mb-4 mt-3 lg:mt-0 lg:mb-2">
                 {section.title}
               </h1>
               <p className="mt-2 text-[1rem] font-thin text-[#dbdbdb] leading-7 mb-3 tracking-wide">
