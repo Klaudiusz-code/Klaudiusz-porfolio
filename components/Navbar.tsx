@@ -33,11 +33,13 @@ const Navbar = () => {
               <Link
                 className={`${
                   link.link === currentPathname && "text-[#34C0C9]"
-                } text-[0.9rem] lg:text-[1rem] xl:text-[1.1rem] text-bgColor hover:text-customColor`}
+                } text-[0.9rem] lg:text-[1rem] xl:text-[1.1rem] text-bgColor flex flex-row items-center hover:text-bgColor`}
                 href={link.link}
                 key={index}
               >
                 <span className="font-[400] text-customColor">{link.name}</span>
+                <span className="ml-2 text-customColor">{link.icon}</span>
+
               </Link>
             ))}
             <ButtonContact buttonText="Darmowa Wycena" />
@@ -65,7 +67,7 @@ const Navbar = () => {
                     </span>
                   </Link>
                 ))}
-                <div className="w-full mx-auto block text-center">
+                <div className="w-full mt-2 mx-auto block text-center">
                   <ButtonContact buttonText="Darmowa Wycena" />
                 </div>
               </nav>
