@@ -3,12 +3,7 @@ import { HiArrowCircleDown, HiX } from "react-icons/hi";
 import { FaPlus } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 
-interface AccordionUiProps {
-  title: string;
-  answer: string;
-}
-
-const AccordionUi: React.FC<AccordionUiProps> = ({ title, answer }) => {
+const AccordionUi = ({ title, answer }: { title: string; answer: string }) => {
   const [accordionOpen, setAccordionOpen] = useState(false);
 
   return (
@@ -26,10 +21,7 @@ const AccordionUi: React.FC<AccordionUiProps> = ({ title, answer }) => {
             size={20}
           />
         ) : (
-          <FaPlus
-            className="text-customColor shrink-0 ml-8"
-            size={20}
-          />
+          <FaPlus className="text-customColor shrink-0 ml-8" size={20} />
         )}
       </button>
       <div
