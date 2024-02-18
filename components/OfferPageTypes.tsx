@@ -60,7 +60,6 @@ const OfferPageTypes = () => {
           </div>
         ))}
       </div>
-      <FreeProjectEstimation />
     </section>
   );
 };
