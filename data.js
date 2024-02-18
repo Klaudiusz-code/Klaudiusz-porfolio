@@ -48,21 +48,6 @@ const MenuLinks = [
     name: "Start",
   },
   {
-    link: "/",
-    name: "Oferta",
-    icon: <GoPlus />,
-    submenu: [
-      {
-        link: "/oferta/option1",
-        name: "Opcja 1",
-      },
-      {
-        link: "/oferta/option2",
-        name: "Opcja 2",
-      },
-    ],
-  },
-  {
     link: "/projects",
     name: "Realizacje",
   },
