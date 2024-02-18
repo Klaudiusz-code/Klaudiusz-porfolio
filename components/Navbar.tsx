@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { MenuLinks, subMenu } from "@/data";
+import { MenuLinks} from "@/data";
 import Link from "next/link";
 import ButtonContact from "./ButtonContact";
 import { IoIosMenu, IoIosArrowDown } from "react-icons/io";
