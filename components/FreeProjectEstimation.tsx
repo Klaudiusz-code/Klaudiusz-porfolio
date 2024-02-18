@@ -26,7 +26,7 @@ const FreeProjectEstimation = () => {
         <CustomButton
           bgColor="#fff"
           textColor="#0077cc"
-          text="Skontaktuj Się"
+          text="Napisz do mnie!"
           link="/contact"
         />
       </div>
