@@ -6,6 +6,7 @@ import Image from "next/image";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Acordion from "@/components/Acordin/Acordion";
 import { AiFillCheckSquare } from "react-icons/ai";
+import FreeProjectEstimation from "@/components/FreeProjectEstimation";
 import CustomButton from "@/components/CustomButton";
 import OfferPageTypes from "@/components/OfferPageTypes";
 const Websites = () => {
@@ -69,55 +70,57 @@ const Websites = () => {
 
   return (
     <section>
-       <header className="bg-customColor text-center py-6">
-          <h1 className="text-white font-[500] font-sans text-[2rem] md:text-[2.5rem] xl:text-[3.7rem] ml-3 md:ml-1 lg:ml-0 mb-2 tracking-wide">
-            Strona Internetowa
-          </h1>
-        </header>
+      <header className="bg-slate-300 text-center py-6">
+        <h1 className="text-bgColor font-[500] font-sans text-[2rem] md:text-[2.5rem] xl:text-[3.3rem] ml-3 md:ml-1 lg:ml-0 mb-2 tracking-wide">
+          Strona Internetowa
+        </h1>
+      </header>
+      <div></div>
       <div className="cnt mt-12">
         <motion.div
           initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.7 }}
-          className="w-full p-8 md:p-10 lg:p-14 bg-slate-100 shadow-lg rounded-2xl shadow-[#cfcfcf] mt-6  md:mt-8 xl:mt-10 mb-6"
+          className="w-full mt-6  md:mt-8 xl:mt-10 mb-6"
         >
           <h2 className="text-[#2f3d66] text-[1.8rem] md:text-[1.6rem] xl:text-[2.4rem]">
             Moja Oferta dla Twojej Strony Internetowej:{" "}
           </h2>
-          <div className="mt-8">
-            <ul className="mt-3flex flex-wrap">
-              {websiteServiceOptions.map((item, index) => (
-                <li
-                  key={index}
-                  className="mt-2 ml-2 text-[0.9rem] sm:text-[1.1rem] lg:text-[1.2rem] font-[400] tracking-wide text-[#0077cc] font-sans mb-3 flex items-start"
-                >
-                  <span className="text-[1.3rem] text-[#0077cc] flex-shrink-0 mr-2 mt-1">
-                    <AiFillCheckSquare />
-                  </span>
-                  <span className="whitespace-normal">{item.title}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="flex justify-center md:justify-start mt-6">
-              <CustomButton
-                text="Darmowa Wycena Projektu"
-                bgColor="#0077cc"
-                textColor="#fff"
-                link="/contact"
-              />
-            </div>
+
+          <ul className="mt-3">
+            {websiteServiceOptions.map((item, index) => (
+              <li
+                key={index}
+                className="mt-6 text-[0.9rem] sm:text-[1.1rem] lg:text-[1.2rem] font-[400] tracking-wide text-[#0077cc] font-sans mb-3 flex items-start"
+              >
+                <span className="text-[1.3rem] text-[#0077cc] flex-shrink-0 mr-2 mt-1">
+                  <AiFillCheckSquare />
+                </span>
+                <span className="whitespace-normal">{item.title}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="flex justify-center md:justify-start mt-6">
+            <CustomButton
+              text="Darmowa Wycena Projektu"
+              bgColor="#0077cc"
+              textColor="#fff"
+              link="/contact"
+            />
           </div>
         </motion.div>
-        <div className="flex flex-row items-center justify-between font-sans mt-28 p-8 md:p-10 lg:p-14 min-h-[500px] bg-slate-100  shadow-lg rounded-2xl shadow-[#cfcfcf] l group relative">
+      </div>
+      <div className="min-h-[500px] bg-customColor  shadow-lg  shadow-[#cfcfcf] group relative">
+        <div className="cnt mx-auto flex flex-row items-center justify-between font-sans mt-28 p-8 md:p-10 lg:px-3 lg:py-16">
           <div className="w-full lg:max-w-[50%] ">
-            <h2 className="text-[#2f3d66] text-[1.8rem] md:text-[1.6rem] xl:text-[2.4rem]">
+            <h2 className="text-white text-[1.8rem] md:text-[1.6rem] xl:text-[2.4rem]">
               Korzyści z Posiadania Strony
             </h2>
-            <ul className="mt-5 list-disc pl-4 lg:pl-6">
+            <ul className="mt-5 list-disc pl-2 lg:pl-4">
               {data.map((data, index) => (
                 <li
                   key={index}
-                  className="text-[0.9rem] sm:text-[1.1rem] lg:text-[1.2rem] mt-3 text-[#0077cc] tracking-wide leading-6"
+                  className="text-[0.9rem] sm:text-[1.1rem] lg:text-[1.2rem] mt-3 text-gray-300 tracking-wide leading-6"
                 >
                   {data.description}
                 </li>
@@ -126,8 +129,8 @@ const Websites = () => {
             <div className="flex justify-center md:justify-start mt-6">
               <CustomButton
                 text="Darmowa Wycena Projektu"
-                bgColor="#0077cc"
-                textColor="#fff"
+                bgColor="#fff"
+                textColor="#0077cc"
                 link="/contact"
               />
             </div>
@@ -143,12 +146,15 @@ const Websites = () => {
             />
           </div>
         </div>
-        <OfferPageTypes />
-        <div className="mt-16 md:mt-20 lg:mt-24">
-          <Acordion />
-        </div>
-        <WhyChooseUs />
       </div>
+      <OfferPageTypes />
+      <div className="mt-16 md:mt-20 lg:mt-24">
+        <FreeProjectEstimation />
+
+        <Acordion />
+      </div>
+      <WhyChooseUs />
+
       <ContactBaner />
     </section>
   );
