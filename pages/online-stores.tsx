@@ -4,6 +4,7 @@ import ContactBaner from "@/components/ContactBaner";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import { AiFillCheckSquare } from "react-icons/ai";
 import CustomButton from "@/components/CustomButton";
+import womanOnlineStores from "@/public/womanOnlineStores.jpg";
 import Image from "next/image";
 import OffertStore from "@/public/OffertsStore.png";
 const ecommerceWebsiteServiceOptions = [
@@ -70,51 +71,80 @@ const korzysciSklepuInternetowego = [
 const onlineStores = () => {
   return (
     <section>
-      <header className="bg-customColor text-center py-6">
-        <h1 className="text-white font-sans text-[2.2rem] md:text-[2.5rem] xl:text-[3.7rem] ml-3 md:ml-1 lg:ml-0 mb-2 tracking-wide">
-          Sklep Internetowy
-        </h1>
-      </header>
-      <div className="cnt mt-12">
-        <div className="w-full p-8 md:p-10 lg:p-14 bg-slate-100 shadow-lg rounded-2xl shadow-[#cfcfcf] mt-6  md:mt-8 xl:mt-10 mb-6">
-          <h2 className="text-[#2f3d66] text-left font-sans text-[1.8rem] md:text-[1.6rem] xl:text-[2.4rem]">
-            Moja Oferta dla Twojejego Sklepu Online:{" "}
-          </h2>
-          <div className="mt-8">
-            <ul className="mt-3 flex flex-wrap">
-              {ecommerceWebsiteServiceOptions.map((item, index) => (
-                <li
-                  key={index}
-                  className="mt-1 text-[0.9rem] sm:text-[1.1rem] lg:text-[1.2rem] font-[400] tracking-wide text-[#0077cc] font-sans mb-3 flex items-start"
-                >
-                  <span className="text-[1.3rem] text-[#0077cc] flex-shrink-0 mr-2 mt-1">
-                    <AiFillCheckSquare />
-                  </span>
-                  <span className="whitespace-normal">{item.title}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="flex justify-center md:justify-start mt-6">
-              <CustomButton
-                text="Darmowa Wycena Projektu"
-                bgColor="#0077cc"
-                textColor="#fff"
-                link="/contact"
-              />
-            </div>
-          </div>
+      <header className="flex flex-col md:flex-row items-center px-2 justify-between cnt font-sans py-14">
+        <div className="md:w-2/4 md:mr-6 order-2 md:order-1">
+          <h1 className="text-bgColor leading-9 mt-6 font-semibold font-sans text-3xl md:text-4xl xl:text-6xl mb-2 tracking-wide">
+            <span className="text-[#0077cc]">Sklep internetowy</span> - Twoje
+            centrum sprzedaży online
+          </h1>
+          <p className="text-[#666] text-lg mb-6 mt-4 tracking-wide">
+            Wdrożę dla Ciebie nowoczesny sklep internetowy, który nie tylko
+            przyciągnie klientów, ale również zwiększy Twoją sprzedaż w świecie
+            e-commerce.
+          </p>
+          <CustomButton
+            text="Darmowa Wycena Projektu"
+            bgColor="#0077cc"
+            textColor="#fff"
+            link="/contact"
+          />
         </div>
-        <div className="flex flex-row items-center justify-between font-sans mt-28 p-8 md:p-10 lg:p-14 min-h-[500px] bg-slate-100 shadow-lg rounded-2xl shadow-[#cfcfcf]  group relative">
+        <div className="md:w-2/5 order-1 md:order-2">
+          <Image
+            src={womanOnlineStores}
+            alt="kobieta sprawdzająca stronę"
+            className="rounded-lg max-w-full h-auto"
+          />
+        </div>
+      </header>
+
+      <div className="cnt mt-6 md:mt-16 lg:mt-24">
+        <div className="w-full mt-3  md:mt-8 xl:mt-10 mb-6">
+          <h2 className="text-[#2f3d66] text-4xl md:text-5xl xl:text-6xl">
+            Profesjonalne sklepy internetowe dla Twojej firmy.
+          </h2>
+
+          <p className="mt-3 text-slate-600 w-full sm:max-w-[90%] md:max-w-[80%] leading-7 text-[1.1rem] font-sans">
+            W dzisiejszym szybko zmieniającym się świecie, sklep internetowy
+            jest nieodzownym narzędziem, które pozwala firmom osiągnąć sukces w
+            erze e-commerce. Posiadanie własnego sklepu online otwiera przed
+            firmą wiele możliwości.
+          </p>
+
+          <p className="mt-3 text-slate-600 w-full sm:max-w-[90%] md:max-w-[80%] leading-7 text-[1.1rem] font-sans">
+            Sklep internetowy działa przez całą dobę, siedem dni w tygodniu, co
+            oznacza, że klient ma dostęp do oferty firmy o każdej porze,
+            niezależnie od godzin pracy. To elastyczność, którą zapewnia
+            nowoczesna technologia.
+          </p>
+
+          <p className="mt-3 text-slate-600 w-full sm:max-w-[90%] md:max-w-[80%] leading-7 text-[1.1rem] font-sans">
+            Profesjonalnie zaprojektowany sklep internetowy pomaga w budowaniu
+            wizerunku i marki firmy, ułatwiając komunikację z klientami oraz
+            zarządzając wszelkimi informacjami dotyczącymi produktów, usług, cen
+            i kontaktów.
+          </p>
+
+          <p className="mt-3 text-slate-600 w-full sm:max-w-[90%] md:max-w-[80%] leading-7 text-[1.1rem] font-sans">
+            Sklep internetowy umożliwia również lepsze zrozumienie klientów.
+            Dzięki narzędziom analitycznym można monitorować ruch na stronie
+            sklepu, co pozwala śledzić obecność i czas spędzany przez klientów
+            na witrynie oraz dostosować odpowiednią strategię marketingową.
+          </p>
+        </div>
+      </div>
+
+      <div className="min-h-[500px] bg-customColor  shadow-lg  shadow-[#cfcfcf] group relative">
+        <div className="cnt mx-auto flex flex-row items-center justify-between font-sans mt-28 p-8 md:p-10 lg:px-3 lg:py-16">
           <div className="w-full sm:max-w-[40%] md:max-w-[50%] ">
-            <h2 className="text-[#2f3d66] text-[1.8rem] md:text-[1.6rem] xl:text-[2.4rem]">
+            <h2 className="text-white text-[1.8rem] md:text-[1.6rem] xl:text-[2.4rem]">
               Korzyści z Posiadania Sklepu Online
             </h2>
             <ul className="mt-5 list-disc pl-4 lg:pl-6">
               {korzysciSklepuInternetowego.map((korzysc) => (
                 <li
                   key={korzysc.id}
-                  className="text-[0.9rem] sm:text-[1.1rem] lg:text-[1.2rem] mt-3 text-[#0077cc] tracking-wide leading-6"
+                  className="text-[0.9rem] sm:text-[1.1rem] lg:text-[1.2rem] mt-3 text-gray-300 tracking-wide leading-6"
                 >
                   {korzysc.text}
                 </li>
@@ -123,8 +153,8 @@ const onlineStores = () => {
             <div className="flex justify-center md:justify-start mt-6">
               <CustomButton
                 text="Darmowa Wycena Projektu"
-                bgColor="#0077cc"
-                textColor="#fff"
+                bgColor="#fff"
+                textColor="#0077cc"
                 link="/contact"
               />
             </div>
@@ -140,10 +170,9 @@ const onlineStores = () => {
             />
           </div>
         </div>
-
-        <WhyChooseUs />
-        <Acordion />
       </div>
+      <WhyChooseUs />
+      <Acordion />
       <ContactBaner />
     </section>
   );
