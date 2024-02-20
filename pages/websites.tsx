@@ -9,6 +9,7 @@ import { AiFillCheckSquare } from "react-icons/ai";
 import FreeProjectEstimation from "@/components/FreeProjectEstimation";
 import CustomButton from "@/components/CustomButton";
 import OfferPageTypes from "@/components/OfferPageTypes";
+import womanWeb from "@/public/womanWeb.jpeg";
 const Websites = () => {
   const data = [
     {
@@ -70,49 +71,73 @@ const Websites = () => {
 
   return (
     <section>
-      <header className="bg-slate-300 text-center py-6">
-        <h1 className="text-bgColor font-[500] font-sans text-[2rem] md:text-[2.5rem] xl:text-[3.3rem] ml-3 md:ml-1 lg:ml-0 mb-2 tracking-wide">
-          Strona Internetowa
-        </h1>
+      <header className="flex flex-col md:flex-row items-center justify-between cnt font-sans py-14">
+        <div className="md:w-2/4 md:mr-6 order-2 md:order-1">
+          <h1 className="text-bgColor leading-9 mt-6 font-semibold font-sans text-3xl md:text-4xl xl:text-6xl mb-2 tracking-wide">
+            <span className="text-customColor">Strona internetowa</span> - znam
+            sekret wyróżnienia Twojego biznesu
+          </h1>
+          <p className="text-gray-700 text-lg mb-6 mt-4 tracking-wide">
+            Zaprojektuje i stworzę stronę internetową, która wyróżni Twoją firmę
+            w cyfrowym świecie.
+          </p>
+          <CustomButton
+            text="Darmowa Wycena Projektu"
+            bgColor="#0077cc"
+            textColor="#fff"
+            link="/contact"
+          />
+        </div>
+        <div className="md:w-2/5 order-1 md:order-2">
+          <Image
+            src={womanWeb}
+            alt="kobieta sprawdzająca stronę"
+            className="rounded-lg max-w-full h-auto"
+          />
+        </div>
       </header>
-      <div></div>
-      <div className="cnt mt-12">
+
+      <div className="cnt mt-6 md:mt-16 lg:mt-24">
         <motion.div
           initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.7 }}
-          className="w-full mt-6  md:mt-8 xl:mt-10 mb-6"
+          className="w-full mt-3  md:mt-8 xl:mt-10 mb-6"
         >
-          <h2 className="text-[#2f3d66] text-[1.8rem] md:text-[1.6rem] xl:text-[2.4rem]">
-            Moja Oferta dla Twojej Strony Internetowej:{" "}
+          <h2 className="text-[#2f3d66] text-4xl md:text-5xl xl:text-6xl">
+            Profesjonalne strony internetowe dla firm.
           </h2>
 
-          <ul className="mt-3">
-            {websiteServiceOptions.map((item, index) => (
-              <li
-                key={index}
-                className="mt-6 text-[0.9rem] sm:text-[1.1rem] lg:text-[1.2rem] font-[400] tracking-wide text-[#0077cc] font-sans mb-3 flex items-start"
-              >
-                <span className="text-[1.3rem] text-[#0077cc] flex-shrink-0 mr-2 mt-1">
-                  <AiFillCheckSquare />
-                </span>
-                <span className="whitespace-normal">{item.title}</span>
-              </li>
-            ))}
-          </ul>
-          <div className="flex justify-center md:justify-start mt-6">
-            <CustomButton
-              text="Darmowa Wycena Projektu"
-              bgColor="#0077cc"
-              textColor="#fff"
-              link="/contact"
-            />
-          </div>
+          <p className="mt-3 text-slate-600 w-full sm:max-w-[90%] md:max-w-[80%] leading-7 text-[1.1rem] font-sans">
+            W dzisiejszym dynamicznym świecie, strona internetowa jest kluczowym
+            narzędziem, które pozwala firmom na osiągnięcie sukcesu w erze
+            cyfrowej. Posiadanie strony internetowej otwiera przed firmą wiele
+            możliwości.
+          </p>
+          <p className="mt-3 text-slate-600 w-full sm:max-w-[90%] md:max-w-[80%] leading-7 text-[1.1rem] font-sans">
+            Strona działa przez całą dobę, siedem dni w tygodniu, co oznacza, że
+            klient ma dostęp do informacji o firmie o dowolnej porze,
+            niezależnie od godzin pracy. To elastyczność, którą zapewnia
+            nowoczesna technologia.
+          </p>
+          <p className="mt-3 text-slate-600 w-full sm:max-w-[90%] md:max-w-[80%] leading-7 text-[1.1rem] font-sans">
+            Dobrze zaprojektowana strona internetowa pomaga budować wizerunek i
+            markę firmy, ułatwia komunikację z klientami oraz zarządza wszelkimi
+            informacjami dotyczącymi produktów, usług, cen i kontaktów.
+          </p>
+          <p className="mt-3 text-slate-600 w-full sm:max-w-[90%] md:max-w-[80%] leading-7 text-[1.1rem] font-sans">
+            Strona internetowa pozwala również lepiej zrozumieć klientów, dzięki
+            narzędziom analitycznym można monitorować ruch na stronie
+            internetowej, co pozwala śledzić obecność i czas spędzany przez
+            klientów na witrynie oraz dostosować pod to odpowiednią strategię
+            marketingową.{" "}
+          </p>
         </motion.div>
       </div>
+
       <div className="min-h-[500px] bg-customColor  shadow-lg  shadow-[#cfcfcf] group relative">
         <div className="cnt mx-auto flex flex-row items-center justify-between font-sans mt-28 p-8 md:p-10 lg:px-3 lg:py-16">
-          <div className="w-full lg:max-w-[50%] ">
+          <div className="w-full sm:max-w-[40%] md:max-w-[50%] ">
             <h2 className="text-white text-[1.8rem] md:text-[1.6rem] xl:text-[2.4rem]">
               Korzyści z Posiadania Strony
             </h2>
@@ -150,11 +175,9 @@ const Websites = () => {
       <OfferPageTypes />
       <div className="mt-16 md:mt-20 lg:mt-24">
         <FreeProjectEstimation />
-
         <Acordion />
       </div>
       <WhyChooseUs />
-
       <ContactBaner />
     </section>
   );
