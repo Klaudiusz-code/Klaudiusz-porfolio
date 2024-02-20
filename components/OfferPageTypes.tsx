@@ -1,7 +1,5 @@
 import React from "react";
-import Link from "next/link";
 import CustomButton from "./CustomButton";
-import FreeProjectEstimation from "./FreeProjectEstimation";
 
 const data = [
   {
@@ -26,15 +24,15 @@ const data = [
 
 const OfferPageTypes = () => {
   return (
-    <section className="container  mx-auto mt-28">
-      <h3 className="text-bgColor text-[1.5rem] md:text-[2rem] lg:text-[2.4rem] font-sans font-bold text-center block">
-        Strony Internetowe dzielimy Na :
+    <section className="container text-center mx-auto mt-28">
+      <h3 className="text-f bg-customColor px-2 py-1 rounded-lg text-white text-[1.1rem] lg:text-[1.3rem] inline-block  font-sans text-center ">
+        Strony Internetowe dzielimy Na 
       </h3>
-      <div className="mt-16 flex flex-row flex-wrap  justify-center gap-y-12 gap-x-16">
+      <div className="mt-20 flex flex-row flex-wrap  justify-center gap-y-12 gap-x-16">
         {data.map((item, index) => (
           <div
             key={index}
-            className="relative flex flex-col items-center  text-center text-customColor py-6 min-h-[250px] max-w-[350px] bg-slate-100  xl:min-h-[450px] rounded-lg shadow-lg  shadow-[#e0e0e0] hover:shadow-gColor group"
+            className="relative flex flex-col items-center  text-center text-customColor py-6 min-h-[250px] max-w-[350px] bg-slate-50  xl:min-h-[450px] rounded-lg shadow-lg  shadow-slate-50 hover:shadow-gColor group"
           >
             <div className="absolute -top-8 bg-customColor h-16 w-20 flex items-center justify-center  rounded-lg group-hover:bg-bgColor transition-all duration-300">
               <span className="text-white font-sans font-[600] text-[1.5rem] group-hover:text-customColor">
