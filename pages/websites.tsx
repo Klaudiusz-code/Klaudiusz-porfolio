@@ -1,11 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 import ContactBaner from "@/components/ContactBaner";
-import BenefitsWebsiteImg from "@/public/OffertsWebsite.png";
 import Image from "next/image";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Acordion from "@/components/Acordin/Acordion";
-import { AiFillCheckSquare } from "react-icons/ai";
 import FreeProjectEstimation from "@/components/FreeProjectEstimation";
 import CustomButton from "@/components/CustomButton";
 import OfferPageTypes from "@/components/OfferPageTypes";
@@ -13,59 +11,34 @@ import womanWeb from "@/public/womanWeb.jpeg";
 const Websites = () => {
   const data = [
     {
-      id: 1,
-      description:
-        "Dotarcie do globalnej publiczności, zwiększając zasięg i wpływ działalności na międzynarodową skalę.",
+      number: 1,
+      title: "Zwiększenie wiarygodności",
+      desc: "Posiadanie profesjonalnej strony internetowej buduje zaufanie wśród klientów. Przejrzysty i estetyczny wygląd witryny oraz obecność istotnych informacji o firmie, produktach i usługach sprawiają, że firma wydaje się bardziej wiarygodna i profesjonalna.",
     },
     {
-      id: 2,
-      description:
-        "Szybki i łatwy dostęp do różnorodnych informacji na temat firmy, produktów, usług, itp.",
+      number: 2,
+      title: "Zwiększenie widoczności",
+      desc: "Profesjonalna strona internetowa, zoptymalizowana pod kątem SEO, może pomóc Twojej firmie w uzyskaniu wyższych pozycji w wynikach wyszukiwania Google, co oznacza większą widoczność dla potencjalnych klientów",
     },
     {
-      id: 3,
-      description: "Skuteczne narzędzie do promocji firmy i jej oferty.",
+      number: 3,
+      title: "Dostępność 24/7",
+      desc: "W przeciwieństwie do tradycyjnych punktów sprzedaży, strona internetowa jest dostępna dla klientów przez całą dobę, 7 dni w tygodniu. Dzięki temu klienci mogą dowiedzieć się więcej o firmie i jej produktach w dogodnym dla siebie czasie, co zwiększa szansę na konwersję",
     },
     {
-      id: 4,
-      description:
-        "Dotarcie do szerszej grupy odbiorców, zarówno na lokalnym, jak i globalnym rynku.",
+      number: 4,
+      title: "Łatwa aktualizacja informacji",
+      desc: "Profesjonalna strona internetowa umożliwia szybkie i łatwe aktualizowanie informacji o produktach, usługach, cenach czy kontaktach. Dzięki temu firma może błyskawicznie reagować na zmiany na rynku i utrzymywać swoją ofertę zawsze aktualną i atrakcyjną dla klientów.",
     },
     {
-      id: 5,
-      description: "Dwukierunkowa komunikacja z klientami.",
+      number: 5,
+      title: "Możliwość zbierania danych i analizy",
+      desc: "Poprzez narzędzia analityczne, takie jak Google Analytics, właściciele stron mogą śledzić zachowania użytkowników na stronie, analizować ruch, pozyskiwać dane demograficzne o swojej publiczności itp. Te informacje mogą być wykorzystane do lepszego zrozumienia klientów i dostosowywania oferty do ich potrzeb.",
     },
     {
-      id: 6,
-      description:
-        "Budowanie pozytywnego wizerunku marki poprzez profesjonalną stronę internetową.",
-    },
-  ];
-
-  const websiteServiceOptions = [
-    {
-      title: "zakup serwera i domeny",
-    },
-    {
-      title:
-        "Projektowanie strony przy użyciu systemu zarządzania treścią WordPress, Strapi",
-    },
-    {
-      title: "Konfiguracja kont pocztowych",
-    },
-    {
-      title: "Wdrożenie formularzy kontaktowych",
-    },
-    {
-      title:
-        "Integracja Google Analytics i Google Search Console dla śledzenia ruchu na stronie",
-    },
-    {
-      title: "Wzmocnienie zabezpieczeń strony",
-    },
-    {
-      title:
-        "Uzupełnienie treścią dostarczoną przez ciebie, lub stworzonej przeze mnie",
+      number: 6,
+      title: "Usprawnienie komunikacji z klientami",
+      desc: "Strona internetowa umożliwia łatwy kontakt z klientami poprzez formularze kontaktowe, czaty online, integracje z mediach społecznościowych itp. To ułatwia komunikację i współpracę z klientami, co może przyczynić się do budowy lojalności i zwiększenia satysfakcji klientów.",
     },
   ];
 
@@ -135,48 +108,41 @@ const Websites = () => {
         </motion.div>
       </div>
 
-      <div className="min-h-[500px] bg-customColor  shadow-lg  shadow-[#cfcfcf] group relative">
-        <div className="cnt mx-auto flex flex-row items-center justify-between font-sans mt-28 p-8 md:p-10 lg:px-3 lg:py-16">
-          <div className="w-full sm:max-w-[40%] md:max-w-[50%] ">
-            <h2 className="text-white text-[1.8rem] md:text-[1.6rem] xl:text-[2.4rem]">
-              Korzyści z Posiadania Strony
+      <div className="font-sans bg-slate-50 py-4 mt-20">
+        <div className="cnt mx-auto flex flex-col mt-4 py-6 lg:py-14">
+          <div className="w-full text-center">
+            <h2 className="text-gray-700 text-3xl md:text-xl xl:text-5xl font-bold">
+              <span className="text-customColor">Dlaczego</span> Twoja firma
+              potrzebuje unikalnej strony internetowej?
             </h2>
-            <ul className="mt-5 list-disc pl-2 lg:pl-4">
-              {data.map((data, index) => (
-                <li
+            <p className="text-gray-600 mt-3 text-lg md:text-base tracking-wide max-w-[80%] mx-auto">
+              Moja specjalność to tworzenie wyjątkowych stron internetowych,
+              które stanowią kluczową część sukcesu każdej firmy w dzisiejszym
+              cyfrowym świecie.
+            </p>
+            <div className="mt-8 flex flex-row  flex-wrap gap-x-8 ">
+              {data.map((item, index) => (
+                <div
                   key={index}
-                  className="text-[0.9rem] sm:text-[1.1rem] lg:text-[1.2rem] mt-3 text-gray-300 tracking-wide leading-6"
+                  className=" flex flex-col mt-6 border max-w-[90%] mx-auto border-customColor bg-white p-5 rounded-xl"
                 >
-                  {data.description}
-                </li>
+                  <div className="text-customColor text-left text-xl">
+                    <span className="bg-customColor py-1 px-3 rounded-md text-white">
+                      {item.number}
+                    </span>
+                    <span className="ml-3 text-gray-700">{item.title}</span>
+                  </div>
+                  <span className="text-gray-600 mt-2 text-left font-light md:text-lg tracking-wide">
+                    {item.desc}
+                  </span>
+                </div>
               ))}
-            </ul>
-            <div className="flex justify-center md:justify-start mt-6">
-              <CustomButton
-                text="Darmowa Wycena Projektu"
-                bgColor="#fff"
-                textColor="#0077cc"
-                link="/contact"
-              />
             </div>
-          </div>
-
-          <div className="max-w-[50%] h-full hidden lg:block">
-            <Image
-              src={BenefitsWebsiteImg}
-              width={500}
-              height={200}
-              className="mx-auto w-full group-hover:-translate-y-4 transition-all duration-500"
-              alt="Korzysci Ze Strony Internetowej"
-            />
           </div>
         </div>
       </div>
       <OfferPageTypes />
-      <div className="mt-16 md:mt-20 lg:mt-24">
-        <FreeProjectEstimation />
-        <Acordion />
-      </div>
+      <FreeProjectEstimation />
       <WhyChooseUs />
       <ContactBaner />
     </section>
