@@ -42,21 +42,6 @@ import { FaClockRotateLeft } from "react-icons/fa6";
 import { CiShoppingCart } from "react-icons/ci";
 import { FaChartLine } from "react-icons/fa";
 
-const MenuLinks = [
-  {
-    link: "/",
-    name: "Start",
-  },
-  {
-    link: "/projects",
-    name: "Realizacje",
-  },
-  {
-    link: "/contact",
-    name: "Kontakt",
-  },
-];
-
 const offertsLinks = [
   {
     title: "STRONA INTERNETOWA",
@@ -278,7 +263,6 @@ const BenefitsStores = [
 ];
 
 export {
-  MenuLinks,
   MySkills,
   MyServices,
   ContactIcon,
