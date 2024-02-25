@@ -10,7 +10,7 @@ const Tools = () => {
         <span className="text-customColor font-bold">Moje </span>
         Narzędzia i Technologie
       </h2>
-      <p className="max-w-[90%] md:max-w-[70%] lg:max-w-[60%] mx-auto text-[#4d4c4c] text-[0.9rem] md:text-[1rem] lg:text-[1.1rem] font-[400] leading-7 tracking-wide mt-6 font-sans">
+      <p className="max-w-full md:max-w-[70%] lg:max-w-[60%] mx-auto text-[#4d4c4c] text-[0.9rem] md:text-[1rem] lg:text-[1.1rem] font-[400] leading-7 tracking-wide mt-6 font-sans">
         Przedstawiam tutaj narzędzia, które wykorzystuję w mojej pracy jako web
         developer. W ciągu mojej kariery zebrałem doświadczenie w korzystaniu z
         różnorodnych technologii i narzędzi, które umożliwiają mi efektywne
