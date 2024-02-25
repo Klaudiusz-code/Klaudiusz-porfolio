@@ -115,7 +115,7 @@ const Websites = () => {
               <span className="text-customColor">Dlaczego</span> Twoja firma
               potrzebuje unikalnej strony internetowej?
             </h2>
-            <p className="text-gray-600 mt-3 text-lg md:text-base tracking-wide max-w-[80%] mx-auto">
+            <p className="text-gray-600 mt-3 text-lg md:text-base tracking-wide w-full md:max-w-[90%] lg:max-w-[80%] mx-auto">
               Moja specjalność to tworzenie wyjątkowych stron internetowych,
               które stanowią kluczową część sukcesu każdej firmy w dzisiejszym
               cyfrowym świecie.
