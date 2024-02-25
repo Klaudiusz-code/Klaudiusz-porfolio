@@ -9,7 +9,7 @@ const Aboutme = () => {
         <span className="text-customColor font-bold">Tworzę</span> Sklepy i
         Strony Internetowe
       </h2>
-      <div className="max-w-[90%] md:max-w-[70%] lg:max-w-[60%] text-center">
+      <div className="w-full md:max-w-[70%] lg:max-w-[60%] text-center">
         <p className=" text-[#4d4c4c] text-[0.9rem] md:text-[1rem] lg:text-[1.1rem] font-[400] leading-7 tracking-wide mt-8 font-sans">
           Witam, jestem Klaudiusz, freelancer z zamiłowaniem do programowania.
           Specjalizuję się zarówno w front-endzie, jak i backendzie, posiadając
