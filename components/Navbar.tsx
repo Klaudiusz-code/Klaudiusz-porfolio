@@ -4,13 +4,13 @@ import Link from "next/link";
 import { IoIosMenu, IoIosArrowDown } from "react-icons/io";
 import ButtonContact from "./ButtonContact";
 import { TbWorldWww } from "react-icons/tb";
-import { FaShoppingCart } from "react-icons/fa";
-
+import { FiShoppingCart } from "react-icons/fi";
 type MenuItem = {
   link: string;
   name: string;
   children?: MenuItem[];
-  icon?: React.ReactNode; 
+  icon?: React.ReactNode;
+  desc?: string;
 };
 
 type MenuItems = MenuItem[];
@@ -29,14 +29,16 @@ const MenuLinks: MenuItem[] = [
     link: "/oferta",
     children: [
       {
+        icon: <TbWorldWww />,
         link: "/websites",
         name: "Strona Internetowa",
-        icon: <TbWorldWww/>
+        desc: "Stwórz szybką stronę internetową.",
       },
       {
+        icon: <FiShoppingCart />,
         link: "/online-stores",
         name: "Sklep Internetowy",
-        icon: <FaShoppingCart/>
+        desc: "Zwiększ sprzedaż online.",
       },
     ],
   },
@@ -80,6 +82,7 @@ const Navbar = () => {
 
   const Dropdown = ({ items }: DropdownProps) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isSticky, setIsSticky] = useState(false);
 
     const toggleDropdown = () => {
       setIsOpen(!isOpen);
@@ -93,15 +96,27 @@ const Navbar = () => {
       setIsOpen(false);
     };
 
+    useEffect(() => {
+      const handleScroll = () => {
+        setIsSticky(window.scrollY >= 80);
+      };
+
+      window.addEventListener("scroll", handleScroll);
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }, []);
+
     return (
       <div
         onMouseEnter={openDropdown}
         onMouseLeave={closeDropdown}
-        className={`relative`}
+        className={`relative ${isSticky ? "sticky" : ""} top-0 z-40`}
       >
         <button
           onClick={toggleDropdown}
-          className="text-customColor flex justify-between text-lg text-center items-center font-sans"
+          className="text-customColor flex justify-between text-lg items-center font-sans"
         >
           Oferta
           <span className="ml-1">
@@ -110,18 +125,21 @@ const Navbar = () => {
         </button>
         {isOpen && (
           <div
-            className={`bg-white min-w-[250px] p-4 rounded-md transition-all duration-500 ${
-              !menu && "md:absolute"
-            }`}
+            className={`bg-white min-w-[330px] p-4 rounded-md transition-all duration-500 md:absolute`}
           >
             {items.map((item, index) => (
               <Link
                 href={item.link}
                 key={index}
-                className="hover:text-customColor flex items-center text-lg font-sans"
+                className="hover:text-customColor flex flex-row  font-sans hover:bg-slate-100 p-2 rounded-lg transition-all duration-300"
               >
-                <span>{item.icon}</span>
-                <span className="block py-1 ml-2">{item.name}</span>
+                <span className="text-customColor text-2xl mt-3">
+                  {item.icon}
+                </span>
+                <div className="flex flex-col justify-center ml-2">
+                  <span className="block py-1  text-lg">{item.name}</span>
+                  <span className="text-gColor text-sm">{item.desc}</span>
+                </div>
               </Link>
             ))}
           </div>
@@ -149,7 +167,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="flex items-center">
-          <nav className="hidden md:flex gap-y-4 gap-x-9 flex-row items-center justify-center font-sans ">
+          <nav className="hidden md:flex gap-y-4 gap-x-6 flex-row items-center justify-center font-sans ">
             {MenuLinks.map((link, index) =>
               link.children && link.children.length > 0 ? (
                 <Dropdown key={index} items={link.children as MenuItems} />
@@ -199,7 +217,7 @@ const Navbar = () => {
                 )
               )}
               <div className="mt-3">
-              <ButtonContact buttonText="Darmowa Wycena" />
+                <ButtonContact buttonText="Darmowa Wycena" />
               </div>
             </nav>
           </div>
