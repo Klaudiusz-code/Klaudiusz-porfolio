@@ -75,7 +75,7 @@ const OffertsHome = () => {
               />
             </div>
             <div
-              className={`flex flex-col text-center md:text-left max-w-[90%] lg:max-w-[50%] ${
+              className={`flex flex-col text-center md:text-left w-full md:max-w-[80%] lg:max-w-[50%] ${
                 index % 2 === 0 ? "lg:order-2" : ""
               } group`}
             >
