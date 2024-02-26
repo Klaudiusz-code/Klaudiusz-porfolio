@@ -72,8 +72,8 @@ const onlineStores = () => {
   return (
     <section>
       <header className="flex flex-col md:flex-row items-center px-2 justify-between cnt font-sans py-14">
-        <div className="md:w-2/4 md:mr-6 order-2 md:order-1">
-          <h1 className="text-bgColor leading-9 mt-6 font-semibold font-sans text-3xl md:text-4xl xl:text-6xl mb-2 tracking-wide">
+        <div className="md:w-[40%] md:mr-6 order-2 md:order-1">
+        <h1 className="text-bgColor leading-9 mt-6 font-semibold font-sans text-3xl md:text-3xl xl:text-5xl mb-2 tracking-wide">
             <span className="text-[#0077cc]">Sklep internetowy</span> - Twoje
             centrum sprzedaży online
           </h1>
@@ -100,7 +100,7 @@ const onlineStores = () => {
 
       <div className="cnt mt-6 md:mt-16 lg:mt-24">
         <div className="w-full mt-3  md:mt-8 xl:mt-10 mb-6">
-          <h2 className="text-[#2f3d66] text-4xl md:text-5xl xl:text-6xl">
+          <h2 className="text-[#2f3d66] text-4xl md:text-4xl xl:text-5xl">
             Profesjonalne sklepy internetowe dla Twojej firmy.
           </h2>
 
