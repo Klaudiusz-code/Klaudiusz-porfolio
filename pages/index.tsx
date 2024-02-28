@@ -11,6 +11,7 @@ import OffertsHome from "@/components/OffertsHome";
 import Acordion from "@/components/Acordin/Acordion";
 import Tools from "@/components/Tools";
 import ContactBaner from "@/components/ContactBaner";
+import Blog from "@/components/Blog";
 
 const Home = () => {
   return (
@@ -36,7 +37,7 @@ const Home = () => {
       </Head>
 
       <section className="bg-customColor">
-        <div className="cnt relative mx-auto py-16 min-h-[700px]  flex items-center justify-center text-center flex-col bg-body-bg">
+        <div className="cnt relative mx-auto py-6 md:py-10 lg:py-14 min-h-[700px]  flex items-center justify-center text-center flex-col bg-body-bg">
           <div className="w-full h-full lg:pr-8  py-6 xl:mt-6 ">
             <motion.h1
               initial={{ opacity: 0, x: -100 }}
@@ -82,6 +83,7 @@ const Home = () => {
         <Tools />
         <WhyChooseUs />
         <FreeProjectEstimation />
+        <Blog />
         <Acordion />
         <ContactBaner />
       </section>
