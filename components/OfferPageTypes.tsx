@@ -16,9 +16,9 @@ const data = [
   },
   {
     num: 3,
-    title: "Portal internetowy",
+    title: "Blog",
     description:
-      "Portal internetowy pełni rolę informacyjną. Jest to rodzaj serwisu, w którym użytkownicy szukają aktualności w konkretnych dziedzinach. Rozbudowane sekcje z możliwością wyszukiwania interesujących zagadnień motywują do tworzenia przejrzystych projektów.",
+      "Blog pełni rolę informacyjną. Jest to rodzaj serwisu, w którym użytkownicy mogą znaleźć wartościowe treści na różnorodne tematy. Regularne publikowanie nowych wpisów motywuje czytelników do odwiedzania strony i angażowania się w dyskusje.",
   },
 ];
 
