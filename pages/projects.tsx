@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import { ProjectsData } from "@/data";
+import Link from "next/link";
 import CustomButton from "@/components/CustomButton";
 
 const Projects = () => {
@@ -14,7 +15,7 @@ const Projects = () => {
           Web Developer
         </title>
       </Head>
-      <section>
+      <section className="mb-12">
         <motion.div
           initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, y: 0 }}
@@ -27,13 +28,13 @@ const Projects = () => {
             </h1>
             <p className="text-[#e7e7e7] leading-8 mt-4 mb-6 font-sans font-[400] text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] w-full mx-auto md:max-w-[80%] lg:max-w-[70%] tracking-wide">
               Jestem w stanie stworzyć dla ciebie unikalną i funkcjonalną{" "}
-              <span className="underline underline-offset-2 hover:text-hoverColor">
+              <Link href="/websites" className="underline underline-offset-2 hover:text-hoverColor">
                 Strone,{" "}
-              </span>
+              </Link>
               lub{" "}
-              <span className="underline underline-offset-2">
+              <Link href="/online-stores" className="underline underline-offset-2 hover:text-hoverColor">
                 Sklep Internetowy
-              </span>
+              </Link>
               , który przyciągnie uwagę Twoich klientów i zapewni sukces twojej
               działalności online. Daj mi szansę, a razem zrealizujemy Twój
               projekt marzeń!
