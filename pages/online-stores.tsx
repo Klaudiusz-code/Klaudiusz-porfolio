@@ -2,69 +2,40 @@ import React from "react";
 import Acordion from "@/components/Acordin/Acordion";
 import ContactBaner from "@/components/ContactBaner";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import { AiFillCheckSquare } from "react-icons/ai";
 import CustomButton from "@/components/CustomButton";
 import womanOnlineStores from "@/public/womanOnlineStores.jpg";
 import Image from "next/image";
-import OffertStore from "@/public/OffertsStore.png";
-const ecommerceWebsiteServiceOptions = [
-  {
-    title: "Zakup serwera i domeny odpowiedniego dla sklepu online",
-  },
 
+const data = [
   {
-    title:
-      "Konfiguracja płatności online, w tym bramki płatności i integracja z systemami płatności, takimi jak PayPal, Stripe, Przelewy24",
+    number: 1,
+    title: "Zwiększenie zasięgu i widoczności",
+    desc: "Sklep internetowy pozwala dotrzeć do klientów na całym świecie, co zwiększa zasięg Twojego biznesu. Dodatkowo, zoptymalizowana pod kątem SEO witryna może poprawić pozycje w wynikach wyszukiwania, zwiększając tym samym widoczność Twojego sklepu w Internecie.",
   },
   {
-    title:
-      "Integracja systemu zarządzania treścią, który umożliwia łatwe dodawanie, usuwanie i edytowanie produktów oraz treści na stronie sklepu",
+    number: 2,
+    title: "Dostępność 24/7",
+    desc: "Sklep internetowy jest dostępny dla klientów przez całą dobę, 7 dni w tygodniu, co pozwala na elastyczne robienie zakupów przez klientów o różnych porach. To zwiększa szansę na sprzedaż nawet poza standardowymi godzinami działalności.",
   },
   {
-    title:
-      "Konfiguracja systemu sklepu online wraz z koszykiem zakupowym i procesem zamawiania",
+    number: 3,
+    title: "Oszczędność czasu i kosztów",
+    desc: "Posiadanie sklepu internetowego eliminuje konieczność wynajmowania fizycznej przestrzeni handlowej oraz ogranicza koszty związane z zatrudnieniem personelu. To także pozwala na szybsze przetwarzanie zamówień i zwiększenie efektywności biznesowej.",
   },
   {
-    title:
-      "Optymalizacja dla wyszukiwarek internetowych (SEO) w celu poprawy widoczności sklepu online w wynikach wyszukiwania",
+    number: 4,
+    title: "Łatwa aktualizacja oferty",
+    desc: "Dzięki sklepowi internetowemu możesz szybko aktualizować ofertę, dodawać nowe produkty, aktualizować ceny i informacje, bez konieczności drukowania nowych katalogów czy zmiany wystroju sklepu.",
   },
   {
-    title:
-      "Wdrożenie systemu analizy ruchu na stronie, np. Google Analytics, aby śledzić i analizować zachowanie klientów na stronie",
+    number: 5,
+    title: "Zbieranie danych i analizy",
+    desc: "Sklep internetowy pozwala zbierać dane o zachowaniach klientów, analizować ruch na stronie oraz śledzić wyniki sprzedaży. Te informacje mogą być wykorzystane do lepszego zrozumienia potrzeb klientów i dostosowania oferty.",
   },
   {
-    title:
-      "Integracja z systemami wysyłki i dostawy, umożliwiając automatyczne obliczanie kosztów wysyłki oraz śledzenie przesyłek",
-  },
-  {
-    title:
-      "Wsparcie techniczne i utrzymanie sklepu online, w tym aktualizacje systemu oraz wsparcie dla klientów",
-  },
-];
-const korzysciSklepuInternetowego = [
-  {
-    id: 1,
-    text: "Nowe możliwości biznesowe i dotarcie do klientów online.",
-  },
-  {
-    id: 2,
-    text: "Dostępność 24/7 dla zwiększenia sprzedaży.",
-  },
-  {
-    id: 3,
-    text: "Budowanie silnej marki online.",
-  },
-  {
-    id: 4,
-    text: "Monitorowanie i analiza danych klientów.",
-  },
-  {
-    id: 5,
-    text: "Ekspansja biznesu na nowe rynki.",
-  },
-  {
-    id: 6,
-    text: "Rozwój relacji z klientami online.",
+    number: 6,
+    title: "Budowanie relacji z klientami",
+    desc: "Poprzez sklep internetowy możesz budować trwałe relacje z klientami poprzez personalizowane oferty, programy lojalnościowe oraz szybką i efektywną obsługę klienta przez różne kanały komunikacji.",
   },
 ];
 
@@ -73,7 +44,7 @@ const onlineStores = () => {
     <section>
       <header className="flex flex-col md:flex-row items-center px-2 justify-between cnt font-sans py-14">
         <div className="md:w-[40%] md:mr-6 order-2 md:order-1">
-        <h1 className="text-bgColor leading-9 mt-6 font-semibold font-sans text-3xl md:text-3xl xl:text-5xl mb-2 tracking-wide">
+          <h1 className="text-bgColor leading-9 mt-6 font-semibold font-sans text-3xl md:text-3xl xl:text-5xl mb-2 tracking-wide">
             <span className="text-[#0077cc]">Sklep internetowy</span> - Twoje
             centrum sprzedaży online
           </h1>
@@ -134,40 +105,36 @@ const onlineStores = () => {
         </div>
       </div>
 
-      <div className="min-h-[500px] bg-customColor  shadow-lg  shadow-[#cfcfcf] group relative">
-        <div className="cnt mx-auto flex flex-row items-center justify-between font-sans mt-28 p-8 md:p-10 lg:px-3 lg:py-16">
-          <div className="w-full sm:max-w-[40%] md:max-w-[50%] ">
-            <h2 className="text-white text-[1.8rem] md:text-[1.6rem] xl:text-[2.4rem]">
-              Korzyści z Posiadania Sklepu Online
+      <div className="font-sans bg-slate-50 py-4 mt-20">
+        <div className="cnt mx-auto flex flex-col mt-4 py-6 lg:py-14">
+          <div className="w-full text-center">
+            <h2 className="text-gray-700 text-3xl md:text-xl xl:text-5xl font-bold">
+              <span className="text-customColor">Dlaczego</span> warto posiadać
+              sklep internetowy?
             </h2>
-            <ul className="mt-5 list-disc pl-4 lg:pl-6">
-              {korzysciSklepuInternetowego.map((korzysc) => (
-                <li
-                  key={korzysc.id}
-                  className="text-[0.9rem] sm:text-[1.1rem] lg:text-[1.2rem] mt-3 text-gray-300 tracking-wide leading-6"
+            <p className="text-gray-600 mt-3 text-lg md:text-base tracking-wide w-full md:max-w-[90%] lg:max-w-[80%] mx-auto">
+              Moja specjalność to tworzenie wyjątkowych sklepów internetowych,
+              które są kluczowym elementem sukcesu każdego biznesu w dzisiejszym
+              cyfrowym świecie.
+            </p>
+            <div className="mt-8 flex flex-row  flex-wrap gap-x-8 ">
+              {data.map((item, index) => (
+                <div
+                  key={index}
+                  className=" flex flex-col mt-6 border max-w-[90%] mx-auto border-customColor bg-white p-5 rounded-xl"
                 >
-                  {korzysc.text}
-                </li>
+                  <div className="text-customColor text-left text-xl">
+                    <span className="bg-customColor py-1 px-3 rounded-md text-white">
+                      {item.number}
+                    </span>
+                    <span className="ml-3 text-gray-700">{item.title}</span>
+                  </div>
+                  <span className="text-gray-600 mt-2 text-left font-light md:text-lg tracking-wide">
+                    {item.desc}
+                  </span>
+                </div>
               ))}
-            </ul>
-            <div className="flex justify-center md:justify-start mt-6">
-              <CustomButton
-                text="Darmowa Wycena Projektu"
-                bgColor="#fff"
-                textColor="#0077cc"
-                link="/contact"
-              />
             </div>
-          </div>
-
-          <div className="max-w-[50%] h-full  hidden lg:block">
-            <Image
-              src={OffertStore}
-              width={500}
-              height={200}
-              className="mx-auto group-hover:-translate-y-4 w-full transition-all duration-500"
-              alt="Korzysci Ze Strony Internetowej"
-            />
           </div>
         </div>
       </div>
