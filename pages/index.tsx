@@ -37,13 +37,13 @@ const Home = () => {
       </Head>
 
       <section className="bg-customColor">
-        <div className="cnt relative mx-auto py-6 md:py-10 lg:py-14 min-h-[700px]  flex items-center justify-center text-center flex-col bg-body-bg">
-          <div className="w-full h-full lg:pr-8  py-6 xl:mt-6 ">
+        <div className="cnt relative mx-auto py-8 md:py-10 lg:py-16 min-h-[450px] md:min-h-[500px] lg:min-h-[700px]  flex items-center justify-center text-center flex-col bg-body-bg">
+          <div className="w-full h-full  py-6 xl:mt-4 ">
             <motion.h1
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="mx-auto font-[700] text-white w-full font-sans text-[1.7rem] mt-1 md:max-w-[80%] sm:text-[2rem] lg:text-[2.9rem] mb-4 tracking-wide"
+              className="mx-auto font-[700] text-white w-full font-sans text-[1.8rem] mt-2  md:max-w-[80%] sm:text-[2rem] lg:text-[2.9rem] mb-3 tracking-wide"
             >
               Ciekawi Cię, jak skutecznie wypromować swoją firmę czy projekt w
               sieci?
