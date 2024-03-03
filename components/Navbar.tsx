@@ -137,7 +137,7 @@ const Navbar = () => {
                   {item.icon}
                 </span>
                 <div className="flex flex-col justify-center ml-2">
-                  <span className="block py-1  text-lg">{item.name}</span>
+                  <span className="block py-1  text-base">{item.name}</span>
                   <span className="text-gColor text-sm">{item.desc}</span>
                 </div>
               </Link>
@@ -206,7 +206,7 @@ const Navbar = () => {
                   <Link
                     className={`${
                       link.link === currentPathname && "text-[#34C0C9]"
-                    } text-[0.9rem] lg:text-[1rem] xl:text-[1.1rem] text-lg text-bgColor flex flex-row items-center hover:text-bgColor`}
+                    } text-[0.9rem]  text-lg text-bgColor flex flex-row items-center hover:text-bgColor`}
                     href={link.link}
                     key={index}
                   >
