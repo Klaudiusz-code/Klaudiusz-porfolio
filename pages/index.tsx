@@ -85,7 +85,6 @@ const Home = () => {
         <FreeProjectEstimation />
         <Blog />
         <Acordion />
-        <ContactBaner />
       </section>
     </>
   );
