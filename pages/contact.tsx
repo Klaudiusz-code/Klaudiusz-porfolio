@@ -21,7 +21,7 @@ const contact = () => {
           initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 1.3 }}
-          className="cnt p-10 rounded-lg grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-12 lg:gap-x-28   lg:mt-24 mb-24"
+          className="cnt p-10 rounded-lg grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-12 lg:gap-x-28 mb-24"
         >
           <div className="lg:ml-10 w-full">
             <h2 className="text-3xl md:text-4xl lg:text-5xl mt-8 lg:mt-16 font-bold mb-4 text-[#10152e] leading-8 tracking-wide">
