@@ -68,7 +68,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const scrollMenu = () => {
-      if (window.scrollY >= 80) {
+      if (window.scrollY >= 30) {
         setMenu(true);
       } else {
         setMenu(false);
