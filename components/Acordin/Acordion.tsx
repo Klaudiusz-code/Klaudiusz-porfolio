@@ -3,7 +3,7 @@ import AcordinUi from "./AcordinUi";
 
 const Acordion = () => {
   return (
-    <div className="cnt">
+    <div className="cnt mb-16">
       <div className="text-center mb-10 mt-20">
         <h3 className="text-[2.2rem] md:text-[2.5rem] lg:text-[3rem] font-sans font-[600] text-[#10152e]">
           FAQ
