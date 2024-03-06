@@ -143,7 +143,7 @@ const MyServices = [
 const ContactIcon = [
   {
     icon: <IoMdMail />,
-    desc: "kadamaszek@gmail.com",
+    desc: "adamaszek404@gmail.com",
     link: "mailto:adamaszek404@gmail.com",
   },
   {
