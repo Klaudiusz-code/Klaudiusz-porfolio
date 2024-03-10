@@ -144,7 +144,7 @@ const Websites = () => {
       <OfferPageTypes />
       <FreeProjectEstimation />
       <WhyChooseUs />
-      <ContactBaner />
+      <Acordion/>
     </section>
   );
 };
