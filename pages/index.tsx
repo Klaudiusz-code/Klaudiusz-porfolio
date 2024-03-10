@@ -65,7 +65,7 @@ const Home = () => {
                 transition={{ duration: 1.2, delay: 1.7 }}
               >
                 <CustomButton
-                  text="Napisz do mnie!"
+                  text="POROZMAWIAJMY"
                   link="/contact"
                   bgColor="#fff"
                   textColor="#0077cc"
