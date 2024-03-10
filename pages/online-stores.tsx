@@ -140,7 +140,7 @@ const onlineStores = () => {
       </div>
       <WhyChooseUs />
       <Acordion />
-      <ContactBaner />
+      <Acordion/>
     </section>
   );
 };
