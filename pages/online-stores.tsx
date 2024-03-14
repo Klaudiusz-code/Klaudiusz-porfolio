@@ -1,6 +1,6 @@
 import React from "react";
 import Acordion from "@/components/Acordin/Acordion";
-import ContactBaner from "@/components/ContactBaner";
+import Head from "next/head";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import CustomButton from "@/components/CustomButton";
 import womanOnlineStores from "@/public/womanOnlineStores.jpg";
@@ -41,6 +41,13 @@ const data = [
 
 const onlineStores = () => {
   return (
+    <>
+     <Head>
+      <title>
+          Sklep Internetowy - Tomaszów Lubelski,
+          Zamość, Lublin,
+        </title>
+      </Head>
     <section>
       <header className="flex flex-col md:flex-row items-center px-2 justify-between cnt font-sans py-14">
         <div className="md:w-[40%] md:mr-6 order-2 md:order-1">
@@ -140,8 +147,8 @@ const onlineStores = () => {
       </div>
       <WhyChooseUs />
       <Acordion />
-      <Acordion/>
     </section>
+    </>
   );
 };
 
