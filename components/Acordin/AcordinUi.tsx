@@ -7,25 +7,28 @@ const AccordionUi = ({ title, answer }: { title: string; answer: string }) => {
   const [accordionOpen, setAccordionOpen] = useState(false);
 
   return (
-    <section className="cnt lg:max-w-[70%] py-3 font-sans">
+    <section className="cnt lg:max-w-[80%] py-1 font-sans border-l-4  border-customColor">
       <button
         onClick={() => setAccordionOpen(!accordionOpen)}
-        className="flex justify-between w-full items-center bg-[#ffffff] p-4 shadow-lg transition-all  rounded-xl duration-300 shadow-[#e0e0e0] hover:shadow-gColor  "
+        className="flex w-full items-center p-1  transition-all  rounded-xl duration-300"
       >
-        <span className="text-customColor text-[0.9rem] text-left font-[400] mt-2 lg:text-[1.2rem]">
-          {title}
-        </span>
         {accordionOpen ? (
           <HiX
-            className="text-customColor shrink-0 ml-8 text-[2rem]"
+            className="text-white shrink-0  text-[2rem] bg-bgColor rounded-full p-1"
             size={20}
           />
         ) : (
-          <FaPlus className="text-customColor shrink-0 ml-8" size={20} />
+          <FaPlus
+            className="text-white shrink-0  text-[2rem] bg-bgColor rounded-full p-1"
+            size={20}
+          />
         )}
+        <span className="text-bgColor text-[0.9rem] ml-3 text-left font-[400]  lg:text-[1.2rem]">
+          {title}
+        </span>
       </button>
       <div
-        className={`grid overflow-hidden mt-1 transition-all duration-300 ease-in-out text-customColor  text-[0.8rem] lg:text-[1rem] text-center md:text-left ${
+        className={`grid overflow-hidden mt-1 transition-all duration-300 ml-9 ease-in-out text-customColor  text-[0.8rem] lg:text-[1rem] text-left ${
           accordionOpen
             ? "grid-rows-[1fr] opacity-100"
             : "grid-rows-[0fr] opacity-0"
