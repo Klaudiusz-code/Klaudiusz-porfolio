@@ -55,9 +55,6 @@ const Projects = () => {
           transition={{ duration: 0.4, delay: 1.3 }}
           className="cnt mx-auto mt-14"
         >
-          <h2 className="text-customColor font-[900] text-[2.2rem] md:text-[2.8rem] lg:text-[3rem] mt-16 text-center">
-            Moje Projekty
-          </h2>
           <div className="max-w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-14 w-full gap-6">
             {ProjectsData.map((project, index) => (
               <div key={index} className="flex flex-row jsmb-4">
