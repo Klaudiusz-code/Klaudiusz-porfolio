@@ -7,19 +7,19 @@ const AccordionUi = ({ title, answer }: { title: string; answer: string }) => {
   const [accordionOpen, setAccordionOpen] = useState(false);
 
   return (
-    <section className="cnt lg:max-w-[80%] py-1 font-sans border-l-4  border-customColor">
+    <section className="cnt lg:max-w-[80%] py-1 font-sans border-l-[3px]  border-customColor">
       <button
         onClick={() => setAccordionOpen(!accordionOpen)}
         className="flex w-full items-center p-1  transition-all  rounded-xl duration-300"
       >
         {accordionOpen ? (
           <HiX
-            className="text-white shrink-0  text-[2rem] bg-bgColor rounded-full p-1"
+            className="text-white shrink-0  text-[2rem] bg-customColor rounded-full p-1"
             size={20}
           />
         ) : (
           <FaPlus
-            className="text-white shrink-0  text-[2rem] bg-bgColor rounded-full p-1"
+            className="text-white shrink-0  text-[2rem] bg-customColor rounded-full p-1"
             size={20}
           />
         )}
