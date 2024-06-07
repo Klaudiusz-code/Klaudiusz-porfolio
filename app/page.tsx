@@ -112,7 +112,7 @@ const getData = async () => {
   };
 };
 
-export default async () => {
+const HomePage = async () => {
   const {
     hero,
     about,
@@ -186,3 +186,5 @@ export default async () => {
     </>
   );
 };
+
+export default HomePage;

@@ -25,7 +25,7 @@ async function onSubmit(event: FormEvent<HTMLFormElement>) {
   const data = await response.json();
 }
 
-export default async () => {
+const ContactPage = () => {
   return (
     <section>
       <Head>
@@ -184,3 +184,5 @@ export default async () => {
     </section>
   );
 };
+
+export default ContactPage;

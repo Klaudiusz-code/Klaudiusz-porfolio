@@ -62,7 +62,7 @@ async function getData() {
   };
 }
 
-export default async () => {
+const OnlineStoresPage = async () => {
   const { hero, whyChooseUs, accordion } = await getData();
 
   return (
@@ -118,3 +118,5 @@ export default async () => {
     </>
   );
 };
+
+export default OnlineStoresPage;

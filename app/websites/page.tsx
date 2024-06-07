@@ -98,7 +98,7 @@ async function getData() {
   };
 }
 
-export default async () => {
+const WebsitesPage = async () => {
   const {
     hero,
     websiteBenefits,
@@ -176,3 +176,5 @@ export default async () => {
     </>
   );
 };
+
+export default WebsitesPage;

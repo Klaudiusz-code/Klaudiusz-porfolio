@@ -31,7 +31,7 @@ async function getData() {
   };
 }
 
-export default async () => {
+const ProjectsPage = async () => {
   const { hero } = await getData();
 
   return (
@@ -84,3 +84,5 @@ export default async () => {
     </>
   );
 };
+
+export default ProjectsPage;

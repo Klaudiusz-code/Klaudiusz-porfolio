@@ -40,7 +40,7 @@ const getData = async ({ slug }: any) => {
   };
 };
 
-export default async () => {
+const BlogPost = async () => {
   const { post } = await getData({ slug: '/siema-siema' });
 
   if (!post) {
@@ -77,3 +77,6 @@ export default async () => {
     </section>
   );
 };
+
+export default BlogPost;
+
