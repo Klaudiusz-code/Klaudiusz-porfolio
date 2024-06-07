@@ -1,6 +1,19 @@
+'use client';
+
 import React from "react";
 
-const Tools = ({ data }: any) => {
+type ToolsSectionProps = {
+  data: {
+    title: string;
+    description: string;
+    charts: {
+      text: string;
+      width: number;
+    }[];
+  };
+};
+
+const ToolsSection = ({ data }: ToolsSectionProps) => {
   return (
     <div className="cnt mt-16 mb-4 text-center mx-auto">
       <h2 className="text-[1.8rem] md:text-[2rem] lg:text-[2.4rem] font-thin text-[#10152e] mt-12 tracking-wide">
@@ -31,4 +44,4 @@ const Tools = ({ data }: any) => {
   );
 };
 
-export default Tools;
+export default ToolsSection;

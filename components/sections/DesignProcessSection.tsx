@@ -1,6 +1,20 @@
-import ButtonContact from "./ButtonContact";
+'use client';
 
-const WebsiteDesignProcess = ({ data }: any) => {
+import ButtonContact from "@/components/ButtonContact";
+
+type DesignProcessSectionProps = {
+  data: {
+    title: string;
+    description: string;
+    itemsBlock: {
+      num: string;
+      title: string;
+      description: string;
+    }[];
+  };
+};
+
+const DesignProcessSection = ({ data }: DesignProcessSectionProps) => {
   return (
     <div className="cnt mx-auto mb-8 lg:mb-14 mt-24 lg:mt-14 px-2">
       <div className="flex flex-col items-center mt-28">
@@ -30,6 +44,7 @@ const WebsiteDesignProcess = ({ data }: any) => {
                 <p className="text-[#9b9b9b] text-[0.875rem] lg:text-[0.9rem] xl:text-[1.1rem] font-sans mt-2 mb-4 max-w-[90%] mx-auto leading-8">
                   {item.description}
                 </p>
+                {/* TODO: Przenieść przycisk do ACF! */}
                 {index === 0 && <ButtonContact buttonText="Darmowa Wycena" />}
               </div>
             </div>
@@ -40,4 +55,4 @@ const WebsiteDesignProcess = ({ data }: any) => {
   );
 };
 
-export default WebsiteDesignProcess;
+export default DesignProcessSection;

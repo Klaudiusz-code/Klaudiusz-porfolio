@@ -1,16 +1,17 @@
 import React from "react";
-import Head from "next/head";
 import Image from "next/image";
 import createApolloClient from "@/apollo-client";
 import { gql } from "@apollo/client";
 
-import WhyChooseUs from "@/components/WhyChooseUs";
-import Acordion from "@/components/Acordion";
-import FreeProjectEstimation from "@/components/FreeProjectEstimation";
+import EncouragingSection from "@/components/sections/EncouragingSection";
+import FaqSection from "@/components/sections/FaqSection";
+import EstimationSection from "@/components/sections/EstimationSection";
+
 import CustomButton from "@/components/CustomButton";
 import OfferPageTypes from "@/components/OfferPageTypes";
 
 import { getImageUrlBySize } from "@/helpers";
+import { Metadata } from "next";
 
 async function getData() {
   const client = createApolloClient();
@@ -98,6 +99,15 @@ async function getData() {
   };
 }
 
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Websites Page',
+    description: '...',
+  }
+}
+
+// TODO: Tutaj są 2 sekcje. Należy je rozdzielic!
+
 const WebsitesPage = async () => {
   const {
     hero,
@@ -111,9 +121,6 @@ const WebsitesPage = async () => {
 
   return (
     <>
-      <Head>
-        <title>Strona Internetowa - Tomaszów Lubelski, Zamość, Lublin,</title>
-      </Head>
       <section>
         <header className="flex flex-col md:flex-row items-center justify-between cnt font-sans py-14">
           <div className="md:w-[40%] md:mr-6 order-2 md:order-1">
@@ -168,10 +175,20 @@ const WebsitesPage = async () => {
             </div>
           </div>
         </div>
+
         <OfferPageTypes data={offerpagetypes} />
-        <FreeProjectEstimation />
-        <WhyChooseUs data={whyme} />
-        <Acordion data={acordin} />
+        {/* TODO: Należy przenieść dane do ACF */}
+        <EstimationSection data={{
+          title: 'Potrzebujesz Wyceny Projektu? Zrobię to za darmo!',
+          description: 'Skontaktuj się ze mną, chętnie pomogę!',
+          phone: '519668439',
+          button: {
+            label: 'Napisz do mnie!',
+            url: '/contact'
+          }
+        }} />
+        <EncouragingSection data={whyme} />
+        <FaqSection data={acordin} />
       </section>
     </>
   );

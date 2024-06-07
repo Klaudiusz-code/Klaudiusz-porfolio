@@ -1,8 +1,26 @@
+'use client';
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const Blog = ({ data }: any) => {
+type LatestPostsSectionProps = {
+  data: {
+    nodes: {
+      title: string;
+      slug: string;
+      date: string;
+      excerpt: string;
+      featuredImage: {
+        node: {
+          sourceUrl: string;
+        };
+      };
+    }[];
+  };
+};
+
+const LatestPostsSection = ({ data }: LatestPostsSectionProps) => {
   return (
     <section className="cnt font-sans mb-12">
       <div className="w-full px-3 flex items-center justify-center flex-col mt-16">
@@ -53,4 +71,4 @@ const Blog = ({ data }: any) => {
   );
 };
 
-export default Blog;
+export default LatestPostsSection;

@@ -1,6 +1,15 @@
+'use client';
+
 import React from "react";
 
-const AboutMe = ({ data }: any) => {
+type AboutSectionProps = {
+  data: {
+    title: string;
+    description: string;
+  };
+};
+
+const AboutSection = ({ data }: AboutSectionProps) => {
   return (
     <section className="cnt flex flex-col mx-auto items-center text-center justify-center">
       <h2 className="text-[1.8rem] md:text-[2rem] lg:text-[2.4rem] font-thin text-[#10152e] mt-12 tracking-wide">
@@ -15,4 +24,4 @@ const AboutMe = ({ data }: any) => {
   );
 };
 
-export default AboutMe;
+export default AboutSection;

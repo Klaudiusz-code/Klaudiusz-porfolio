@@ -1,18 +1,19 @@
 import React from "react";
-import Head from "next/head";
-import AboutMe from "@/components/AboutMe";
-import WebsiteDesignProcess from "@/components/WebsiteDesignProcess";
-import ServicesItems from "@/components/ServicesItems";
-import FreeProjectEstimation from "@/components/FreeProjectEstimation";
-import CustomButton from "@/components/CustomButton";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import OffertsHome from "@/components/OffertsHome";
-import Acordion from "@/components/Acordion";
-import Tools from "@/components/Tools";
-import Blog from "@/components/Blog";
+
+import HeroSection from "@/components/sections/HeroSection";
+import AboutSection from "@/components/sections/AboutSection";
+import ServicesSection from "@/components/sections/ServicesSection";
+import DesignProcessSection from "@/components/sections/DesignProcessSection";
+import OffersSection from "@/components/sections/OffersSection";
+import ToolsSection from "@/components/sections/ToolsSection";
+import EncouragingSection from "@/components/sections/EncouragingSection";
+import EstimationSection from "@/components/sections/EstimationSection";
+import LatestPostsSection from "@/components/sections/LatestPostsSection";
+import FaqSection from "@/components/sections/FaqSection";
 
 import createApolloClient from "@/apollo-client";
 import { gql } from "@apollo/client";
+import { Metadata } from "next";
 
 const getData = async () => {
   const client = createApolloClient();
@@ -48,7 +49,6 @@ const getData = async () => {
                 description
               }
             }
-
             offertshome {
               title
               description
@@ -88,7 +88,6 @@ const getData = async () => {
             }
           }
         }
-
         posts(first: 3) {
           nodes {
             slug
@@ -112,6 +111,13 @@ const getData = async () => {
   };
 };
 
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Strona główna',
+    description: '...',
+  }
+}
+
 const HomePage = async () => {
   const {
     hero,
@@ -126,63 +132,25 @@ const HomePage = async () => {
 
   return (
     <>
-      <Head>
-        <title>
-          Strony Internetowe, Sklepy Internetowe, SEO - Tomaszów Lubelski,
-          Zamość, Lublin
-        </title>
-        <meta
-          name="description"
-          content="Full Stack JavaScript Developer specjalizujący się w tworzeniu stron i sklepów internetowych."
-        />
-        <meta
-          name="keywords"
-          content="strony internetowe, sklepy internetowe, seo, web developer, Lubycza Królewska, Tomaszów Lubelski, Zamość, Lublin"
-        />
-        <meta
-          property="og:title"
-          content="Strony Internetowe, Sklepy Internetowe, Seo | Tomaszów Lubelski, Zamość, Lublin | Klaudiusz Adamaszek - Web Developer"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />{" "}
-      </Head>
-
-      <section className="bg-customColor">
-        <div className="cnt relative mx-auto py-8 md:py-10 lg:py-16 min-h-[450px] md:min-h-[500px] lg:min-h-[700px]  flex items-center justify-center text-center flex-col bg-body-bg">
-          <div className="w-full h-full  py-6 xl:mt-4 ">
-            <h1
-              className="mx-auto font-[700] text-white w-full font-source text-[1.8rem] mt-2  md:max-w-[80%] sm:text-[2rem] lg:text-[2.9rem] mb-3 tracking-wide"
-            >
-              {hero.title}
-            </h1>
-            <div
-              className="flex flex-col"
-            >
-              <h2 className="mx-auto max-w-[95%] md:max-w-[70%] mt-6 mb-5 text-[#f8f8f8] font-medium text-[0.9rem] leading-7 lg:leading-9 md:text-[1rem] lg:text-[1.1rem] font-sans">
-                {hero.description}
-              </h2>
-              <div>
-                <CustomButton
-                  text={hero.button.label}
-                  link={hero.button.url}
-                  bgColor="#fff"
-                  textColor="#0077cc"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section>
-        <AboutMe data={about} />
-        <ServicesItems data={about} />
-        <WebsiteDesignProcess data={websiteprocces} />
-        <OffertsHome data={offertshome} />
-        <Tools data={tools} />
-        <WhyChooseUs data={whyme} />
-        <FreeProjectEstimation />
-        <Blog data={posts} />
-        <Acordion data={acordin} />
-      </section>
+      <HeroSection data={hero} />
+      <AboutSection data={about} />
+      <ServicesSection data={about} />
+      <DesignProcessSection data={websiteprocces} />
+      <OffersSection data={offertshome} />
+      <ToolsSection data={tools} />
+      <EncouragingSection data={whyme} />
+      {/* TODO: Należy przenieść dane do ACF */}
+      <EstimationSection data={{
+        title: 'Potrzebujesz Wyceny Projektu? Zrobię to za darmo!',
+        description: 'Skontaktuj się ze mną, chętnie pomogę!',
+        phone: '519668439',
+        button: {
+          label: 'Napisz do mnie!',
+          url: '/contact'
+        }
+      }} />
+      <LatestPostsSection data={posts} />
+      <FaqSection data={acordin} />
     </>
   );
 };

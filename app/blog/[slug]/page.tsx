@@ -4,6 +4,7 @@ import createApolloClient from "@/apollo-client";
 import Head from "next/head";
 import ReactHtmlParser from "html-react-parser";
 import styles from './page.module.css';
+import { Metadata } from "next";
 
 const getData = async ({ slug }: any) => {
   const client = createApolloClient();
@@ -40,16 +41,24 @@ const getData = async ({ slug }: any) => {
   };
 };
 
-const BlogPost = async () => {
-  const { post } = await getData({ slug: '/siema-siema' });
+export async function generateMetadata({ params }: any): Promise<Metadata> {
+  const { post } = await getData({ slug: params.slug });
+
+  return {
+    title: post.seo.title,
+    description: post.seo.description,
+  }
+}
+
+const BlogPost = async ({ params }: any) => {
+  const { post } = await getData({ slug: params.slug });
 
   if (!post) {
-    return <>404 bracie!</>;
+    return <>404 Taki wpis blogowy nie istnieje!</>;
   }
 
-  const authorName = `${post.author.node.firstName || ""} ${
-    post.author.node.lastName || ""
-  }`.trim();
+  const authorName = `${post.author.node.firstName || ""} ${post.author.node.lastName || ""}`.trim();
+
   const formattedDate = new Date(post.date).toLocaleDateString("pl-PL", {
     year: "numeric",
     month: "long",

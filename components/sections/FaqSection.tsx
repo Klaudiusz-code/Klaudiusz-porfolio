@@ -1,7 +1,21 @@
-import React from "react";
-import AcordionUi from "./AcordionUi";
+'use client';
 
-const Acordion = ({ data }: any) => {
+import React from "react";
+
+import AcordionUi from "@/components/AcordionUi";
+
+type FaqSectionProps = {
+  data: {
+    title: string;
+    description: string;
+    acordinItems: {
+      question: string;
+      answer: string;
+    }[];
+  };
+};
+
+const FaqSection = ({ data }: FaqSectionProps) => {
   return (
     <div className="cnt mb-16 lg:mt-24">
       <div className="flex flex-col lg:flex-row justify-center">
@@ -27,4 +41,4 @@ const Acordion = ({ data }: any) => {
   );
 };
 
-export default Acordion;
+export default FaqSection;

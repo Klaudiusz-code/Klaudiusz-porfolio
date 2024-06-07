@@ -1,8 +1,8 @@
 'use client';
 
 import React, { FormEvent } from "react";
-import Head from "next/head";
 import Link from "next/link";
+import Head from "next/head";
 
 async function onSubmit(event: FormEvent<HTMLFormElement>) {
   event.preventDefault();
@@ -29,13 +29,8 @@ const ContactPage = () => {
   return (
     <section>
       <Head>
-        <title>
-          Kontakt - Strony Internetowe, Sklepy Internetowe, Seo | Lubycza
-          Królewska, Tomaszów Lubelski, Zamość, Lublin | Klaudiusz Adamaszek -
-          Web Developer
-        </title>
+        <title>Kontakt</title>
       </Head>
-
       <div className="max-w-[90%] lg:max-w-[80%] mx-auto">
         <div
           className="cnt p-10 rounded-lg grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-12 lg:gap-x-28 mb-24"
