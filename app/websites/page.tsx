@@ -1,19 +1,18 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import createApolloClient from "@/apollo-client";
 import { gql } from "@apollo/client";
 
 import WhyChooseUs from "@/components/WhyChooseUs";
-import Acordion from "@/components/Acordin/Acordion";
+import Acordion from "@/components/Acordion";
 import FreeProjectEstimation from "@/components/FreeProjectEstimation";
 import CustomButton from "@/components/CustomButton";
 import OfferPageTypes from "@/components/OfferPageTypes";
 
-import { getImageUrlBySize, getMenus } from "@/helpers";
+import { getImageUrlBySize } from "@/helpers";
 
-export async function getServerSideProps() {
+async function getData() {
   const client = createApolloClient();
 
   const websitesQuery = gql`
@@ -90,24 +89,24 @@ export async function getServerSideProps() {
   const homeData = await client.query({ query: homeQuery });
 
   return {
-    props: {
-      hero: websitesData.data.page.websites.hero,
-      professionalSites: websitesData.data.page.websites.professionalSites,
-      websiteBenefits: websitesData.data.page.websites.websiteBenefits,
-      whyme: homeData.data.page.home.whyme,
-      acordin: homeData.data.page.home.acordin,
-      offerpagetypes: websitesData.data.page.websites.offerpagetypes,
-    },
+    hero: websitesData.data.page.websites.hero,
+    professionalSites: websitesData.data.page.websites.professionalSites,
+    websiteBenefits: websitesData.data.page.websites.websiteBenefits,
+    whyme: homeData.data.page.home.whyme,
+    acordin: homeData.data.page.home.acordin,
+    offerpagetypes: websitesData.data.page.websites.offerpagetypes,
   };
 }
 
-const Websites = ({
-  hero,
-  websiteBenefits,
-  whyme,
-  acordin,
-  offerpagetypes,
-}: any) => {
+export default async () => {
+  const {
+    hero,
+    websiteBenefits,
+    whyme,
+    acordin,
+    offerpagetypes,
+  } = await getData();
+
   const mediumImage = getImageUrlBySize(hero.image, "medium");
 
   return (
@@ -177,5 +176,3 @@ const Websites = ({
     </>
   );
 };
-
-export default Websites;

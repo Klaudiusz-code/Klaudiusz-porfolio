@@ -1,11 +1,15 @@
 import React from "react";
 import Link from "next/link";
 
-const ButtonContact = ({
-  buttonText,
-}: {
+type ButtonContactProps = {
   buttonText: string;
-}) => {
+}
+
+export default (props: ButtonContactProps) => {
+  const {
+    buttonText,
+  } = props;
+
   return (
     <Link href="/contact" passHref>
       <button className="max-w-[200px] bg-customColor py-2 px-5 xl:min-w-[150px] h-12 rounded-lg hover:scale-105 transition-all duration-150">
@@ -16,5 +20,3 @@ const ButtonContact = ({
     </Link>
   );
 };
-
-export default ButtonContact;

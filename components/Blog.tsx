@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const Blog = ({ data }: any) => {
+export default ({ data }: any) => {
   return (
     <section className="cnt font-sans mb-12">
       <div className="w-full px-3 flex items-center justify-center flex-col mt-16">
@@ -52,5 +52,3 @@ const Blog = ({ data }: any) => {
     </section>
   );
 };
-
-export default Blog;

@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import Head from "next/head";
 import Aboutme from "@/components/Aboutme";
 import WebsiteDesignProcess from "@/components/WebsiteDesignProcess";
@@ -8,14 +7,14 @@ import FreeProjectEstimation from "@/components/FreeProjectEstimation";
 import CustomButton from "@/components/CustomButton";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import OffertsHome from "@/components/OffertsHome";
-import Acordion from "@/components/Acordin/Acordion";
+import Acordion from "@/components/Acordion";
 import Tools from "@/components/Tools";
 import Blog from "@/components/Blog";
 
 import createApolloClient from "@/apollo-client";
 import { gql } from "@apollo/client";
 
-export const getServerSideProps = async () => {
+const getData = async () => {
   const client = createApolloClient();
 
   const { data } = (await client.query({
@@ -108,23 +107,22 @@ export const getServerSideProps = async () => {
   })) as any;
 
   return {
-    props: {
-      ...data.page.home,
-      posts: data.posts,
-    },
+    ...data.page.home,
+    posts: data.posts,
   };
 };
 
-const Home = ({
-  hero,
-  about,
-  websiteprocces,
-  offertshome,
-  tools,
-  whyme,
-  posts,
-  acordin,
-}: any) => {
+export default async () => {
+  const {
+    hero,
+    about,
+    websiteprocces,
+    offertshome,
+    tools,
+    whyme,
+    posts,
+    acordin,
+  } = await getData();
 
   return (
     <>
@@ -151,36 +149,26 @@ const Home = ({
       <section className="bg-customColor">
         <div className="cnt relative mx-auto py-8 md:py-10 lg:py-16 min-h-[450px] md:min-h-[500px] lg:min-h-[700px]  flex items-center justify-center text-center flex-col bg-body-bg">
           <div className="w-full h-full  py-6 xl:mt-4 ">
-            <motion.h1
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
+            <h1
               className="mx-auto font-[700] text-white w-full font-source text-[1.8rem] mt-2  md:max-w-[80%] sm:text-[2rem] lg:text-[2.9rem] mb-3 tracking-wide"
             >
               {hero.title}
-            </motion.h1>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1.2, delay: 1.2 }}
+            </h1>
+            <div
               className="flex flex-col"
             >
               <h2 className="mx-auto max-w-[95%] md:max-w-[70%] mt-6 mb-5 text-[#f8f8f8] font-medium text-[0.9rem] leading-7 lg:leading-9 md:text-[1rem] lg:text-[1.1rem] font-sans">
                 {hero.description}
               </h2>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1.2, delay: 1.7 }}
-              >
+              <div>
                 <CustomButton
                   text={hero.button.label}
                   link={hero.button.url}
                   bgColor="#fff"
                   textColor="#0077cc"
                 />
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -198,5 +186,3 @@ const Home = ({
     </>
   );
 };
-
-export default Home;

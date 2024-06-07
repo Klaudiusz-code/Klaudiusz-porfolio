@@ -18,7 +18,7 @@ const getIconByString = (iconKey: string) => {
   return iconsKeyMap[iconKey]();
 }
 
-const ServicesItems = ({ data }: any) => {
+export default ({ data }: any) => {
   return (
     <section className="cnt mt-20">
       <div className="max-w-[80%] mx-auto flex flex-wrap justify-center  gap-12  ">
@@ -44,5 +44,3 @@ const ServicesItems = ({ data }: any) => {
     </section>
   );
 };
-
-export default ServicesItems;

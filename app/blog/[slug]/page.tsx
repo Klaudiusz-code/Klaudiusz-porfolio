@@ -3,9 +3,46 @@ import { gql } from "@apollo/client";
 import createApolloClient from "@/apollo-client";
 import Head from "next/head";
 import ReactHtmlParser from "html-react-parser";
-import styles from './d.module.css';
+import styles from './page.module.css';
 
-const BlogPost = ({ post }: any) => {
+const getData = async ({ slug }: any) => {
+  const client = createApolloClient();
+
+  const { data } = await client.query({
+    query: gql`
+      query BlogPost($slug: ID!) {
+        post(id: $slug, idType: SLUG) {
+          title
+          content
+          date
+          author {
+            node {
+              firstName
+              lastName
+              email
+            }
+          }
+          seo {
+            title
+            description
+            fullHead
+          }
+        }
+      }
+    `,
+    variables: {
+      slug,
+    },
+  });
+
+  return {
+    post: data.post,
+  };
+};
+
+export default async () => {
+  const { post } = await getData({ slug: '/siema-siema' });
+
   if (!post) {
     return <>404 bracie!</>;
   }
@@ -40,44 +77,3 @@ const BlogPost = ({ post }: any) => {
     </section>
   );
 };
-
-export const getServerSideProps = async ({ query }: any) => {
-  const slug = query.slug;
-
-  const client = createApolloClient();
-
-  const { data } = await client.query({
-    query: gql`
-      query BlogPost($slug: ID!) {
-        post(id: $slug, idType: SLUG) {
-          title
-          content
-          date
-          author {
-            node {
-              firstName
-              lastName
-              email
-            }
-          }
-          seo {
-            title
-            description
-            fullHead
-          }
-        }
-      }
-    `,
-    variables: {
-      slug,
-    },
-  });
-
-  return {
-    props: {
-      post: data.post,
-    },
-  };
-};
-
-export default BlogPost;

@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import React from "react";
 
-const Tools = ({ data }: any) => {
+export default ({ data }: any) => {
   return (
     <div className="cnt mt-16 mb-4 text-center mx-auto">
       <h2 className="text-[1.8rem] md:text-[2rem] lg:text-[2.4rem] font-thin text-[#10152e] mt-12 tracking-wide">
@@ -13,48 +11,22 @@ const Tools = ({ data }: any) => {
         {data.description}
       </p>{" "}
       <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 gap-x-24 justify-center">
-        {data.charts.map((chart, index) => (
-          <SkillItem key={index} chart={chart} />
+        {data.charts.map((chart: any, index: any) => (
+          <div key={index} className="flex flex-col items-center">
+            <div className="flex w-full items-center justify-between mb-1">
+              <h2 className="text-[1rem] font-[500] text-bgColor">{chart.text}</h2>
+              <span className="text-bgColor text-sm font-sans font-[500]">
+                {chart.width}%
+              </span>
+            </div>
+            <div className="relative w-full h-[1.3rem] bg-[#f3f3f3] rounded-md overflow-hidden">
+              <div
+                className="absolute top-0 left-0 h-full bg-customColor"
+              />
+            </div>
+          </div>
         ))}
       </div>
     </div>
   );
 };
-
-const SkillItem = ({ chart }: any) => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.3 });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start({
-        opacity: 1,
-        width: chart.width + '%',
-        transition: {
-          duration: 1,
-        },
-      });
-    }
-  }, [controls, inView, chart.width]);
-
-  return (
-    <div className="flex flex-col items-center">
-      <div className="flex w-full items-center justify-between mb-1">
-        <h2 className="text-[1rem] font-[500] text-bgColor">{chart.text}</h2>
-        <span className="text-bgColor text-sm font-sans font-[500]">
-          {chart.width}%
-        </span>
-      </div>
-      <div className="relative w-full h-[1.3rem] bg-[#f3f3f3] rounded-md overflow-hidden">
-        <motion.div
-          className="absolute top-0 left-0 h-full bg-customColor"
-          initial={{ width: 0 }}
-          animate={controls}
-          ref={ref}
-        />
-      </div>
-    </div>
-  );
-};
-
-export default Tools;

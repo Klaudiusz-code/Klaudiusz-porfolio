@@ -1,12 +1,10 @@
 import React from "react";
-import { motion } from "framer-motion";
 import Head from "next/head";
-import { ProjectsData } from "@/data";
 import CustomButton from "@/components/CustomButton";
 import { gql } from "@apollo/client";
 import createApolloClient from "@/apollo-client";
 
-export async function getServerSideProps() {
+async function getData() {
   const client = createApolloClient();
 
   const realisationQuery = gql`
@@ -29,13 +27,13 @@ export async function getServerSideProps() {
   const realisationData = await client.query({ query: realisationQuery });
 
   return {
-    props: {
-      hero: realisationData.data.page.realisation.hero,
-    },
+    hero: realisationData.data.page.realisation.hero,
   };
 }
 
-const Projects = ({ hero }: any) => {
+export default async () => {
+  const { hero } = await getData();
+
   return (
     <>
       <Head>
@@ -46,10 +44,7 @@ const Projects = ({ hero }: any) => {
         </title>
       </Head>
       <section className="mb-12">
-        <motion.div
-          initial={{ opacity: 0, y: -100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.7 }}
+        <div
           className="bg-[#0077cc] px-6 py-12 lg:p-14"
         >
           <div className="cnt mx-auto text-center">
@@ -68,15 +63,12 @@ const Projects = ({ hero }: any) => {
               />
             </div>
           </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: -100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 1.3 }}
+        </div>
+        <div
           className="cnt mx-auto mt-14"
         >
           <div className="max-w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-14 w-full gap-6">
-            {ProjectsData.map((project, index) => (
+            {[].map((project, index) => (
               <div key={index} className="flex flex-row jsmb-4">
                 <div className="relative border border-bg-gray-300 rounded-md min-h-[230px] w-[350px] flex items-center justify-center">
                   <div className="h-[10rem] w-[10rem] relative">
@@ -87,11 +79,8 @@ const Projects = ({ hero }: any) => {
               </div>
             ))}
           </div>
-        </motion.div>
-        {/* Tutaj możesz dodać dalszą zawartość w zależności od potrzeb */}
+        </div>
       </section>
     </>
   );
 };
-
-export default Projects;

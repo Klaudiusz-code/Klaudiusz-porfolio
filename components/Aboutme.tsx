@@ -1,7 +1,6 @@
-"use client";
 import React from "react";
 
-const Aboutme = ({ data }: any) => {
+export default ({ data }: any) => {
   return (
     <section className="cnt flex flex-col mx-auto items-center text-center justify-center">
       <h2 className="text-[1.8rem] md:text-[2rem] lg:text-[2.4rem] font-thin text-[#10152e] mt-12 tracking-wide">
@@ -15,5 +14,3 @@ const Aboutme = ({ data }: any) => {
     </section>
   );
 };
-
-export default Aboutme;

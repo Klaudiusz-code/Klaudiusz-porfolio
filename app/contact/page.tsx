@@ -1,43 +1,30 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent } from "react";
 import Head from "next/head";
-import { motion } from "framer-motion";
-import { ContactIcon, SocialIcons } from "@/data";
 import Link from "next/link";
 
-const Contact = () => {
-  const [isSent, setIsSent] = useState(false); // Stan informujący, czy wiadomość została wysłana
+// do przeniesienia do komponentu klienckiego!
+// async function onSubmit(event: FormEvent<HTMLFormElement>) {
+//   event.preventDefault();
 
-  async function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+//   const form = new FormData(event.currentTarget);
 
-    const formData = new FormData(event.currentTarget);
-    const data = {
-      name: formData.get("name"),
-      phone: formData.get("phone"),
-      email: formData.get("email"),
-      message: formData.get("message"),
-    };
+//   const response = await fetch("/api/sendForm", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       name: form.get("name"),
+//       phone: form.get("phone"),
+//       email: form.get("email"),
+//       message: form.get("message"),
+//     }),
+//   });
 
-    const response = await fetch("/api/sendForm", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+//   const data = await response.json();
+// }
 
-    const responseData = await response.json();
-
-    console.log(responseData);
-
-    if (response.ok) {
-      setIsSent(true);
-
-      setTimeout(() => {
-        setIsSent(false);
-      }, 2000);
-    }
-  }
+export default async () => {
   return (
     <section>
       <Head>
@@ -49,10 +36,7 @@ const Contact = () => {
       </Head>
 
       <div className="max-w-[90%] lg:max-w-[80%] mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: -100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 1.3 }}
+        <div
           className="cnt p-10 rounded-lg grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-12 lg:gap-x-28 mb-24"
         >
           <div className="lg:ml-10 w-full">
@@ -69,7 +53,7 @@ const Contact = () => {
             </p>
 
             <ul className="flex flex-col gap-y-4">
-              {ContactIcon.map((item, index) => (
+              {[].map((item: any, index: any) => (
                 <li key={index}>
                   <Link
                     href={item.link}
@@ -85,7 +69,7 @@ const Contact = () => {
             </ul>
             <div className="mt-8">
               <ul className="flex gap-x-6 mt-12">
-                {SocialIcons.map((item, index) => (
+                {[].map((item: any, index: any) => (
                   <li
                     key={index}
                     className="text-3xl lg:text-4xl  text-customColor hover:scale-110 transition-all duration-400 cursor-pointer"
@@ -98,7 +82,7 @@ const Contact = () => {
           </div>
           <div className="mt-2 mx-auto w-full">
             <form
-              onSubmit={onSubmit}
+              // onSubmit={onSubmit}
               className="max-w-[700px] h-auto lg:h-[600px] mx-auto rounded-lg overflow-hidden shadow-md bg-slate-50 p-6 font-sans tracking-wide"
             >
               <h1 className=" mb-8 text-[#10152e] font-bold  text-2xl lg:text-4xl">
@@ -178,15 +162,13 @@ const Contact = () => {
                   wyślij wiadomosć
                 </button>
               </div>
-              {isSent && (
+              {true && (
                 <p className="text-center mt-4 text-customColor font-[600]">Wiadomość została wysłana!</p>
               )}{" "}
             </form>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 };
-
-export default Contact;

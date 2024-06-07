@@ -4,7 +4,7 @@ import CustomButton from "./CustomButton";
 
 import { getImageUrlBySize } from "@/helpers";
 
-const OffertsHome = ({ data }: any) => {
+export default ({ data }: any) => {
   return (
     <div className="bg-customColor min-h-[600px] mt-28 font-sans">
       <div className="cnt mx-auto py-6">
@@ -43,8 +43,8 @@ const OffertsHome = ({ data }: any) => {
                   {section.description}
                 </p>
                 <CustomButton
-                  text={section?.button?.text || 'd1'} 
-                  link={section?.button?.url || 'd2'} 
+                  text={section?.button?.text || 'd1'}
+                  link={section?.button?.url || 'd2'}
                   bgColor="#fff"
                   textColor="#0077cc"
                 />
@@ -56,5 +56,3 @@ const OffertsHome = ({ data }: any) => {
     </div>
   );
 };
-
-export default OffertsHome;

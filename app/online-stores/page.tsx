@@ -5,11 +5,11 @@ import { gql } from "@apollo/client";
 import createApolloClient from "@/apollo-client";
 
 import WhyChooseUs from "@/components/WhyChooseUs";
-import Acordion from "@/components/Acordin/Acordion";
+import Acordion from "@/components/Acordion";
 import CustomButton from "@/components/CustomButton";
 import womanOnlineStores from "@/public/womanOnlineStores.jpg";
 
-export async function getServerSideProps() {
+async function getData() {
   const client = createApolloClient();
 
   const onlineStoresQuery = gql`
@@ -57,15 +57,16 @@ export async function getServerSideProps() {
   const homeData = await client.query({ query: homeQuery });
 
   return {
-    props: {
-      hero: onlineStoresData.data.page.onlieStores.hero,
-      whyChooseUs: homeData.data.page.home.whyme,
-      accordion: homeData.data.page.home.acordin,
-    },
+    hero: onlineStoresData.data.page.onlieStores.hero,
+    whyChooseUs: homeData.data.page.home.whyme,
+    accordion: homeData.data.page.home.acordin,
   };
 }
 
-const OnlineStores = ({ hero, whyChooseUs, accordion }: any) => {  return (
+export default async () => {
+  const { hero, whyChooseUs, accordion } = await getData();
+
+  return (
     <>
       <Head>
         <title>Sklep Internetowy - Tomaszów Lubelski, Zamość, Lublin,</title>
@@ -170,5 +171,3 @@ const OnlineStores = ({ hero, whyChooseUs, accordion }: any) => {  return (
     </>
   );
 };
-
-export default OnlineStores;

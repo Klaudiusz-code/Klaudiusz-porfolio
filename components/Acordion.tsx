@@ -1,9 +1,7 @@
 import React from "react";
 import AcordionUi from "./AcordinUi";
 
-const Acordion = ({ data }: any) => {
-
-  
+export default ({ data }: any) => {
   return (
     <div className="cnt mb-16 lg:mt-24">
       <div className="flex flex-col lg:flex-row justify-center">
@@ -28,5 +26,3 @@ const Acordion = ({ data }: any) => {
     </div>
   );
 };
-
-export default Acordion;
