@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import CustomButton from "./CustomButton";
 
-export default () => {
+const Footer = () => {
   return (
     <footer className="w-full bg-[#0c0c0c] py-8">
       <div className="cnt mx-auto flex flex-col py-8  justify-between items-center text-center lg:text-left px-2">
@@ -44,3 +44,5 @@ export default () => {
     </footer>
   );
 };
+
+export default Footer;

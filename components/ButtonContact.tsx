@@ -5,7 +5,7 @@ type ButtonContactProps = {
   buttonText: string;
 }
 
-export default (props: ButtonContactProps) => {
+const ButtonContact = (props: ButtonContactProps) => {
   const {
     buttonText,
   } = props;
@@ -20,3 +20,5 @@ export default (props: ButtonContactProps) => {
     </Link>
   );
 };
+
+export default ButtonContact;

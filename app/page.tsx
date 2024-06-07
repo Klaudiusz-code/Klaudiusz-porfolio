@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import Aboutme from "@/components/Aboutme";
+import AboutMe from "@/components/AboutMe";
 import WebsiteDesignProcess from "@/components/WebsiteDesignProcess";
 import ServicesItems from "@/components/ServicesItems";
 import FreeProjectEstimation from "@/components/FreeProjectEstimation";
@@ -173,7 +173,7 @@ export default async () => {
         </div>
       </section>
       <section>
-        <Aboutme data={about} />
+        <AboutMe data={about} />
         <ServicesItems data={about} />
         <WebsiteDesignProcess data={websiteprocces} />
         <OffertsHome data={offertshome} />

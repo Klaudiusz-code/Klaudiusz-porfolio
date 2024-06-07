@@ -88,7 +88,9 @@ export default async () => {
           </div>
           <div className="md:w-2/5 order-1 md:order-2">
             <Image
-              src={'/'}
+              width={500}
+              height={200}
+              src={'/favicon.ico'}
               alt="kobieta sprawdzająca stronę"
               className="rounded-lg max-w-full h-auto"
             />

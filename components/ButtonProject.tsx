@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa6";
 
-export default () => {
+const ButtonProject = () => {
   return (
     <Link href="/projects" passHref>
       <button className="border  border-customColor mt-8 max-w-[120px] md:max-w-[130px] py-2 px-6  xl:min-w-[150px] h-12 rounded-md transitio hover:text-customColor hover:bg-navcolor transition-all duration-150">
@@ -16,3 +16,5 @@ export default () => {
     </Link>
   );
 };
+
+export default ButtonProject;

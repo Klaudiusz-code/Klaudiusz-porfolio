@@ -5,7 +5,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 
 import CustomButton from "./CustomButton";
 
-export default () => {
+const FreeProjectEstimation = () => {
   return (
     <div className="w-full flex flex-col items-center bg-customColor  min-h-[250px] p-3 mt-20 mb-14 font-sans">
       <h2 className="text-[1.6rem] text-[#ffffff] font-[600] mt-8 text-center">
@@ -36,3 +36,5 @@ export default () => {
     </div>
   );
 };
+
+export default FreeProjectEstimation;

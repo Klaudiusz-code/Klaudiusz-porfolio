@@ -1,28 +1,29 @@
+'use client';
+
 import React, { FormEvent } from "react";
 import Head from "next/head";
 import Link from "next/link";
 
-// do przeniesienia do komponentu klienckiego!
-// async function onSubmit(event: FormEvent<HTMLFormElement>) {
-//   event.preventDefault();
+async function onSubmit(event: FormEvent<HTMLFormElement>) {
+  event.preventDefault();
 
-//   const form = new FormData(event.currentTarget);
+  const form = new FormData(event.currentTarget);
 
-//   const response = await fetch("/api/sendForm", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({
-//       name: form.get("name"),
-//       phone: form.get("phone"),
-//       email: form.get("email"),
-//       message: form.get("message"),
-//     }),
-//   });
+  const response = await fetch("/api/sendForm", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: form.get("name"),
+      phone: form.get("phone"),
+      email: form.get("email"),
+      message: form.get("message"),
+    }),
+  });
 
-//   const data = await response.json();
-// }
+  const data = await response.json();
+}
 
 export default async () => {
   return (
@@ -53,7 +54,13 @@ export default async () => {
             </p>
 
             <ul className="flex flex-col gap-y-4">
-              {[].map((item: any, index: any) => (
+              {[
+                {
+                  icon: 'Ikonka', // lub komponent
+                  desc: "Opis",
+                  link: '/link',
+                }
+              ].map((item: any, index: any) => (
                 <li key={index}>
                   <Link
                     href={item.link}
@@ -69,7 +76,12 @@ export default async () => {
             </ul>
             <div className="mt-8">
               <ul className="flex gap-x-6 mt-12">
-                {[].map((item: any, index: any) => (
+                {[
+                  {
+                    icon: 'Ikonka', // lub komponent
+                    link: '/link',
+                  }
+                ].map((item: any, index: any) => (
                   <li
                     key={index}
                     className="text-3xl lg:text-4xl  text-customColor hover:scale-110 transition-all duration-400 cursor-pointer"
@@ -82,7 +94,7 @@ export default async () => {
           </div>
           <div className="mt-2 mx-auto w-full">
             <form
-              // onSubmit={onSubmit}
+              onSubmit={onSubmit}
               className="max-w-[700px] h-auto lg:h-[600px] mx-auto rounded-lg overflow-hidden shadow-md bg-slate-50 p-6 font-sans tracking-wide"
             >
               <h1 className=" mb-8 text-[#10152e] font-bold  text-2xl lg:text-4xl">

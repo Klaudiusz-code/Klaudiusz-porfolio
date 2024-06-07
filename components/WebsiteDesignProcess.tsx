@@ -1,6 +1,6 @@
 import ButtonContact from "./ButtonContact";
 
-export default ({ data }: any) => {
+const WebsiteDesignProcess = ({ data }: any) => {
   return (
     <div className="cnt mx-auto mb-8 lg:mb-14 mt-24 lg:mt-14 px-2">
       <div className="flex flex-col items-center mt-28">
@@ -39,3 +39,5 @@ export default ({ data }: any) => {
     </div>
   );
 };
+
+export default WebsiteDesignProcess;

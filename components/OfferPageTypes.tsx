@@ -1,7 +1,7 @@
 import React from "react";
 import CustomButton from "./CustomButton";
 
-export default ({ data }: any) => {
+const OfferPageTypes = ({ data }: any) => {
   return (
     <section className="container text-center mx-auto mt-28">
       <h3 className="text-f bg-customColor px-2 py-1 rounded-lg text-white text-[1.1rem] lg:text-[1.3rem] inline-block  font-sans text-center ">
@@ -41,3 +41,5 @@ export default ({ data }: any) => {
     </section>
   );
 };
+
+export default OfferPageTypes;

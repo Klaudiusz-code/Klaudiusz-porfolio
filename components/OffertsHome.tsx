@@ -4,7 +4,7 @@ import CustomButton from "./CustomButton";
 
 import { getImageUrlBySize } from "@/helpers";
 
-export default ({ data }: any) => {
+const OffertsHome = ({ data }: any) => {
   return (
     <div className="bg-customColor min-h-[600px] mt-28 font-sans">
       <div className="cnt mx-auto py-6">
@@ -56,3 +56,5 @@ export default ({ data }: any) => {
     </div>
   );
 };
+
+export default OffertsHome;

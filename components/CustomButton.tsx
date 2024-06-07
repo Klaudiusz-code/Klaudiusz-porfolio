@@ -8,7 +8,7 @@ type CustomButtonProps = {
   textColor: string;
 }
 
-export default (props: CustomButtonProps) => {
+const CustomButton = (props: CustomButtonProps) => {
   const {
     text,
     link,
@@ -29,3 +29,5 @@ export default (props: CustomButtonProps) => {
     </Link>
   );
 };
+
+export default CustomButton;

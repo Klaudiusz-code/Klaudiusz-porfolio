@@ -1,7 +1,7 @@
 import React from "react";
 import CustomButton from "./CustomButton";
 
-export default () => {
+const ContactBanner = () => {
   return (
     <section className="min-h-[400px] flex items-center justify-center bg-cover mt-32  bg-center border-spacing-6  mb-0 bg-contactBanner">
       <div className="text-center text-white">
@@ -17,3 +17,5 @@ export default () => {
     </section>
   );
 };
+
+export default ContactBanner;

@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { IoIosMenu, IoIosArrowForward } from "react-icons/io";
 
-export default ({ data }: any) => {
+const Navbar = ({ data }: any) => {
   return (
     <nav className="bg-[#fff] p-6">
       <div className="cnt mx-auto flex items-center justify-between flex-wrap">
@@ -45,3 +45,5 @@ export default ({ data }: any) => {
     </nav>
   );
 };
+
+export default Navbar;

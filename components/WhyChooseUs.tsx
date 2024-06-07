@@ -1,6 +1,6 @@
 import React from "react";
 
-export default ({ data }: any) => {
+const WhyChooseUs = ({ data }: any) => {
   return (
     <section className="cnt w-full mx-auto text-center mt-16 md:mt-20  lg:mt-28 mb-12">
       <span className="px-2 py-3 text-[1.8rem] md:text-[2rem] lg:text-[2.4rem] font-thin text-[#10152e] mt-12 tracking-wide">
@@ -28,3 +28,5 @@ export default ({ data }: any) => {
     </section>
   );
 };
+
+export default WhyChooseUs;

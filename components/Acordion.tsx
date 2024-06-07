@@ -1,7 +1,7 @@
 import React from "react";
-import AcordionUi from "./AcordinUi";
+import AcordionUi from "./AcordionUi";
 
-export default ({ data }: any) => {
+const Acordion = ({ data }: any) => {
   return (
     <div className="cnt mb-16 lg:mt-24">
       <div className="flex flex-col lg:flex-row justify-center">
@@ -26,3 +26,5 @@ export default ({ data }: any) => {
     </div>
   );
 };
+
+export default Acordion;

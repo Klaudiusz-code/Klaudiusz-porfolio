@@ -2,7 +2,7 @@ import React from "react";
 import { HiX } from "react-icons/hi";
 import { FaPlus } from "react-icons/fa";
 
-export default ({ title, answer }: { title: string; answer: string }) => {
+const AcordionUi = ({ title, answer }: { title: string; answer: string }) => {
   return (
     <section className="cnt lg:max-w-[80%] py-1 font-sans border-l-[3px]  border-customColor">
       <button
@@ -35,3 +35,5 @@ export default ({ title, answer }: { title: string; answer: string }) => {
     </section>
   );
 };
+
+export default AcordionUi;
