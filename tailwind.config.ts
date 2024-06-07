@@ -29,8 +29,7 @@ const config: Config = {
       fontFamily: {
         sans: ["Open Sans", 'sans-serif'],
         bevan: ["Bevan", 'serif'],
-        archivo: ["Archivo Black", 'sans-serif'],
-        rubik: ["Rubik Mono One", 'monospace']
+        source: ["Source Sans 3", "sans-serif"]
       },
     },
   

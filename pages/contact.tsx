@@ -1,11 +1,43 @@
-import React from "react";
+import React, { FormEvent, useState } from "react";
 import Head from "next/head";
 import { motion } from "framer-motion";
 import { ContactIcon, SocialIcons } from "@/data";
-import CustomButton from "@/components/CustomButton";
 import Link from "next/link";
 
-const contact = () => {
+const Contact = () => {
+  const [isSent, setIsSent] = useState(false); // Stan informujący, czy wiadomość została wysłana
+
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const data = {
+      name: formData.get("name"),
+      phone: formData.get("phone"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
+
+    const response = await fetch("/api/sendForm", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const responseData = await response.json();
+
+    console.log(responseData);
+
+    if (response.ok) {
+      setIsSent(true);
+
+      setTimeout(() => {
+        setIsSent(false);
+      }, 2000);
+    }
+  }
   return (
     <section>
       <Head>
@@ -30,12 +62,12 @@ const contact = () => {
             <span className="text-2xl lg:text-5xl font-[400] mb-4 text-customColor mt-1 leading-8 tracking-wide]">
               Skorzystaj z formularza kontaktowego!
             </span>
-
             <p className="text-lg lg:text-lg mb-8 mt-4 leading-7  text-[#10152e]">
               Cieszę się, że chcesz się ze mną skontaktować! Wypełnij formularz,
               aby wysłać mi wiadomość, lub skorzystaj z alternatywnych sposobów
               kontaktu podane poniżej.
             </p>
+
             <ul className="flex flex-col gap-y-4">
               {ContactIcon.map((item, index) => (
                 <li key={index}>
@@ -65,7 +97,10 @@ const contact = () => {
             </div>
           </div>
           <div className="mt-2 mx-auto w-full">
-            <form className="max-w-[700px] h-auto lg:h-[600px] mx-auto rounded-lg overflow-hidden shadow-md bg-slate-50 p-6 font-sans tracking-wide">
+            <form
+              onSubmit={onSubmit}
+              className="max-w-[700px] h-auto lg:h-[600px] mx-auto rounded-lg overflow-hidden shadow-md bg-slate-50 p-6 font-sans tracking-wide"
+            >
               <h1 className=" mb-8 text-[#10152e] font-bold  text-2xl lg:text-4xl">
                 <span className="text-customColor font-[400]">Wypełnij </span>
                 Formularz
@@ -143,6 +178,9 @@ const contact = () => {
                   wyślij wiadomosć
                 </button>
               </div>
+              {isSent && (
+                <p className="text-center mt-4 text-customColor font-[600]">Wiadomość została wysłana!</p>
+              )}{" "}
             </form>
           </div>
         </motion.div>
@@ -151,4 +189,4 @@ const contact = () => {
   );
 };
 
-export default contact;
+export default Contact;

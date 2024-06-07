@@ -10,10 +10,122 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import OffertsHome from "@/components/OffertsHome";
 import Acordion from "@/components/Acordin/Acordion";
 import Tools from "@/components/Tools";
-import ContactBaner from "@/components/ContactBaner";
 import Blog from "@/components/Blog";
 
-const Home = () => {
+import createApolloClient from "@/apollo-client";
+import { gql } from "@apollo/client";
+
+export const getServerSideProps = async () => {
+  const client = createApolloClient();
+
+  const { data } = (await client.query({
+    query: gql`
+      query Home {
+        page(id: "cG9zdDoyMw==") {
+          home {
+            hero {
+              title
+              description
+              button {
+                label
+                url
+              }
+            }
+            about {
+              title
+              description
+              services {
+                description
+                icon
+                title
+              }
+            }
+            websiteprocces {
+              title
+              description
+              itemsBlock {
+                num
+                title
+                description
+              }
+            }
+
+            offertshome {
+              title
+              description
+              image {
+                mediaDetails {
+                  sizes {
+                    name
+                    width
+                    height
+                    sourceUrl
+                  }
+                }
+              }
+            }
+            tools {
+              title
+              description
+              charts {
+                text
+                width
+              }
+            }
+            whyme{
+              title
+              boxs{
+                title
+                description
+              }
+            }
+            acordin {
+              title
+              description
+              acordinItems {
+                question
+                answer
+              }
+            }
+          }
+        }
+
+        posts(first: 3) {
+          nodes {
+            slug
+            title
+            excerpt
+            date
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
+          }
+        }
+      }
+    `,
+  })) as any;
+
+  return {
+    props: {
+      ...data.page.home,
+      posts: data.posts,
+    },
+  };
+};
+
+const Home = ({
+  hero,
+  about,
+  websiteprocces,
+  offertshome,
+  tools,
+  whyme,
+  posts,
+  acordin,
+}: any) => {
+
   return (
     <>
       <Head>
@@ -43,10 +155,9 @@ const Home = () => {
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="mx-auto font-[700] text-white w-full font-sans text-[1.8rem] mt-2  md:max-w-[80%] sm:text-[2rem] lg:text-[2.9rem] mb-3 tracking-wide"
+              className="mx-auto font-[700] text-white w-full font-source text-[1.8rem] mt-2  md:max-w-[80%] sm:text-[2rem] lg:text-[2.9rem] mb-3 tracking-wide"
             >
-              Ciekawi Cię, jak skutecznie wypromować swoją firmę czy projekt w
-              sieci?
+              {hero.title}
             </motion.h1>
             <motion.div
               initial={{ opacity: 0 }}
@@ -55,9 +166,7 @@ const Home = () => {
               className="flex flex-col"
             >
               <h2 className="mx-auto max-w-[95%] md:max-w-[70%] mt-6 mb-5 text-[#f8f8f8] font-medium text-[0.9rem] leading-7 lg:leading-9 md:text-[1rem] lg:text-[1.1rem] font-sans">
-                Odpowiedź jest prosta – z wykorzystaniem profesjonalnej strony
-                internetowej! Jestem pasjonatem web developmentu i chętnie
-                pomogę Ci w stworzeniu unikalnej przestrzeni online.
+                {hero.description}
               </h2>
               <motion.div
                 initial={{ opacity: 0 }}
@@ -65,8 +174,8 @@ const Home = () => {
                 transition={{ duration: 1.2, delay: 1.7 }}
               >
                 <CustomButton
-                  text="POROZMAWIAJMY"
-                  link="/contact"
+                  text={hero.button.label}
+                  link={hero.button.url}
                   bgColor="#fff"
                   textColor="#0077cc"
                 />
@@ -76,15 +185,15 @@ const Home = () => {
         </div>
       </section>
       <section>
-        <Aboutme />
-        <ServicesItems />
-        <WebsiteDesignProcess />
-        <OffertsHome />
-        <Tools />
-        <WhyChooseUs />
+        <Aboutme data={about} />
+        <ServicesItems data={about} />
+        <WebsiteDesignProcess data={websiteprocces} />
+        <OffertsHome data={offertshome} />
+        <Tools data={tools} />
+        <WhyChooseUs data={whyme} />
         <FreeProjectEstimation />
-        <Blog />
-        <Acordion />
+        <Blog data={posts} />
+        <Acordion data={acordin} />
       </section>
     </>
   );

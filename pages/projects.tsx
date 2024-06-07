@@ -2,10 +2,40 @@ import React from "react";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import { ProjectsData } from "@/data";
-import Link from "next/link";
 import CustomButton from "@/components/CustomButton";
+import { gql } from "@apollo/client";
+import createApolloClient from "@/apollo-client";
 
-const Projects = () => {
+export async function getServerSideProps() {
+  const client = createApolloClient();
+
+  const realisationQuery = gql`
+    query Realisation {
+      page(id: "cG9zdDoyNzA=") {
+        realisation {
+          hero {
+            title
+            description
+            button {
+              text
+              url
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const realisationData = await client.query({ query: realisationQuery });
+
+  return {
+    props: {
+      hero: realisationData.data.page.realisation.hero,
+    },
+  };
+}
+
+const Projects = ({ hero }: any) => {
   return (
     <>
       <Head>
@@ -24,27 +54,17 @@ const Projects = () => {
         >
           <div className="cnt mx-auto text-center">
             <h1 className="text-[1.7rem] lg:text-[2.8rem] font-[600] tracking-wide text-[#fff]">
-              Zrealizowane projekty
+              {hero.title}
             </h1>
             <p className="text-[#e7e7e7] leading-8 mt-4 mb-6 font-sans font-[400] text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] w-full mx-auto md:max-w-[80%] lg:max-w-[70%] tracking-wide">
-              Jestem w stanie stworzyć dla ciebie unikalną i funkcjonalną{" "}
-              <Link href="/websites" className="underline underline-offset-2 hover:text-hoverColor">
-                Strone,{" "}
-              </Link>
-              lub{" "}
-              <Link href="/online-stores" className="underline underline-offset-2 hover:text-hoverColor">
-                Sklep Internetowy
-              </Link>
-              , który przyciągnie uwagę Twoich klientów i zapewni sukces twojej
-              działalności online. Daj mi szansę, a razem zrealizujemy Twój
-              projekt marzeń!
+              {hero.description}
             </p>
             <div className="mt-6 text-center">
               <CustomButton
                 bgColor="#fff"
                 textColor="#0077cc"
-                text="Darmowa Wycena Projektu"
-                link="/contact"
+                text={hero.button.text}
+                link={hero.button.url}
               />
             </div>
           </div>
@@ -68,6 +88,7 @@ const Projects = () => {
             ))}
           </div>
         </motion.div>
+        {/* Tutaj możesz dodać dalszą zawartość w zależności od potrzeb */}
       </section>
     </>
   );

@@ -22,21 +22,22 @@ const data = [
   },
 ];
 
-const OfferPageTypes = () => {
+const OfferPageTypes = ({data}: any) => {
   return (
     <section className="container text-center mx-auto mt-28">
       <h3 className="text-f bg-customColor px-2 py-1 rounded-lg text-white text-[1.1rem] lg:text-[1.3rem] inline-block  font-sans text-center ">
-        Strony Internetowe dzielimy Na 
+        
+        {data.title}
       </h3>
-      <div className="mt-20 flex flex-row flex-wrap  justify-center gap-y-12 gap-x-16">
-        {data.map((item, index) => (
+      <div className="mt-20 flex flex-row flex-wrap justify-center gap-y-12 gap-x-16">
+        {data.items.map((item: any, index: any) => (
           <div
             key={index}
-            className="relative flex flex-col items-center  text-center text-customColor py-6 min-h-[250px] max-w-[350px] bg-slate-50  xl:min-h-[450px] rounded-lg shadow-lg  shadow-slate-50 hover:shadow-gColor group"
+            className="relative flex flex-col items-center  text-center text-customColor py-6 min-h-[250px] max-w-[350px] bg-[#fff] xl:min-h-[450px] rounded-lg shadow-lg  shadow-slate-50 hover:shadow-gColor group"
           >
             <div className="absolute -top-8 bg-customColor h-16 w-20 flex items-center justify-center  rounded-lg group-hover:bg-bgColor transition-all duration-300">
               <span className="text-white font-sans font-[600] text-[1.5rem] group-hover:text-customColor">
-                {item.num}
+                1
               </span>
             </div>
             <div>

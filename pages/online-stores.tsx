@@ -1,82 +1,101 @@
 import React from "react";
-import Acordion from "@/components/Acordin/Acordion";
 import Head from "next/head";
+import Image from "next/image";
+import { gql } from "@apollo/client";
+import createApolloClient from "@/apollo-client";
+
 import WhyChooseUs from "@/components/WhyChooseUs";
+import Acordion from "@/components/Acordin/Acordion";
 import CustomButton from "@/components/CustomButton";
 import womanOnlineStores from "@/public/womanOnlineStores.jpg";
-import Image from "next/image";
 
-const data = [
-  {
-    number: 1,
-    title: "Zwiększenie zasięgu i widoczności",
-    desc: "Sklep internetowy pozwala dotrzeć do klientów na całym świecie, co zwiększa zasięg Twojego biznesu. Dodatkowo, zoptymalizowana pod kątem SEO witryna może poprawić pozycje w wynikach wyszukiwania, zwiększając tym samym widoczność Twojego sklepu w Internecie.",
-  },
-  {
-    number: 2,
-    title: "Dostępność 24/7",
-    desc: "Sklep internetowy jest dostępny dla klientów przez całą dobę, 7 dni w tygodniu, co pozwala na elastyczne robienie zakupów przez klientów o różnych porach. To zwiększa szansę na sprzedaż nawet poza standardowymi godzinami działalności.",
-  },
-  {
-    number: 3,
-    title: "Oszczędność czasu i kosztów",
-    desc: "Posiadanie sklepu internetowego eliminuje konieczność wynajmowania fizycznej przestrzeni handlowej oraz ogranicza koszty związane z zatrudnieniem personelu. To także pozwala na szybsze przetwarzanie zamówień i zwiększenie efektywności biznesowej.",
-  },
-  {
-    number: 4,
-    title: "Łatwa aktualizacja oferty",
-    desc: "Dzięki sklepowi internetowemu możesz szybko aktualizować ofertę, dodawać nowe produkty, aktualizować ceny i informacje, bez konieczności drukowania nowych katalogów czy zmiany wystroju sklepu.",
-  },
-  {
-    number: 5,
-    title: "Zbieranie danych i analizy",
-    desc: "Sklep internetowy pozwala zbierać dane o zachowaniach klientów, analizować ruch na stronie oraz śledzić wyniki sprzedaży. Te informacje mogą być wykorzystane do lepszego zrozumienia potrzeb klientów i dostosowania oferty.",
-  },
-  {
-    number: 6,
-    title: "Budowanie relacji z klientami",
-    desc: "Poprzez sklep internetowy możesz budować trwałe relacje z klientami poprzez personalizowane oferty, programy lojalnościowe oraz szybką i efektywną obsługę klienta przez różne kanały komunikacji.",
-  },
-];
+export async function getServerSideProps() {
+  const client = createApolloClient();
 
-const onlineStores = () => {
-  return (
+  const onlineStoresQuery = gql`
+    query OnlineStores {
+      page(id: "cG9zdDoyNDU=") {
+        onlieStores {
+          hero {
+            title
+            description
+            button {
+              text
+              url
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const homeQuery = gql`
+    query Home {
+      page(id: "cG9zdDoyMw==") {
+        home {
+          whyme {
+            title
+            boxs {
+              title
+              description
+            }
+          }
+          acordin {
+            title
+            description
+            acordinItems {
+              question
+              answer
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const onlineStoresData = await client.query({ query: onlineStoresQuery });
+  const homeData = await client.query({ query: homeQuery });
+
+  return {
+    props: {
+      hero: onlineStoresData.data.page.onlieStores.hero,
+      whyChooseUs: homeData.data.page.home.whyme,
+      accordion: homeData.data.page.home.acordin,
+    },
+  };
+}
+
+const OnlineStores = ({ hero, whyChooseUs, accordion }: any) => {  return (
     <>
-     <Head>
-      <title>
-          Sklep Internetowy - Tomaszów Lubelski,
-          Zamość, Lublin,
-        </title>
+      <Head>
+        <title>Sklep Internetowy - Tomaszów Lubelski, Zamość, Lublin,</title>
       </Head>
-    <section>
-      <header className="flex flex-col md:flex-row items-center px-2 justify-between cnt font-sans py-14">
-        <div className="md:w-[40%] md:mr-6 order-2 md:order-1">
-          <h1 className="text-bgColor leading-9 mt-6 font-semibold font-sans text-3xl md:text-3xl xl:text-5xl mb-2 tracking-wide">
-            <span className="text-[#0077cc]">Sklep internetowy</span> - Twoje
-            centrum sprzedaży online
-          </h1>
-          <p className="text-[#666] text-lg mb-6 mt-4 tracking-wide">
-            Wdrożę dla Ciebie nowoczesny sklep internetowy, który nie tylko
-            przyciągnie klientów, ale również zwiększy Twoją sprzedaż w świecie
-            e-commerce.
-          </p>
-          <CustomButton
-            text="Darmowa Wycena Projektu"
-            bgColor="#0077cc"
-            textColor="#fff"
-            link="/contact"
-          />
-        </div>
-        <div className="md:w-2/5 order-1 md:order-2">
-          <Image
-            src={womanOnlineStores}
-            alt="kobieta sprawdzająca stronę"
-            className="rounded-lg max-w-full h-auto"
-          />
-        </div>
-      </header>
+      <section>
+        <header className="flex flex-col md:flex-row items-center justify-between cnt font-sans py-14">
+          <div className="md:w-[40%] md:mr-6 order-2 md:order-1">
+            <h1 className="text-bgColor leading-9 mt-6 font-semibold font-sans text-3xl md:text-3xl xl:text-5xl mb-2 tracking-wide">
+              {hero.title}
+            </h1>
+            <p className="text-gray-700 text-lg mb-6 mt-4 tracking-wide">
+              {hero.description}
+            </p>
+            <CustomButton
+              text={hero.button.text}
+              bgColor="#0077cc"
+              textColor="#fff"
+              link={hero.button.url}
+            />
+          </div>
+          <div className="md:w-2/5 order-1 md:order-2">
+            <Image
+              src={womanOnlineStores}
+              alt="kobieta sprawdzająca stronę"
+              className="rounded-lg max-w-full h-auto"
+            />
+          </div>
+        </header>
 
-      <div className="cnt mt-6 md:mt-16 lg:mt-24">
+      {/* <div className="cnt mt-6 md:mt-16 lg:mt-24">
         <div className="w-full mt-3  md:mt-8 xl:mt-10 mb-6">
           <h2 className="text-[#2f3d66] text-4xl md:text-4xl xl:text-5xl">
             Profesjonalne sklepy internetowe dla Twojej firmy.
@@ -110,7 +129,7 @@ const onlineStores = () => {
             na witrynie oraz dostosować odpowiednią strategię marketingową.
           </p>
         </div>
-      </div>
+      </div> */}
 
       <div className="font-sans bg-slate-50 py-4 mt-20">
         <div className="cnt mx-auto flex flex-col mt-4 py-6 lg:py-14">
@@ -124,7 +143,7 @@ const onlineStores = () => {
               które są kluczowym elementem sukcesu każdego biznesu w dzisiejszym
               cyfrowym świecie.
             </p>
-            <div className="mt-8 flex flex-row  flex-wrap gap-x-8 ">
+            {/* <div className="mt-8 flex flex-row  flex-wrap gap-x-8 ">
               {data.map((item, index) => (
                 <div
                   key={index}
@@ -141,15 +160,15 @@ const onlineStores = () => {
                   </span>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
-      <WhyChooseUs />
-      <Acordion />
+      <WhyChooseUs data={whyChooseUs} />
+      <Acordion data={accordion} />
     </section>
     </>
   );
 };
 
-export default onlineStores;
+export default OnlineStores;
