@@ -7,7 +7,7 @@ import CustomButton from "@/components/CustomButton";
 import { getImageUrlBySize } from "@/helpers";
 
 type OffersSectionProps = {
-  data: {
+  services: {
     title: string;
     description: string;
     button: {
@@ -18,11 +18,11 @@ type OffersSectionProps = {
   }[];
 };
 
-const OffersSection = ({ data }: OffersSectionProps) => {
+const OffersSection = ({ services }: OffersSectionProps) => {
   return (
     <div className="bg-customColor min-h-[600px] mt-28 font-sans">
       <div className="cnt mx-auto py-6">
-        {data.map((section: any, index: number) => {
+        {services.map((section, index: number) => {
           const mediumImage = getImageUrlBySize(section.image, "medium");
 
           return (

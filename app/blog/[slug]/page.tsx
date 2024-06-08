@@ -1,16 +1,16 @@
 import React from "react";
 import { Metadata } from "next";
-import Head from "next/head";
 import ReactHtmlParser from "html-react-parser";
 
 import styles from './page.module.css';
 
 import { query } from "@/ApolloClient";
 
+import { BlogPostQuery, BlogPostQueryVariables } from "@/gql/graphql";
 import GRAPHQL_QUERY from "@/gql-queries/blog_post.graphql";
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
-  const { data } = await query({
+  const { data } = await query<BlogPostQuery, BlogPostQueryVariables>({
     query: GRAPHQL_QUERY,
     variables: {
       slug: params.slug,
@@ -25,21 +25,21 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
   }
 
   return {
-    title: data.post.seo.title,
-    description: data.post.seo.description,
+    title: data.post.seo?.title,
+    description: data.post.seo?.description,
   }
 }
 
 const BlogPost = async ({ params }: any) => {
-  const { data } = await query({ query: GRAPHQL_QUERY, variables: { slug: params.slug } });
+  const { data } = await query<BlogPostQuery, BlogPostQueryVariables>({ query: GRAPHQL_QUERY, variables: { slug: params.slug } });
 
   if (!data.post) {
     return <div>404 Not Found</div>;
   }
 
-  const authorName = `${data.post.author.node.firstName || ""} ${data.post.author.node.lastName || ""}`.trim();
+  const authorName = `${data.post.author?.node.firstName || ""} ${data.post.author?.node.lastName || ""}`.trim();
 
-  const formattedDate = new Date(data.post.date).toLocaleDateString("pl-PL", {
+  const formattedDate = new Date(data.post.date || '').toLocaleDateString("pl-PL", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -50,12 +50,12 @@ const BlogPost = async ({ params }: any) => {
       <div className={styles.content}>
         <h1 className={styles.title}>{data.post.title}</h1>
         <div className={styles.prose}>
-          {ReactHtmlParser(data.post.content)}
+          {ReactHtmlParser(data.post.content || '')}
         </div>
         <div className={`${styles.mt8} ${styles.textGray600} ${styles.additionalInfo}`}>
           <p>Published on: {formattedDate}</p>
           {authorName && <p>Author: {authorName}</p>}
-          {data.post.author.node.email && <p>Email: {data.post.author.node.email}</p>}
+          {data.post.author?.node.email && <p>Email: {data.post.author.node.email}</p>}
         </div>
       </div>
     </section>

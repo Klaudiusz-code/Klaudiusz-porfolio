@@ -1,4 +1,4 @@
-query Home {
+query OnlineStoresPageHome {
   page(id: "cG9zdDoyMw==") {
     home {
       whyme {

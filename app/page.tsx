@@ -3,6 +3,7 @@ import { Metadata } from "next";
 
 import { query } from "@/ApolloClient";
 
+import { HomePageQuery, HomePageQueryVariables, Page_Home_About_Services } from "@/gql/graphql";
 import GRAPHQL_QUERY from "@/gql-queries/home_page.graphql";
 
 import HeroSection from "@/sections/home/HeroSection";
@@ -24,45 +25,36 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const HomePage = async () => {
-  const {
-    data: {
-      page: {
-        home: {
-          hero,
-          about,
-          websiteprocces,
-          offertshome,
-          tools,
-          whyme,
-          acordin,
-        },
-      },
-      posts,
-    },
-  } = await query({ query: GRAPHQL_QUERY });
-
+  const { data } = await query<HomePageQuery, HomePageQueryVariables>({ query: GRAPHQL_QUERY });
+  const hero = data.page?.home?.hero;
+  const about = data.page?.home?.about;
+  const websiteprocces = data.page?.home?.websiteprocces;
+  const offertshome = data.page?.home?.offertshome;
+  const tools = data.page?.home?.tools;
+  const whyme = data.page?.home?.whyme;
+  const posts = data.posts;
+  const acordin = data.page?.home?.acordin;
 
   return (
     <>
-      <HeroSection data={hero} />
-      <AboutSection data={about} />
-      <ServicesSection data={about} />
-      <DesignProcessSection data={websiteprocces} />
-      <OffersSection data={offertshome} />
-      <ToolsSection data={tools} />
-      <EncouragingSection data={whyme} />
-      {/* TODO: Należy przenieść dane do ACF */}
-      <EstimationSection data={{
-        title: 'Potrzebujesz Wyceny Projektu? Zrobię to za darmo!',
-        description: 'Skontaktuj się ze mną, chętnie pomogę!',
-        phone: '519668439',
-        button: {
+      <HeroSection title={hero?.title || ''} description={hero?.description || ''} buttonText={hero?.button?.label || ''} buttonUrl={hero?.button?.url || ''} />
+      <AboutSection title={about?.title || ''} description={about?.description || ''} />
+      <ServicesSection services={about?.services as Page_Home_About_Services[]} />
+      <DesignProcessSection title={websiteprocces?.title || ''} description={websiteprocces?.description || ''} items={websiteprocces?.itemsBlock as any[]} />
+      <OffersSection services={offertshome as any[]} />
+      <ToolsSection title={tools?.title || ''} description={tools?.description || ''} charts={tools?.charts as any[]} />
+      <EncouragingSection title={whyme?.title || ''} services={whyme?.boxs || []} />
+      <EstimationSection
+        title="Potrzebujesz Wyceny Projektu? Zrobię to za darmo!"
+        description="Skontaktuj się ze mną, chętnie pomogę!"
+        phone="519668439"
+        button={{
           label: 'Napisz do mnie!',
           url: '/contact'
-        }
-      }} />
-      <LatestPostsSection data={posts} />
-      <FaqSection data={acordin} />
+        }}
+      />
+      <LatestPostsSection posts={posts?.nodes as any[]} />
+      <FaqSection title={acordin?.title || ''} description={acordin?.description || ''} items={acordin?.acordinItems as any[]} />
     </>
   );
 };

@@ -4,6 +4,7 @@ import { Metadata } from "next";
 
 import { query } from "@/ApolloClient";
 
+import { OnlineStoresPageHomeQuery, OnlineStoresPageHomeQueryVariables, OnlineStoresPageQuery, OnlineStoresPageQueryVariables } from "@/gql/graphql";
 import GRAPHL_QUERY_HOME from "@/gql-queries/onlinestores_page_home.graphql";
 import GRAPHQL_QUERY from "@/gql-queries/onlinestores_page.graphql";
 
@@ -20,42 +21,28 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const OnlineStoresPage = async () => {
-  const {
-    data: {
-      page: {
-        home: {
-          whyme,
-          acordin,
-        },
-      },
-    },
-  } = await query({ query: GRAPHL_QUERY_HOME });
+  const { data: a } = await query<OnlineStoresPageHomeQuery, OnlineStoresPageHomeQueryVariables>({ query: GRAPHL_QUERY_HOME });
+  const whyme = a.page?.home?.whyme;
+  const acordin = a.page?.home?.acordin;
 
-  const {
-    data: {
-      page: {
-        onlieStores: {
-          hero,
-        },
-      },
-    },
-  } = await query({ query: GRAPHQL_QUERY });
+  const { data: b } = await query<OnlineStoresPageQuery, OnlineStoresPageQueryVariables>({ query: GRAPHQL_QUERY });
+  const hero = b.page?.onlieStores?.hero
 
   return (
     <section>
       <header className="flex flex-col md:flex-row items-center justify-between cnt font-sans py-14">
         <div className="md:w-[40%] md:mr-6 order-2 md:order-1">
           <h1 className="text-bgColor leading-9 mt-6 font-semibold font-sans text-3xl md:text-3xl xl:text-5xl mb-2 tracking-wide">
-            {hero.title}
+            {hero?.title}
           </h1>
           <p className="text-gray-700 text-lg mb-6 mt-4 tracking-wide">
-            {hero.description}
+            {hero?.description}
           </p>
           <CustomButton
-            text={hero.button.text}
+            text={hero?.button?.text || ''}
             bgColor="#0077cc"
             textColor="#fff"
-            link={hero.button.url}
+            link={hero?.button?.url || '/'}
           />
         </div>
         <div className="md:w-2/5 order-1 md:order-2">
@@ -84,8 +71,8 @@ const OnlineStoresPage = async () => {
           </div>
         </div>
       </div>
-      <EncouragingSection data={whyme} />
-      <FaqSection data={acordin} />
+      <EncouragingSection title={whyme?.title || ''} services={whyme?.boxs || []} />
+      <FaqSection title={acordin?.title || ''} description={acordin?.description || ''} items={acordin?.acordinItems as any[]} />
     </section>
   );
 };

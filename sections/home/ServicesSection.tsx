@@ -1,5 +1,6 @@
 'use client';
 
+import { Page_Home_About_Services } from "@/gql/graphql";
 import React from "react";
 
 import { FaChartBar, FaLaptopCode, FaShoppingCart } from "react-icons/fa";
@@ -21,20 +22,14 @@ const getIconByString = (iconKey: string) => {
 }
 
 type ServicesSectionProps = {
-  data: {
-    services: {
-      title: string;
-      description: string;
-      icon: string;
-    }[];
-  };
+  services: Page_Home_About_Services[] | null | undefined;
 };
 
-const ServicesSection = ({ data }: ServicesSectionProps) => {
+const ServicesSection = ({ services }: ServicesSectionProps) => {
   return (
     <section className="cnt mt-20">
       <div className="max-w-[80%] mx-auto flex flex-wrap justify-center  gap-12  ">
-        {data.services.map((service: any, index: number) => {
+        {services?.map((service, index: number) => {
           const iconKey = service?.icon?.split(':')[0] ?? null;
 
           return (

@@ -5,22 +5,20 @@ import Image from "next/image";
 import Link from "next/link";
 
 type LatestPostsSectionProps = {
-  data: {
-    nodes: {
-      title: string;
-      slug: string;
-      date: string;
-      excerpt: string;
-      featuredImage: {
-        node: {
-          sourceUrl: string;
-        };
+  posts: {
+    title: string;
+    slug: string;
+    date: string;
+    excerpt: string;
+    featuredImage: {
+      node: {
+        sourceUrl: string;
       };
-    }[];
-  };
+    };
+  }[];
 };
 
-const LatestPostsSection = ({ data }: LatestPostsSectionProps) => {
+const LatestPostsSection = ({ posts }: LatestPostsSectionProps) => {
   return (
     <section className="cnt font-sans mb-12">
       <div className="w-full px-3 flex items-center justify-center flex-col mt-16">
@@ -28,7 +26,7 @@ const LatestPostsSection = ({ data }: LatestPostsSectionProps) => {
           <span className="text-customColor font-bold">Moje</span> Blogi
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-          {data.nodes.map((post: any) => (
+          {posts?.map((post: any) => (
             <Link
               href={`/blog/${post.slug}`}
               key={post.slug}

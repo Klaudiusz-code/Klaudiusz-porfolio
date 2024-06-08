@@ -1,4 +1,4 @@
-query OnlineStores {
+query OnlineStoresPage {
   page(id: "cG9zdDoyNDU=") {
     onlieStores {
       hero {
