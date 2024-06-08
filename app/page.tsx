@@ -71,9 +71,9 @@ const getData = async () => {
                 width
               }
             }
-            whyme{
+            whyme {
               title
-              boxs{
+              boxs {
                 title
                 description
               }
@@ -113,9 +113,9 @@ const getData = async () => {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'Strona główna',
-    description: '...',
-  }
+    title: "Strona główna",
+    description: "...",
+  };
 }
 
 const HomePage = async () => {
@@ -140,15 +140,17 @@ const HomePage = async () => {
       <ToolsSection data={tools} />
       <EncouragingSection data={whyme} />
       {/* TODO: Należy przenieść dane do ACF */}
-      <EstimationSection data={{
-        title: 'Potrzebujesz Wyceny Projektu? Zrobię to za darmo!',
-        description: 'Skontaktuj się ze mną, chętnie pomogę!',
-        phone: '519668439',
-        button: {
-          label: 'Napisz do mnie!',
-          url: '/contact'
-        }
-      }} />
+      <EstimationSection
+        data={{
+          title: "Potrzebujesz Wyceny Projektu? Zrobię to za darmo!",
+          description: "Skontaktuj się ze mną, chętnie pomogę!",
+          phone: "519668439",
+          button: {
+            label: "Napisz do mnie!",
+            url: "/contact",
+          },
+        }}
+      />
       <LatestPostsSection data={posts} />
       <FaqSection data={acordin} />
     </>

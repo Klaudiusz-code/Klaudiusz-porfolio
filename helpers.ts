@@ -21,6 +21,11 @@ export async function getMenus() {
     query Menus {
       menus {
         nodes {
+          footer {
+            email
+            text
+            phone
+          }
           id
           databaseId
           slug
@@ -37,8 +42,8 @@ export async function getMenus() {
         }
       }
     }
-    `,
-  });
+  `,
+});
 
   return {
     header: websitesData.data.menus.nodes.filter(

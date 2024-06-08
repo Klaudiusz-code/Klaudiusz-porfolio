@@ -1,8 +1,15 @@
-import React from "react";
+'use client'
+import React, { useState } from "react";
 import Link from "next/link";
 import { IoIosMenu, IoIosArrowForward } from "react-icons/io";
 
 const Navbar = ({ data }: any) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <nav className="bg-[#fff] p-6">
       <div className="cnt mx-auto flex items-center justify-between flex-wrap">
@@ -12,11 +19,12 @@ const Navbar = ({ data }: any) => {
         <div className="block lg:hidden">
           <button
             className="flex items-center px-3 py-2 rounded text-customColor border-customColor hover:text-customColor"
+            onClick={toggleMenu}
           >
             <IoIosMenu className="text-3xl" />
           </button>
         </div>
-        <div className={`${true ? "block" : "hidden"} w-full lg:flex lg:items-center lg:w-auto lg:justify-end`}>
+        <div className={`${isMenuOpen ? "block" : "hidden"} w-full lg:flex lg:items-center lg:w-auto lg:justify-end`}>
           <div className="text-sm lg:flex-grow lg:flex lg:justify-end">
             {data && (
               <ul className="lg:flex lg:items-center lg:space-x-4">

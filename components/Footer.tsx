@@ -2,12 +2,15 @@ import React from "react";
 import Link from "next/link";
 import CustomButton from "./CustomButton";
 
-const Footer = () => {
+const Footer = ({ data }: any) => {
+  const { email, text, phone } = data.footer;
+  console.log(data.footer)
+
   return (
     <footer className="w-full bg-[#0c0c0c] py-8">
-      <div className="cnt mx-auto flex flex-col py-8  justify-between items-center text-center lg:text-left px-2">
+      <div className="cnt mx-auto flex flex-col py-8 justify-between items-center text-center lg:text-left px-2">
         <h3 className="text-2xl lg:text-3xl text-gray-200 tracking-wide font-bold font-archivo mb-2 text-center">
-          Masz Pytanie? Z chęcią na nie odpowiem!
+          {text}
         </h3>
         <div className="w-full flex flex-col gap-y-12 lg:flex-row justify-between mt-12 font-sans">
           <div>
@@ -15,7 +18,7 @@ const Footer = () => {
               href="/"
               className="relative lg:text-2xl text-gray-300 tracking-wide text-md mb-4 mt-2 lg:w-3/4 group"
             >
-              adamaszek404@gmail.com
+              {email}
               <div className="h-[0.04rem] bg-slate-400 w-full absolute -bottom-4 right-0 group-hover:bg-blue-400 transition-all duration-300"></div>
             </Link>
           </div>
@@ -32,7 +35,7 @@ const Footer = () => {
               href="/"
               className="relative lg:text-2xl text-gray-300 tracking-wide text-md mb-4 mt-2 lg:w-3/4 group"
             >
-              +48 519 668 439
+              {phone}
               <div className="h-[0.04rem] bg-slate-400 w-full absolute -bottom-4 right-0 group-hover:bg-blue-400 transition-all duration-300"></div>
             </Link>
           </div>

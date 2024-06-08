@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { HiX } from "react-icons/hi";
 import { FaPlus } from "react-icons/fa";
 
 const AcordionUi = ({ title, answer }: { title: string; answer: string }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleAccordion = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <section className="cnt lg:max-w-[80%] py-1 font-sans border-l-[3px]  border-customColor">
       <button
         className="flex w-full items-center p-1  transition-all  rounded-xl duration-300"
+        onClick={toggleAccordion}
       >
-        {true ? (
+        {isOpen ? (
           <HiX
             className="text-white shrink-0  text-[2rem] bg-customColor rounded-full p-1"
             size={20}
@@ -25,7 +32,7 @@ const AcordionUi = ({ title, answer }: { title: string; answer: string }) => {
       </button>
       <div
         className={`grid overflow-hidden mt-1 transition-all duration-300 ml-9 ease-in-out text-customColor  text-[0.8rem] lg:text-[1rem] text-left ${
-          true
+          isOpen
             ? "grid-rows-[1fr] opacity-100"
             : "grid-rows-[0fr] opacity-0"
         }`}

@@ -3,7 +3,7 @@ import { gql } from "@apollo/client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-import './globals.css';
+import "./globals.css";
 
 const getData = async () => {
   const client = createApolloClient();
@@ -13,6 +13,11 @@ const getData = async () => {
       query Menus {
         menus {
           nodes {
+            footer {
+              email
+              text
+              phone
+            }
             id
             databaseId
             slug
@@ -21,6 +26,7 @@ const getData = async () => {
               edges {
                 node {
                   id
+                  url
                   label
                   path
                 }
@@ -32,24 +38,25 @@ const getData = async () => {
     `,
   });
 
+  const header = menus.data.menus.nodes.find((menu: any) => menu.slug === "header");
+  const footer = menus.data.menus.nodes.find((menu: any) => menu.slug === "footer");
 
   return {
-    menus: menus.data.menus.nodes,
+    header,
+    footer,
   };
 };
 
 export default async function RootLayout({ children }: any) {
-  const { menus } = await getData();
-
-  const header = menus?.find((menu: any) => menu.slug === "header");
+  const { header, footer } = await getData();
 
   return (
     <html lang="pl">
       <body>
         <Navbar data={header} />
         {children}
-        <Footer />
+        <Footer data={footer} />
       </body>
     </html>
   );
-};
+}
