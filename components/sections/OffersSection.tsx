@@ -1,10 +1,24 @@
+'use client';
+
 import React from "react";
 import Image from "next/image";
-import CustomButton from "./CustomButton";
+import CustomButton from "@/components/CustomButton";
 
 import { getImageUrlBySize } from "@/helpers";
 
-const OffertsHome = ({ data }: any) => {
+type OffersSectionProps = {
+  data: {
+    title: string;
+    description: string;
+    button: {
+      text: string;
+      url: string;
+    };
+    image: any;
+  }[];
+};
+
+const OffersSection = ({ data }: OffersSectionProps) => {
   return (
     <div className="bg-customColor min-h-[600px] mt-28 font-sans">
       <div className="cnt mx-auto py-6">
@@ -43,8 +57,8 @@ const OffertsHome = ({ data }: any) => {
                   {section.description}
                 </p>
                 <CustomButton
-                  text={section?.button?.text || 'd1'} 
-                  link={section?.button?.url || 'd2'} 
+                  text={section?.button?.text || 'd1'}
+                  link={section?.button?.url || 'd2'}
                   bgColor="#fff"
                   textColor="#0077cc"
                 />
@@ -57,4 +71,4 @@ const OffertsHome = ({ data }: any) => {
   );
 };
 
-export default OffertsHome;
+export default OffersSection;

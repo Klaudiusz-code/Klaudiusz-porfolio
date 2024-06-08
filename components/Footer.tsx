@@ -1,37 +1,6 @@
 import React from "react";
-import { IoMdMail } from "react-icons/io";
-import { FaPhone } from "react-icons/fa";
 import Link from "next/link";
 import CustomButton from "./CustomButton";
-
-const ContactIcon = [
-  {
-    icon: <IoMdMail />,
-    desc: "adamaszek404@gmail.com",
-    link: "mailto:adamaszek404@gmail.com",
-  },
-  {
-    icon: <FaPhone />,
-    desc: "519-668-439",
-    link: "tel:+48519668439",
-  },
-];
-
-const MenuLinks = [
-  {
-    link: "/",
-    name: "Start",
-  },
-
-  {
-    link: "/projects",
-    name: "Realizacje",
-  },
-  {
-    link: "/contact",
-    name: "Kontakt",
-  },
-];
 
 const Footer = () => {
   return (

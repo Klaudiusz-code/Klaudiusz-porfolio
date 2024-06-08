@@ -20,8 +20,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     let transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'adamaszek404@gmail.com',
-        pass: 'edpb iqub zdru upug '
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASSWORD,
       },
     });
 
@@ -36,7 +36,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       await transporter.sendMail(mailOptions);
       res.status(200).json({ message: 'wysłano' });
     } catch (error) {
-      console.error('Error sending email:', error);
       res.status(500).json({ message: 'nie wysłano' });
     }
   } else {

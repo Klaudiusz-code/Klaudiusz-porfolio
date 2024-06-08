@@ -1,17 +1,21 @@
 import Link from "next/link";
 import React from "react";
 
-const CustomButton = ({
-  text,
-  link,
-  bgColor,
-  textColor,
-}: {
+type CustomButtonProps = {
   text: string;
   link: string;
   bgColor: string;
   textColor: string;
-}) => {
+}
+
+const CustomButton = (props: CustomButtonProps) => {
+  const {
+    text,
+    link,
+    bgColor,
+    textColor,
+  } = props;
+
   return (
     <Link href={link} passHref>
       <button

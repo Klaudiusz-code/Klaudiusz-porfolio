@@ -1,3 +1,5 @@
+'use client';
+
 import React from "react";
 
 import { FaChartBar, FaLaptopCode, FaShoppingCart } from "react-icons/fa";
@@ -18,7 +20,17 @@ const getIconByString = (iconKey: string) => {
   return iconsKeyMap[iconKey]();
 }
 
-const ServicesItems = ({ data }: any) => {
+type ServicesSectionProps = {
+  data: {
+    services: {
+      title: string;
+      description: string;
+      icon: string;
+    }[];
+  };
+};
+
+const ServicesSection = ({ data }: ServicesSectionProps) => {
   return (
     <section className="cnt mt-20">
       <div className="max-w-[80%] mx-auto flex flex-wrap justify-center  gap-12  ">
@@ -45,4 +57,4 @@ const ServicesItems = ({ data }: any) => {
   );
 };
 
-export default ServicesItems;
+export default ServicesSection;

@@ -1,32 +1,11 @@
 import React from "react";
 import CustomButton from "./CustomButton";
 
-const data = [
-  {
-    num: 1,
-    title: "OnePage",
-    description:
-      "Wizytówka Twojej firmy na jednej stronie — najważniejsze informacje w estetycznym, graficznym połączeniu. Wygodna w użyciu One Page dzieli się na segmenty, które zabierają użytkownika w podróż ścieżką, na której podziwia atrakcyjne widoki Twojej firmy.",
-  },
-  {
-    num: 2,
-    title: "Strona firmowa",
-    description:
-      "Strona firmowa zawiera kilka podstron, które pełnią ustalone przez Ciebie funkcje. Bardziej rozbudowana niż One Page, zaprasza użytkownika do odkrycia kolejnych zakładek, w których czekają na niego dalsze atrakcje oferowane przez Twoją firmę.",
-  },
-  {
-    num: 3,
-    title: "Blog",
-    description:
-      "Blog pełni rolę informacyjną. Jest to rodzaj serwisu, w którym użytkownicy mogą znaleźć wartościowe treści na różnorodne tematy. Regularne publikowanie nowych wpisów motywuje czytelników do odwiedzania strony i angażowania się w dyskusje.",
-  },
-];
-
-const OfferPageTypes = ({data}: any) => {
+const OfferPageTypes = ({ data }: any) => {
   return (
     <section className="container text-center mx-auto mt-28">
       <h3 className="text-f bg-customColor px-2 py-1 rounded-lg text-white text-[1.1rem] lg:text-[1.3rem] inline-block  font-sans text-center ">
-        
+
         {data.title}
       </h3>
       <div className="mt-20 flex flex-row flex-wrap justify-center gap-y-12 gap-x-16">

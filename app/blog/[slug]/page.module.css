@@ -1,0 +1,33 @@
+.content {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #333333;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.prose {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #555555;
+}
+
+.additionalInfo {
+  font-size: 0.875rem;
+  color: #777777;
+  margin-top: 2rem;
+}
+
+.textGray600 {
+  color: #4a4a4a;
+}
+
+.mt8 {
+  margin-top: 2rem;
+}

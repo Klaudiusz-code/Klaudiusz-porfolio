@@ -1,19 +1,19 @@
 import React from "react";
-import Head from "next/head";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import createApolloClient from "@/apollo-client";
 import { gql } from "@apollo/client";
 
-import WhyChooseUs from "@/components/WhyChooseUs";
-import Acordion from "@/components/Acordin/Acordion";
-import FreeProjectEstimation from "@/components/FreeProjectEstimation";
+import EncouragingSection from "@/components/sections/EncouragingSection";
+import FaqSection from "@/components/sections/FaqSection";
+import EstimationSection from "@/components/sections/EstimationSection";
+
 import CustomButton from "@/components/CustomButton";
 import OfferPageTypes from "@/components/OfferPageTypes";
 
-import { getImageUrlBySize, getMenus } from "@/helpers";
+import { getImageUrlBySize } from "@/helpers";
+import { Metadata } from "next";
 
-export async function getServerSideProps() {
+async function getData() {
   const client = createApolloClient();
 
   const websitesQuery = gql`
@@ -90,31 +90,37 @@ export async function getServerSideProps() {
   const homeData = await client.query({ query: homeQuery });
 
   return {
-    props: {
-      hero: websitesData.data.page.websites.hero,
-      professionalSites: websitesData.data.page.websites.professionalSites,
-      websiteBenefits: websitesData.data.page.websites.websiteBenefits,
-      whyme: homeData.data.page.home.whyme,
-      acordin: homeData.data.page.home.acordin,
-      offerpagetypes: websitesData.data.page.websites.offerpagetypes,
-    },
+    hero: websitesData.data.page.websites.hero,
+    professionalSites: websitesData.data.page.websites.professionalSites,
+    websiteBenefits: websitesData.data.page.websites.websiteBenefits,
+    whyme: homeData.data.page.home.whyme,
+    acordin: homeData.data.page.home.acordin,
+    offerpagetypes: websitesData.data.page.websites.offerpagetypes,
   };
 }
 
-const Websites = ({
-  hero,
-  websiteBenefits,
-  whyme,
-  acordin,
-  offerpagetypes,
-}: any) => {
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Websites Page',
+    description: '...',
+  }
+}
+
+// TODO: Tutaj są 2 sekcje. Należy je rozdzielic!
+
+const WebsitesPage = async () => {
+  const {
+    hero,
+    websiteBenefits,
+    whyme,
+    acordin,
+    offerpagetypes,
+  } = await getData();
+
   const mediumImage = getImageUrlBySize(hero.image, "medium");
 
   return (
     <>
-      <Head>
-        <title>Strona Internetowa - Tomaszów Lubelski, Zamość, Lublin,</title>
-      </Head>
       <section>
         <header className="flex flex-col md:flex-row items-center justify-between cnt font-sans py-14">
           <div className="md:w-[40%] md:mr-6 order-2 md:order-1">
@@ -169,13 +175,23 @@ const Websites = ({
             </div>
           </div>
         </div>
+
         <OfferPageTypes data={offerpagetypes} />
-        <FreeProjectEstimation />
-        <WhyChooseUs data={whyme} />
-        <Acordion data={acordin} />
+        {/* TODO: Należy przenieść dane do ACF */}
+        <EstimationSection data={{
+          title: 'Potrzebujesz Wyceny Projektu? Zrobię to za darmo!',
+          description: 'Skontaktuj się ze mną, chętnie pomogę!',
+          phone: '519668439',
+          button: {
+            label: 'Napisz do mnie!',
+            url: '/contact'
+          }
+        }} />
+        <EncouragingSection data={whyme} />
+        <FaqSection data={acordin} />
       </section>
     </>
   );
 };
 
-export default Websites;
+export default WebsitesPage;
