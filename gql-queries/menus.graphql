@@ -1,0 +1,19 @@
+query Menus {
+  menus {
+    nodes {
+      id
+      databaseId
+      slug
+      name
+      menuItems {
+        edges {
+          node {
+            id
+            path
+            label
+          }
+        }
+      }
+    }
+  }
+}

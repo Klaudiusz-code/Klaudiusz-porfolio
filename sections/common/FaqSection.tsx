@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import AcordionUi from "@/components/AcordionUi";
+import Accordion from "@/components/Accordion";
 
 type FaqSectionProps = {
   data: {
@@ -29,7 +29,7 @@ const FaqSection = ({ data }: FaqSectionProps) => {
         </div>
         <div>
           {data.acordinItems.map((item: any, index: number) => (
-            <AcordionUi
+            <Accordion
               key={index}
               title={item.question}
               answer={item.answer}

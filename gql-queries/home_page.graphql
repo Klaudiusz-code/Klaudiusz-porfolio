@@ -1,0 +1,82 @@
+query HomePage {
+  page(id: "cG9zdDoyMw==") {
+    home {
+      hero {
+        title
+        description
+        button {
+          label
+          url
+        }
+      }
+      about {
+        title
+        description
+        services {
+          description
+          icon
+          title
+        }
+      }
+      websiteprocces {
+        title
+        description
+        itemsBlock {
+          num
+          title
+          description
+        }
+      }
+      offertshome {
+        title
+        description
+        image {
+          mediaDetails {
+            sizes {
+              name
+              width
+              height
+              sourceUrl
+            }
+          }
+        }
+      }
+      tools {
+        title
+        description
+        charts {
+          text
+          width
+        }
+      }
+      whyme {
+        title
+        boxs {
+          title
+          description
+        }
+      }
+      acordin {
+        title
+        description
+        acordinItems {
+          question
+          answer
+        }
+      }
+    }
+  }
+  posts(first: 3) {
+    nodes {
+      slug
+      title
+      excerpt
+      date
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+    }
+  }
+}

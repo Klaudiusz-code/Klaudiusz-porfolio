@@ -1,36 +1,11 @@
 import React from "react";
-import Head from "next/head";
-import CustomButton from "@/components/CustomButton";
-import { gql } from "@apollo/client";
-import createApolloClient from "@/apollo-client";
 import { Metadata } from "next";
 
-async function getData() {
-  const client = createApolloClient();
+import { query } from "@/ApolloClient";
 
-  const realisationQuery = gql`
-    query Realisation {
-      page(id: "cG9zdDoyNzA=") {
-        realisation {
-          hero {
-            title
-            description
-            button {
-              text
-              url
-            }
-          }
-        }
-      }
-    }
-  `;
+import GRAPHQL_QUERY from "@/gql-queries/projects_page.graphql";
 
-  const realisationData = await client.query({ query: realisationQuery });
-
-  return {
-    hero: realisationData.data.page.realisation.hero,
-  };
-}
+import CustomButton from "@/components/CustomButton";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -40,7 +15,15 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const ProjectsPage = async () => {
-  const { hero } = await getData();
+  const {
+    data: {
+      page: {
+        realisation: {
+          hero,
+        },
+      },
+    },
+  } = await query({ query: GRAPHQL_QUERY });
 
   return (
     <section className="mb-12">
@@ -68,7 +51,14 @@ const ProjectsPage = async () => {
         className="cnt mx-auto mt-14"
       >
         <div className="max-w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-14 w-full gap-6">
-          {[].map((project, index) => (
+          {[
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+          ].map((project, index) => (
             <div key={index} className="flex flex-row jsmb-4">
               <div className="relative border border-bg-gray-300 rounded-md min-h-[230px] w-[350px] flex items-center justify-center">
                 <div className="h-[10rem] w-[10rem] relative">
