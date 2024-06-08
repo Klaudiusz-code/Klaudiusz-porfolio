@@ -1,103 +1,39 @@
 import React from "react";
 import Image from "next/image";
-import createApolloClient from "@/apollo-client";
-import { gql } from "@apollo/client";
 
-import EncouragingSection from "@/components/sections/EncouragingSection";
-import FaqSection from "@/components/sections/FaqSection";
-import EstimationSection from "@/components/sections/EstimationSection";
+import EncouragingSection from "@/sections/common/EncouragingSection";
+import FaqSection from "@/sections/common/FaqSection";
+import EstimationSection from "@/sections/home/EstimationSection";
 
 import CustomButton from "@/components/CustomButton";
 import OfferPageTypes from "@/components/OfferPageTypes";
 
 import { getImageUrlBySize } from "@/helpers";
 import { Metadata } from "next";
+import { query } from "@/ApolloClient";
 
-async function getData() {
-  const client = createApolloClient();
+import GRAPHQL_QUERY_WEBSITES from "@/gql-queries/websites_page.graphql";
+import GRAPHQL_QUERY_HOME from "@/gql-queries/home_page2.graphql";
 
-  const websitesQuery = gql`
-    query Websites {
-      page(id: "cG9zdDoxMTI=") {
-        websites {
-          hero {
-            title
-            description
-            button {
-              label
-              url
-            }
-            image {
-              mediaDetails {
-                sizes {
-                  width
-                  height
-                  name
-                  sourceUrl
-                }
-              }
-            }
-          }
-          professionalSites {
-            title
-            description
-          }
-          websiteBenefits {
-            title
-            description
-            benefitsItems {
-              title
-              description
-            }
-          }
-          offerpagetypes {
-            title
-            items {
-              title
-              description
-            }
-          }
-        }
-      }
-    }
-  `;
-
-  const homeQuery = gql`
-    query Home {
-      page(id: "cG9zdDoyMw==") {
-        home {
-          whyme {
-            title
-            boxs {
-              title
-              description
-            }
-          }
-          acordin {
-            title
-            description
-            acordinItems {
-              question
-              answer
-            }
-          }
-        }
-      }
-    }
-  `;
-
-  const websitesData = await client.query({ query: websitesQuery });
-  const homeData = await client.query({ query: homeQuery });
+const getWebsitesData = async () => {
+  const data = await query({ query: GRAPHQL_QUERY_WEBSITES });
 
   return {
-    hero: websitesData.data.page.websites.hero,
-    professionalSites: websitesData.data.page.websites.professionalSites,
-    websiteBenefits: websitesData.data.page.websites.websiteBenefits,
-    whyme: homeData.data.page.home.whyme,
-    acordin: homeData.data.page.home.acordin,
-    offerpagetypes: websitesData.data.page.websites.offerpagetypes,
+    hero: data.data.page.websites.hero,
+    professionalSites: data.data.page.websites.professionalSites,
+    websiteBenefits: data.data.page.websites.websiteBenefits,
+    offerpagetypes: data.data.page.websites.offerpagetypes,
   };
-}
+};
+
+const getHomeData = async () => {
+  const data = await query({ query: GRAPHQL_QUERY_HOME });
+
+  return {
+    whyme: data.data.page.home.whyme,
+    acordin: data.data.page.home.acordin,
+  };
+};
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -106,16 +42,11 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-// TODO: Tutaj są 2 sekcje. Należy je rozdzielic!
+// TODO: Bałagan z sekcjami i danymi
 
 const WebsitesPage = async () => {
-  const {
-    hero,
-    websiteBenefits,
-    whyme,
-    acordin,
-    offerpagetypes,
-  } = await getData();
+  const { hero, websiteBenefits, offerpagetypes } = await getWebsitesData();
+  const { whyme, acordin } = await getHomeData();
 
   const mediumImage = getImageUrlBySize(hero.image, "medium");
 

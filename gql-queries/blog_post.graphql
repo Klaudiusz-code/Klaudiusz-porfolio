@@ -1,0 +1,19 @@
+query BlogPost($slug: ID!) {
+  post(id: $slug, idType: SLUG) {
+    title
+    content
+    date
+    author {
+      node {
+        firstName
+        lastName
+        email
+      }
+    }
+    seo {
+      title
+      description
+      fullHead
+    }
+  }
+}

@@ -1,115 +1,20 @@
 import React from "react";
-
-import HeroSection from "@/components/sections/HeroSection";
-import AboutSection from "@/components/sections/AboutSection";
-import ServicesSection from "@/components/sections/ServicesSection";
-import DesignProcessSection from "@/components/sections/DesignProcessSection";
-import OffersSection from "@/components/sections/OffersSection";
-import ToolsSection from "@/components/sections/ToolsSection";
-import EncouragingSection from "@/components/sections/EncouragingSection";
-import EstimationSection from "@/components/sections/EstimationSection";
-import LatestPostsSection from "@/components/sections/LatestPostsSection";
-import FaqSection from "@/components/sections/FaqSection";
-
-import createApolloClient from "@/apollo-client";
-import { gql } from "@apollo/client";
 import { Metadata } from "next";
 
-const getData = async () => {
-  const client = createApolloClient();
+import { query } from "@/ApolloClient";
 
-  const { data } = (await client.query({
-    query: gql`
-      query Home {
-        page(id: "cG9zdDoyMw==") {
-          home {
-            hero {
-              title
-              description
-              button {
-                label
-                url
-              }
-            }
-            about {
-              title
-              description
-              services {
-                description
-                icon
-                title
-              }
-            }
-            websiteprocces {
-              title
-              description
-              itemsBlock {
-                num
-                title
-                description
-              }
-            }
-            offertshome {
-              title
-              description
-              image {
-                mediaDetails {
-                  sizes {
-                    name
-                    width
-                    height
-                    sourceUrl
-                  }
-                }
-              }
-            }
-            tools {
-              title
-              description
-              charts {
-                text
-                width
-              }
-            }
-            whyme {
-              title
-              boxs {
-                title
-                description
-              }
-            }
-            acordin {
-              title
-              description
-              acordinItems {
-                question
-                answer
-              }
-            }
-          }
-        }
-        posts(first: 3) {
-          nodes {
-            slug
-            title
-            excerpt
-            date
-            featuredImage {
-              node {
-                sourceUrl
-              }
-            }
-          }
-        }
-      }
-    `,
-  })) as any;
+import GRAPHQL_QUERY from "@/gql-queries/home_page.graphql";
 
-  return {
-    ...data.page.home,
-    posts: data.posts,
-  };
-};
+import HeroSection from "@/sections/home/HeroSection";
+import AboutSection from "@/sections/home/AboutSection";
+import ServicesSection from "@/sections/home/ServicesSection";
+import DesignProcessSection from "@/sections/home/DesignProcessSection";
+import OffersSection from "@/sections/home/OffersSection";
+import ToolsSection from "@/sections/home/ToolsSection";
+import EstimationSection from "@/sections/home/EstimationSection";
+import LatestPostsSection from "@/sections/home/LatestPostsSection";
+import EncouragingSection from "@/sections/common/EncouragingSection";
+import FaqSection from "@/sections/common/FaqSection";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -120,15 +25,22 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const HomePage = async () => {
   const {
-    hero,
-    about,
-    websiteprocces,
-    offertshome,
-    tools,
-    whyme,
-    posts,
-    acordin,
-  } = await getData();
+    data: {
+      page: {
+        home: {
+          hero,
+          about,
+          websiteprocces,
+          offertshome,
+          tools,
+          whyme,
+          acordin,
+        },
+      },
+      posts,
+    },
+  } = await query({ query: GRAPHQL_QUERY });
+
 
   return (
     <>

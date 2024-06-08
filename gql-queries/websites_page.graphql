@@ -1,0 +1,43 @@
+query WebsitesPage {
+  page(id: "cG9zdDoxMTI=") {
+    websites {
+      hero {
+        title
+        description
+        button {
+          label
+          url
+        }
+        image {
+          mediaDetails {
+            sizes {
+              width
+              height
+              name
+              sourceUrl
+            }
+          }
+        }
+      }
+      professionalSites {
+        title
+        description
+      }
+      websiteBenefits {
+        title
+        description
+        benefitsItems {
+          title
+          description
+        }
+      }
+      offerpagetypes {
+        title
+        items {
+          title
+          description
+        }
+      }
+    }
+  }
+}

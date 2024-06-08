@@ -2,7 +2,12 @@ import React from "react";
 import Link from "next/link";
 import CustomButton from "./CustomButton";
 
-const Footer = ({ data }: any) => {
+type FooterProps = {
+  // TODO
+  data: any;
+};
+
+const Footer = ({ data }: FooterProps) => {
   const { email, text, phone } = data.footer;
   console.log(data.footer)
 

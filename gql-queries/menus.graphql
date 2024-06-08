@@ -1,0 +1,25 @@
+query Menus {
+  menus {
+    nodes {
+      footer {
+        email
+        text
+        phone
+      }
+      id
+      databaseId
+      slug
+      name
+      menuItems {
+        edges {
+          node {
+            id
+            url
+            label
+            path
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+query HomePage2 {
+  page(id: "cG9zdDoyMw==") {
+    home {
+      whyme {
+        title
+        boxs {
+          title
+          description
+        }
+      }
+      acordin {
+        title
+        description
+        acordinItems {
+          question
+          answer
+        }
+      }
+    }
+  }
+}

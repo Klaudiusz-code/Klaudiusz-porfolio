@@ -1,68 +1,16 @@
 import React from "react";
-import Head from "next/head";
 import Image from "next/image";
 import { Metadata } from "next";
-import { gql } from "@apollo/client";
-import createApolloClient from "@/apollo-client";
 
-import EncouragingSection from "@/components/sections/EncouragingSection";
-import FaqSection from "@/components/sections/FaqSection";
+import { query } from "@/ApolloClient";
+
+import GRAPHL_QUERY_HOME from "@/gql-queries/onlinestores_page_home.graphql";
+import GRAPHQL_QUERY from "@/gql-queries/onlinestores_page.graphql";
 
 import CustomButton from "@/components/CustomButton";
 
-async function getData() {
-  const client = createApolloClient();
-
-  const onlineStoresQuery = gql`
-    query OnlineStores {
-      page(id: "cG9zdDoyNDU=") {
-        onlieStores {
-          hero {
-            title
-            description
-            button {
-              text
-              url
-            }
-          }
-        }
-      }
-    }
-  `;
-
-  const homeQuery = gql`
-    query Home {
-      page(id: "cG9zdDoyMw==") {
-        home {
-          whyme {
-            title
-            boxs {
-              title
-              description
-            }
-          }
-          acordin {
-            title
-            description
-            acordinItems {
-              question
-              answer
-            }
-          }
-        }
-      }
-    }
-  `;
-
-  const onlineStoresData = await client.query({ query: onlineStoresQuery });
-  const homeData = await client.query({ query: homeQuery });
-
-  return {
-    hero: onlineStoresData.data.page.onlieStores.hero,
-    whyChooseUs: homeData.data.page.home.whyme,
-    accordion: homeData.data.page.home.acordin,
-  };
-}
+import EncouragingSection from "@/sections/common/EncouragingSection";
+import FaqSection from "@/sections/common/FaqSection";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -72,7 +20,26 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const OnlineStoresPage = async () => {
-  const { hero, whyChooseUs, accordion } = await getData();
+  const {
+    data: {
+      page: {
+        home: {
+          whyme,
+          acordin,
+        },
+      },
+    },
+  } = await query({ query: GRAPHL_QUERY_HOME });
+
+  const {
+    data: {
+      page: {
+        onlieStores: {
+          hero,
+        },
+      },
+    },
+  } = await query({ query: GRAPHQL_QUERY });
 
   return (
     <section>
@@ -117,8 +84,8 @@ const OnlineStoresPage = async () => {
           </div>
         </div>
       </div>
-      <EncouragingSection data={whyChooseUs} />
-      <FaqSection data={accordion} />
+      <EncouragingSection data={whyme} />
+      <FaqSection data={acordin} />
     </section>
   );
 };

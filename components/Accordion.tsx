@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+'use client';
+
+import React, { useState } from 'react';
 import { HiX } from "react-icons/hi";
 import { FaPlus } from "react-icons/fa";
 
-const AcordionUi = ({ title, answer }: { title: string; answer: string }) => {
+const Accordion = ({ title, answer }: { title: string; answer: string }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleAccordion = () => {
@@ -43,4 +45,4 @@ const AcordionUi = ({ title, answer }: { title: string; answer: string }) => {
   );
 };
 
-export default AcordionUi;
+export default Accordion;
