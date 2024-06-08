@@ -19,9 +19,9 @@ import FaqSection from "@/sections/common/FaqSection";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'Strona główna',
-    description: '...',
-  }
+    title: "Strona główna",
+    description: "...",
+  };
 }
 
 const HomePage = async () => {

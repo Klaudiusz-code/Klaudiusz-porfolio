@@ -1,6 +1,11 @@
 query Menus {
   menus {
     nodes {
+      footer {
+        email
+        text
+        phone
+      }
       id
       databaseId
       slug
@@ -9,8 +14,9 @@ query Menus {
         edges {
           node {
             id
-            path
+            url
             label
+            path
           }
         }
       }

@@ -17,10 +17,10 @@ export default async function RootLayout({ children }: any) {
   return (
     <html lang="pl">
       <body>
-          <Navbar data={header} />
-          {children}
-          <Footer data={footer} />
+        <Navbar data={header} />
+        {children}
+        <Footer data={footer} />
       </body>
     </html>
   );
-};
+}
