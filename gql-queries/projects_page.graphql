@@ -1,4 +1,4 @@
-query Projects {
+query ProjectsPage {
   page(id: "cG9zdDoyNzA=") {
     realisation {
       hero {

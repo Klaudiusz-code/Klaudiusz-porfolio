@@ -3,6 +3,7 @@ import { Metadata } from "next";
 
 import { query } from "@/ApolloClient";
 
+import { ProjectsPageQuery, ProjectsPageQueryVariables } from "@/gql/graphql";
 import GRAPHQL_QUERY from "@/gql-queries/projects_page.graphql";
 
 import CustomButton from "@/components/CustomButton";
@@ -15,15 +16,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const ProjectsPage = async () => {
-  const {
-    data: {
-      page: {
-        realisation: {
-          hero,
-        },
-      },
-    },
-  } = await query({ query: GRAPHQL_QUERY });
+  const { data } = await query<ProjectsPageQuery, ProjectsPageQueryVariables>({ query: GRAPHQL_QUERY });
+  const hero = data.page?.realisation?.hero;
 
   return (
     <section className="mb-12">
@@ -32,17 +26,17 @@ const ProjectsPage = async () => {
       >
         <div className="cnt mx-auto text-center">
           <h1 className="text-[1.7rem] lg:text-[2.8rem] font-[600] tracking-wide text-[#fff]">
-            {hero.title}
+            {hero?.title}
           </h1>
           <p className="text-[#e7e7e7] leading-8 mt-4 mb-6 font-sans font-[400] text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] w-full mx-auto md:max-w-[80%] lg:max-w-[70%] tracking-wide">
-            {hero.description}
+            {hero?.description}
           </p>
           <div className="mt-6 text-center">
             <CustomButton
               bgColor="#fff"
               textColor="#0077cc"
-              text={hero.button.text}
-              link={hero.button.url}
+              text={hero?.button?.text || ''}
+              link={hero?.button?.url || '/'}
             />
           </div>
         </div>

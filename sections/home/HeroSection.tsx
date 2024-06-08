@@ -5,17 +5,13 @@ import CustomButton from "@/components/CustomButton";
 import { motion } from "framer-motion"
 
 type HeroSectionProps = {
-  data: {
-    title: string;
-    description: string;
-    button: {
-      label: string;
-      url: string;
-    };
-  };
+  title: string;
+  description: string;
+  buttonText: string;
+  buttonUrl: string;
 };
 
-const HeroSection = ({ data }: HeroSectionProps) => {
+const HeroSection = ({ title, description, buttonText, buttonUrl = '/' }: HeroSectionProps) => {
   return (
     <section className="bg-customColor">
       <motion.div
@@ -27,18 +23,18 @@ const HeroSection = ({ data }: HeroSectionProps) => {
           <h1
             className="mx-auto font-[700] text-white w-full font-source text-[1.8rem] mt-2  md:max-w-[80%] sm:text-[2rem] lg:text-[2.9rem] mb-3 tracking-wide"
           >
-            {data.title}
+            {title}
           </h1>
           <div
             className="flex flex-col"
           >
             <h2 className="mx-auto max-w-[95%] md:max-w-[70%] mt-6 mb-5 text-[#f8f8f8] font-medium text-[0.9rem] leading-7 lg:leading-9 md:text-[1rem] lg:text-[1.1rem] font-sans">
-              {data.description}
+              {description}
             </h2>
             <div>
               <CustomButton
-                text={data.button.label}
-                link={data.button.url}
+                text={buttonText}
+                link={buttonUrl}
                 bgColor="#fff"
                 textColor="#0077cc"
               />
