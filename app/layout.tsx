@@ -1,54 +1,24 @@
-import createApolloClient from "@/apollo-client";
-import { gql } from "@apollo/client";
+import './globals.css';
+
+import { query } from '@/ApolloClient';
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-import './globals.css';
-
-const getData = async () => {
-  const client = createApolloClient();
-
-  const menus = await client.query({
-    query: gql`
-      query Menus {
-        menus {
-          nodes {
-            id
-            databaseId
-            slug
-            name
-            menuItems {
-              edges {
-                node {
-                  id
-                  label
-                  path
-                }
-              }
-            }
-          }
-        }
-      }
-    `,
-  });
-
-
-  return {
-    menus: menus.data.menus.nodes,
-  };
-};
+import GRAPHQL_QUERY from "@/gql-queries/menus.graphql";
 
 export default async function RootLayout({ children }: any) {
-  const { menus } = await getData();
+  const { data } = await query({ query: GRAPHQL_QUERY });
 
-  const header = menus?.find((menu: any) => menu.slug === "header");
+  const header = data.menus.nodes.find((node: any) => node.slug === 'header');
+  const footer = data.menus.nodes.find((node: any) => node.slug === 'footer');
 
   return (
     <html lang="pl">
       <body>
-        <Navbar data={header} />
-        {children}
-        <Footer />
+          <Navbar data={header} />
+          {children}
+          <Footer data={footer} />
       </body>
     </html>
   );

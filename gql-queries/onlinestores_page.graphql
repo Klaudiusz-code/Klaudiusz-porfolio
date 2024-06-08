@@ -1,0 +1,14 @@
+query OnlineStores {
+  page(id: "cG9zdDoyNDU=") {
+    onlieStores {
+      hero {
+        title
+        description
+        button {
+          text
+          url
+        }
+      }
+    }
+  }
+}
