@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "start": "cross-env HOSTNAME=0.0.0.0 node ./build/server.js",
     "lint": "next lint",
+    "build:mkdir": "mkdir build build\\public build\\public\\_next build\\public\\_next\\static > nul",
+    "build:cp": "xcopy .\\.next\\standalone\\. .\\build\\ /E /Y && xcopy .\\public\\. .\\build\\public\\ /E /Y && xcopy .\\.next\\static\\. .\\build\\public\\_next\\static\\ /E /Y",
+    "build": "npm run build:mkdir && next build && npm run build:cp",
     "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {

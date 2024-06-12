@@ -1,6 +1,11 @@
 query WebsitesPage {
   page(id: "cG9zdDoxMTI=") {
+     seo {
+      title
+      description
+    }
     websites {
+     
       hero {
         title
         description

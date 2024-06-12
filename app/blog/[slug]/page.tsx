@@ -33,6 +33,8 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
 const BlogPost = async ({ params }: any) => {
   const { data } = await query<BlogPostQuery, BlogPostQueryVariables>({ query: GRAPHQL_QUERY, variables: { slug: params.slug } });
 
+  console.log(data.post?.content)
+
   if (!data.post) {
     return <div>404 Not Found</div>;
   }
@@ -51,6 +53,7 @@ const BlogPost = async ({ params }: any) => {
         <h1 className={styles.title}>{data.post.title}</h1>
         <div className={styles.prose}>
           {ReactHtmlParser(data.post.content || '')}
+
         </div>
         <div className={`${styles.mt8} ${styles.textGray600} ${styles.additionalInfo}`}>
           <p>Published on: {formattedDate}</p>

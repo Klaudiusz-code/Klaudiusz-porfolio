@@ -1,5 +1,9 @@
 query OnlineStoresPage {
   page(id: "cG9zdDoyNDU=") {
+  seo{
+    title
+    description
+  }
     onlieStores {
       hero {
         title
@@ -7,6 +11,14 @@ query OnlineStoresPage {
         button {
           text
           url
+        }
+      }
+      storesBenefits{
+        title
+        description
+        benefitsItems{
+          title
+          description
         }
       }
     }

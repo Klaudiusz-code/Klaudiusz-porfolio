@@ -15,7 +15,6 @@ const ToolsSection = ({ title, description, charts = [] }: ToolsSectionProps) =>
   return (
     <div className="cnt mt-16 mb-4 text-center mx-auto">
       <h2 className="text-[1.8rem] md:text-[2rem] lg:text-[2.4rem] font-thin text-[#10152e] mt-12 tracking-wide">
-        <span className="text-customColor font-bold">Moje </span>
         {title}
       </h2>
       <p className="max-w-full md:max-w-[70%] lg:max-w-[60%] mx-auto text-[#4d4c4c] text-[0.9rem] md:text-[1rem] lg:text-[1.1rem] font-[400] leading-7 tracking-wide mt-6 font-sans">

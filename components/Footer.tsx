@@ -3,13 +3,11 @@ import Link from "next/link";
 import CustomButton from "./CustomButton";
 
 type FooterProps = {
-  // TODO
   data: any;
 };
 
 const Footer = ({ data }: FooterProps) => {
   const { email, text, phone } = data.footer;
-  console.log(data.footer)
 
   return (
     <footer className="w-full bg-[#0c0c0c] py-8">

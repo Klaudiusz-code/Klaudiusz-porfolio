@@ -6,7 +6,7 @@
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: #333333;
   margin-bottom: 1.5rem;
   font-weight: 700;
@@ -31,3 +31,23 @@
 .mt8 {
   margin-top: 2rem;
 }
+.content h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.content h4 {
+  font-size: 1.2rem;
+  color: #464a50;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.content p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #555;
+}
+
