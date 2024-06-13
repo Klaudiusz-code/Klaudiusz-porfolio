@@ -16,6 +16,14 @@ query HomePage2 {
           answer
         }
       }
+      freeprojectestimation{
+        title
+        description
+        buttons{
+          text
+          url
+        }
+      }
     }
   }
 }

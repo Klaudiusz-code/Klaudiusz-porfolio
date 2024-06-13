@@ -1,5 +1,9 @@
 query HomePage {
   page(id: "cG9zdDoyMw==") {
+   seo {
+      title
+      description
+    }
     home {
       hero {
         title
@@ -54,6 +58,14 @@ query HomePage {
         boxs {
           title
           description
+        }
+      }
+      freeprojectestimation{
+        title
+        description
+        buttons{
+          text
+          url
         }
       }
       acordin {

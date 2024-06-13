@@ -33,23 +33,31 @@ const getHomeData = async () => {
   return {
     whyme: data.page?.home?.whyme,
     acordin: data.page?.home?.acordin,
+    estimation: data.page?.home?.freeprojectestimation
   };
 };
 
 export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: 'Websites Page',
-    description: '...',
-  }
-}
+  const { data } = await query<WebsitesPageQuery, WebsitesPageQueryVariables>({
+    query: GRAPHQL_QUERY_WEBSITES,
+  });
 
+  const seoData = data.page?.seo;
+
+  return {
+    title: seoData?.title || "",
+    description: seoData?.description || "",
+  };
+}
 // TODO: Bałagan z sekcjami i danymi
 
 const WebsitesPage = async () => {
   const { hero, websiteBenefits, offerpagetypes } = await getWebsitesData();
-  const { whyme, acordin } = await getHomeData();
+  const { whyme, acordin,estimation } = await getHomeData();
 
   const mediumImage = getImageUrlBySize(hero?.image, "medium");
+
+  const buttons = estimation?.buttons || [];
 
   return (
     <>
@@ -111,13 +119,12 @@ const WebsitesPage = async () => {
         <OfferPageTypes data={offerpagetypes} />
         {/* TODO: Należy przenieść dane do ACF */}
         <EstimationSection
-          title="Potrzebujesz Wyceny Projektu? Zrobię to za darmo!"
-          description="Skontaktuj się ze mną, chętnie pomogę!"
-          phone="519668439"
-          button={{
-            label: 'Napisz do mnie!',
-            url: '/contact'
-          }}
+          title={estimation?.title || ''}
+          description={estimation?.description || ''}
+          buttons={buttons.map(button => ({
+            label: button?.text || '',
+            url: button?.url || '/',
+          }))}
         />
         <EncouragingSection title={whyme?.title || ''} services={whyme?.boxs || []} />
         <FaqSection title={acordin?.title || ''} description={acordin?.description || ''} items={acordin?.acordinItems as any[]} />

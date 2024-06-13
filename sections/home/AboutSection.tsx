@@ -1,5 +1,3 @@
-'use client';
-
 import React from "react";
 
 type AboutSectionProps = {
@@ -14,7 +12,7 @@ const AboutSection = ({ title, description }: AboutSectionProps) => {
         {title}
       </h2>
       <div className="w-full md:max-w-[70%] lg:max-w-[60%] text-center">
-        <p className=" text-[#4d4c4c] text-[0.9rem] md:text-[1rem] lg:text-[1.1rem] font-[400] leading-7 tracking-wide mt-8 font-sans">
+        <p className="text-[#4d4c4c] text-[0.9rem] md:text-[1rem] lg:text-[1.1rem] font-[400] leading-7 tracking-wide mt-8 font-sans">
           {description}
         </p>
       </div>

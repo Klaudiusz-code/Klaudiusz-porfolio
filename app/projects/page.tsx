@@ -9,10 +9,16 @@ import GRAPHQL_QUERY from "@/gql-queries/projects_page.graphql";
 import CustomButton from "@/components/CustomButton";
 
 export async function generateMetadata(): Promise<Metadata> {
+  const { data } = await query<ProjectsPageQuery, ProjectsPageQueryVariables>({
+    query: GRAPHQL_QUERY,
+  });
+
+  const seoData = data.page?.seo;
+
   return {
-    title: 'Projects Page',
-    description: '...',
-  }
+    title: seoData?.title || "",
+    description: seoData?.description || "",
+  };
 }
 
 const ProjectsPage = async () => {

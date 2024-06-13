@@ -1,5 +1,9 @@
 query ProjectsPage {
   page(id: "cG9zdDoyNzA=") {
+  seo {
+      title
+      description
+    }
     realisation {
       hero {
         title
