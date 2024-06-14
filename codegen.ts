@@ -6,13 +6,13 @@ const config: CodegenConfig = {
   generates: {
     "gql/": {
       preset: "client",
-      schema: "https://adamaszekwebdev.pl/graphql",
+      schema: "http://klaudiuszdev.pl/graphql",
       documents: "./gql-queries",
       plugins: [],
       overwrite: true,
     },
     "graphql.d.ts": {
-      schema: "https://adamaszekwebdev.pl/graphql",
+      schema: "http://klaudiuszdev.pl/graphql",
       documents: "./gql-queries",
       plugins: ["typescript-graphql-files-modules"],
       overwrite: true,

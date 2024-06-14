@@ -4,8 +4,8 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'adamaszekwebdev.pl',
+        protocol: 'http',
+        hostname: 'klaudiuszdev.pl',
         port: '',
         pathname: '/wp-content/**',
       },
