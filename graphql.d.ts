@@ -8,6 +8,15 @@ declare module '*/blog_post.graphql' {
 }
     
 
+declare module '*/contact_page.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const ContactQuery: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/home_page.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;

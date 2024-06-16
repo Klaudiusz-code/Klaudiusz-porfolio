@@ -12,12 +12,19 @@ import EstimationSection from "@/sections/home/EstimationSection";
 import CustomButton from "@/components/CustomButton";
 import OfferPageTypes from "@/components/OfferPageTypes";
 
-import { HomePage2Query, HomePage2QueryVariables, WebsitesPageQuery, WebsitesPageQueryVariables } from "@/gql/graphql";
+import {
+  HomePage2Query,
+  HomePage2QueryVariables,
+  WebsitesPageQuery,
+  WebsitesPageQueryVariables,
+} from "@/gql/graphql";
 import GRAPHQL_QUERY_WEBSITES from "@/gql-queries/websites_page.graphql";
 import GRAPHQL_QUERY_HOME from "@/gql-queries/home_page2.graphql";
 
 const getWebsitesData = async () => {
-  const { data } = await query<WebsitesPageQuery, WebsitesPageQueryVariables>({ query: GRAPHQL_QUERY_WEBSITES });
+  const { data } = await query<WebsitesPageQuery, WebsitesPageQueryVariables>({
+    query: GRAPHQL_QUERY_WEBSITES,
+  });
 
   return {
     hero: data.page?.websites?.hero,
@@ -28,12 +35,14 @@ const getWebsitesData = async () => {
 };
 
 const getHomeData = async () => {
-  const { data } = await query<HomePage2Query, HomePage2QueryVariables>({ query: GRAPHQL_QUERY_HOME });
+  const { data } = await query<HomePage2Query, HomePage2QueryVariables>({
+    query: GRAPHQL_QUERY_HOME,
+  });
 
   return {
     whyme: data.page?.home?.whyme,
     acordin: data.page?.home?.acordin,
-    estimation: data.page?.home?.freeprojectestimation
+    estimation: data.page?.home?.freeprojectestimation,
   };
 };
 
@@ -53,7 +62,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const WebsitesPage = async () => {
   const { hero, websiteBenefits, offerpagetypes } = await getWebsitesData();
-  const { whyme, acordin,estimation } = await getHomeData();
+  const { whyme, acordin, estimation } = await getHomeData();
 
   const mediumImage = getImageUrlBySize(hero?.image, "medium");
 
@@ -71,10 +80,10 @@ const WebsitesPage = async () => {
               {hero?.description}
             </p>
             <CustomButton
-              text={hero?.button?.label || ''}
+              text={hero?.button?.label || ""}
               bgColor="#0077cc"
               textColor="#fff"
-              link={hero?.button?.url || '/'}
+              link={hero?.button?.url || "/"}
             />
           </div>
           <div className="md:w-2/5 order-1 md:order-2">
@@ -98,19 +107,23 @@ const WebsitesPage = async () => {
                 {websiteBenefits?.description}
               </p>
               <div className="mt-8 flex flex-row  flex-wrap gap-x-8 ">
-                {websiteBenefits?.benefitsItems?.map((item: any, index: any) => (
-                  <div
-                    key={index}
-                    className=" flex flex-col mt-6 max-w-[90%] mx-auto bg-white p-5 rounded-lg shadow-lg  shadow-slate-200 hover:shadow-gColor"
-                  >
-                    <div className="text-customColor text-left">
-                      <span className="text-gray-600 font-[400] text-3xl">{item.title}</span>
+                {websiteBenefits?.benefitsItems?.map(
+                  (item: any, index: any) => (
+                    <div
+                      key={index}
+                      className=" flex flex-col mt-6 max-w-[90%] mx-auto bg-white p-5 rounded-lg shadow-lg  shadow-slate-200 hover:shadow-gColor"
+                    >
+                      <div className="text-customColor text-left">
+                        <span className="text-gray-600 font-[400] text-3xl">
+                          {item.title}
+                        </span>
+                      </div>
+                      <span className="text-gray-600 mt-4 text-left font-light font-source md:text-xl tracking-wide">
+                        {item.description}
+                      </span>
                     </div>
-                    <span className="text-gray-600 mt-4 text-left font-light font-source md:text-xl tracking-wide">
-                      {item.description}
-                    </span>
-                  </div>
-                ))}
+                  )
+                )}
               </div>
             </div>
           </div>
@@ -119,15 +132,22 @@ const WebsitesPage = async () => {
         <OfferPageTypes data={offerpagetypes} />
         {/* TODO: Należy przenieść dane do ACF */}
         <EstimationSection
-          title={estimation?.title || ''}
-          description={estimation?.description || ''}
-          buttons={buttons.map(button => ({
-            label: button?.text || '',
-            url: button?.url || '/',
+          title={estimation?.title || ""}
+          description={estimation?.description || ""}
+          buttons={buttons.map((button) => ({
+            label: button?.text || "",
+            url: button?.url || "/",
           }))}
         />
-        <EncouragingSection title={whyme?.title || ''} services={whyme?.boxs || []} />
-        <FaqSection title={acordin?.title || ''} description={acordin?.description || ''} items={acordin?.acordinItems as any[]} />
+        <EncouragingSection
+          title={whyme?.title || ""}
+          services={whyme?.boxs || ([] as any)}
+        />
+        <FaqSection
+          title={acordin?.title || ""}
+          description={acordin?.description || ""}
+          items={acordin?.acordinItems as any[]}
+        />
       </section>
     </>
   );

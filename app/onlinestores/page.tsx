@@ -35,20 +35,17 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const OnlineStoresPage = async () => {
-  const { data: a } = await query<
-    OnlineStoresPageHomeQuery,
-    OnlineStoresPageHomeQueryVariables
-  >({ query: GRAPHL_QUERY_HOME });
+  const { data: a } = await query<OnlineStoresPageHomeQuery, OnlineStoresPageHomeQueryVariables>({ query: GRAPHL_QUERY_HOME });
   const whyme = a.page?.home?.whyme;
   const acordin = a.page?.home?.acordin;
 
+  console.log(whyme);
   const { data: b } = await query<
     OnlineStoresPageQuery,
     OnlineStoresPageQueryVariables
   >({ query: GRAPHQL_QUERY });
   const hero = b.page?.onlieStores?.hero;
   const benefits = b.page?.onlieStores?.storesBenefits;
-
   return (
     <section>
       <header className="flex flex-col md:flex-row items-center justify-between cnt font-sans py-14">
@@ -85,7 +82,7 @@ const OnlineStoresPage = async () => {
             <p className="text-gray-700 mt-3 text-lg md:text-xl tracking-wide w-full md:max-w-[80%] lg:max-w-[60%] mx-auto">
               {benefits?.description}
             </p>
-            <div className="mt-8 space-y-8">
+            <div className="mt-16 space-y-8">
               {benefits?.benefitsItems?.map((item: any, index: any) => (
                 <div
                   key={index}
@@ -110,7 +107,7 @@ const OnlineStoresPage = async () => {
 
       <EncouragingSection
         title={whyme?.title || ""}
-        services={whyme?.boxs || []}
+        services={whyme?.boxs || [] as any}
       />
       <FaqSection
         title={acordin?.title || ""}

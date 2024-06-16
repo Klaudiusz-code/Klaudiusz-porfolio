@@ -14,13 +14,13 @@ type DesignProcessSectionProps = {
 
 const DesignProcessSection = ({ title, description, items }: DesignProcessSectionProps) => {
   return (
-    <div className="cnt mx-auto mb-8 lg:mb-14 mt-24 lg:mt-14 px-2">
+    <div className="cnt mx-auto mb-8 lg:mb-14 mt-24 lg:mt-16 px-2">
       <div className="flex flex-col items-center mt-28">
-        <h2 className="text-center rounded-lg p-3 text-[#4d4c4c] text-2xl lg:text-4xl xl:text-5xl font-bold mb-6 font-sans lg:mb-8">
+        <h2 className="text-center rounded-lg text-[#4f7cf7] uppercase font-[600] tracking-wide text-lg  mb-2">
           {title}
         </h2>
 
-        <p className="text-center max-w-full  lg:max-w-[80%] mx-auto text-[1rem] lg:text-xl xl:text-1xl leading-7 text-gColor font-sans font-[400] mb-8 lg:mb-10">
+        <p className="text-center max-w-full  lg:max-w-[80%] font-bold mx-auto tracking-wide text-[1rem] lg:text-3xl xl:text-4xl leading-7 text-customColor font-sans  mb-8 lg:mb-10">
           {description}
         </p>
 
@@ -36,10 +36,10 @@ const DesignProcessSection = ({ title, description, items }: DesignProcessSectio
                 </span>
               </div>
               <div>
-                <h2 className="mt-8 text-[#4d4c4c] font-sans text-[1.5rem] font-[400]">
+                <h2 className="mt-8 text-[#000] font-sans text-[1.5rem] font-[400]">
                   {item.title}
                 </h2>
-                <p className="text-[#9b9b9b] text-[0.875rem] lg:text-[0.9rem] xl:text-[1.1rem] font-sans mt-2 mb-4 max-w-[90%] mx-auto leading-8">
+                <p className="text-gray-500 text-[0.875rem] lg:text-[0.9rem] xl:text-[1.1rem] font-sans mt-2 mb-4 max-w-[90%] mx-auto leading-8">
                   {item.description}
                 </p>
                 {/* TODO: Przenieść przycisk do ACF! */}

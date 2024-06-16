@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from "react";
@@ -13,25 +14,26 @@ type ToolsSectionProps = {
 
 const ToolsSection = ({ title, description, charts = [] }: ToolsSectionProps) => {
   return (
-    <div className="cnt mt-16 mb-4 text-center mx-auto">
-      <h2 className="text-[1.8rem] md:text-[2rem] lg:text-[2.4rem] font-thin text-[#10152e] mt-12 tracking-wide">
+    <div className="cnt mt-20 mb-4 text-center mx-auto">
+      <h2 className="text-lg font-[600] font-mono text-[#4f7cf7] mt-12 tracking-wide">
         {title}
       </h2>
-      <p className="max-w-full md:max-w-[70%] lg:max-w-[60%] mx-auto text-[#4d4c4c] text-[0.9rem] md:text-[1rem] lg:text-[1.1rem] font-[400] leading-7 tracking-wide mt-6 font-sans">
+      <p className="max-w-full md:max-w-[70%] lg:max-w-[60%] mx-auto text-[1rem] lg:text-3xl xl:text-4xl leading-7 text-customColor tracking-wide mt-6 font-source font-bold">
         {description}
-      </p>{" "}
+      </p>
       <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 gap-x-24 justify-center">
         {charts?.map((chart: any, index: any) => (
           <div key={index} className="flex flex-col items-center">
             <div className="flex w-full items-center justify-between mb-1">
               <h2 className="text-[1rem] font-[500] text-bgColor">{chart.text}</h2>
-              <span className="text-bgColor text-sm font-sans font-[500]">
+              <span className="text-[#4f7cf7] text-sm font-mono font-[600]">
                 {chart.width}%
               </span>
             </div>
-            <div className="relative w-full h-[1.3rem] bg-[#f3f3f3] rounded-md overflow-hidden">
+            <div className="relative w-full h-[1rem] bg-[#f3f3f3] rounded overflow-hidden">
               <div
-                className="absolute top-0 left-0 h-full bg-customColor"
+                className="absolute top-0 left-0 h-full bg-[#4f7cf7]"
+                style={{ width: `${chart.width}%` }}
               />
             </div>
           </div>

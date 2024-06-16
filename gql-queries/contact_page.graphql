@@ -1,0 +1,14 @@
+query ContactQuery  {
+   page(id: "cG9zdDoyNTY=") {
+    seo{
+      title
+      description
+    }
+  		contact{
+        iconsContact{
+          icon
+          url
+        }
+      }
+  	}
+}

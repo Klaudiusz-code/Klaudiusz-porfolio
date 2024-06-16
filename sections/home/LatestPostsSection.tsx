@@ -22,8 +22,8 @@ const LatestPostsSection = ({ posts }: LatestPostsSectionProps) => {
   return (
     <section className="cnt font-sans mb-12">
       <div className="w-full px-3 flex items-center justify-center flex-col mt-16">
-        <h2 className="text-[1.8rem] md:text-[2rem] lg:text-[2.4rem] ">
-          <span className="text-customColor font-bold">Moje</span> Blogi
+        <h2 className="text-[#4f7cf7] uppercase font-bold tracking-wide text-lg">
+          Ostatnie Blogi
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           {posts?.map((post: any) => (

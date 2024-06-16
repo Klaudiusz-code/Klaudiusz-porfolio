@@ -1,6 +1,6 @@
 query HomePage {
   page(id: "cG9zdDoyMw==") {
-   seo {
+    seo {
       title
       description
     }
@@ -56,14 +56,15 @@ query HomePage {
       whyme {
         title
         boxs {
+          icon
           title
           description
         }
       }
-      freeprojectestimation{
+      freeprojectestimation {
         title
         description
-        buttons{
+        buttons {
           text
           url
         }

@@ -1,47 +1,50 @@
-'use client';
-
-import React, { useState } from 'react';
+'use client'
+import React, { useState, useRef, useEffect } from "react";
 import { HiX } from "react-icons/hi";
 import { FaPlus } from "react-icons/fa";
 
 const Accordion = ({ title, answer }: { title: string; answer: string }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [contentHeight, setContentHeight] = useState("0px");
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setContentHeight(isOpen ? `${contentRef.current.scrollHeight}px` : "0px");
+    }
+  }, [isOpen]);
 
   const toggleAccordion = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <section className="cnt lg:max-w-[80%] py-1 font-sans border-l-[3px]  border-customColor">
-      <button
-        className="flex w-full items-center p-1  transition-all  rounded-xl duration-300"
+    <div className="border border-[#9abdf0] hover:shadow-lg duration-200 shadow-customColor p-6 rounded-lg overflow-hidden">
+      <div
+        className="flex justify-between items-center cursor-pointer"
         onClick={toggleAccordion}
       >
-        {isOpen ? (
-          <HiX
-            className="text-white shrink-0  text-[2rem] bg-customColor rounded-full p-1"
-            size={20}
-          />
-        ) : (
-          <FaPlus
-            className="text-white shrink-0  text-[2rem] bg-customColor rounded-full p-1"
-            size={20}
-          />
-        )}
-        <span className="text-bgColor text-[0.9rem] ml-3 text-left font-[400]  lg:text-[1.2rem]">
-          {title}
-        </span>
-      </button>
-      <div
-        className={`grid overflow-hidden mt-1 transition-all duration-300 ml-9 ease-in-out text-customColor  text-[0.8rem] lg:text-[1rem] text-left ${
-          isOpen
-            ? "grid-rows-[1fr] opacity-100"
-            : "grid-rows-[0fr] opacity-0"
-        }`}
-      >
-        <div className="overflow-hidden">{answer}</div>
+        <div>
+          <span className="text-[#2d4b4b] text-lg font-medium lg:text-xl">
+            {title}
+          </span>
+        </div>
+        <div>
+          {isOpen ? (
+            <HiX className="text-[#4f7cf7] text-2xl" />
+          ) : (
+            <FaPlus className="text-[#4f7cf7] text-2xl" />
+          )}
+        </div>
       </div>
-    </section>
+      <div
+        ref={contentRef}
+        style={{ maxHeight: `${contentHeight}` }}
+        className="overflow-hidden transition-max-height duration-300 ease-in-out text-gray-700 text-base lg:text-lg mt-4"
+      >
+        {answer}
+      </div>
+    </div>
   );
 };
 

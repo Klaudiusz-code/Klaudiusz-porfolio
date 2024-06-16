@@ -1,17 +1,39 @@
-"use client";
-import React, { useState } from "react";
+'use client'
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { IoIosMenu, IoIosArrowForward } from "react-icons/io";
 
 const Navbar = ({ data }: any) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      console.log("Scroll position:", window.scrollY);
+      if (window.scrollY > 1) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+  
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="bg-[#fff] p-6">
+    <nav
+      className={`bg-[#fff] p-6 ${
+        isSticky ? "sticky top-0 z-50 shadow-lg" : ""
+      }`}
+    >
       <div className="cnt mx-auto flex items-center justify-between flex-wrap">
         <div className="flex items-center flex-shrink-0 text-2xl text-gray-800 mr-6">
           siema
@@ -36,7 +58,7 @@ const Navbar = ({ data }: any) => {
                   return (
                     <li
                       key={edge.node.id}
-                      className={`border-b lg:border-b-0 border-customColor mb-4 lg:mb-0 ${
+                      className={`border-b lg:border-b-0 border-[#9abdf0] mb-4 lg:mb-0 ${
                         index === data.menuItems.edges.length - 1 ? "cta" : ""
                       }`}
                     >

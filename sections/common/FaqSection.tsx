@@ -1,7 +1,5 @@
-'use client';
-
+"use client";
 import React from "react";
-
 import Accordion from "@/components/Accordion";
 
 type FaqSectionProps = {
@@ -15,23 +13,21 @@ type FaqSectionProps = {
 
 const FaqSection = ({ title, description, items = [] }: FaqSectionProps) => {
   return (
-    <div className="cnt mb-16 lg:mt-24">
-      <div className="flex flex-col lg:flex-row justify-center">
-        <div className="mb-10 w-full mt-20">
-          <h3 className="text-[2.2rem] md:text-[2.5rem] lg:text-[3rem] font-sans font-[400] text-[#10152e]">
+    <div className="cnt mb-16 lg:mt-12 px-4 lg:px-0">
+      <div className="flex flex-col justify-center">
+        <div className="mb-10 w-full mt-20 text-center">
+          <h3 className="uppercase text-[#4f7cf7] font-mono tracking-wide font-bold text-lg mt-12">
             {title}
           </h3>
-          <p className="text-bgColor font-[400] text-[1.3rem] md:text-[1.5rem] lg:text-[1.8rem] mt-2 font-sans">
+          <p className="text-center max-w-full mt-4 lg:max-w-[80%] font-bold mx-auto tracking-wide text-[1rem] lg:text-3xl xl:text-4xl leading-7 text-customColor font-sans mb-8 lg:mb-10">
             {description}
           </p>
         </div>
-        <div>
+        <div className="grid grid-cols-2 gap-8">
           {items?.map((item: any, index: number) => (
-            <Accordion
-              key={index}
-              title={item.question}
-              answer={item.answer}
-            />
+            <div key={index}>
+              <Accordion title={item.question} answer={item.answer} />
+            </div>
           ))}
         </div>
       </div>

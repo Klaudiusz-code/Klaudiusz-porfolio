@@ -10,7 +10,7 @@ type Button = {
 type EstimationSectionProps = {
   title: string;
   description: string;
-  buttons: Button[]; // Ensure buttons are defined
+  buttons: Button[];
 };
 
 const EstimationSection = ({
@@ -25,7 +25,7 @@ const EstimationSection = ({
       </h2>
       <p className="text-[1.1rem] text-[#dadada] mt-6">{description}</p>
       <div className="flex flex-row items-center gap-x-3 md:gap-x-5 lg:gap-x-8 mt-6 mb-5">
-        {buttons && buttons.length > 0 && // Add a check here
+        {buttons && buttons.length > 0 &&
           buttons.map((button, index) => (
             <CustomButton
               key={index}

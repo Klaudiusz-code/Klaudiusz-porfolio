@@ -33,8 +33,6 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
 const BlogPost = async ({ params }: any) => {
   const { data } = await query<BlogPostQuery, BlogPostQueryVariables>({ query: GRAPHQL_QUERY, variables: { slug: params.slug } });
 
-  console.log(data.post?.content)
-
   if (!data.post) {
     return <div>404 Not Found</div>;
   }

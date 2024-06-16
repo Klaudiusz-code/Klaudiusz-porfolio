@@ -50,7 +50,6 @@ const HomePage = async () => {
   const acordin = data.page?.home?.acordin;
   const estimation = data.page?.home?.freeprojectestimation;
   const buttons = estimation?.buttons || [];
-
   return (
     <>
       <HeroSection
@@ -78,14 +77,15 @@ const HomePage = async () => {
       />
       <EncouragingSection
         title={whyme?.title || ""}
-        services={whyme?.boxs || []}
+        services={whyme?.boxs || [] as any}
       />
+
       <EstimationSection
         title={estimation?.title || ""}
         description={estimation?.description || ""}
         buttons={buttons.map((button) => ({
-          label: button?.text || '',
-          url: button?.url || '/',
+          label: button?.text || "",
+          url: button?.url || "/",
         }))}
       />
       <LatestPostsSection posts={posts?.nodes as any[]} />
