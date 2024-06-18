@@ -19,7 +19,7 @@ const EstimationSection = ({
   buttons,
 }: EstimationSectionProps) => {
   return (
-    <div className="w-full flex flex-col items-center bg-customColor min-h-[250px] p-3 mt-20 mb-14 font-sans">
+    <div className="w-full flex flex-col items-center bg-gradient-to-r from-blue-400 to-blue-600 min-h-[250px] p-3 mt-20 mb-14 font-sans">
       <h2 className="text-[1.6rem] text-[#ffffff] font-[600] mt-8 text-center">
         {title}
       </h2>

@@ -46,12 +46,11 @@ const BlogPost = async ({ params }: any) => {
   });
 
   return (
-    <section className="shadow-sm mx-auto max-w-5xl px-4 py-8 rounded-md font-sans">
+    <section className={`shadow-sm mx-auto max-w-5xl px-4 py-8 rounded-md font-sans ${styles.content}`}>
       <div className={styles.content}>
         <h1 className={styles.title}>{data.post.title}</h1>
         <div className={styles.prose}>
           {ReactHtmlParser(data.post.content || '')}
-
         </div>
         <div className={`${styles.mt8} ${styles.textGray600} ${styles.additionalInfo}`}>
           <p>Published on: {formattedDate}</p>
@@ -64,4 +63,3 @@ const BlogPost = async ({ params }: any) => {
 };
 
 export default BlogPost;
-

@@ -11,18 +11,21 @@ const Navbar = ({ data }: any) => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
-      console.log("Scroll position:", window.scrollY);
-      if (window.scrollY > 1) {
+      if (window.scrollY > 300) {
         setIsSticky(true);
       } else {
         setIsSticky(false);
       }
     };
-  
+
     window.addEventListener("scroll", handleScroll);
-  
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -30,13 +33,13 @@ const Navbar = ({ data }: any) => {
 
   return (
     <nav
-      className={`bg-[#fff] p-6 ${
+      className={`bg-white p-6 ${
         isSticky ? "sticky top-0 z-50 shadow-lg" : ""
       }`}
     >
-      <div className="cnt mx-auto flex items-center justify-between flex-wrap">
+      <div className="container mx-auto flex items-center justify-between flex-wrap">
         <div className="flex items-center flex-shrink-0 text-2xl text-gray-800 mr-6">
-          siema
+          Siema
         </div>
         <div className="block lg:hidden">
           <button
@@ -54,31 +57,30 @@ const Navbar = ({ data }: any) => {
           <div className="text-sm lg:flex-grow lg:flex lg:justify-end">
             {data && (
               <ul className="lg:flex lg:items-center lg:space-x-4">
-                {data.menuItems.edges.map((edge: any, index: any) => {
-                  return (
-                    <li
-                      key={edge.node.id}
-                      className={`border-b lg:border-b-0 border-[#9abdf0] mb-4 lg:mb-0 ${
-                        index === data.menuItems.edges.length - 1 ? "cta" : ""
-                      }`}
-                    >
-                      <Link href={edge.node.path || "/"}>
-                        <span
-                          className={`text-lg text-[#2d4b4b] font-source lg:px-1 py-2 lg:py-1  flex items-center ${
-                            index === data.menuItems.edges.length - 1
-                              ? "cta-inner"
-                              : "justify-between"
-                          }`}
-                        >
-                          <span>{edge.node.label}</span>
-                          {index !== data.menuItems.edges.length - 1 && (
-                            <IoIosArrowForward className="ml-2 text-xl text-[#6082e2]  font-extrabold" />
-                          )}
-                        </span>
-                      </Link>
-                    </li>
-                  );
-                })}
+                {data.menuItems.edges.map((edge: any, index: any) => (
+                  <li
+                    key={edge.node.id}
+                    className={`border-b lg:border-b-0 border-[#9abdf0] mb-4 lg:mb-0 ${
+                      index === data.menuItems.edges.length - 1 ? "cta" : ""
+                    }`}
+                  >
+                    <Link href={edge.node.path || "/"} passHref>
+                      <div
+                        onClick={closeMenu}
+                        className={`cursor-pointer text-lg text-[#2d4b4b] font-source lg:px-1 py-2 lg:py-1 flex items-center hover:text-[#6082e2] ${
+                          index === data.menuItems.edges.length - 1
+                            ? "cta-inner"
+                            : "justify-between"
+                        }`}
+                      >
+                        <span>{edge.node.label}</span>
+                        {index !== data.menuItems.edges.length - 1 && (
+                          <IoIosArrowForward className="ml-2 text-xl text-[#6082e2] font-extrabold" />
+                        )}
+                      </div>
+                    </Link>
+                  </li>
+                ))}
               </ul>
             )}
           </div>

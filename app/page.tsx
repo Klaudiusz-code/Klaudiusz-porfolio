@@ -63,7 +63,7 @@ const HomePage = async () => {
         description={about?.description || ""}
       />
       <ServicesSection
-        services={about?.services as Page_Home_About_Services[]}
+        services={about?.services as Page_Home_About_Services[] as any}
       />
       <DesignProcessSection
         title={websiteprocces?.title || ""}

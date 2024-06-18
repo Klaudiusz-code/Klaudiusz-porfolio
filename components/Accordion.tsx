@@ -1,48 +1,45 @@
-'use client'
-import React, { useState, useRef, useEffect } from "react";
-import { HiX } from "react-icons/hi";
-import { FaPlus } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaArrowRight , FaArrowDown  } from "react-icons/fa";
 
-const Accordion = ({ title, answer }: { title: string; answer: string }) => {
+type AccordionProps = {
+  title: string;
+  answer: string;
+};
+
+const Accordion = ({ title, answer }: AccordionProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const [contentHeight, setContentHeight] = useState("0px");
-
-  useEffect(() => {
-    if (contentRef.current) {
-      setContentHeight(isOpen ? `${contentRef.current.scrollHeight}px` : "0px");
-    }
-  }, [isOpen]);
 
   const toggleAccordion = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <div className="border border-[#9abdf0] hover:shadow-lg duration-200 shadow-customColor p-6 rounded-lg overflow-hidden">
-      <div
-        className="flex justify-between items-center cursor-pointer"
-        onClick={toggleAccordion}
-      >
-        <div>
-          <span className="text-[#2d4b4b] text-lg font-medium lg:text-xl">
+    <div className="rounded-lg overflow-hidden  transition-shadow duration-300">
+      <div className="p-4">
+        <div
+          className="flex justify-between items-center cursor-pointer"
+          onClick={toggleAccordion}
+        >
+          <h3 className="text-lg font-semibold font-sans text-gray-600">
             {title}
-          </span>
+          </h3>
+          <div className="text-2xl">
+            {isOpen ? (
+              <FaArrowDown className="text-[#4f7cf7]" />
+            ) : (
+              <FaArrowRight className="text-[#4f7cf7]" />
+            )}
+          </div>
         </div>
-        <div>
-          {isOpen ? (
-            <HiX className="text-[#4f7cf7] text-2xl" />
-          ) : (
-            <FaPlus className="text-[#4f7cf7] text-2xl" />
-          )}
+        <div
+          className={`overflow-hidden transition-height duration-500 ease-in-out ${
+            isOpen ? "h-auto" : "h-0"
+          }`}
+          aria-hidden={!isOpen}
+          style={{ maxHeight: isOpen ? "1000px" : "0" }}
+        >
+          <p className="text-base lg:text-lg text-gray-600 font-mono">{answer}</p>
         </div>
-      </div>
-      <div
-        ref={contentRef}
-        style={{ maxHeight: `${contentHeight}` }}
-        className="overflow-hidden transition-max-height duration-300 ease-in-out text-gray-700 text-base lg:text-lg mt-4"
-      >
-        {answer}
       </div>
     </div>
   );

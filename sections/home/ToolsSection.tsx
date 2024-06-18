@@ -30,9 +30,9 @@ const ToolsSection = ({ title, description, charts = [] }: ToolsSectionProps) =>
                 {chart.width}%
               </span>
             </div>
-            <div className="relative w-full h-[1rem] bg-[#f3f3f3] rounded overflow-hidden">
+            <div className="relative w-full h-[0.4rem] bg-[#eceaea] rounded overflow-hidden">
               <div
-                className="absolute top-0 left-0 h-full bg-[#4f7cf7]"
+                className="absolute top-0 left-0 h-full bg-[#2c61ff]"
                 style={{ width: `${chart.width}%` }}
               />
             </div>

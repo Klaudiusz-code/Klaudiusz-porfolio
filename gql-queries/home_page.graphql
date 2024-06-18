@@ -18,8 +18,14 @@ query HomePage {
         description
         services {
           description
-          icon
           title
+          image {
+            sourceUrl
+            mediaDetails {
+              height
+              width
+            }
+          }
         }
       }
       websiteprocces {

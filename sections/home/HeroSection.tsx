@@ -13,7 +13,7 @@ type HeroSectionProps = {
 
 const HeroSection = ({ title, description, buttonText, buttonUrl = '/' }: HeroSectionProps) => {
   return (
-    <section className="bg-customColor">
+    <section className="bg-gradient-to-r from-blue-400 to-blue-600">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -31,7 +31,7 @@ const HeroSection = ({ title, description, buttonText, buttonUrl = '/' }: HeroSe
             <h2 className="mx-auto max-w-[95%] md:max-w-[70%] mt-6 mb-5 text-[#f8f8f8] font-medium text-[0.9rem] leading-7 lg:leading-9 md:text-[1rem] lg:text-[1.1rem] font-sans">
               {description}
             </h2>
-            <div>
+            <div className="mx-auto">
               <CustomButton
                 text={buttonText}
                 link={buttonUrl}

@@ -12,6 +12,16 @@ query OnlineStoresPage {
           text
           url
         }
+        image{
+          mediaDetails{
+            sizes{
+              width
+              height
+              name
+              sourceUrl
+            }
+          }
+        }
       }
       storesBenefits{
         title
