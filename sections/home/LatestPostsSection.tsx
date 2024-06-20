@@ -1,5 +1,4 @@
 'use client';
-
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,7 +21,7 @@ const LatestPostsSection = ({ posts }: LatestPostsSectionProps) => {
   return (
     <section className="cnt font-sans mb-12">
       <div className="w-full px-3 flex items-center justify-center flex-col mt-16">
-        <h2 className="text-[#4f7cf7] uppercase font-bold tracking-wide text-lg">
+        <h2 className="text-[#4f7cf7] uppercase font-bold tracking-wide text-2xl">
           Ostatnie Blogi
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
@@ -30,7 +29,7 @@ const LatestPostsSection = ({ posts }: LatestPostsSectionProps) => {
             <Link
               href={`/blog/${post.slug}`}
               key={post.slug}
-              className="relative  bg-[#fff] rounded-md min-w-[350px] overflow-hidden"
+              className="relative bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden"
             >
               {post.featuredImage &&
                 post.featuredImage.node &&
@@ -43,11 +42,11 @@ const LatestPostsSection = ({ posts }: LatestPostsSectionProps) => {
                     className="w-full h-48 object-cover"
                   />
                 )}
-              <div className="p-4">
-                <h2 className="text-xl font-bold mb-2">{post.title}</h2>
-                <p className="text-gray-600">
+              <div className="p-6">
+                <h2 className="text-2xl font-semibold mb-4">{post.title}</h2>
+                <p className="text-gray-700 mb-4">
                   {post.excerpt
-                    ? post.excerpt.replace(/<[^>]+>/g, "").substring(0, 250) +
+                    ? post.excerpt.replace(/<[^>]+>/g, "").substring(0, 180) +
                       "..."
                     : "Brak treści..."}
                 </p>

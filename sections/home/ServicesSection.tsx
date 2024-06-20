@@ -20,7 +20,7 @@ type ServicesSectionProps = {
 const ServicesSection = ({ services }: ServicesSectionProps) => {
   return (
     <section className="cnt mt-20">
-      <div className="max-w-[80%] mx-auto flex flex-wrap justify-center gap-12">
+      <div className="sm:max-w-[60%] md:max-w-[80%] mx-auto flex flex-wrap justify-center gap-12">
         {services?.map((service, index: number) => {
           const imageUrl = service.image?.sourceUrl;
           const imageAlt = service.title;
@@ -28,7 +28,7 @@ const ServicesSection = ({ services }: ServicesSectionProps) => {
           return (
             <div
               key={index}
-              className="flex flex-col items-center text-center text-customColor rounded-lg min-h-[280px] max-w-[300px] shadow-lg transition-all duration-300 shadow-[#e0e0e0] hover:shadow-gColor"
+              className="flex flex-col items-center text-center text-customColor rounded-lg min-h-[280px] w-full lg:max-w-[300px] bg-white shadow-lg transition-all duration-300 shadow-[#e0e0e0] hover:shadow-gColor"
             >
               {imageUrl ? (
                 <img

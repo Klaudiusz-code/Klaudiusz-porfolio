@@ -1,179 +1,119 @@
-'use client';
-
-import React, { FormEvent } from "react";
 import Link from "next/link";
 import Head from "next/head";
+import { Metadata } from "next";
+import { IoCallOutline, IoMailOutline } from "react-icons/io5";
+import { FaFacebookMessenger, FaDiscord, FaLinkedin } from "react-icons/fa";
+import ContactForm from "@/components/ContactForm";
+import { query } from "@/ApolloClient";
+import { ContactQueryQuery, ContactQueryQueryVariables } from "@/gql/graphql";
+import GRAPHQL_QUERY from "@/gql-queries/contact_page.graphql";
 
-async function onSubmit(event: FormEvent<HTMLFormElement>) {
-  event.preventDefault();
+const iconsKeyMap: Record<string, React.ElementType> = {
+  IoCallOutline: IoCallOutline,
+  IoMailOutline: IoMailOutline,
+  FaFacebookMessenger: FaFacebookMessenger,
+  FaDiscord: FaDiscord,
+  FaLinkedin: FaLinkedin,
+};
 
-  const form = new FormData(event.currentTarget);
+const getIconByString = (iconKey: string) => {
+  const IconComponent = iconsKeyMap[iconKey];
+  return IconComponent ? <IconComponent /> : null;
+};
 
-  const response = await fetch("/api/sendForm", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name: form.get("name"),
-      phone: form.get("phone"),
-      email: form.get("email"),
-      message: form.get("message"),
-    }),
+export async function generateMetadata(): Promise<Metadata> {
+  const { data } = await query<ContactQueryQuery, ContactQueryQueryVariables>({
+    query: GRAPHQL_QUERY,
   });
 
-  const data = await response.json();
+  const seoData = data.page?.seo;
+
+  return {
+    title: seoData?.title || "Tytuł",
+    description: seoData?.description || "Podtytuł",
+  };
 }
 
-const ContactPage = () => {
+const ContactPage = async () => {
+  const { data } = await query<ContactQueryQuery, ContactQueryQueryVariables>({
+    query: GRAPHQL_QUERY,
+  });
+
+  const { page } = data || {};
+  const contactMethods = page?.contact?.contactMethods || [];
+  const additionalLinks = page?.contact?.iconsContact || [];
+  const heroTitle = page?.contact?.hero?.title || "Kontakt";
+  const heroDescription =
+    page?.contact?.hero?.descritpion ||
+    "abc";
+
   return (
     <section>
       <Head>
-        <title>Kontakt</title>
+        <title>{page?.seo?.title || "Kontakt"}</title>
       </Head>
-      <div className="max-w-[90%] lg:max-w-[80%] mx-auto">
-        <div
-          className="cnt p-10 rounded-lg grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-12 lg:gap-x-28 mb-24"
-        >
-          <div className="lg:ml-10 w-full">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl mt-8 lg:mt-16 font-bold mb-4 text-[#10152e] leading-8 tracking-wide">
-              Czy jesteś otwarty na nowe możliwości?
+      <div className="max-w-[90%] lg:max-w-[80%] mx-auto py-12">
+        <div className="cnt p-10 rounded-lg grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-12 lg:gap-x-16 mb-24 bg-white shadow-lg">
+          <div className="lg:ml-10 w-full flex flex-col justify-center items-start">
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-extrabold font-source mb-4 text-customColor leading-tight tracking-wide">
+              {heroTitle}
             </h2>
-            <span className="text-2xl lg:text-5xl font-[400] mb-4 text-customColor mt-1 leading-8 tracking-wide]">
-              Skorzystaj z formularza kontaktowego!
-            </span>
-            <p className="text-lg lg:text-lg mb-8 mt-4 leading-7  text-[#10152e]">
-              Cieszę się, że chcesz się ze mną skontaktować! Wypełnij formularz,
-              aby wysłać mi wiadomość, lub skorzystaj z alternatywnych sposobów
-              kontaktu podane poniżej.
+            <p className="text-lg lg:text-lg mb-8 mt-4 leading-7 text-[#5b66a0]">
+              {heroDescription}
             </p>
+            {contactMethods.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mx-auto sm:mx-0">
+                {contactMethods.map((item, index) => {
+                  const iconKey = item?.icon?.split(":")[0] ?? null;
+                  return (
+                    <div
+                      key={index}
+                      className="border border-customColor group p-6 rounded-xl flex items-center justify-center flex-col cursor-pointer transition-all duration-300 hover:bg-[#e1e7ff] hover:border-[#3b46a8] hover:scale-105"
+                    >
+                      <div className="rounded-full bg-[#f0f4ff] p-4 mb-4 group-hover:scale-75 transition-transform duration-300">
+                        <span className="text-customColor text-4xl">
+                          {iconKey && getIconByString(iconKey)}
+                        </span>
+                      </div>
+                      <span className="text-[#3b46a8] font-[400] font-source">{item?.titleTwo}</span>
 
-            <ul className="flex flex-col gap-y-4">
-              {[
-                {
-                  icon: 'Ikonka', // lub komponent
-                  desc: "Opis",
-                  link: '/link',
-                }
-              ].map((item: any, index: any) => (
-                <li key={index}>
-                  <Link
-                    href={item.link}
-                    className="flex items-center  text-lg lg:text-xl font-normal  transition-all duration-200"
-                  >
-                    <span className="flex items-center justify-center  text-[#0C75FF] ">
-                      {item.icon}
-                    </span>
-                    <span className="ml-3 text-slate-600">{item.desc}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8">
-              <ul className="flex gap-x-6 mt-12">
-                {[
-                  {
-                    icon: 'Ikonka', // lub komponent
-                    link: '/link',
-                  }
-                ].map((item: any, index: any) => (
-                  <li
-                    key={index}
-                    className="text-3xl lg:text-4xl  text-customColor hover:scale-110 transition-all duration-400 cursor-pointer"
-                  >
-                    <Link href={item.link}>{item.icon}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                      <div className="text-center mt-2">
+                        <Link
+                          href={item?.url || "#"}
+                          className="text-lg lg:text-xl font-medium transition-all duration-200 hover:text-customColor"
+                        >
+                          <span className="text-slate-600">
+                            {item?.title || "ABC"}
+                          </span>
+                        </Link>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+            {additionalLinks.length > 0 && (
+              <div className="mt-8 flex gap-x-6 mx-auto md:mx-0">
+                {additionalLinks.map((item, index) => {
+                  const iconKey = item?.icon?.split(":")[0] ?? null;
+                  return (
+                    <div
+                      key={index}
+                      className="border border-customColor p-3 rounded-xl transition-all  hover:border-[#3b46a8]"
+                    >
+                      <Link
+                        href={item?.url || "#"}
+                        className="text-4xl text-customColor hover:scale-110 transition-all duration-400"
+                      >
+                        {iconKey && getIconByString(iconKey)}
+                      </Link>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
-          <div className="mt-2 mx-auto w-full">
-            <form
-              onSubmit={onSubmit}
-              className="max-w-[700px] h-auto lg:h-[600px] mx-auto rounded-lg overflow-hidden shadow-md bg-slate-50 p-6 font-sans tracking-wide"
-            >
-              <h1 className=" mb-8 text-[#10152e] font-bold  text-2xl lg:text-4xl">
-                <span className="text-customColor font-[400]">Wypełnij </span>
-                Formularz
-              </h1>
-              <div className="mb-4">
-                <label
-                  htmlFor="name"
-                  className="block text-gray-700 text-lg font-[400] mb-2"
-                >
-                  Imię i nazwisko
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  className="bg-transparent w-full py-2 border-b border-gray-300"
-                  placeholder="Twoje imię i nazwisko"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="phone"
-                  className="block text-gray-700 text-lg font-[400] mb-2"
-                >
-                  Numer Telefonu
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  pattern="[0-9]{9,15}"
-                  title="Numer telefonu powinien składać się z 9-15 cyfr"
-                  className="bg-transparent w-full py-2 border-b border-gray-300"
-                  placeholder="Numer Telefonu"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="email"
-                  className="block text-gray-700 text-lg font-[400] mb-2"
-                >
-                  Adres e-mail
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="bg-transparent w-full py-2 border-b border-gray-300"
-                  placeholder="Twój adres e-mail"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="message"
-                  className="block text-gray-700 text-lg font-[400] mb-2"
-                >
-                  Wiadomość
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  className="bg-transparent w-full py-2 border-b border-gray-300"
-                  placeholder="Twoja wiadomość"
-                  required
-                ></textarea>
-              </div>
-              <div className="w-full block mx-auto">
-                <button
-                  type="submit"
-                  className="bg-customColor text-white font-[600] px-4 py-3 rounded-md w-full uppercase"
-                >
-                  wyślij wiadomosć
-                </button>
-              </div>
-              {true && (
-                <p className="text-center mt-4 text-customColor font-[600]">Wiadomość została wysłana!</p>
-              )}{" "}
-            </form>
-          </div>
+          <ContactForm />
         </div>
       </div>
     </section>

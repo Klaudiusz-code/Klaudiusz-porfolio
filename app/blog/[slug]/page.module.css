@@ -85,3 +85,45 @@
   font-family: 'Courier New', Courier, monospace;
   color: #0047b3;
 }
+
+@media (max-width: 768px) {
+  .content {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .prose {
+    font-size: 0.9rem;
+  }
+
+  .additionalInfo {
+    font-size: 0.75rem;
+  }
+
+  .content h2 {
+    font-size: 1.2rem;
+  }
+
+  .content h3 {
+    font-size: 1.1rem;
+  }
+
+  .content h4 {
+    font-size: 1rem;
+  }
+
+  .content p {
+    font-size: 0.875rem;
+  }
+
+  .content pre {
+    font-size: 0.8rem;
+  }
+
+  .content code {
+    font-size: 0.8rem;
+  }
+}

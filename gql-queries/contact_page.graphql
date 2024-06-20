@@ -5,6 +5,16 @@ query ContactQuery  {
       description
     }
   		contact{
+        hero{
+          title
+          descritpion
+        }
+        contactMethods{
+          icon
+          titleTwo
+          title
+          url
+        }
         iconsContact{
           icon
           url
