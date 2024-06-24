@@ -1,8 +1,16 @@
 query ProjectsPage {
   page(id: "cG9zdDoyNzA=") {
-  seo {
+   seo {
       title
       description
+      openGraph {
+        description
+        locale
+        siteName
+        title
+        type
+        updatedTime
+      }
     }
     realisation {
       hero {

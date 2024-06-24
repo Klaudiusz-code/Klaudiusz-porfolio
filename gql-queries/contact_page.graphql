@@ -1,8 +1,16 @@
 query ContactQuery  {
    page(id: "cG9zdDoyNTY=") {
-    seo{
+     seo {
       title
       description
+      openGraph {
+        description
+        locale
+        siteName
+        title
+        type
+        updatedTime
+      }
     }
   		contact{
         hero{

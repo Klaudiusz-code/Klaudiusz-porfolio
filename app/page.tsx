@@ -1,8 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-
 import { query } from "@/ApolloClient";
-
 import {
   HomePageQuery,
   HomePageQueryVariables,
@@ -14,42 +12,68 @@ import HeroSection from "@/sections/home/HeroSection";
 import AboutSection from "@/sections/home/AboutSection";
 import ServicesSection from "@/sections/home/ServicesSection";
 import DesignProcessSection from "@/sections/home/DesignProcessSection";
-import OffersSection from "@/sections/home/OffersSection";
 import ToolsSection from "@/sections/home/ToolsSection";
 import EstimationSection from "@/sections/home/EstimationSection";
 import LatestPostsSection from "@/sections/home/LatestPostsSection";
 import EncouragingSection from "@/sections/common/EncouragingSection";
 import FaqSection from "@/sections/common/FaqSection";
 
+type OpenGraphType = "website" | "article" | "book" | "profile";
+
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await query<HomePageQuery, HomePageQueryVariables>({
-    query: GRAPHQL_QUERY,
-  });
+  try {
+    const { data } = await query<HomePageQuery, HomePageQueryVariables>({
+      query: GRAPHQL_QUERY,
+    });
 
-  const seoData = data.page?.seo;
+    const seoData = data.page?.seo;
 
-  return {
-    title: seoData?.title || "",
-    description: seoData?.description || "",
-  };
+    return {
+      title: seoData?.title || "",
+      description: seoData?.description || "",
+      openGraph: {
+        title: seoData?.openGraph?.title || seoData?.title || "",
+        description:
+          seoData?.openGraph?.description || seoData?.description || "",
+        locale: seoData?.openGraph?.locale || "",
+        siteName: seoData?.openGraph?.siteName || "",
+        type: (seoData?.openGraph?.type as OpenGraphType) || "website",
+      },
+      metadataBase: new URL('https://klaudiuszdev.pl')
+    };
+  } catch (error) {
+    console.error("Error fetching SEO data:", error);
+    return {
+      title: "",
+      description: "",
+      openGraph: {
+        title: "",
+        description: "",
+        locale: "",
+        siteName: "",
+        type: "website",
+      },
+      metadataBase: new URL('https://klaudiuszdev.pl')
+    };
+  }
 }
-
 const HomePage = async () => {
   const { data } = await query<HomePageQuery, HomePageQueryVariables>({
     query: GRAPHQL_QUERY,
   });
+
   const seo = data.page?.seo;
 
   const hero = data.page?.home?.hero;
   const about = data.page?.home?.about;
   const websiteprocces = data.page?.home?.websiteprocces;
-  const offertshome = data.page?.home?.offertshome;
   const tools = data.page?.home?.tools;
   const whyme = data.page?.home?.whyme;
   const posts = data.posts;
   const acordin = data.page?.home?.acordin;
   const estimation = data.page?.home?.freeprojectestimation;
   const buttons = estimation?.buttons || [];
+
   return (
     <>
       <HeroSection
@@ -77,7 +101,7 @@ const HomePage = async () => {
       />
       <EncouragingSection
         title={whyme?.title || ""}
-        services={whyme?.boxs || [] as any}
+        services={whyme?.boxs || ([] as any)}
       />
 
       <EstimationSection

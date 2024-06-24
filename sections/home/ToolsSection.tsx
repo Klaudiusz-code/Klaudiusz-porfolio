@@ -15,9 +15,9 @@ type ToolsSectionProps = {
 const ToolsSection = ({ title, description, charts = [] }: ToolsSectionProps) => {
   return (
     <div className="cnt mt-20 mb-4 text-center mx-auto">
-      <h2 className="text-lg font-[600] font-mono text-[#4f7cf7] mt-12 tracking-wide">
+      <h3 className="text-lg font-[600] font-mono text-[#4f7cf7] mt-12 tracking-wide">
         {title}
-      </h2>
+      </h3>
       <p className="max-w-full md:max-w-[70%] lg:max-w-[60%] mx-auto text-[1rem] lg:text-3xl xl:text-4xl leading-7 text-customColor tracking-wide mt-6 font-source font-bold">
         {description}
       </p>
@@ -25,7 +25,7 @@ const ToolsSection = ({ title, description, charts = [] }: ToolsSectionProps) =>
         {charts?.map((chart: any, index: any) => (
           <div key={index} className="flex flex-col items-center">
             <div className="flex w-full items-center justify-between mb-1">
-              <h2 className="text-[1rem] font-[500] text-bgColor">{chart.text}</h2>
+              <h3 className="text-[1rem] font-[500] text-bgColor">{chart.text}</h3>
               <span className="text-[#4f7cf7] text-sm font-mono font-[600]">
                 {chart.width}%
               </span>

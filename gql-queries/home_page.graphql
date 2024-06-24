@@ -1,8 +1,16 @@
 query HomePage {
   page(id: "cG9zdDoyMw==") {
-    seo {
+     seo {
       title
       description
+      openGraph {
+        description
+        locale
+        siteName
+        title
+        type
+        updatedTime
+      }
     }
     home {
       hero {

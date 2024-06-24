@@ -1,9 +1,17 @@
 query OnlineStoresPage {
   page(id: "cG9zdDoyNDU=") {
-  seo{
-    title
-    description
-  }
+   seo {
+      title
+      description
+      openGraph {
+        description
+        locale
+        siteName
+        title
+        type
+        updatedTime
+      }
+    }
     onlieStores {
       hero {
         title

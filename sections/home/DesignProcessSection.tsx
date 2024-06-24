@@ -32,9 +32,9 @@ const DesignProcessSection = ({
   return (
     <div className="w-full mx-auto mb-8 lg:mb-14 mt-24 lg:mt-16 bg-gradient-to-r from-blue-400 to-blue-600 py-24">
       <div className="flex flex-col items-center mt-2">
-        <h2 className="text-center rounded-lg text-[#eaebf0] uppercase font-semibold tracking-wide text-lg mb-2">
+        <h3 className="text-center rounded-lg text-[#eaebf0] uppercase font-semibold tracking-wide text-lg mb-2">
           {title}
-        </h2>
+        </h3>
         <p className="text-center max-w-full lg:max-w-[80%] font-bold mx-auto tracking-wide text-[1rem] lg:text-3xl xl:text-4xl leading-7 text-white font-sans mb-8 lg:mb-10">
           {description}
         </p>
@@ -51,9 +51,9 @@ const DesignProcessSection = ({
                 <div className="bg-blue-500 rounded-full h-16 w-16 flex items-center justify-center text-white text-3xl mb-6">
                   {icons[index]}
                 </div>
-                <h2 className="text-[#000] font-sans text-lg lg:text-xl font-medium">
+                <h4 className="text-[#000] font-sans text-lg lg:text-xl font-medium">
                   {item.title}
-                </h2>
+                </h4>
                 <p className="text-gray-500 text-sm lg:text-base xl:text-lg font-sans mt-2 mb-4 max-w-[90%] mx-auto leading-8">
                   {item.description}
                 </p>

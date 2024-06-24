@@ -21,9 +21,9 @@ const LatestPostsSection = ({ posts }: LatestPostsSectionProps) => {
   return (
     <section className="cnt font-sans mb-12">
       <div className="w-full px-3 flex items-center justify-center flex-col mt-16">
-        <h2 className="text-[#4f7cf7] uppercase font-bold tracking-wide text-2xl">
+        <h3 className="text-[#4f7cf7] uppercase font-bold tracking-wide text-2xl">
           Ostatnie Blogi
-        </h2>
+        </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           {posts?.map((post: any) => (
             <Link
@@ -43,7 +43,7 @@ const LatestPostsSection = ({ posts }: LatestPostsSectionProps) => {
                   />
                 )}
               <div className="p-6">
-                <h2 className="text-2xl font-semibold mb-4">{post.title}</h2>
+                <h4 className="text-2xl font-semibold mb-4">{post.title}</h4>
                 <p className="text-gray-700 mb-4">
                   {post.excerpt
                     ? post.excerpt.replace(/<[^>]+>/g, "").substring(0, 180) +

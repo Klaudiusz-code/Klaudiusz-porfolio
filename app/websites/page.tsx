@@ -58,7 +58,6 @@ export async function generateMetadata(): Promise<Metadata> {
     description: seoData?.description || "",
   };
 }
-// TODO: Bałagan z sekcjami i danymi
 
 const WebsitesPage = async () => {
   const { hero, websiteBenefits, offerpagetypes } = await getWebsitesData();
@@ -67,6 +66,8 @@ const WebsitesPage = async () => {
   const fullImage = getImageUrlBySize(hero?.image, "large");
 
   const buttons = estimation?.buttons || [];
+
+
 
   return (
     <>

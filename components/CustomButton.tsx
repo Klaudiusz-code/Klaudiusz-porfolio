@@ -16,14 +16,13 @@ const CustomButton = (props: CustomButtonProps) => {
     <Link href={link} passHref>
       <button
         style={{ background: bgColor, color: textColor }}
-        className="mt-2 px-4 py-3 lg:px-6 lg:py-4 h-13 rounded-2xl hover:text-customColor hover:scale-105 transition-all duration-200 relative"
+        className="mt-2 px-4 py-4 lg:px-6 lg:py-4 h-13 rounded-2xl hover:text-customColor hover:scale-105 transition-all duration-200 relative"
       >
         <span className="flex items-center justify-center">
-          <span className="text-[0.75rem] md:[0.8rem] xl:text-[1rem] font-bold mr-2">
+          <span className="text-[0.80rem] md:[0.85rem] xl:text-[1rem] font-bold mr-2">
             {text}
           </span>
-          <FaLongArrowAltRight size={18} />
-        </span>
+          <FaLongArrowAltRight className="text-lg sm:text-lg md:text-xl" />        </span>
       </button>
     </Link>
   );

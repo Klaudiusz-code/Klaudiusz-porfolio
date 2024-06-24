@@ -3,6 +3,14 @@ query WebsitesPage {
      seo {
       title
       description
+      openGraph {
+        description
+        locale
+        siteName
+        title
+        type
+        updatedTime
+      }
     }
     websites {
      
