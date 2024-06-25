@@ -1,6 +1,7 @@
 import React from "react";
+
 interface Service {
-  icon: {
+  icon?: {
     sourceUrl: string;
     mediaDetails?: {
       height: number;
@@ -10,6 +11,7 @@ interface Service {
   title: string;
   description: string;
 }
+
 type EncouragingSectionProps = {
   title: string;
   services: Service[];
@@ -30,9 +32,11 @@ const EncouragingSection: React.FC<EncouragingSectionProps> = ({
             className="flex items-center flex-col mt-6 text-center px-2 py-2 rounded-lg min-h-[300px] max-w-[350px] shadow-lg transition-all duration-300 shadow-[#e0e0e0] hover:shadow-gColor"
             key={index}
           >
-            <span className="text-[3rem] mt-2 lg:text-[3rem] pt-1 text-customColor">
-              <img src={service.icon.sourceUrl} alt={service.title} />
-            </span>
+            {service.icon && service.icon.sourceUrl && (
+              <span className="text-[3rem] mt-2 lg:text-[3rem] pt-1 text-customColor">
+                <img src={service.icon.sourceUrl} alt={service.title} />
+              </span>
+            )}
             <h3 className="mt-3 text-[1.7rem] md:text-[1.2rem] lg:text-[1.4rem] text-[#000] font-[400] font-sans">
               {service.title}
             </h3>
