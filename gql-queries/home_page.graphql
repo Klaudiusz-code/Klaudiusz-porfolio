@@ -70,7 +70,13 @@ query HomePage {
       whyme {
         title
         boxs {
-          icon
+          icon{
+            sourceUrl
+            mediaDetails{
+              height
+              width
+            }
+          }
           title
           description
         }

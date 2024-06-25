@@ -21,6 +21,8 @@ import {
 import GRAPHQL_QUERY_WEBSITES from "@/gql-queries/websites_page.graphql";
 import GRAPHQL_QUERY_HOME from "@/gql-queries/home_page2.graphql";
 
+type OpenGraphType = "website" | "article" | "book" | "profile" | "music.song" | "music.album" | "music.playlist" | "music.radio_station" | "video.movie" | "video.episode" | "video.tv_show" | "video.other";
+
 const getWebsitesData = async () => {
   const { data } = await query<WebsitesPageQuery, WebsitesPageQueryVariables>({
     query: GRAPHQL_QUERY_WEBSITES,
@@ -47,16 +49,40 @@ const getHomeData = async () => {
 };
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await query<WebsitesPageQuery, WebsitesPageQueryVariables>({
-    query: GRAPHQL_QUERY_WEBSITES,
-  });
+  try {
+    const { data } = await query<WebsitesPageQuery, WebsitesPageQueryVariables>({
+      query: GRAPHQL_QUERY_WEBSITES,
+    });
 
-  const seoData = data.page?.seo;
+    const seoData = data.page?.seo;
 
-  return {
-    title: seoData?.title || "",
-    description: seoData?.description || "",
-  };
+    return {
+      title: seoData?.title || "",
+      description: seoData?.description || "",
+      openGraph: {
+        title: seoData?.openGraph?.title || seoData?.title || "",
+        description: seoData?.openGraph?.description || seoData?.description || "",
+        locale: seoData?.openGraph?.locale || "",
+        siteName: seoData?.openGraph?.siteName || "",
+        type: (seoData?.openGraph?.type as OpenGraphType) || "website",
+      },
+      metadataBase: new URL('https://klaudiuszdev.pl')
+    };
+  } catch (error) {
+    console.error("Error fetching SEO data:", error);
+    return {
+      title: "",
+      description: "",
+      openGraph: {
+        title: "",
+        description: "",
+        locale: "",
+        siteName: "",
+        type: "website",
+      },
+      metadataBase: new URL('https://klaudiuszdev.pl')
+    };
+  }
 }
 
 const WebsitesPage = async () => {
@@ -66,8 +92,6 @@ const WebsitesPage = async () => {
   const fullImage = getImageUrlBySize(hero?.image, "large");
 
   const buttons = estimation?.buttons || [];
-
-
 
   return (
     <>

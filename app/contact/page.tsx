@@ -21,19 +21,46 @@ const getIconByString = (iconKey: string) => {
   return IconComponent ? <IconComponent /> : null;
 };
 
+type OpenGraphType = "website" | "article" | "book" | "profile";
+
+
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await query<ContactQueryQuery, ContactQueryQueryVariables>({
-    query: GRAPHQL_QUERY,
-  });
+  try {
+    const { data } = await query<ContactQueryQuery, ContactQueryQueryVariables>({
+      query: GRAPHQL_QUERY,
+    });
 
-  const seoData = data.page?.seo;
+    const seoData = data.page?.seo;
 
-  return {
-    title: seoData?.title || "Tytuł",
-    description: seoData?.description || "Podtytuł",
-  };
+    return {
+      title: seoData?.title || "",
+      description: seoData?.description || "",
+      openGraph: {
+        title: seoData?.openGraph?.title || seoData?.title || "",
+        description:
+          seoData?.openGraph?.description || seoData?.description || "",
+        locale: seoData?.openGraph?.locale || "",
+        siteName: seoData?.openGraph?.siteName || "",
+        type: (seoData?.openGraph?.type as OpenGraphType) || "website",
+      },
+      metadataBase: new URL('https://klaudiuszdev.pl')
+    };
+  } catch (error) {
+    console.error("Error fetching SEO data:", error);
+    return {
+      title: "",
+      description: "",
+      openGraph: {
+        title: "",
+        description: "",
+        locale: "",
+        siteName: "",
+        type: "website",
+      },
+      metadataBase: new URL('https://klaudiuszdev.pl')
+    };
+  }
 }
-
 const ContactPage = async () => {
   const { data } = await query<ContactQueryQuery, ContactQueryQueryVariables>({
     query: GRAPHQL_QUERY,

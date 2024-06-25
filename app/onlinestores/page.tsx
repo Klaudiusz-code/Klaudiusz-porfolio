@@ -18,17 +18,45 @@ import CustomButton from "@/components/CustomButton";
 import EncouragingSection from "@/sections/common/EncouragingSection";
 import FaqSection from "@/sections/common/FaqSection";
 
+type OpenGraphType = "website" | "article" | "book" | "profile";
+
+
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await query<OnlineStoresPageQuery, OnlineStoresPageQueryVariables>({
-    query: GRAPHQL_QUERY,
-  });
+  try {
+    const { data } = await query<OnlineStoresPageQuery, OnlineStoresPageQueryVariables>({
+      query: GRAPHQL_QUERY,
+    });
 
-  const seoData = data.page?.seo;
+    const seoData = data.page?.seo;
 
-  return {
-    title: seoData?.title || "",
-    description: seoData?.description || "",
-  };
+    return {
+      title: seoData?.title || "",
+      description: seoData?.description || "",
+      openGraph: {
+        title: seoData?.openGraph?.title || seoData?.title || "",
+        description:
+          seoData?.openGraph?.description || seoData?.description || "",
+        locale: seoData?.openGraph?.locale || "",
+        siteName: seoData?.openGraph?.siteName || "",
+        type: (seoData?.openGraph?.type as OpenGraphType) || "website",
+      },
+      metadataBase: new URL('https://klaudiuszdev.pl')
+    };
+  } catch (error) {
+    console.error("Error fetching SEO data:", error);
+    return {
+      title: "",
+      description: "",
+      openGraph: {
+        title: "",
+        description: "",
+        locale: "",
+        siteName: "",
+        type: "website",
+      },
+      metadataBase: new URL('https://klaudiuszdev.pl')
+    };
+  }
 }
 
 const OnlineStoresPage = async () => {

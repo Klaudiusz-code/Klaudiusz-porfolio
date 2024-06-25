@@ -5,19 +5,47 @@ import { ProjectsPageQuery, ProjectsPageQueryVariables } from "@/gql/graphql";
 import GRAPHQL_QUERY from "@/gql-queries/projects_page.graphql";
 import CustomButton from "@/components/CustomButton";
 
+type OpenGraphType = "website" | "article" | "book" | "profile";
+
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await query<ProjectsPageQuery, ProjectsPageQueryVariables>({
-    query: GRAPHQL_QUERY,
-  });
+  try {
+    const { data } = await query<ProjectsPageQuery, ProjectsPageQueryVariables>(
+      {
+        query: GRAPHQL_QUERY,
+      }
+    );
 
-  const seoData = data.page?.seo;
+    const seoData = data.page?.seo;
 
-  return {
-    title: seoData?.title || "",
-    description: seoData?.description || "",
-  };
+    return {
+      title: seoData?.title || "",
+      description: seoData?.description || "",
+      openGraph: {
+        title: seoData?.openGraph?.title || seoData?.title || "",
+        description:
+          seoData?.openGraph?.description || seoData?.description || "",
+        locale: seoData?.openGraph?.locale || "",
+        siteName: seoData?.openGraph?.siteName || "",
+        type: (seoData?.openGraph?.type as OpenGraphType) || "website",
+      },
+      metadataBase: new URL("https://klaudiuszdev.pl"),
+    };
+  } catch (error) {
+    console.error("Error fetching SEO data:", error);
+    return {
+      title: "",
+      description: "",
+      openGraph: {
+        title: "",
+        description: "",
+        locale: "",
+        siteName: "",
+        type: "website",
+      },
+      metadataBase: new URL("https://klaudiuszdev.pl"),
+    };
+  }
 }
-
 const ProjectsPage = async () => {
   const { data } = await query<ProjectsPageQuery, ProjectsPageQueryVariables>({
     query: GRAPHQL_QUERY,
@@ -39,7 +67,7 @@ const ProjectsPage = async () => {
       description:
         "Opis projektu 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       imageUrl: "/images/project2.jpg",
-      link: "#"
+      link: "#",
     },
     {
       id: 3,
