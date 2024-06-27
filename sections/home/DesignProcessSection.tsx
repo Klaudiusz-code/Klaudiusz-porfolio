@@ -30,7 +30,7 @@ const DesignProcessSection = ({
   ];
 
   return (
-    <div className="w-full mx-auto mb-8 lg:mb-14 mt-24 lg:mt-16 bg-gradient-to-r from-blue-400 to-blue-600 py-24">
+    <div className="w-full mx-auto mb-8 lg:mb-14 mt-24 lg:mt-16 bg-gradient-to-r from-blue-500 to-[#0624B5] py-24">
       <div className="flex flex-col items-center mt-2">
         <h3 className="text-center rounded-lg text-[#eaebf0] uppercase font-semibold tracking-wide text-lg mb-2">
           {title}

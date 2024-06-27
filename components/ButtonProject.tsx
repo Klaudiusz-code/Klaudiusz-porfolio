@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa6";
+import { GoArrowUpRight } from "react-icons/go";
 
 const ButtonProject = () => {
   return (
@@ -9,7 +9,7 @@ const ButtonProject = () => {
         <div className="flex items-center justify-center text-[14px] text-white xl:text-[16px] font-bold">
           Projekty
           <span className="ml-2">
-            <FaArrowRight />
+            <GoArrowUpRight />
           </span>
         </div>
       </button>

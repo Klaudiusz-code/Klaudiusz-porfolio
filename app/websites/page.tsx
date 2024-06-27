@@ -1,7 +1,14 @@
 import React from "react";
 import { Metadata } from "next";
 import Image from "next/image";
-
+import {
+  FaShieldAlt,
+  FaSearch,
+  FaClock,
+  FaSync,
+  FaChartLine,
+  FaComments,
+} from "react-icons/fa";
 import { query } from "@/ApolloClient";
 import { getImageUrlBySize } from "@/helpers";
 
@@ -21,7 +28,19 @@ import {
 import GRAPHQL_QUERY_WEBSITES from "@/gql-queries/websites_page.graphql";
 import GRAPHQL_QUERY_HOME from "@/gql-queries/home_page2.graphql";
 
-type OpenGraphType = "website" | "article" | "book" | "profile" | "music.song" | "music.album" | "music.playlist" | "music.radio_station" | "video.movie" | "video.episode" | "video.tv_show" | "video.other";
+type OpenGraphType =
+  | "website"
+  | "article"
+  | "book"
+  | "profile"
+  | "music.song"
+  | "music.album"
+  | "music.playlist"
+  | "music.radio_station"
+  | "video.movie"
+  | "video.episode"
+  | "video.tv_show"
+  | "video.other";
 
 const getWebsitesData = async () => {
   const { data } = await query<WebsitesPageQuery, WebsitesPageQueryVariables>({
@@ -50,9 +69,11 @@ const getHomeData = async () => {
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
-    const { data } = await query<WebsitesPageQuery, WebsitesPageQueryVariables>({
-      query: GRAPHQL_QUERY_WEBSITES,
-    });
+    const { data } = await query<WebsitesPageQuery, WebsitesPageQueryVariables>(
+      {
+        query: GRAPHQL_QUERY_WEBSITES,
+      }
+    );
 
     const seoData = data.page?.seo;
 
@@ -61,12 +82,13 @@ export async function generateMetadata(): Promise<Metadata> {
       description: seoData?.description || "",
       openGraph: {
         title: seoData?.openGraph?.title || seoData?.title || "",
-        description: seoData?.openGraph?.description || seoData?.description || "",
+        description:
+          seoData?.openGraph?.description || seoData?.description || "",
         locale: seoData?.openGraph?.locale || "",
         siteName: seoData?.openGraph?.siteName || "",
         type: (seoData?.openGraph?.type as OpenGraphType) || "website",
       },
-      metadataBase: new URL('https://klaudiuszdev.pl')
+      metadataBase: new URL("https://klaudiuszdev.pl"),
     };
   } catch (error) {
     console.error("Error fetching SEO data:", error);
@@ -80,10 +102,12 @@ export async function generateMetadata(): Promise<Metadata> {
         siteName: "",
         type: "website",
       },
-      metadataBase: new URL('https://klaudiuszdev.pl')
+      metadataBase: new URL("https://klaudiuszdev.pl"),
     };
   }
 }
+
+const icons = [FaShieldAlt, FaSearch, FaClock, FaSync, FaChartLine, FaComments];
 
 const WebsitesPage = async () => {
   const { hero, websiteBenefits, offerpagetypes } = await getWebsitesData();
@@ -95,13 +119,13 @@ const WebsitesPage = async () => {
 
   return (
     <>
-      <section>
-        <header className="flex flex-col md:flex-row items-center justify-between cnt font-sans py-14">
-          <div className="md:w-[40%] md:mr-6 order-2 md:order-1">
-            <h1 className="text-bgColor leading-9 mt-6 font-semibold font-sans text-3xl md:text-5xl xl:text-5xl mb-2 tracking-wide">
+      <section className="bg-white">
+        <header className="flex flex-col py-16 md:flex-row items-center justify-between cnt font-sans px-6 md:px-12">
+          <div className="md:w-[50%] order-2 md:order-1 text-center md:text-left mb-6 md:mb-0 md:pr-6">
+            <h1 className="text-bgColor leading-9 mt-6 font-semibold text-3xl md:text-5xl mb-4 tracking-wide">
               {hero?.title}
             </h1>
-            <p className="text-gray-700 text-lg mb-6 mt-4 tracking-wide">
+            <p className="text-gray-700 text-lg mb-6 tracking-wide">
               {hero?.description}
             </p>
             <CustomButton
@@ -111,7 +135,7 @@ const WebsitesPage = async () => {
               link={hero?.button?.url || "/"}
             />
           </div>
-          <div className="md:w-2/5 order-1 md:order-2">
+          <div className="md:w-1/2 order-1 md:order-2 mb-6 md:mb-0">
             <Image
               width={fullImage?.width}
               height={fullImage?.height}
@@ -121,43 +145,41 @@ const WebsitesPage = async () => {
             />
           </div>
         </header>
-        <div className="font-sans bg-slate-50 cnt py-8 mt-4 lg:mt-20">
+        <div className="bg-white py-12 md:py-16 px-6 md:px-12">
           <div className="container mx-auto">
-            <div className="text-center">
-              <h2 className="text-3xl md:text-5xl font-extrabold text-blue-700 font-source leading-tight mb-6">
-                {websiteBenefits?.title}
-              </h2>
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed mx-auto max-w-3xl mb-12">
-                {websiteBenefits?.description}
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {websiteBenefits?.benefitsItems?.map(
-                  (item: any, index: any) => (
-                    <div
-                      key={index}
-                      className="relative rounded-lg overflow-hidden shadow-lg"
-                      style={{
-                        background:
-                          "linear-gradient(to right, #0077cc, #00aaff)",
-                        border: "2px solid #fff",
-                        borderRadius: "20px",
-                        transition: "transform 0.3s ease-in-out",
-                        transformOrigin: "center",
-                        boxShadow: "0 10px 20px rgba(0, 0, 0, 0.1)",
-                      }}
-                    >
-                      <div className="p-6">
-                        <h3 className="font-extrabold font-source text-3xl mb-3 text-white">
-                          {item.title}
-                        </h3>
-                        <p className="font-light text-base font-mono leading-relaxed text-gray-200">
-                          {item.description}
-                        </p>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-8 md:mb-10 font-roboto text-center">
+              {websiteBenefits?.title}
+            </h2>
+            <p className="text-lg text-gray-700 mb-8 md:mb-12 font-roboto text-center">
+              {websiteBenefits?.description}
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+              {websiteBenefits?.benefitsItems?.map((item, index) => {
+                const IconComponent = icons[index % icons.length];
+                return (
+                  <div
+                    key={index}
+                    className="relative bg-white rounded-lg shadow-md border border-blue-00 overflow-hidden flex flex-col"
+                  >
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-200 to-blue-100 rounded-full blur-lg opacity-25"></div>
+                    </div>
+                    <div className="flex justify-center items-center p-4">
+                      <div className="rounded-full bg-gradient-to-br from-blue-400 to-blue-600 p-3">
+                        <IconComponent size={48} className="text-white" />
                       </div>
                     </div>
-                  )
-                )}
-              </div>
+                    <div className="p-6 flex flex-col items-center">
+                      <h3 className="text-xl md:text-2xl font-extrabold text-gray-900 mb-3 font-roboto text-center">
+                        {item?.title}
+                      </h3>
+                      <p className="text-base text-gray-600 font-mono text-center">
+                        {item?.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

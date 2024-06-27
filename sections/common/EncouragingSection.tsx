@@ -1,9 +1,10 @@
+'use client'
 import React from "react";
 
 interface Service {
-  icon?: {
+  icon: {
     sourceUrl: string;
-    mediaDetails?: {
+    mediaDetails: {
       height: number;
       width: number;
     };
@@ -34,7 +35,7 @@ const EncouragingSection: React.FC<EncouragingSectionProps> = ({
           >
             {service.icon && service.icon.sourceUrl && (
               <span className="text-[3rem] mt-2 lg:text-[3rem] pt-1 text-customColor">
-                <img src={service.icon.sourceUrl} alt={service.title} />
+                <img src={service.icon.sourceUrl} alt={service.title} loading="lazy" />
               </span>
             )}
             <h3 className="mt-3 text-[1.7rem] md:text-[1.2rem] lg:text-[1.4rem] text-[#000] font-[400] font-sans">

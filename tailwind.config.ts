@@ -30,7 +30,8 @@ const config: Config = {
       fontFamily: {
         sans: ["Open Sans", 'sans-serif'],
         bevan: ["Bevan", 'serif'],
-        source: ["Source Sans 3", "sans-serif"]
+        source: ["Source Sans 3", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"]
       },
     },
 

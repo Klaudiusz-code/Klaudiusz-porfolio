@@ -91,8 +91,8 @@ const ProjectsPage = async () => {
           </p>
           <div className="mt-6 text-center">
             <CustomButton
-              bgColor="#fff"
-              textColor="#0077cc"
+              bgColor="#0077cc"
+              textColor="#fff"
               text={hero?.button?.text || ""}
               link={hero?.button?.url || "/"}
             />
