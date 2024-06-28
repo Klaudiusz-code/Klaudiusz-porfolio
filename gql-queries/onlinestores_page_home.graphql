@@ -4,9 +4,15 @@ query OnlineStoresPageHome {
       whyme {
         title
         boxs {
+          icon{
+            sourceUrl
+            mediaDetails{
+              height
+              width
+            }
+          }
           title
           description
-          
         }
       }
       acordin {
