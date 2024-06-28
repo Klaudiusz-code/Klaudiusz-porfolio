@@ -8,9 +8,9 @@ import {
 } from "react-icons/fa";
 
 const icons = [
-  <FaFileAlt />,
-  <FaBuilding />,
-  <FaBlog />,
+  FaFileAlt,
+  FaBuilding,
+  FaBlog,
 ];
 
 const OfferPageTypes = ({ data }: any) => {
@@ -24,10 +24,11 @@ const OfferPageTypes = ({ data }: any) => {
       </p>
       <div className="mt-20 flex flex-row flex-wrap justify-center gap-y-16 gap-x-16">
   {data.items.map((item: any, index: number) => {
+    const IconComponent = icons[index]
 
     return (
       <div
-        key={index} 
+        key={index}
         className="relative flex flex-col items-center text-center text-customColor p-8 min-h-[300px] max-w-[350px] bg-white rounded-2xl shadow-lg transition-transform duration-300 transform hover:translate-y-[-10px] hover:scale-105 hover:shadow-2xl group"
       >
         <div className="absolute top-0 right-0 bg-customColor text-white font-bold text-4xl p-4 rounded-bl-2xl shadow-lg">
@@ -35,6 +36,7 @@ const OfferPageTypes = ({ data }: any) => {
         </div>
         <div className="relative mt-12 mb-6">
           <div className="bg-customColor rounded-full h-16 w-16 flex items-center justify-center text-white text-4xl mb-6">
+            <IconComponent />
           </div>
           <h2 className="text-gray-800 font-sans text-xl lg:text-2xl font-semibold mb-4">
             {item.title}
