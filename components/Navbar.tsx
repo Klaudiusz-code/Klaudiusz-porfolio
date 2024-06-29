@@ -1,9 +1,11 @@
-'use client'
+'use client';
+
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { IoIosMenu, IoIosClose, IoIosArrowForward, IoIosCall } from "react-icons/io";
 
-const Navbar = ({ data }: any) => {
+const Navbar = ({ data }:any) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
 
@@ -32,14 +34,14 @@ const Navbar = ({ data }: any) => {
   }, []);
 
   return (
-    <nav className={`bg-white p-6 ${isSticky ? "sticky top-0 z-50 shadow-lg" : ""}`}>
+    <nav className={`px-1 bg-white  ${isSticky ? "sticky top-0 z-50 shadow-lg" : ""}`}>
       <div className="container mx-auto flex items-center justify-between flex-wrap">
-        <div className="flex items-center flex-shrink-0 text-2xl text-gray-800 mr-6">
-          siema
-        </div>
+        <Link href='/' className="flex items-center flex-shrink-0 text-2xl text-gray-800 mr-6">
+          <Image src="/kd_logo.svg" alt="logo" width={110} height={20} />
+        </Link>
         <div className="block lg:hidden">
           <button
-            className="flex items-center py-2 rounded text-customColor border-customColor hover:text-customColor focus:outline-none"
+            className="flex items-center py-2 rounded px-1 text-customColor border-customColor hover:text-customColor focus:outline-none"
             onClick={toggleMenu}
           >
             {isMenuOpen ? (
@@ -51,13 +53,13 @@ const Navbar = ({ data }: any) => {
         </div>
         <div
           className={`${
-            isMenuOpen ? "blocka " : "hidden"
+            isMenuOpen ? "block" : "hidden"
           } w-full lg:flex lg:items-center lg:w-auto lg:justify-end`}
         >
-          <div className="text-sm lg:flex-grow lg:flex lg:justify-end">
+          <div className="text-sm lg:flex-grow px-4 lg:px-0 lg:flex lg:justify-end">
             {data && (
               <ul className="lg:flex lg:items-center lg:space-x-4">
-                {data.menuItems.edges.map((edge: any) => (
+                {data.menuItems.edges.map((edge:any) => (
                   <li
                     key={edge.node.id}
                     className="border-b lg:border-b-0 border-[#9abdf0] mb-4 lg:mb-0"

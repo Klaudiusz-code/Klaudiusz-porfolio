@@ -23,12 +23,13 @@ const getIconByString = (iconKey: string) => {
 
 type OpenGraphType = "website" | "article" | "book" | "profile";
 
-
 export async function generateMetadata(): Promise<Metadata> {
   try {
-    const { data } = await query<ContactQueryQuery, ContactQueryQueryVariables>({
-      query: GRAPHQL_QUERY,
-    });
+    const { data } = await query<ContactQueryQuery, ContactQueryQueryVariables>(
+      {
+        query: GRAPHQL_QUERY,
+      }
+    );
 
     const seoData = data.page?.seo;
 
@@ -43,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
         siteName: seoData?.openGraph?.siteName || "",
         type: (seoData?.openGraph?.type as OpenGraphType) || "website",
       },
-      metadataBase: new URL('https://klaudiuszdev.pl')
+      metadataBase: new URL("https://klaudiuszdev.pl"),
     };
   } catch (error) {
     console.error("Error fetching SEO data:", error);
@@ -57,7 +58,7 @@ export async function generateMetadata(): Promise<Metadata> {
         siteName: "",
         type: "website",
       },
-      metadataBase: new URL('https://klaudiuszdev.pl')
+      metadataBase: new URL("https://klaudiuszdev.pl"),
     };
   }
 }
@@ -70,9 +71,7 @@ const ContactPage = async () => {
   const contactMethods = page?.contact?.contactMethods || [];
   const additionalLinks = page?.contact?.iconsContact || [];
   const heroTitle = page?.contact?.hero?.title || "Kontakt";
-  const heroDescription =
-    page?.contact?.hero?.descritpion ||
-    "abc";
+  const heroDescription = page?.contact?.hero?.descritpion || "abc";
 
   return (
     <section>
@@ -93,8 +92,9 @@ const ContactPage = async () => {
                 {contactMethods.map((item, index) => {
                   const iconKey = item?.icon?.split(":")[0] ?? null;
                   return (
-                    <div
+                    <Link
                       key={index}
+                      href={item?.url || "#"}
                       className="border border-customColor group p-6 rounded-xl flex items-center justify-center flex-col cursor-pointer transition-all duration-300 hover:bg-[#e1e7ff] hover:border-[#3b46a8] hover:scale-105"
                     >
                       <div className="rounded-full bg-[#f0f4ff] p-4 mb-4 group-hover:scale-75 transition-transform duration-300">
@@ -102,23 +102,21 @@ const ContactPage = async () => {
                           {iconKey && getIconByString(iconKey)}
                         </span>
                       </div>
-                      <span className="text-[#3b46a8] font-[400] font-source">{item?.titleTwo}</span>
+                      <span className="text-[#3b46a8] font-[400] font-source">
+                        {item?.titleTwo}
+                      </span>
 
                       <div className="text-center mt-2">
-                        <Link
-                          href={item?.url || "#"}
-                          className="text-lg lg:text-xl font-medium transition-all duration-200 hover:text-customColor"
-                        >
-                          <span className="text-slate-600">
-                            {item?.title || "ABC"}
-                          </span>
-                        </Link>
+                        <span className="text-slate-600 text-lg lg:text-xl font-medium transition-all duration-200 hover:text-customColor">
+                          {item?.title || "ABC"}
+                        </span>
                       </div>
-                    </div>
+                    </Link>
                   );
                 })}
               </div>
             )}
+
             {additionalLinks.length > 0 && (
               <div className="mt-8 flex gap-x-6 mx-auto md:mx-0">
                 {additionalLinks.map((item, index) => {

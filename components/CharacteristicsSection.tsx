@@ -38,15 +38,15 @@ const CharacteristicsSection = () => {
 
         <div className="bg-purple-100 text-purple-900 rounded-lg overflow-hidden border border-purple-200">
           <div className="py-3 px-4">
-            <span className="text-xs font-semibold">#Innowacyjny</span>
+            <span className="text-xs font-semibold">#OdkrywamPotencjałWKodzie</span>
             <h3 className="text-lg font-semibold text-purple-900 mt-2">
-              Jestem innowacyjny
+              Kodowanie z pasją
             </h3>
             <p className="text-sm text-gray-700">
-              Stale poszukuję nowych rozwiązań.
+              Odkrywam potencjał w każdym wierszu kodu.
             </p>
           </div>
-        </div>
+        </div> 
       </div>
     </div>
   );

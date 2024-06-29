@@ -54,7 +54,7 @@ const DesignProcessSection = ({
                 <h4 className="text-[#000] font-sans text-lg lg:text-xl font-medium">
                   {item.title}
                 </h4>
-                <p className="text-gray-500 text-sm lg:text-base xl:text-lg font-sans mt-2 mb-4 max-w-[90%] mx-auto leading-8">
+                <p className="text-gray-600 text-sm lg:text-base font-source font-thin xl:text-lg  mt-2 mb-4 max-w-[90%] mx-auto leading-8">
                   {item.description}
                 </p>
                 {index === 0 && (
