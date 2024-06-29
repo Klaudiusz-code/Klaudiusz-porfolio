@@ -38,7 +38,7 @@ const DesignProcessSection = ({
         <p className="text-center max-w-full lg:max-w-[80%] font-bold mx-auto tracking-wide text-[1rem] lg:text-3xl xl:text-4xl leading-7 text-white font-sans mb-8 lg:mb-10">
           {description}
         </p>
-        <div className="cnt mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-12">
+        <div className="cnt mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 lg:gap-12">
           {items.map((item, index) => (
             <div
               key={index}

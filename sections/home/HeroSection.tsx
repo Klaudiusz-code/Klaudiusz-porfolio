@@ -29,7 +29,7 @@ const HeroSection = ({
             className="w-full h-auto max-w-lg lg:max-w-2xl"
           />
         </div>
-        <div className="w-full mt-14 lg:mt-0 max-w-2xl md:w-2/5 md:order-1 text-center md:text-left">
+        <div className="w-full mt-14 lg:mt-0 max-w-2xl md:w-3/5 md:order-1 text-center md:text-left">
           <span className="text-lg font-medium mb-2 tracking-wide font-roboto bg-gray-100 p-2 rounded-md text-customColor inline-block">
             <span className="border-l-2 border-customColor px-2 py-1">
               Klaudiusz Adamaszek

@@ -121,8 +121,8 @@ const WebsitesPage = async () => {
     <>
       <section className="bg-white">
         <header className="flex flex-col py-16 md:flex-row items-center justify-between cnt font-sans px-6 md:px-12">
-          <div className="md:w-[50%] order-2 md:order-1 text-center md:text-left mb-6 md:mb-0 md:pr-6">
-            <h1 className="text-bgColor leading-9 mt-6 font-semibold text-3xl md:text-5xl mb-4 tracking-wide">
+          <div className="md:w-[60%] lg:w-[50%] xl:w-[40%] order-2 md:order-1 text-center md:text-left mb-6 md:mb-0 md:pr-6">
+            <h1 className="text-bgColor leading-9 mt-6 font-semibold text-3xl md:text-4xl lg:text-5xl mb-4 tracking-wide">
               {hero?.title}
             </h1>
             <p className="text-gray-700 text-lg mb-6 tracking-wide">
@@ -147,10 +147,10 @@ const WebsitesPage = async () => {
         </header>
         <div className="bg-white py-12 md:py-16 px-6 md:px-12">
           <div className="container mx-auto">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-8 md:mb-10 font-roboto text-center">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-gray-700 mb-8 md:mb-10 font-roboto text-center">
               {websiteBenefits?.title}
             </h2>
-            <p className="text-lg text-gray-700 mb-8 md:mb-12 font-roboto text-center">
+            <p className="text-base lg:text-xl text-gray-700 mb-8 md:mb-12 font-roboto text-center">
               {websiteBenefits?.description}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
