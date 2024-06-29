@@ -1,6 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 import { query } from "@/ApolloClient";
+import Head from "next/head";
 import {
   HomePageQuery,
   HomePageQueryVariables,
@@ -39,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
         siteName: seoData?.openGraph?.siteName || "",
         type: (seoData?.openGraph?.type as OpenGraphType) || "website",
       },
-      metadataBase: new URL('https://klaudiuszdev.pl')
+      metadataBase: new URL("https://klaudiuszdev.pl"),
     };
   } catch (error) {
     console.error("Error fetching SEO data:", error);
@@ -53,7 +54,7 @@ export async function generateMetadata(): Promise<Metadata> {
         siteName: "",
         type: "website",
       },
-      metadataBase: new URL('https://klaudiuszdev.pl')
+      metadataBase: new URL("https://klaudiuszdev.pl"),
     };
   }
 }
@@ -76,6 +77,12 @@ const HomePage = async () => {
 
   return (
     <>
+      <Head>
+        <meta
+          name="google-site-verification"
+          content="_QkqDJ2yyltPwwi4lkThE7vqIHC4e4RdlkgOq1jlidA"
+        />
+      </Head>
       <HeroSection
         title={hero?.title || ""}
         description={hero?.description || ""}
