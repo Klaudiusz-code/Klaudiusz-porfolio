@@ -2,7 +2,7 @@ import React from "react";
 
 const CharacteristicsSection = () => {
   return (
-    <div className="py-6 mt-10 lg:mt-0">
+    <div className="py-6 mt-6 lg:mt-0">
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl">
         <div className="bg-blue-100 text-blue-900 rounded-lg overflow-hidden border border-blue-200">
           <div className="py-3 px-4">

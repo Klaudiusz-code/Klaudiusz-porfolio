@@ -21,7 +21,7 @@ const HeroSection = ({
         <div className="w-[80rem] h-[60rem] bg-blue-400 rounded-full mix-blend-overlay blur-lg opacity-[0.13]"></div>
       </div>
 
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-6 relative z-20">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 relative z-20">
         <div className="w-full hidden md:w-1/2 md:order-2 mb-8 md:mb-0 md:flex justify-center md:justify-end">
           <img
             src={heroImg.src}
