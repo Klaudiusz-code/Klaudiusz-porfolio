@@ -39,7 +39,7 @@ const Navbar = ({ data }: any) => {
 
   return (
     <nav
-      className={`px-1 py-2 lg:py-0 bg-white ${
+      className={`px-1 py-3 lg:py-1 bg-white ${
         isSticky ? "sticky top-0 z-50 shadow-lg" : ""
       }`}
     >
@@ -49,11 +49,11 @@ const Navbar = ({ data }: any) => {
           className="flex items-center flex-shrink-0 text-2xl text-gray-800 mr-6"
         >
           <Image
-            src="/kd_logo.svg"
+            src="/hello.svg"
             alt="logo"
-            width={200}
-            height={200}
-            className="w-20 h-[5.6rem] sm:w-24 sm:h-[5.5rem] md:w-28 md:h-[5.6rem] lg:w-32 lg:h-[5.7rem] xl:w-36 xl:h-[6rem] p-0 m-0"
+            width={30}
+            height={30}
+            className="h-auto py-1 lg:py-2 ml-2 w-[54px] lg:w-[60px] "
           />
         </Link>
         <div className="block lg:hidden">
@@ -62,9 +62,9 @@ const Navbar = ({ data }: any) => {
             onClick={toggleMenu}
           >
             {isMenuOpen ? (
-              <IoIosClose className="text-2xl" />
+              <IoIosClose className="text-3xl" />
             ) : (
-              <IoIosMenu className="text-2xl" />
+              <IoIosMenu className="text-3xl" />
             )}
           </button>
         </div>

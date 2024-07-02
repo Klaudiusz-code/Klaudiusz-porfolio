@@ -38,7 +38,7 @@ const Accordion = ({ title, answer }: AccordionProps) => {
           aria-hidden={!isOpen}
           style={{ maxHeight: isOpen ? "1000px" : "0" }}
         >
-          <p className="text-base lg:text-lg text-gray-600 font-mono">{answer}</p>
+          <p className="text-base lg:text-lg text-gray-600 font-sans mt-4">{answer}</p>
         </div>
       </div>
     </div>

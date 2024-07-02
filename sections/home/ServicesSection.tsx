@@ -42,10 +42,10 @@ const ServicesSection = ({ services }: ServicesSectionProps) => {
                   Brak zdjęcia
                 </div>
               )}
-              <h3 className="mt-1 text-[26px] text-[#4d4c4c] font-[400]">
+              <h3 className="mt-1 text-[26px] text-gray-700 font-[400]">
                 {service.title}
               </h3>
-              <p className="max-w-[90%] text-gColor font-light text-[0.9rem]">
+              <p className="max-w-[90%] text-gray-500 font-light text-[0.9rem]">
                 {service.description}
               </p>
             </div>

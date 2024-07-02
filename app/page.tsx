@@ -104,7 +104,7 @@ const HomePage = async () => {
       <ToolsSection
         title={tools?.title || ""}
         description={tools?.description || ""}
-        charts={tools?.charts as any[]}
+        charts={tools?.charts as any[]} 
       />
       <EncouragingSection
         title={whyme?.title || ""}

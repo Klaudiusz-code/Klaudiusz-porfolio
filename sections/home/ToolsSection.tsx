@@ -1,46 +1,71 @@
-
-'use client';
-
 import React from "react";
+import {
+  FaSass,
+  FaJs,
+  FaNodeJs,
+  FaReact,
+  FaWordpress,
+  FaHtml5,
+  FaFigma,
+} from "react-icons/fa";
+import {
+  SiTailwindcss,
+  SiExpress,
+  SiMongodb,
+  SiTypescript,
+  SiNextdotjs,
+} from "react-icons/si";
 
-type ToolsSectionProps = {
+interface Props {
   title: string;
   description: string;
-  charts: {
-    text: string;
-    width: number;
-  }[];
-};
+  charts: { text: string; icon: string }[];
+}
 
-const ToolsSection = ({ title, description, charts = [] }: ToolsSectionProps) => {
+function ToolsSection({ title, description, charts }: Props) {
+  const iconMap: { [key: string]: JSX.Element | null } = {
+    "FaHtml5: html": <FaHtml5 size={48} />,
+    "FaSass: ScSS": <FaSass size={48} />,
+    "SiTailwindcss: Tailwind": <SiTailwindcss size={48} />,
+    "FaJs: JS": <FaJs size={48} />,
+    "SiExpress: express": <SiExpress size={48} />,
+    "FaNodeJs: nodejs": <FaNodeJs size={48} />,
+    "FaReact: react": <FaReact size={48} />,
+    "wordpress: FaWordpress": <FaWordpress size={48} />,
+    "SiMongodb: MongoDb": <SiMongodb size={48} />,
+    "FaFigma: figma": <FaFigma size={48} />,
+    "SiTypescript: typescript": <SiTypescript size={48} />,
+    "SiNextdotjs: next": <SiNextdotjs size={48} />,
+  };
+
+  const technologies = charts.map((chart) => ({
+    name: chart.text,
+    icon: iconMap[chart.icon] || null,
+  }));
+
   return (
-    <div className="cnt mt-20 mb-4 text-center mx-auto">
-      <h2 className="text-lg font-[600] font-mono text-[#4f7cf7] mt-12 tracking-wide">
+    <div className="container mx-auto mt-16 mb-8 text-center">
+      <h2 className="text-3xl font-semibold text-blue-600 mt-8 tracking-wide">
         {title}
       </h2>
-      <p className="max-w-full md:max-w-[70%] lg:max-w-[60%] mx-auto text-[1rem] lg:text-3xl xl:text-4xl leading-7 text-customColor tracking-wide mt-6 font-source font-bold">
+      <p className="max-w-full md:max-w-3xl mx-auto text-xl leading-7 text-gray-700 mt-4 font-[400]">
         {description}
       </p>
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 gap-x-24 justify-center">
-        {charts?.map((chart: any, index: any) => (
-          <div key={index} className="flex flex-col items-center">
-            <div className="flex w-full items-center justify-between mb-1">
-              <h4 className="text-[1rem] font-[500] text-bgColor">{chart.text}</h4>
-              <span className="text-[#4f7cf7] text-sm font-mono font-[600]">
-                {chart.width}%
-              </span>
-            </div>
-            <div className="relative w-full h-[0.4rem] bg-[#eceaea] rounded overflow-hidden">
-              <div
-                className="absolute top-0 left-0 h-full bg-[#2c61ff]"
-                style={{ width: `${chart.width}%` }}
-              />
-            </div>
+      <div className="mt-12 flex flex-wrap justify-center">
+        {technologies.map((tech, index) => (
+          <div
+            key={index}
+            className="rounded-lg overflow-hidden shadow-lg m-4 w-[140px] h-[140px] p-4 flex flex-col items-center justify-center bg-[#ecf4ff]"
+          >
+            <div className="text-3xl mb-2 text-customColor">{tech.icon}</div>
+            <h4 className="text-lg font-medium text-customColor">
+              {tech.name}
+            </h4>
           </div>
         ))}
       </div>
     </div>
   );
-};
+}
 
 export default ToolsSection;

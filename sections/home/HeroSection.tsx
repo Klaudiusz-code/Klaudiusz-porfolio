@@ -16,7 +16,7 @@ const HeroSection = ({
   buttonUrl = "/",
 }: HeroSectionProps) => {
   return (
-    <section className="bg-body-bg min-h-[450px] md:min-h-[500px] lg:min-h-[700px] py-4 lg:py-8 flex flex-col items-center relative overflow-hidden bg-[#ecf4ff]">
+    <section className="bg-body-bg min-h-[450px] md:min-h-[500px] lg:min-h-[600px] py-2 lg:py-4 flex flex-col items-center relative overflow-hidden bg-[#ecf4ff]">
       <div className="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2">
         <div className="w-[80rem] h-[60rem] bg-blue-400 rounded-full mix-blend-overlay blur-lg opacity-[0.13]"></div>
       </div>
@@ -29,7 +29,7 @@ const HeroSection = ({
             className="w-full h-auto max-w-lg lg:max-w-2xl"
           />
         </div>
-        <div className="w-full mt-14 lg:mt-0 max-w-2xl md:w-3/5 md:order-1 text-center md:text-left">
+        <div className="w-full mt-10 lg:mt-0 max-w-2xl md:w-3/5 md:order-1 text-center md:text-left">
           <span className="text-lg font-medium mb-2 tracking-wide font-roboto bg-gray-100 p-2 rounded-md text-customColor inline-block">
             <span className="border-l-2 border-customColor px-2 py-1">
               Klaudiusz Adamaszek

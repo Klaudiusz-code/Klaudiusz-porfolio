@@ -32,7 +32,6 @@ export async function generateMetadata(): Promise<Metadata> {
     );
 
     const seoData = data.page?.seo;
-
     return {
       title: seoData?.title || "",
       description: seoData?.description || "",

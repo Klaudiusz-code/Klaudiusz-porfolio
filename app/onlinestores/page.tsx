@@ -154,7 +154,7 @@ const OnlineStoresPage = async () => {
                     <h3 className="text-xl md:text-2xl font-extrabold text-gray-900 mb-3 font-roboto text-center">
                       {item?.title}
                     </h3>
-                    <p className="text-base text-gray-600 font-mono text-center">
+                    <p className="text-base text-gray-600 font-sans text-center">
                       {item?.description}
                     </p>
                   </div>
