@@ -140,6 +140,7 @@ const WebsitesPage = async () => {
               width={fullImage?.width}
               height={fullImage?.height}
               src={fullImage?.sourceUrl}
+              loading="lazy"
               alt="kobieta sprawdzająca stronę"
               className="rounded-lg max-w-full h-auto"
             />

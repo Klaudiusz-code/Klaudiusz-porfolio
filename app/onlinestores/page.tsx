@@ -122,6 +122,7 @@ const OnlineStoresPage = async () => {
               height={fullImage?.height}
               src={fullImage?.sourceUrl}
               alt="kobieta sprawdzająca stronę"
+              loading="lazy"
               className="rounded-lg max-w-full h-auto"
             />
           </div>

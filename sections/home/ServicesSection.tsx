@@ -35,6 +35,7 @@ const ServicesSection = ({ services }: ServicesSectionProps) => {
                   src={imageUrl}
                   alt={imageAlt}
                   className="pt-2 mt-1"
+                  loading="lazy"
                   style={{ height: service.image?.mediaDetails.height }}
                 />
               ) : (

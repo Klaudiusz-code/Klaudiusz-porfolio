@@ -27,6 +27,7 @@ const HeroSection = ({
             src={heroImg.src}
             alt="Hero Image"
             className="w-full h-auto max-w-lg lg:max-w-2xl"
+            loading="lazy"
           />
         </div>
         <div className="w-full mt-10 lg:mt-0 max-w-2xl md:w-3/5 md:order-1 text-center md:text-left">
