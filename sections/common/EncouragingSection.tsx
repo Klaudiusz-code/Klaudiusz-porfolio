@@ -1,14 +1,6 @@
-'use client'
 import React from "react";
-
+import { FaCheck } from "react-icons/fa";
 interface Service {
-  icon: {
-    sourceUrl: string;
-    mediaDetails: {
-      height: number;
-      width: number;
-    };
-  };
   title: string;
   description: string;
 }
@@ -23,29 +15,26 @@ const EncouragingSection: React.FC<EncouragingSectionProps> = ({
   services,
 }) => {
   return (
-    <section className="cnt w-full mx-auto text-center mt-16 md:mt-20 lg:mt-28 mb-12">
-      <span className="px-2 py-3 uppercase text-[#4f7cf7] font-mono tracking-wide text-lg font-[600] leading-7 mt-12">
+    <section className="container mx-auto mt-16 md:mt-20 lg:mt-28 mb-12 px-4">
+      <h2 className="text-[#4f7cf7] uppercase font-bold tracking-wide text-2xl text-center">
         {title}
-      </span>
-      <div className="mt-14 flex flex-row flex-wrap justify-center gap-x-8 gap-y-4">
-        {services.map((service: Service, index: number) => (
-          <div
-            className="flex items-center flex-col mt-6 text-center px-2 py-2 rounded-lg min-h-[300px] max-w-[350px] shadow-lg transition-all duration-300 shadow-[#e0e0e0] hover:shadow-gColor"
-            key={index}
-          >
-            {service.icon && service.icon.sourceUrl && (
-              <span className="text-[3rem] mt-2 lg:text-[3rem] pt-1 text-customColor">
-                <img src={service.icon.sourceUrl} alt={service.title} loading="lazy" />
+      </h2>
+      <div className="max-w-[60rem] mx-auto px-1 mt-8">
+        <ul className="divide-y divide-gray-200">
+          {services.map((service, index) => (
+            <li key={index} className="py-4 flex items-start">
+              <span className="text-green-600 text-xl mt-1 mr-4">
+                <FaCheck />
               </span>
-            )}
-            <h3 className="mt-3 text-[1.7rem] md:text-[1.2rem] lg:text-[1.4rem] text-[#000] font-[400] font-sans">
-              {service.title}
-            </h3>
-            <p className="max-w-[80%] mt-2 lg:mt-3 text-gray-500 leading-7 text-[0.8rem] md:text-[1rem] lg:text-[1.1rem]">
-              {service.description}
-            </p>
-          </div>
-        ))}
+              <div className="ml-2 md:ml-0">
+                <h3 className="text-lg font-semibold mb-1 text-gray-900">
+                  {service.title}
+                </h3>
+                <p className="text-gray-800">{service.description}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
