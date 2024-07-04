@@ -1,0 +1,47 @@
+query OffertPag {
+  page(id: "cG9zdDo0ODY=") {
+    seo {
+      title
+      description
+      openGraph {
+        description
+        locale
+        siteName
+        title
+        type
+        updatedTime
+      }
+    }
+    offert {
+      hero {
+        heroTitle {
+          titleone
+          titletwo
+          description
+        }
+      }
+      offerpagetypes {
+        title
+        items {
+          title
+          description
+        }
+      }
+      whyme {
+        title
+        boxs {
+          title
+          description
+        }
+      }
+      acordion {
+        title
+        description
+        acordinItems {
+          question
+          answer
+        }
+      }
+    }
+  }
+}

@@ -44,6 +44,15 @@ declare module '*/menus.graphql' {
 }
     
 
+declare module '*/offert_page.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const OffertPag: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/onlinestores_page.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;

@@ -74,13 +74,10 @@ const ContactPage = async () => {
 
   return (
     <section>
-      <Head>
-        <title>{page?.seo?.title || "Kontakt"}</title>
-      </Head>
       <div className="max-w-[90%] lg:max-w-[80%] mx-auto py-12">
         <div className="cnt p-10 rounded-lg grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-12 lg:gap-x-16 mb-24 bg-white shadow-lg">
-          <div className="lg:ml-10 w-full flex flex-col justify-center items-start">
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-extrabold font-source mb-4 text-customColor leading-tight tracking-wide">
+          <div className="lg:ml-10 w-full flex flex-col justify-center items-start text-center md:text-left ">
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-extrabold font-sans mb-4   text-customColor leading-tight tracking-wide">
               {heroTitle}
             </h2>
             <p className="text-lg lg:text-lg mb-8 mt-4 leading-7 text-[#5b66a0]">
@@ -101,7 +98,7 @@ const ContactPage = async () => {
                           {iconKey && getIconByString(iconKey)}
                         </span>
                       </div>
-                      <span className="text-[#3b46a8] font-[400] font-source">
+                      <span className="text-[#3b46a8] font-[400] font-source ">
                         {item?.titleTwo}
                       </span>
 
