@@ -83,10 +83,10 @@ const Offert = async () => {
   return (
     <section>
       <div className="cnt mx-auto py-20 px-4 md:px-8">
-        <span className="text-white lg:text-4xl mb-8 font-bold bg-customColor p-4 ">
+        <span className="text-white lg:text-4xl mb-8 font-bold bg-customColor p-4 rounded-md ">
           Oferta Stron i Sklepów WWW
         </span>
-        <div className="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0 mt-14 lg:mt-16">
+        <div className="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0 mt-6 lg:mt-10">
           <div className="w-full md:w-1/3 flex justify-center md:justify-end">
             <img
               src="/webs.svg"
@@ -130,13 +130,20 @@ const Offert = async () => {
               i sklepu internetowego, od projektu po optymalizację SEO.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-[#ecf4ff] px-4 py-2 rounded-lg">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 px-4">
             {features.map((feature, index) => (
-              <div key={index} className="flex items-center mb-2">
-                <FaCheck className="text-lg text-blue-600 mr-2" />
-                <span className="text-base text-gray-600 font-semibold">
-                  {feature.text}
-                </span>
+              <div
+                key={index}
+                className="flex justify-center mb-2 bg-white p-3 rounded-lg shadow-lg shadow-gray-300"
+              >
+                <div className="flex items-center justify-start w-full max-w-xs">
+                  <div className="flex items-center ml-10">
+                    <FaCheck className="text-lg text-green-600 mr-2" />
+                    <span className="text-base text-gray-800 font-semibold">
+                      {feature.text}
+                    </span>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -171,7 +178,7 @@ const Offert = async () => {
               <ul className="text-lg text-gray-800">
                 {benefits.map((benefit, index) => (
                   <li key={index} className="flex items-center mb-3 py-1">
-                    <FaCheck className="text-lg text-green-600 mr-3" />
+                    <FaCheck className="text-xl text-green-600 mr-3" />
                     <span className="text-base lg:text-lg">{benefit}</span>
                   </li>
                 ))}
