@@ -15,11 +15,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         );
 
         data.pages?.nodes.forEach(page => {
-            let priority = 80;
+            let priority = 0.8;
             let slug = page.slug;
 
             if (page.slug === 'strona-glowna') {
-                priority = 100;
+                priority = 1;
                 slug = '';
             }
 
@@ -36,7 +36,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
                 url: `https://klaudiuszdev.pl/blog/${post.slug}`,
                 lastModified: new Date(post.modified || ''),
                 changeFrequency: 'always',
-                priority: 80,
+                priority: 0.8,
             });
         });
     } catch (error) {
