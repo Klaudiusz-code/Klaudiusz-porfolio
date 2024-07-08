@@ -1,0 +1,14 @@
+ query Sitemap {
+    posts {
+        nodes {
+            slug
+            modified
+        }
+    }
+    pages {
+        nodes {
+            slug
+            modified
+        }
+    }
+}

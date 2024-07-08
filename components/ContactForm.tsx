@@ -1,16 +1,17 @@
-'use client'
+"use client";
 import { FormEvent, useState } from "react";
 import { IoPersonOutline, IoCallOutline, IoMailOutline } from "react-icons/io5";
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
 
     try {
-      const response = await fetch("/api/sendForm", {
+      const response = await fetch("/api/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -23,14 +24,18 @@ export function ContactForm() {
         }),
       });
 
-      const data = await response.json();
-      if (data.success) {
-        setSubmitted(true);
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.message || "Nieudało się");
       }
+
+      setSubmitted(true);
+      setErrorMessage("");
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error("Błąd podczas przesyłania formularza:", error);
     }
   }
+
   return (
     <div className="mt-2 mx-auto w-full">
       <form
@@ -38,7 +43,9 @@ export function ContactForm() {
         className="max-w-[700px] mx-auto rounded-md overflow-hidden bg-white lg:p-8 font-sans tracking-wide"
       >
         <h1 className="mb-8 text-[#10152e] font-bold font-mono text-2xl lg:text-3xl text-center">
-          <span className="text-[#5568cf] font-semibold">Masz Pytanie?</span>
+          <span className="text-[#5568cf] font-semibold">
+            Napisz do mnie
+          </span>
         </h1>
         <div className="mb-6">
           <div className="relative">
@@ -48,7 +55,7 @@ export function ContactForm() {
               id="name"
               name="name"
               className="input-field w-full bg-gray-100 pl-12 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-customColor"
-              placeholder="Imię i nazwisko"
+              placeholder="Tutaj wpisz Imie i Naziwsko"
               required
             />
           </div>
@@ -61,9 +68,9 @@ export function ContactForm() {
               id="phone"
               name="phone"
               pattern="[0-9]{9,15}"
-              title="Numer telefonu powinien składać się z 9-15 cyfr"
+              title="Phone number should consist of 9-15 digits"
               className="input-field w-full bg-gray-100 pl-12 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-customColor"
-              placeholder="Numer telefonu"
+              placeholder="Tutaj wpisz Numer Telefonu"
               required
             />
           </div>
@@ -76,7 +83,7 @@ export function ContactForm() {
               id="email"
               name="email"
               className="input-field w-full bg-gray-100 pl-12 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-customColor"
-              placeholder="Adres e-mail"
+              placeholder="Tutaj wpisz Email"
               required
             />
           </div>
@@ -86,13 +93,13 @@ export function ContactForm() {
             htmlFor="message"
             className="block text-gray-700 text-lg font-normal mb-2"
           >
-            Wiadomość
+            Message
           </label>
           <textarea
             id="message"
             name="message"
             className="input-field w-full bg-gray-100 px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-customColor"
-            placeholder="Wpisz swoją wiadomość"
+            placeholder="Twoja Wiadomość"
             required
             rows={5}
           ></textarea>
@@ -107,12 +114,17 @@ export function ContactForm() {
         </div>
         {submitted && (
           <p className="text-center mt-4 text-customColor font-semibold">
-            Wiadomość została wysłana!
+           Wiadomosć została wysłana
+          </p>
+        )}
+        {errorMessage && (
+          <p className="text-center mt-4 text-red-500 font-semibold">
+            {errorMessage}
           </p>
         )}
       </form>
     </div>
   );
-};
+}
 
 export default ContactForm;

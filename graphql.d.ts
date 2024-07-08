@@ -80,6 +80,15 @@ declare module '*/projects_page.graphql' {
 }
     
 
+declare module '*/sitemap.graphql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const Sitemap: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/websites_page.graphql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;

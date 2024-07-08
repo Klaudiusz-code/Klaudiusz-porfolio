@@ -7,7 +7,7 @@ const icons = [FaFileAlt, FaBuilding, FaBlog];
 
 const OfferPageTypes = ({ data }: any) => {
   return (
-    <section className="container text-center mx-auto mt-28">
+    <section className="container text-center mx-auto mt-16 lg:mt-20">
       <h3 className="bg-customColor px-4 py-2 rounded-lg text-white text-[1.2rem] lg:text-[1.5rem] inline-block font-sans mb-8">
         {data.title}
       </h3>
