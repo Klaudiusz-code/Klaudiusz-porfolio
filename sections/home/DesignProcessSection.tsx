@@ -62,7 +62,7 @@ const DesignProcessSection = ({
                     text="Darmowa Wycena"
                     bgColor="#0077cc"
                     textColor="#fff"
-                    link="/contact"
+                    link="/kontakt"
                   />
                 )}
               </div>

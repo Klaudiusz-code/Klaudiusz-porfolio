@@ -5,7 +5,7 @@ import React from "react";
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: 'Błąd - Strona nie istnieje!',
-    description: 'Ta strona nie istnieje. Wróć do strony głównej lub sprawdź inne linki.',
+    description: 'Ta strona nie istnieje. Wróć do strony głównej lub sprawdź inne linki.', 
   }
 }
 

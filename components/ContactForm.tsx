@@ -42,10 +42,8 @@ export function ContactForm() {
         onSubmit={onSubmit}
         className="max-w-[700px] mx-auto rounded-md overflow-hidden bg-white lg:p-8 font-sans tracking-wide"
       >
-        <h1 className="mb-8 text-[#10152e] font-bold font-mono text-2xl lg:text-3xl text-center">
-          <span className="text-[#5568cf] font-semibold">
-            Napisz do mnie
-          </span>
+        <h1 className="mb-8 text-[#10152e] font-bold font-sans text-2xl lg:text-3xl text-center">
+          <span className="text-customColor font-semibold">Napisz do mnie</span>
         </h1>
         <div className="mb-6">
           <div className="relative">
@@ -89,12 +87,6 @@ export function ContactForm() {
           </div>
         </div>
         <div className="mb-6">
-          <label
-            htmlFor="message"
-            className="block text-gray-700 text-lg font-normal mb-2"
-          >
-            Message
-          </label>
           <textarea
             id="message"
             name="message"
@@ -114,7 +106,7 @@ export function ContactForm() {
         </div>
         {submitted && (
           <p className="text-center mt-4 text-customColor font-semibold">
-           Wiadomosć została wysłana
+            Wiadomosć została wysłana
           </p>
         )}
         {errorMessage && (
