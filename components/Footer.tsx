@@ -18,7 +18,7 @@ const Footer = ({ data }: FooterProps) => {
         <div className="w-full flex flex-col gap-y-12 lg:flex-row justify-between mt-12 font-sans">
           <div>
             <Link
-              href="/"
+              href={`mailto:${email}`}
               className="relative lg:text-2xl text-gray-200 tracking-wide text-md mb-4 mt-2 lg:w-3/4 group"
             >
               {email}
@@ -35,7 +35,7 @@ const Footer = ({ data }: FooterProps) => {
           </div>
           <div>
             <Link
-              href="/"
+              href={`tel:${phone}`}
               className="relative lg:text-2xl text-gray-200 tracking-wide text-md mb-4 mt-2 lg:w-3/4 group"
             >
               {phone}
