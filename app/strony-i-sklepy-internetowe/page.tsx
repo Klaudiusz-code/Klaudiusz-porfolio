@@ -2,7 +2,7 @@ import React from "react";
 import { Metadata } from "next";
 import { query } from "@/ApolloClient";
 import { OffertPagQuery, OffertPagQueryVariables } from "@/gql/graphql";
-import { FaCheck } from "react-icons/fa";
+import { FaCheck, FaExclamationTriangle } from "react-icons/fa";
 import CustomButton from "@/components/CustomButton";
 import EncouragingSection from "@/sections/common/EncouragingSection";
 import GRAPHQL_QUERY from "@/gql-queries/offert_page.graphql";
@@ -130,62 +130,71 @@ const Offert = async () => {
               i sklepu internetowego, od projektu po optymalizację SEO.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 px-4 py-8">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="flex justify-center mb-2 bg-white p-3 rounded-lg shadow-lg shadow-gray-300"
+                className="flex items-start bg-white p-4 rounded-md border border-gray-300 shadow-sm t"
               >
-                <div className="flex items-center justify-start w-full max-w-xs">
-                  <div className="flex items-center ml-10">
-                    <FaCheck className="text-lg text-green-600 mr-2" />
-                    <span className="text-base text-gray-800 font-semibold">
-                      {feature.text}
-                    </span>
-                  </div>
+                <div className="flex-shrink-0 mr-4">
+                  <FaCheck className="text-xl text-green-500" />
+                </div>
+                <div className="flex-grow">
+                  <span className="text-base sm:text-lg text-gray-800 font-normal">
+                    {feature.text}
+                  </span>
                 </div>
               </div>
             ))}
           </div>
         </div>
-        <div className="max-w-full mt-16 lg:mt-24 px-4 md:px-0">
-          <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Potrzebujesz większej widoczności w sieci dla Twojej firmy?
-          </h2>
-          <h4 className="text-xl mt-4 text-gray-700 mb-8">
-            Oto, jak mogę Ci pomóc rozwiązać te wyzwania:
-          </h4>
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-16 lg:mt-24">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+              Potrzebujesz większej widoczności w sieci dla Twojej firmy?
+            </h2>
+            <h4 className="text-lg md:text-xl lg:text-2xl text-gray-600">
+              Zobacz, jak mogę Ci pomóc rozwiązać te wyzwania:
+            </h4>
+          </div>
 
-          <div className="py-8">
-            <div className="mb-8 max-w-full mx-auto">
-              <h2 className="text-xl md:text-2xl font-bold text-blue-600 mb-4">
-                Problemy, z którymi mogą się spotykać właściciele firm:
-              </h2>
-              <ul className="text-lg text-gray-800">
-                {challenges.map((challenge, index) => (
-                  <li key={index} className="flex items-center mb-3 py-1">
-                    <span className="text-blue-600 text-xl mr-3">?</span>
-                    <span className="text-base lg:text-lg">{challenge}</span>
-                  </li>
-                ))}
-              </ul>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            <div className="relative p-8 bg-white border-2 border-red-300 rounded-lg ">
+              <div className="absolute inset-0 border border-red-300 rounded-lg opacity-10 -z-10"></div>
+              <div className="relative z-10">
+                <h3 className="text-xl md:text-2xl font-semibold text-red-700 mb-4">
+                  Problemy, z którymi mogą się spotykać właściciele firm:
+                </h3>
+                <ul className="text-base md:text-lg text-gray-700 space-y-4">
+                  {challenges.map((challenge, index) => (
+                    <li key={index} className="flex items-start">
+                      <FaExclamationTriangle className="text-2xl text-red-600 mt-1 mr-3 flex-shrink-0" />
+                      <span className="leading-relaxed">{challenge}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
-            <div className="mb-8 max-w-full mx-auto lg:mt-12">
-              <h2 className="text-xl md:text-2xl font-bold text-blue-600 mb-4">
-                Jakie korzyści możesz osiągnąć dzięki moim usługom:
-              </h2>
-              <ul className="text-lg text-gray-800">
-                {benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-center mb-3 py-1">
-                    <FaCheck className="text-xl text-green-600 mr-3" />
-                    <span className="text-base lg:text-lg">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
+            <div className="relative p-8 bg-white border-2 border-green-300 rounded-lg">
+              <div className="absolute inset-0 border border-green-300 rounded-lg opacity-10 -z-10"></div>
+              <div className="relative z-10">
+                <h3 className="text-xl md:text-2xl font-semibold text-green-700 mb-4">
+                  Jakie korzyści możesz osiągnąć dzięki moim usługom:
+                </h3>
+                <ul className="text-base md:text-lg text-gray-700 space-y-4">
+                  {benefits.map((benefit, index) => (
+                    <li key={index} className="flex items-start">
+                      <FaCheck className="text-2xl text-green-600 mt-1 mr-3 flex-shrink-0" />
+                      <span className="leading-relaxed">{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
+
         <OfferPageTypes data={offerpagetypes} />
 
         <EncouragingSection
