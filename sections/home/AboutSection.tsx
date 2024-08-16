@@ -12,7 +12,7 @@ const AboutSection = ({ title, description }: AboutSectionProps) => {
       <h2 className="uppercase text-[#4f7cf7] font-sans tracking-wide font-bold text-lg mt-12">
         {title}
       </h2>
-      <div className="w-full md:max-w-[70%] lg:max-w-[60%] text-center font-source text-base md:text-lg lg:text-xl mt-6 text-gray-600">
+      <div className="w-full md:max-w-[70%] lg:max-w-[60%] text-center font-roboto text-base md:text-lg  mt-6 text-gray-700">
         {ReactHtmlParser(description)}
       </div>
     </section>

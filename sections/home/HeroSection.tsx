@@ -31,15 +31,15 @@ const HeroSection = ({
           />
         </div>
         <div className="w-full mt-10 lg:mt-0 max-w-2xl md:w-3/5 md:order-1 text-center md:text-left">
-          <span className="text-lg font-medium mb-2 tracking-wide font-roboto bg-gray-100 p-2 rounded-md text-customColor inline-block">
-            <span className="border-l-2 border-customColor px-2 py-1">
+          <span className="text-lg font-medium mb-2 tracking-wide font-roboto bg-gray-100 p-2 rounded-md text-blue-800 inline-block">
+            <span className="border-l-2 border-blue-800 px-2 py-1">
               Klaudiusz Adamaszek
             </span>
           </span>
-          <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-gray-600 tracking-wide mt-4 font-roboto mb-4">
+          <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-blue-900 tracking-wide mt-4 font-roboto mb-4">
             {title}
           </h1>
-          <p className="text-gray-500 text-base md:text-lg lg:text-xl font-roboto tracking-wide font-light mb-6">
+          <p className="text-gray-800 text-base md:text-lg lg:text-xl font-roboto tracking-wide font-light mb-6">
             {description}
           </p>
           <div className="flex justify-center md:justify-start">

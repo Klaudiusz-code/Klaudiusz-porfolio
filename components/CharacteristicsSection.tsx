@@ -1,52 +1,48 @@
 import React from "react";
 
+const characteristics = [
+  {
+    id: 1,
+    hashtag: "#Pracowity",
+    title: "Jestem pracowity",
+    description: "Daję z siebie wszystko!",
+  },
+  {
+    id: 2,
+    hashtag: "#SzybkiKontakt",
+    title: "Szybko odpowiadam",
+    description: "Napisz do mnie już teraz!",
+  },
+  {
+    id: 3,
+    hashtag: "#Kreatywny",
+    title: "Jestem kreatywny",
+    description: "Tworzę unikalne rozwiązania.",
+  },
+  {
+    id: 4,
+    hashtag: "#OdkrywamPotencjałWKodzie",
+    title: "Kodowanie z pasją",
+    description: "Odkrywam potencjał w każdym wierszu kodu.",
+  },
+];
+
 const CharacteristicsSection = () => {
   return (
-    <div className="py-6 mt-6 lg:mt-0">
-      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl">
-        <div className="bg-blue-100 text-blue-900 rounded-lg overflow-hidden border border-blue-200">
-          <div className="py-3 px-4">
-            <span className="text-xs font-semibold">#Pracowity</span>
-            <h3 className="text-lg font-semibold text-blue-900 mt-2">
-              Jestem pracowity
-            </h3>
-            <p className="text-sm text-gray-700">Daję z siebie wszystko!</p>
+    <div className="py-6 mt-4 lg:mt-0">
+      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {characteristics.map((item) => (
+          <div
+            key={item.id}
+            className="bg-blue-400 text-white border border-blue-600 rounded-lg overflow-hidden shadow-md p-4 sm:p-5 md:p-4 lg:p-5"
+          >
+            <div className="mb-4">
+              <span className="block bg-blue-500 text-white text-xs font-bold uppercase rounded-md px-2 py-1 mb-3 inline-block">{item.hashtag}</span>
+              <h3 className="text-sm sm:text-base md:text-lg lg:text-lg font-semibold mb-2">{item.title}</h3>
+              <p className="text-xs sm:text-sm md:text-sm lg:text-sm">{item.description}</p>
+            </div>
           </div>
-        </div>
-
-        <div className="bg-green-100 text-green-900 rounded-lg overflow-hidden border border-green-200">
-          <div className="py-3 px-4">
-            <span className="text-xs font-semibold">#SzybkiKontakt</span>
-            <h3 className="text-lg font-semibold text-green-900 mt-2">
-              Szybko odpowiadam
-            </h3>
-            <p className="text-sm text-gray-700">Napisz do mnie już teraz!</p>
-          </div>
-        </div>
-
-        <div className="bg-yellow-100 text-yellow-900 rounded-lg overflow-hidden border border-yellow-200">
-          <div className="py-3 px-4">
-            <span className="text-xs font-semibold">#Kreatywny</span>
-            <h3 className="text-lg font-semibold text-yellow-900 mt-2">
-              Jestem kreatywny
-            </h3>
-            <p className="text-sm text-gray-700">
-              Tworzę unikalne rozwiązania.
-            </p>
-          </div>
-        </div>
-
-        <div className="bg-purple-100 text-purple-900 rounded-lg overflow-hidden border border-purple-200">
-          <div className="py-3 px-4">
-            <span className="text-xs font-semibold">#OdkrywamPotencjałWKodzie</span>
-            <h3 className="text-lg font-semibold text-purple-900 mt-2">
-              Kodowanie z pasją
-            </h3>
-            <p className="text-sm text-gray-700">
-              Odkrywam potencjał w każdym wierszu kodu.
-            </p>
-          </div>
-        </div> 
+        ))}
       </div>
     </div>
   );
