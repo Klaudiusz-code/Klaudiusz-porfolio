@@ -29,17 +29,24 @@ const characteristics = [
 
 const CharacteristicsSection = () => {
   return (
-    <div className="py-6 mt-4 lg:mt-0">
-      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="py-4 mt-4 lg:mt-0">
+      <div className="container mx-auto grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 xl:gap-8 md:gap-4">
         {characteristics.map((item) => (
           <div
             key={item.id}
-            className="bg-blue-400 text-white border border-blue-600 rounded-lg overflow-hidden shadow-md p-4 sm:p-5 md:p-4 lg:p-5"
+            className="bg-blue-600 text-white border border-blue-700 rounded-lg shadow-md 
+                       p-2 sm:p-2 md:p-2 lg:p-3 xl:p-3 flex flex-col justify-center items-start min-h-[80px] sm:min-h-[80px] md:min-h-[100px] lg:min-h-[105px] xl:min-h-[125px]"
           >
-            <div className="mb-4">
-              <span className="block bg-blue-500 text-white text-xs font-bold uppercase rounded-md px-2 py-1 mb-3 inline-block">{item.hashtag}</span>
-              <h3 className="text-sm sm:text-base md:text-lg lg:text-lg font-semibold mb-2">{item.title}</h3>
-              <p className="text-xs sm:text-sm md:text-sm lg:text-sm">{item.description}</p>
+            <div className="mb-1 sm:mb-1 md:mb-1 lg:mb-1 xl:mb-1">
+              <span className="block bg-blue-500 text-white text-[7px] sm:text-[8px] md:text-[7px] lg:text-[9px] xl:text-[11px] font-bold uppercase rounded-md px-1 py-0.5 sm:px-1 sm:py-0.5 mb-1">
+                {item.hashtag}
+              </span>
+              <h3 className="text-[9px] sm:text-[10px] md:text-[9px] lg:text-[11px] xl:text-[15px] font-semibold mb-1">
+                {item.title}
+              </h3>
+              <p className="text-[7px] sm:text-[8px] md:text-[7px] lg:text-[9px] xl:text-[13px]">
+                {item.description}
+              </p>
             </div>
           </div>
         ))}

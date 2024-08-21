@@ -134,13 +134,13 @@ const Offert = async () => {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="flex items-start bg-white p-4 rounded-md border border-gray-300 shadow-sm t"
+                className="flex items-start bg-white p-4 rounded-md border border-gray-300 shadow-sm"
               >
-                <div className="flex-shrink-0 mr-4">
-                  <FaCheck className="text-xl text-green-500" />
+                <div className="flex-shrink-0 mr-3">
+                  <FaCheck className="lg:text-xl text-green-500" />
                 </div>
                 <div className="flex-grow">
-                  <span className="text-base sm:text-lg text-gray-800 font-normal">
+                  <span className="text-sm lg:text-base text-gray-800 font-normal break-words">
                     {feature.text}
                   </span>
                 </div>
@@ -148,7 +148,7 @@ const Offert = async () => {
             ))}
           </div>
         </div>
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-16 lg:mt-24">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-10 lg:mt-24">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
               Potrzebujesz większej widoczności w sieci dla Twojej firmy?
