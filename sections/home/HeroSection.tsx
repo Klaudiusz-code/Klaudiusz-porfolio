@@ -16,12 +16,14 @@ const HeroSection = ({
   buttonUrl = "/",
 }: HeroSectionProps) => {
   return (
-    <section className="bg-body-bg min-h-[450px] md:min-h-[500px] lg:min-h-[600px] py-2 lg:py-4 flex flex-col items-center relative overflow-hidden bg-[#ecf4ff]">
+    <section
+      className="bg-body-bg min-h-[450px] md:min-h-[500px] lg:min-h-[600px] py-6 flex flex-col items-center relative overflow-hidden bg-[#ecf4ff] pt-24 md:pt-20 lg:pt-16"
+    >
       <div className="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2">
         <div className="w-[80rem] h-[60rem] bg-blue-500 rounded-full mix-blend-overlay blur-lg opacity-[0.1]"></div>
       </div>
 
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 relative z-20">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 relative z-20 mt-2">
         <div className="w-full hidden md:w-1/2 md:order-2 mb-8 md:mb-0 md:flex justify-center md:justify-end">
           <img
             src={heroImg.src}

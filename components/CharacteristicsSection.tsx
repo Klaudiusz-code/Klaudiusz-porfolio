@@ -38,13 +38,13 @@ const CharacteristicsSection = () => {
                        p-2 sm:p-2 md:p-2 lg:p-3 xl:p-3 flex flex-col justify-center items-start min-h-[80px] sm:min-h-[80px] md:min-h-[100px] lg:min-h-[105px] xl:min-h-[125px]"
           >
             <div className="mb-1 sm:mb-1 md:mb-1 lg:mb-1 xl:mb-1">
-              <span className="block bg-blue-500 text-white text-[7px] sm:text-[8px] md:text-[7px] lg:text-[9px] xl:text-[11px] font-bold uppercase rounded-md px-1 py-0.5 sm:px-1 sm:py-0.5 mb-1">
+              <span className=" bg-blue-500 inline-block text-white text-[8px] sm:text-[9px] md:text-[9px]  xl:text-[11px] font-bold uppercase rounded-md px-1 py-1 sm:px-1 sm:py-0.5 mb-1">
                 {item.hashtag}
               </span>
-              <h3 className="text-[9px] sm:text-[10px] md:text-[9px] lg:text-[11px] xl:text-[15px] font-semibold mb-1">
+              <h3 className="text-[10px] sm:text-[11px] md:text-[9px] lg:text-[11px] xl:text-[15px] font-semibold mb-1">
                 {item.title}
               </h3>
-              <p className="text-[7px] sm:text-[8px] md:text-[7px] lg:text-[9px] xl:text-[13px]">
+              <p className="text-[8px] sm:text-[9px] md:text-[10px] lg:text-[11px] xl:text-[13px]">
                 {item.description}
               </p>
             </div>

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Head from "next/head";
 import { Metadata } from "next";
 import { IoCallOutline, IoMailOutline } from "react-icons/io5";
 import { FaFacebookMessenger, FaDiscord, FaLinkedin } from "react-icons/fa";
@@ -73,7 +72,7 @@ const ContactPage = async () => {
   const heroDescription = page?.contact?.hero?.descritpion || "abc";
 
   return (
-    <section>
+    <section className="mt-16 lg:mt-20"> 
       <div className="max-w-[90%] lg:max-w-[80%] mx-auto py-12">
         <div className="cnt p-10 rounded-lg grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-12 lg:gap-x-16 mb-24 bg-white shadow-lg">
           <div className="lg:ml-10 w-full flex flex-col justify-center items-start text-center md:text-left ">

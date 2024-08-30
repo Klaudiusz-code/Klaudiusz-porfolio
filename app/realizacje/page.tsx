@@ -64,7 +64,7 @@ const ProjectsPage = async () => {
   ];
 
   return (
-    <section className="mb-12">
+    <section className="mt-16 py-12 lg:mt-16">
       <div className="cnt mx-auto py-20 px-1 md:px-2">
         <h1 className="text-white text-3xl md:text-4xl lg:text-5xl mb-8 font-bold bg-customColor inline-flex p-4 rounded-md">
           {hero?.title}

@@ -8,6 +8,7 @@ import EncouragingSection from "@/sections/common/EncouragingSection";
 import GRAPHQL_QUERY from "@/gql-queries/offert_page.graphql";
 import OfferPageTypes from "@/components/OfferPageTypes";
 import FaqSection from "@/sections/common/FaqSection";
+
 type OpenGraphType = "website" | "article" | "book" | "profile";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -81,7 +82,7 @@ const Offert = async () => {
   const acordin = data.page?.offert?.acordion;
 
   return (
-    <section>
+    <section className="mt-16 lg:mt-20"> 
       <div className="cnt mx-auto py-20 px-4 md:px-8">
         <span className="text-white lg:text-4xl mb-8 font-bold bg-customColor p-4 rounded-md ">
           Oferta Stron i Sklepów WWW
