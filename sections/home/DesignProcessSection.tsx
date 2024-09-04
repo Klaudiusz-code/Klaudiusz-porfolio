@@ -32,15 +32,17 @@ const DesignProcessSection = ({
 
   return (
     <div className="w-full mx-auto mb-8 lg:mb-14 mt-24 lg:mt-16 bg-gradient-to-r from-blue-500 to-[#0624B5] py-24">
-      <div className="cnt flex flex-col items-center mt-2">
-        <h3 className="text-center text-[#eaebf0] uppercase font-semibold tracking-wide text-lg mb-2">
-          {title}
-        </h3>
-        <p className="text-center max-w-full lg:max-w-[80%] font-bold mx-auto tracking-wide text-[1rem] lg:text-3xl xl:text-4xl leading-7 text-white font-sans mb-8 lg:mb-10">
-          {description}
-        </p>
-        <div className="relative w-full max-w-6xl mx-auto">
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-200 rounded-3xl "></div>
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h3 className="text-[#eaebf0] uppercase font-semibold tracking-wide text-lg mb-2">
+            {title}
+          </h3>
+          <p className="text-white font-bold tracking-wide text-[1rem] lg:text-3xl xl:text-4xl leading-7 mb-8">
+            {description}
+          </p>
+        </div>
+        <div className="relative">
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-200 rounded-3xl"></div>
           {items.map((item, index) => (
             <div
               key={index}
@@ -49,14 +51,14 @@ const DesignProcessSection = ({
               }`}
             >
               <div
-                className={`relative bg-white rounded-lg shadow-lg p-8  w-full md:w-5/12 ${
+                className={`relative bg-white rounded-lg shadow-lg p-8 w-full md:w-5/12 ${
                   index % 2 === 0 ? "md:ml-auto" : "md:mr-auto"
                 }`}
               >
                 <div className="bg-blue-500 text-white py-2 px-4 rounded-full text-sm font-medium inline-block mb-6 shadow-md">
                   Krok {item.num}
                 </div>
-                <h4 className="text-[#0624B5] font-sans text-xl lg:text-2xl font-semibold mb-3 text-left">
+                <h4 className="text-[#0624B5] text-xl lg:text-2xl font-semibold mb-3 text-left">
                   {item.title}
                 </h4>
                 <p className="text-gray-700 text-base font-light leading-relaxed mb-6 text-left">

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+"use client";
+
+import React, { useState, useRef } from "react";
 import { FaChevronDown } from "react-icons/fa";
 
 type AccordionProps = {
@@ -8,6 +10,7 @@ type AccordionProps = {
 
 const Accordion = ({ title, answer }: AccordionProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const toggleAccordion = () => {
     setIsOpen(!isOpen);
@@ -33,11 +36,11 @@ const Accordion = ({ title, answer }: AccordionProps) => {
           </div>
         </button>
         <div
-          className={`overflow-hidden transition-all duration-200 ${
-            isOpen ? "max-h-screen py-2" : "max-h-0 py-0"
-          }`}
+          ref={contentRef}
+          className={`overflow-hidden transition-all duration-300 ease-in-out`}
+          style={{ height: isOpen ? contentRef.current?.scrollHeight : 0 }}
         >
-          <p className="text-base lg:text-lg text-gray-600 font-sans">
+          <p className="text-base lg:text-lg text-gray-600 font-sans p-4">
             {answer}
           </p>
         </div>

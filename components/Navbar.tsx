@@ -3,12 +3,9 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  IoIosMenu,
-  IoIosClose,
-  IoIosArrowForward,
-  IoIosCall,
-} from "react-icons/io";
+import { IoIosMenu, IoIosArrowForward, IoIosCall } from "react-icons/io";
+import { IoCloseOutline } from "react-icons/io5";
+
 
 const Navbar = ({ data }: any) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,11 +55,7 @@ const Navbar = ({ data }: any) => {
             className="flex items-center px-3 py-2 rounded-md bg-customColor text-white border-none focus:outline-none"
             onClick={toggleMenu}
           >
-            {isMenuOpen ? (
-              <IoIosClose className="text-3xl" />
-            ) : (
-              <IoIosMenu className="text-3xl" />
-            )}
+            <IoIosMenu className="text-3xl" />
           </button>
         </div>
 
@@ -79,6 +72,15 @@ const Navbar = ({ data }: any) => {
           }`}
         >
           <div className="flex flex-col h-full">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-gray-100">
+              <h2 className="text-lg font-bold text-gray-900">Menu</h2>
+              <button
+                className="text-gray-600 hover:text-gray-800"
+                onClick={closeMenu}
+              >
+                <IoCloseOutline className="text-3xl text-customColor" />
+              </button>
+            </div>
             <div className="flex-grow">
               <ul className="mt-16 space-y-6 px-4">
                 {data &&

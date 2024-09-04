@@ -19,7 +19,7 @@ const FaqSection = ({ title, description, items = [] }: FaqSectionProps) => {
           <h3 className="text-[#4f7cf7] text-3xl lg:text-4xl font-bold uppercase tracking-wide mb-2">
             {title}
           </h3>
-          <p className="text-lg text-gray-800">{description}</p>
+          <p className="text-lg lg:text-xl text-gray-800">{description}</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {items.map((item, index) => (
