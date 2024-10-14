@@ -15,13 +15,13 @@ const HeroSection = ({
   buttonUrl = "/",
 }: HeroSectionProps) => {
   return (
-    <section className="relative min-h-[480px] md:min-h-[500px] lg:min-h-[600px] py-8 flex flex-col items-center overflow-hidden bg-white pt-6 md:pt-20 lg:pt-16">
+    <section className="relative min-h-[480px] md:min-h-[500px] lg:min-h-[600px] py-8 flex flex-col items-center overflow-hidden bg-white pt-6 md:pt-20 lg:pt-16 ">
       <div className="absolute inset-0 overflow-hidden z-0">
         <div className="absolute left-0 top-0 h-full w-1/2 bg-gradient-to-b from-[#6d88d3] to-transparent opacity-10"></div>
         <div className="absolute w-12 h-12 bg-[#6e92f2] rounded-full opacity-[0.5] top-[55%] left-[75%] animate-ping"></div>
         <div className="absolute w-8 h-8 bg-[#6e92f2] rounded-full opacity-[0.6] bottom-[18%] left-[30%] animate-bounce"></div>
       </div>
-      <div className="container mx-auto flex flex-col mt-2 lg:mt-14 md:flex-row items-center justify-between px-4 relative z-20">
+      <div className="container mx-auto flex flex-col mt-2 lg:mt-14 md:flex-row items-center justify-between px-4 relative z-20 bg-[url('/grid.svg')] bg-cover bg-center">
         <div className="w-full mt-10 lg:mt-0 text-center">
           <div className="max-w-6xl mx-auto">
             <h1 className="font-black text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#6e92f2] tracking-wider mt-14 md:mt-24 font-roboto leading-relaxed mb-4">
