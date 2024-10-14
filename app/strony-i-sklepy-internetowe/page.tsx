@@ -118,20 +118,20 @@ const Offert = async () => {
             />
           </div>
         </div>
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 py-16 lg:mt-24">
-          <div className="md:pr-8">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 py-16 items-center lg:mt-24">
+          <div className="md:pr-6">
             <h1 className="text-xl md:text-2xl font-bold text-customColor mb-4">
               Co oferuję w ramach Strony i Sklepu internetowego?
             </h1>
-            <p className="text-3xl md:text-4xl text-gray-800 font-medium mb-6">
+            <p className="text-3xl md:text-3xl lg:text-4xl text-gray-800 font-medium mb-6">
               Kompleksowe usługi dla Twojej strony i sklepu online!
             </p>
-            <p className="text-lg text-gray-700 mb-6">
+            <p className="text-base md:text-lg text-gray-700 mb-6">
               Zapewniam pełne wsparcie w tworzeniu oraz utrzymaniu Twojej strony
               i sklepu internetowego, od projektu po optymalizację SEO.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 px-4 py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 px-4 py-8">
             {features.map((feature, index) => (
               <div
                 key={index}
@@ -159,7 +159,7 @@ const Offert = async () => {
             </h4>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
             <div className="relative p-8 bg-white border-2 border-red-300 rounded-lg ">
               <div className="absolute inset-0 border border-red-300 rounded-lg opacity-10 -z-10"></div>
               <div className="relative z-10">

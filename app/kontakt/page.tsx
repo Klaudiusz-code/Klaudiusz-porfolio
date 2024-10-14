@@ -2,17 +2,17 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { IoCallOutline, IoMailOutline } from "react-icons/io5";
 import { FaFacebookMessenger, FaDiscord, FaLinkedin } from "react-icons/fa";
-import ContactForm from "@/components/ContactForm";
+import { ContactForm } from "@/components/ContactForm";
 import { query } from "@/ApolloClient";
 import { ContactQueryQuery, ContactQueryQueryVariables } from "@/gql/graphql";
 import GRAPHQL_QUERY from "@/gql-queries/contact_page.graphql";
 
 const iconsKeyMap: Record<string, React.ElementType> = {
-  IoCallOutline: IoCallOutline,
-  IoMailOutline: IoMailOutline,
-  FaFacebookMessenger: FaFacebookMessenger,
-  FaDiscord: FaDiscord,
-  FaLinkedin: FaLinkedin,
+  IoCallOutline,
+  IoMailOutline,
+  FaFacebookMessenger,
+  FaDiscord,
+  FaLinkedin,
 };
 
 const getIconByString = (iconKey: string) => {
@@ -60,6 +60,7 @@ export async function generateMetadata(): Promise<Metadata> {
     };
   }
 }
+
 const ContactPage = async () => {
   const { data } = await query<ContactQueryQuery, ContactQueryQueryVariables>({
     query: GRAPHQL_QUERY,
@@ -72,37 +73,36 @@ const ContactPage = async () => {
   const heroDescription = page?.contact?.hero?.descritpion || "abc";
 
   return (
-    <section className="mt-16 lg:mt-20"> 
+    <section className="mt-16 lg:mt-20">
       <div className="max-w-[90%] lg:max-w-[80%] mx-auto py-12">
-        <div className="cnt p-10 rounded-lg grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-12 lg:gap-x-16 mb-24 bg-white shadow-lg">
-          <div className="lg:ml-10 w-full flex flex-col justify-center items-start text-center md:text-left ">
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-extrabold font-sans mb-4   text-customColor leading-tight tracking-wide">
+        <div className="cnt p-6 sm:p-10 rounded-lg grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-12 lg:gap-x-16 mb-24 bg-white shadow-lg">
+          <div className="w-full flex flex-col justify-center items-start text-center md:text-left ">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold font-sans mb-4 text-customColor leading-tight tracking-wide">
               {heroTitle}
             </h2>
-            <p className="text-lg lg:text-lg mb-8 mt-4 leading-7 text-[#5b66a0]">
+            <p className="text-base lg:text-lg mb-8 mt-4 leading-7 text-[#5b66a0]">
               {heroDescription}
             </p>
             {contactMethods.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mx-auto sm:mx-0">
+              <div className="flex flex-col  gap-1">
                 {contactMethods.map((item, index) => {
                   const iconKey = item?.icon?.split(":")[0] ?? null;
                   return (
                     <Link
                       key={index}
                       href={item?.url || "#"}
-                      className="border border-customColor group p-6 rounded-xl flex items-center justify-center flex-col cursor-pointer transition-all duration-300 hover:bg-[#e1e7ff] hover:border-[#3b46a8] hover:scale-105"
+                      className="flex flex-col rounded-md border-transparent  group p-2  transition-all duration-300 hover:bg-[#e1e7ff] hover:border-[#3b46a8] hover:scale-105"
                     >
-                      <div className="rounded-full bg-[#f0f4ff] p-4 mb-4 group-hover:scale-75 transition-transform duration-300">
-                        <span className="text-customColor text-4xl">
+                      <div className=" text-left py-1 mb-2  transition-transform duration-300">
+                        <span className="text-customColor text-3xl md:text-2xl lg:text-2xl">
                           {iconKey && getIconByString(iconKey)}
                         </span>
                       </div>
-                      <span className="text-[#3b46a8] font-[400] font-source ">
+                      <span className="text-[#3b46a8] font-[400] font-source text-left text-base md:text-sm lg:text-base">
                         {item?.titleTwo}
                       </span>
-
-                      <div className="text-center mt-2">
-                        <span className="text-slate-600 text-lg lg:text-xl font-medium transition-all duration-200 hover:text-customColor">
+                      <div className="text-left mt-1">
+                        <span className="text-slate-500 text-lg md:text-base lg:text-lg font-light transition-all duration-200 ">
                           {item?.title || "ABC"}
                         </span>
                       </div>
@@ -113,17 +113,17 @@ const ContactPage = async () => {
             )}
 
             {additionalLinks.length > 0 && (
-              <div className="mt-8 flex gap-x-6 mx-auto md:mx-0">
+              <div className="mt-6 flex gap-x-4 mx-auto md:mx-0">
                 {additionalLinks.map((item, index) => {
                   const iconKey = item?.icon?.split(":")[0] ?? null;
                   return (
                     <div
                       key={index}
-                      className="border border-customColor p-3 rounded-xl transition-all  hover:border-[#3b46a8]"
+                      className="border p-3 rounded-xl transition-all hover:border-[#3b46a8]"
                     >
                       <Link
                         href={item?.url || "#"}
-                        className="text-4xl text-customColor hover:scale-110 transition-all duration-400"
+                        className="text-3xl text-customColor hover:scale-110 transition-all duration-400"
                       >
                         {iconKey && getIconByString(iconKey)}
                       </Link>

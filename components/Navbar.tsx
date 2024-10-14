@@ -6,7 +6,6 @@ import Image from "next/image";
 import { IoIosMenu, IoIosArrowForward, IoIosCall } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
 
-
 const Navbar = ({ data }: any) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
@@ -32,7 +31,7 @@ const Navbar = ({ data }: any) => {
 
   return (
     <nav
-      className={`fixed w-full top-0 z-50 px-4 py-3 lg:py-1 transition-shadow duration-300 ${
+      className={`fixed w-full top-0 z-50 px-4 py-3 lg:py-5 transition-shadow duration-300 ${
         isSticky ? "shadow-lg bg-white" : "shadow-none"
       }`}
     >
@@ -121,7 +120,7 @@ const Navbar = ({ data }: any) => {
                 <li key={edge.node.id} className="relative group">
                   <Link
                     href={edge.node.path || "/"}
-                    className="text-lg text-gray-700 font-medium  font-sans px-4 py-2 rounded-md hover:text-[#6082e2] transition duration-300 uppercase tracking-wide"
+                    className="text-lg text-gray-700 font-medium font-sans px-4 py-2 rounded-md hover:text-[#6082e2] transition duration-300 uppercase tracking-wide"
                   >
                     {edge.node.label}
                     <span className="absolute bottom-0 left-0 w-full h-1 bg-customColor rounded-2xl transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100"></span>
@@ -130,6 +129,13 @@ const Navbar = ({ data }: any) => {
               ))}
             </ul>
           )}
+          <Link
+            href="tel:+48519668439"
+            className="flex items-center justify-center bg-[#6e92f2] text-white px-4 py-2 rounded-sm shadow-sm shadow-[#6e92f2] transition-transform transform hover:scale-105 duration-300"
+          >
+            <IoIosCall className="mr-2 text-2xl" />
+            <span className="text-lg font-semibold">+48 519 668 439</span>
+          </Link>
         </div>
       </div>
     </nav>

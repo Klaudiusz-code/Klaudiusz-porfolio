@@ -26,7 +26,7 @@ export function ContactForm() {
 
       if (!response.ok) {
         const data = await response.json();
-        throw new Error(data.message || "Nieudało się");
+        throw new Error(data.message || "Nie udało się");
       }
 
       setSubmitted(true);
@@ -53,7 +53,7 @@ export function ContactForm() {
               id="name"
               name="name"
               className="input-field w-full bg-gray-100 pl-12 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-customColor"
-              placeholder="Tutaj wpisz Imie i Naziwsko"
+              placeholder="Tutaj wpisz Imię i Nazwisko"
               required
             />
           </div>
@@ -66,9 +66,9 @@ export function ContactForm() {
               id="phone"
               name="phone"
               pattern="[0-9]{9,15}"
-              title="Phone number should consist of 9-15 digits"
+              title="Numer telefonu powinien składać się z 9-15 cyfr"
               className="input-field w-full bg-gray-100 pl-12 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-customColor"
-              placeholder="Tutaj wpisz Numer Telefonu"
+              placeholder="Numer telefonu"
               required
             />
           </div>
@@ -81,42 +81,38 @@ export function ContactForm() {
               id="email"
               name="email"
               className="input-field w-full bg-gray-100 pl-12 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-customColor"
-              placeholder="Tutaj wpisz Email"
+              placeholder="Adres email"
               required
             />
           </div>
         </div>
         <div className="mb-6">
           <textarea
-            id="message"
             name="message"
-            className="input-field w-full bg-gray-100 px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-customColor"
-            placeholder="Twoja Wiadomość"
-            required
+            id="message"
+            className="input-field w-full bg-gray-100 p-4 border border-gray-300 rounded-md focus:outline-none focus:border-customColor"
+            placeholder="Tutaj wpisz wiadomość"
             rows={5}
-          ></textarea>
+            required
+          />
         </div>
-        <div className="w-full block mx-auto">
+        <div className="flex justify-center">
           <button
             type="submit"
-            className="submit-button w-full bg-customColor text-white py-3 rounded-lg hover:bg-opacity-80 transition duration-300"
+            className="transition-all duration-300 bg-customColor hover:bg-opacity-70 text-white rounded-md py-3 px-8"
           >
-            Wyślij wiadomość
+            Wyślij
           </button>
         </div>
         {submitted && (
-          <p className="text-center mt-4 text-customColor font-semibold">
-            Wiadomosć została wysłana
+          <p className="text-green-500 mt-4 text-center">
+            Wiadomość została wysłana!
           </p>
         )}
         {errorMessage && (
-          <p className="text-center mt-4 text-red-500 font-semibold">
-            {errorMessage}
-          </p>
+          <p className="text-red-500 mt-4 text-center">{errorMessage}</p>
         )}
       </form>
     </div>
   );
 }
-
-export default ContactForm;

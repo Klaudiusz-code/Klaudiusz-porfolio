@@ -1,6 +1,5 @@
 import CharacteristicsSection from "@/components/CharacteristicsSection";
 import CustomButton from "@/components/CustomButton";
-import heroImg from "@/public/h.svg";
 
 type HeroSectionProps = {
   title: string;
@@ -16,35 +15,23 @@ const HeroSection = ({
   buttonUrl = "/",
 }: HeroSectionProps) => {
   return (
-    <section
-      className="bg-body-bg min-h-[450px] md:min-h-[500px] lg:min-h-[600px] py-6 flex flex-col items-center relative overflow-hidden bg-[#ecf4ff] pt-24 md:pt-20 lg:pt-16"
-    >
-      <div className="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2">
-        <div className="w-[80rem] h-[60rem] bg-blue-500 rounded-full mix-blend-overlay blur-lg opacity-[0.1]"></div>
+    <section className="relative min-h-[480px] md:min-h-[500px] lg:min-h-[600px] py-8 flex flex-col items-center overflow-hidden bg-white pt-6 md:pt-20 lg:pt-16">
+      <div className="absolute inset-0 overflow-hidden z-0">
+        <div className="absolute left-0 top-0 h-full w-1/2 bg-gradient-to-b from-[#6d88d3] to-transparent opacity-10"></div>
+        <div className="absolute w-12 h-12 bg-[#6e92f2] rounded-full opacity-[0.5] top-[55%] left-[75%] animate-ping"></div>
+        <div className="absolute w-8 h-8 bg-[#6e92f2] rounded-full opacity-[0.6] bottom-[18%] left-[30%] animate-bounce"></div>
       </div>
-
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 relative z-20 mt-2">
-        <div className="w-full hidden md:w-1/2 md:order-2 mb-8 md:mb-0 md:flex justify-center md:justify-end">
-          <img
-            src={heroImg.src}
-            alt="Hero Image"
-            className="w-full h-auto max-w-lg lg:max-w-2xl"
-            loading="lazy"
-          />
-        </div>
-        <div className="w-full mt-10 lg:mt-0 max-w-2xl md:w-3/5 md:order-1 text-center md:text-left">
-          <span className="text-lg font-medium mb-2 tracking-wide font-roboto bg-gray-100 p-2 rounded-md text-blue-800 inline-block">
-            <span className="border-l-2 border-blue-800 px-2 py-1">
-              Klaudiusz Adamaszek
-            </span>
-          </span>
-          <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-blue-900 tracking-wide mt-4 font-roboto mb-4">
-            {title}
-          </h1>
-          <p className="text-gray-800 text-base md:text-lg lg:text-xl font-roboto tracking-wide font-light mb-6">
-            {description}
-          </p>
-          <div className="flex justify-center md:justify-start">
+      <div className="container mx-auto flex flex-col mt-2 lg:mt-14 md:flex-row items-center justify-between px-4 relative z-20">
+        <div className="w-full mt-10 lg:mt-0 text-center">
+          <div className="max-w-6xl mx-auto">
+            <h1 className="font-black text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#6e92f2] tracking-wider mt-14 md:mt-24 font-roboto leading-relaxed mb-4">
+              {title}
+            </h1>
+            <p className="text-[#5c5c5c] max-w-[80%] mx-auto text-base mt-6 md:text-xl lg:text-2xl tracking-wider leading-relaxed font-roboto font-light mb-6">
+              {description}
+            </p>
+          </div>
+          <div>
             <CustomButton
               text={buttonText}
               link={buttonUrl}
