@@ -19,15 +19,15 @@ const HeroSection = ({
       <div className="absolute inset-0 overflow-hidden z-0">
         <div className="absolute left-0 top-0 h-full w-1/2 bg-gradient-to-b from-[#6d88d3] to-transparent opacity-10"></div>
         <div className="absolute w-12 h-12 bg-[#6e92f2] rounded-full opacity-[0.5] top-[55%] left-[75%] animate-ping"></div>
-        <div className="absolute w-8 h-8 bg-[#6e92f2] rounded-full opacity-[0.6] bottom-[18%] left-[30%] animate-bounce"></div>
+        <div className="absolute w-8 h-8 bg-[#6e92f2] rounded-full opacity-[0.6] bottom-[17%] md:bottom-[27%] left-[30%] animate-bounce"></div>
       </div>
       <div className="container mx-auto flex flex-col mt-2 lg:mt-14 md:flex-row items-center justify-between px-4 relative z-20 bg-[url('/grid.svg')] bg-cover bg-center">
         <div className="w-full mt-10 lg:mt-0 text-center">
           <div className="max-w-6xl mx-auto">
-            <h1 className="font-black text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#6e92f2] tracking-wider mt-14 md:mt-24 font-roboto leading-relaxed mb-4">
+            <h1 className="font-black text-4xl md:text-5xl xl:text-7xl text-[#6e92f2] tracking-wider mt-14 md:mt-24 font-roboto leading-relaxed mb-4">
               {title}
             </h1>
-            <p className="text-[#5c5c5c] max-w-[80%] mx-auto text-base mt-6 md:text-xl lg:text-2xl tracking-wider leading-relaxed font-roboto font-light mb-6">
+            <p className="text-[#5c5c5c] max-w-[80%] mx-auto text-base mt-6 lg:text-2xl tracking-wider leading-relaxed font-roboto font-light mb-6">
               {description}
             </p>
           </div>

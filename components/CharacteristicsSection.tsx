@@ -21,15 +21,15 @@ const characteristics = [
   },
   {
     id: 4,
-    hashtag: "#OdkrywamPotencjałWKodzie",
+    hashtag: "#PotencjałWKodzie",
     title: "Kodowanie z pasją",
-    description: "Odkrywam potencjał w każdym wierszu kodu.",
+    description: "Odkrywam potencjał w każdej linni kodu.",
   },
 ];
 
 const CharacteristicsSection = () => {
   return (
-    <div className="py-4 mt-4 md:mt-16 lg:mt-28">
+    <div className="py-4 mt-4 md:mt-16 lg:mt-20 xl:mt-28 z-20">
       <div className="container mx-auto grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
         {characteristics.map((item, index) => (
           <div
