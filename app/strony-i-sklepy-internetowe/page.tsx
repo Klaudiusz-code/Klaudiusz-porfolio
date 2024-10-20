@@ -82,7 +82,7 @@ const Offert = async () => {
   const acordin = data.page?.offert?.acordion;
 
   return (
-    <section className="mt-16 lg:mt-20"> 
+    <section className="mt-16 lg:mt-20">
       <div className="cnt mx-auto py-20 px-4 md:px-8">
         <span className="text-white lg:text-4xl mb-8 font-bold bg-customColor p-4 rounded-md ">
           Oferta Stron i Sklepów WWW
@@ -135,13 +135,13 @@ const Offert = async () => {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="flex items-start bg-white p-4 rounded-md border border-gray-300 shadow-sm"
+                className="flex items-center bg-white p-4 rounded-lg shadow-md w-full max-w-[95%]  sm:max-w-[85%] md:max-w-[80%] lg:max-w-[85%] xl:max-w-[95%] mx-auto"
               >
                 <div className="flex-shrink-0 mr-3">
-                  <FaCheck className="lg:text-xl text-green-500" />
+                  <FaCheck className="text-base text-green-500" />
                 </div>
                 <div className="flex-grow">
-                  <span className="text-sm lg:text-base text-gray-800 font-normal break-words">
+                  <span className="text-sm md:text-base text-gray-700 font-normal">
                     {feature.text}
                   </span>
                 </div>
@@ -160,38 +160,32 @@ const Offert = async () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-            <div className="relative p-8 bg-white border-2 border-red-300 rounded-lg ">
-              <div className="absolute inset-0 border border-red-300 rounded-lg opacity-10 -z-10"></div>
-              <div className="relative z-10">
-                <h3 className="text-xl md:text-2xl font-semibold text-red-700 mb-4">
-                  Problemy, z którymi mogą się spotykać właściciele firm:
-                </h3>
-                <ul className="text-base md:text-lg text-gray-700 space-y-4">
-                  {challenges.map((challenge, index) => (
-                    <li key={index} className="flex items-start">
-                      <FaExclamationTriangle className="text-2xl text-red-600 mt-1 mr-3 flex-shrink-0" />
-                      <span className="leading-relaxed">{challenge}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div className="bg-white shadow-md  p-6 border-l-4 shadow-red-200 border-[#df4f4f]">
+              <h3 className="text-xl md:text-2xl font-semibold text-red-600 mb-4 text-center">
+                Problemy, z którymi mogą się spotykać właściciele firm:
+              </h3>
+              <ul className="text-base md:text-lg text-gray-800 space-y-4">
+                {challenges.map((challenge, index) => (
+                  <li key={index} className="flex items-start">
+                    <FaExclamationTriangle className="text-2xl text-red-600 mt-1 mr-3" />
+                    <span className="leading-relaxed">{challenge}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <div className="relative p-8 bg-white border-2 border-green-300 rounded-lg">
-              <div className="absolute inset-0 border border-green-300 rounded-lg opacity-10 -z-10"></div>
-              <div className="relative z-10">
-                <h3 className="text-xl md:text-2xl font-semibold text-green-700 mb-4">
-                  Jakie korzyści możesz osiągnąć dzięki moim usługom:
-                </h3>
-                <ul className="text-base md:text-lg text-gray-700 space-y-4">
-                  {benefits.map((benefit, index) => (
-                    <li key={index} className="flex items-start">
-                      <FaCheck className="text-2xl text-green-600 mt-1 mr-3 flex-shrink-0" />
-                      <span className="leading-relaxed">{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div className="bg-white shadow-md p-6 border-l-4 border-[#2dcf91] shadow-green-200">
+              <h3 className="text-xl md:text-2xl font-semibold text-[#2dcf91] mb-4 text-center">
+                Jakie korzyści możesz osiągnąć dzięki moim usługom:
+              </h3>
+              <ul className="text-base md:text-lg text-gray-800 space-y-4">
+                {benefits.map((benefit, index) => (
+                  <li key={index} className="flex items-start">
+                    <FaCheck className="text-2xl text-[#2dcf91] mt-1 mr-3" />
+                    <span className="leading-relaxed">{benefit}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>

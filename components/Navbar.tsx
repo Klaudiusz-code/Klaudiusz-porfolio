@@ -106,7 +106,7 @@ const Navbar = ({ data }: any) => {
             <div className="flex-shrink-0 p-4">
               <Link
                 href="tel:+48519668439"
-                className="flex items-center justify-center bg-[#6e92f2] text-white px-4 py-2 rounded-sm shadow-sm shadow-[#6e92f2] transition-transform transform hover:scale-105 duration-300"
+                className="flex items-center justify-center bg-[#6e92f2] text-white px-4 py-2 rounded-sm shadow-sm shadow-[#6e92f2] animate-attention-button"
               >
                 <IoIosCall className="mr-2 text-2xl" />
                 <span className="text-lg font-semibold">+48 519 668 439</span>
@@ -133,7 +133,7 @@ const Navbar = ({ data }: any) => {
           )}
           <Link
             href="tel:+48519668439"
-            className="flex items-center justify-center bg-[#6e92f2] text-white px-4 py-2 rounded-sm shadow-sm shadow-[#6e92f2] transition-transform transform hover:scale-105 duration-300"
+            className="flex items-center justify-center bg-[#6e92f2] text-white px-4 py-2 rounded-sm shadow-sm shadow-[#6e92f2] animate-attention-button"
           >
             <IoIosCall className="mr-2 text-2xl" />
             <span className="text-lg font-semibold">+48 519 668 439</span>
