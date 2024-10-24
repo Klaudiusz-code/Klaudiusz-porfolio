@@ -24,7 +24,7 @@ const Accordion = ({ title, answer }: AccordionProps) => {
           onClick={toggleAccordion}
           aria-expanded={isOpen}
         >
-          <h3 className="text-lg text-left font-semibold text-gray-600">
+          <h3 className="text-lg lg:text-xl text-left font-arial text-gray-800">
             {title}
           </h3>
           <div className="text-2xl">
@@ -40,7 +40,7 @@ const Accordion = ({ title, answer }: AccordionProps) => {
           className={`overflow-hidden transition-all duration-300 ease-in-out`}
           style={{ height: isOpen ? contentRef.current?.scrollHeight : 0 }}
         >
-          <p className="text-base lg:text-lg text-gray-600 font-sans p-4">
+          <p className="text-base lg:text-lg text-blue-800 font-arial p-4">
             {answer}
           </p>
         </div>

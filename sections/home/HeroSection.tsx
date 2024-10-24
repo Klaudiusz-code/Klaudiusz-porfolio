@@ -23,8 +23,8 @@ const HeroSection = ({
       </div>
       <div className="container mx-auto flex flex-col mt-2 lg:mt-14 md:flex-row items-center justify-between px-4 relative z-20 bg-[url('/grid.svg')] bg-cover bg-center">
         <div className="w-full mt-10 lg:mt-0 text-center">
-          <div className="max-w-6xl mx-auto">
-            <h1 className="font-black text-4xl md:text-5xl xl:text-7xl text-[#6e92f2] tracking-wider mt-14 md:mt-24 font-roboto leading-relaxed mb-4">
+          <div className="max-w-8xl mx-auto">
+            <h1 className="font-black text-4xl md:text-5xl xl:text-7xl py-2 text-[#6e92f2] tracking-wider mt-14 md:mt-24 font-roboto leading-tight mb-4">
               {title}
             </h1>
             <p className="text-[#5c5c5c] max-w-[80%] mx-auto text-base mt-6 lg:text-2xl tracking-wider leading-relaxed font-roboto font-light mb-6">
