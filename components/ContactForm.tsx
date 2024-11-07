@@ -1,14 +1,24 @@
 "use client";
-import { FormEvent, useState } from "react";
+
+import { FormEvent, useRef, useState } from "react";
 import { IoPersonOutline, IoCallOutline, IoMailOutline } from "react-icons/io5";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  const recaptchaRef = useRef<ReCAPTCHA>();
+
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
 
     try {
       const response = await fetch("/api/send", {
@@ -17,10 +27,8 @@ export function ContactForm() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: form.get("name"),
-          phone: form.get("phone"),
-          email: form.get("email"),
-          message: form.get("message"),
+          ...formData,
+          token: await recaptchaRef.current?.executeAsync(),
         }),
       });
 
@@ -31,9 +39,15 @@ export function ContactForm() {
 
       setSubmitted(true);
       setErrorMessage("");
+      setFormData({ name: "", phone: "", email: "", message: "" });
     } catch (error) {
       console.error("Błąd podczas przesyłania formularza:", error);
     }
+  }
+
+  function handleChange(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
   }
 
   return (
@@ -42,6 +56,11 @@ export function ContactForm() {
         onSubmit={onSubmit}
         className="max-w-[700px] mx-auto rounded-md overflow-hidden bg-white lg:p-8 font-sans tracking-wide"
       >
+        <ReCAPTCHA
+          ref={recaptchaRef as any}
+          size="invisible"
+          sitekey="6Lc9RncqAAAAACKvLgPsbB0vI0eK-hrRXCwwVer_"
+        />
         <h1 className="mb-8 text-[#10152e] font-bold font-sans text-2xl lg:text-3xl text-center">
           <span className="text-customColor font-semibold">Napisz do mnie</span>
         </h1>
@@ -52,6 +71,8 @@ export function ContactForm() {
               type="text"
               id="name"
               name="name"
+              value={formData.name}
+              onChange={handleChange}
               className="input-field w-full bg-gray-100 pl-12 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-customColor"
               placeholder="Tutaj wpisz Imię i Nazwisko"
               required
@@ -65,6 +86,8 @@ export function ContactForm() {
               type="tel"
               id="phone"
               name="phone"
+              value={formData.phone}
+              onChange={handleChange}
               pattern="[0-9]{9,15}"
               title="Numer telefonu powinien składać się z 9-15 cyfr"
               className="input-field w-full bg-gray-100 pl-12 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-customColor"
@@ -80,6 +103,8 @@ export function ContactForm() {
               type="email"
               id="email"
               name="email"
+              value={formData.email}
+              onChange={handleChange}
               className="input-field w-full bg-gray-100 pl-12 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-customColor"
               placeholder="Adres email"
               required
@@ -90,6 +115,8 @@ export function ContactForm() {
           <textarea
             name="message"
             id="message"
+            value={formData.message}
+            onChange={handleChange}
             className="input-field w-full bg-gray-100 p-4 border border-gray-300 rounded-md focus:outline-none focus:border-customColor"
             placeholder="Tutaj wpisz wiadomość"
             rows={5}

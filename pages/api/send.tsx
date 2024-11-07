@@ -1,12 +1,58 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import nodemailer from 'nodemailer';
 
+async function verifyToken(token: string) {
+  const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+
+  if (!secretKey) {
+    console.error("RECAPTCHA_SECRET_KEY is not set in environment variables.");
+
+    return { success: false, error: "Server configuration error" };
+  }
+
+  const formData = `secret=${secretKey}&response=${token}`;
+
+  try {
+    const r = await fetch(
+      "https://www.google.com/recaptcha/api/siteverify",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: formData,
+      }
+    ) as any;
+
+    const response = await r.json();
+
+    if (!response.success) {
+      return { success: false, error: "ReCaptcha verification failed" };
+    }
+    
+    return {
+      success: true,
+      error: undefined,
+    };
+  } catch (error) {
+    return { success: false, error: "Internal server error" };
+  }
+}
+
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method Not Allowed' });
   }
 
-  const { name, phone, email, message } = req.body;
+  const { name, phone, email, message, token } = req.body;
+
+  const recaptchaResponse = await verifyToken(token);
+
+  if (!recaptchaResponse.success) {
+    return res.status(500).json({ message: recaptchaResponse.error });
+  }
+
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
