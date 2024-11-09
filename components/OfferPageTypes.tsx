@@ -41,7 +41,7 @@ const OfferPageTypes = ({ data }: any) => {
                     bgColor="#0077cc"
                     textColor="#fff"
                     text="Darmowa Wycena Projektu"
-                    link="/contact"
+                    link="/kontakt"
                   />
                 </div>
               </div>
