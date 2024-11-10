@@ -49,8 +49,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const challenges = [
-  "Strona internetowa nie generuje wystarczająco dużo ruchu",
-  "Sprzedaż w sklepie online nie spełnia oczekiwań",
   "Trudności z optymalizacją SEO, aby strona była lepiej widoczna w wyszukiwarkach",
   "Brak responsywności strony na urządzeniach mobilnych",
   "Brak wsparcia technicznego i regularnych aktualizacji",
@@ -60,7 +58,6 @@ const benefits = [
   "Indywidualny projekt strony lub sklepu online dopasowany do Twoich potrzeb i oczekiwań",
   "Responsywność strony, która działa doskonale na każdym urządzeniu",
   "Optymalizacja SEO, aby zwiększyć widoczność Twojej firmy w wyszukiwarkach",
-  "Integracja z najnowszymi systemami płatności, zapewniająca bezpieczne transakcje online",
   "Stałe wsparcie techniczne i regularne aktualizacje, aby Twoja strona zawsze działała sprawnie",
 ];
 
