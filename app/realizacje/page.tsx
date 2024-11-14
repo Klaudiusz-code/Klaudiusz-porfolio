@@ -1,9 +1,11 @@
 import React from "react";
+import Link from "next/link";
 import { Metadata } from "next";
 import { query } from "@/ApolloClient";
 import { ProjectsPageQuery, ProjectsPageQueryVariables } from "@/gql/graphql";
 import GRAPHQL_QUERY from "@/gql-queries/projects_page.graphql";
-import CustomButton from "@/components/CustomButton";
+import { FaArrowRight } from "react-icons/fa";
+
 
 type OpenGraphType = "website" | "article" | "book" | "profile";
 
@@ -56,48 +58,46 @@ const ProjectsPage = async () => {
   const ProjectsData = [
     {
       id: 1,
-      title: "Projekt w budowie",
-      description: "Ten projekt jest w przygotowaniu. Sprawdź wkrótce!",
-      imageUrl: "/p.svg",
-      link: "#",
+      title: "Sprawdź Online",
+      imageUrl: "/aas.jpg",
+      link: "https://fenixtomaszow.pl/",
     },
   ];
 
   return (
     <section className="py-16 mt-16 lg:mt-20">
       <div className="cnt mx-auto px-4 md:px-8">
-        <h1 className="text-white text-3xl md:text-4xl lg:text-5xl mb-8 font-bold bg-customColor inline-flex p-4 rounded-md">
+        <h1 className="text-white text-3xl md:text-4xl lg:text-5xl mb-8 font-bold bg-customColor inline-flex p-4 rounded-md shadow-md">
           {hero?.title}
         </h1>
-        <p className="text-gray-700 leading-8 mt-4 mb-8 font-sans text-lg md:text-xl lg:text-2xl max-w-2xl">
+        <p className="text-gray-600 leading-8 mt-4 mb-8 font-sans text-lg md:text-xl lg:text-2xl max-w-2xl">
           {hero?.description}
         </p>
       </div>
 
-      <div className="cnt mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="cnt mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {ProjectsData.map((project) => (
           <div
             key={project.id}
-            className="rounded-lg overflow-hidden bg-white shadow-md"
+            className="relative group rounded-lg overflow-hidden bg-white shadow-lg transition-transform duration-500 ease-in-out hover:scale-105 hover:shadow-2xl"
           >
             <img
               src={project.imageUrl}
               alt={`Image ${project.id}`}
-              className="w-full h-60 object-contain rounded-t-lg"
+              className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
             />
-            <div className="p-6 flex flex-col justify-center items-center">
-              <h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-4 text-center">
-                {project.title}
-              </h2>
-              <p className="text-gray-700 text-center mb-4">
-                {project.description}
-              </p>
-              <CustomButton
-                bgColor="#0077cc"
-                textColor="#ffffff"
-                text="Zobacz szczegóły"
-                link={project.link}
-              />
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-40">
+              <Link
+                href={project.link}
+                passHref
+                className="flex items-center justify-center space-x-3  text-white text-lg font-medium  transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+              >
+                <span className="relative">
+                  {project.title}
+                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-white opacity-50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out origin-left"></span>
+                </span>
+                <FaArrowRight className="text-xl transform transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
             </div>
           </div>
         ))}
