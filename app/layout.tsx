@@ -1,7 +1,7 @@
 import './globals.css';
+import Head from 'next/head';
 
 import { query } from '@/ApolloClient';
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -16,6 +16,19 @@ export default async function RootLayout({ children }: any) {
 
   return (
     <html lang="pl">
+      <Head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-94LB4ZY02J"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-94LB4ZY02J');
+            `,
+          }}
+        />
+      </Head>
       <body>
         <Navbar data={header} />
         {children}
