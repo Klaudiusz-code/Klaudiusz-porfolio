@@ -32,7 +32,7 @@ const Footer = ({ data }: FooterProps) => {
               bgColor=""
               textColor="#ffffff"
               text="Napisz do mnie!"
-              link="/contact"
+              link="/kontakt"
             />
           </div>
           <div className="flex items-center justify-center">

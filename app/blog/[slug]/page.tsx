@@ -63,7 +63,7 @@ const BlogPost = async ({ params }: any) => {
   };
 
   return (
-    <section className={`shadow-sm mx-auto max-w-5xl px-4 py-8 rounded-md font-sans ${styles.content}`}>
+    <section className={`shadow-sm mt-16 lg:mt-14 mx-auto max-w-5xl px-4 py-8 rounded-md font-sans  ${styles.content}`}>
       <Head>
         <title>{data.post.seo?.title || "Default Title"}</title>
         <meta name="description" content={data.post.seo?.description || "Default Description"} />
