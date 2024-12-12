@@ -66,7 +66,7 @@ const DesignProcessSection = ({
                 </p>
                 {index === 0 && (
                   <CustomButton
-                    text="Darmowa Wycena"
+                    text="Umów się na konsultację"
                     bgColor="#0077cc"
                     textColor="#fff"
                     link="/kontakt"
