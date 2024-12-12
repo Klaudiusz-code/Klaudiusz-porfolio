@@ -1,7 +1,9 @@
 'use client';
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { GoArrowUpRight } from "react-icons/go";
 
 type LatestPostsSectionProps = {
   posts: {
@@ -18,6 +20,8 @@ type LatestPostsSectionProps = {
 };
 
 const LatestPostsSection = ({ posts }: LatestPostsSectionProps) => {
+  const latestPosts = posts.slice(0, 3);
+
   return (
     <section className="cnt font-sans mb-12">
       <div className="w-full px-3 flex items-center justify-center flex-col mt-16">
@@ -25,7 +29,7 @@ const LatestPostsSection = ({ posts }: LatestPostsSectionProps) => {
           Ostatnie Blogi
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-          {posts?.map((post: any) => (
+          {latestPosts.map((post: any) => (
             <Link
               href={`/blog/${post.slug}`}
               key={post.slug}
@@ -62,6 +66,16 @@ const LatestPostsSection = ({ posts }: LatestPostsSectionProps) => {
               </div>
             </Link>
           ))}
+        </div>
+    
+        <div className="mt-8">
+          <Link
+            href="/blogi"
+            className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300"
+          >
+            Zobacz wszystkie wpisy
+            <GoArrowUpRight className="ml-2" /> 
+          </Link>
         </div>
       </div>
     </section>

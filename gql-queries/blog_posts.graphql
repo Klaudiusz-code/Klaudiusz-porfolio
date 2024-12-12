@@ -1,0 +1,15 @@
+query BlogPosts {
+  posts(first: 15) { 
+    nodes {
+      slug
+      title
+      excerpt
+      date
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+    }
+  }
+}
