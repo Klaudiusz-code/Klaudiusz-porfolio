@@ -3,6 +3,14 @@ import { Metadata } from "next";
 import { query } from "@/ApolloClient";
 import { OffertPagQuery, OffertPagQueryVariables } from "@/gql/graphql";
 import { FaCheck, FaExclamationTriangle } from "react-icons/fa";
+import {
+  FaDesktop,
+  FaMobileAlt,
+  FaCog,
+  FaTools,
+  FaCreditCard,
+  FaHeadset,
+} from "react-icons/fa";
 import CustomButton from "@/components/CustomButton";
 import EncouragingSection from "@/sections/common/EncouragingSection";
 import GRAPHQL_QUERY from "@/gql-queries/offert_page.graphql";
@@ -62,12 +70,43 @@ const benefits = [
 ];
 
 const features = [
-  { id: 1, text: "Indywidualny projekt" },
-  { id: 2, text: "Optymalizacja SEO" },
-  { id: 3, text: "Łatwa administracja" },
-  { id: 4, text: "Responsywność" },
-  { id: 5, text: "Integracja z płatnościami" },
-  { id: 6, text: "Wsparcie techniczne" },
+  {
+    id: 1,
+    text: "Indywidualny projekt",
+    icon: <FaDesktop />,
+    description: "Tworzę projekt dopasowany do Twoich potrzeb.",
+  },
+  {
+    id: 2,
+    text: "Optymalizacja SEO",
+    icon: <FaCog />,
+    description:
+      "Zadbam, by Twoja strona była dobrze widoczna w wyszukiwarkach.",
+  },
+  {
+    id: 3,
+    text: "Łatwa administracja",
+    icon: <FaTools />,
+    description: "Zapewniam prosty panel do zarządzania treścią na stronie.",
+  },
+  {
+    id: 4,
+    text: "Responsywność",
+    icon: <FaMobileAlt />,
+    description: "Twoja strona będzie wyglądać świetnie na każdym urządzeniu.",
+  },
+  {
+    id: 5,
+    text: "Integracja z płatnościami",
+    icon: <FaCreditCard />,
+    description: "Oferuję łatwą integrację z popularnymi systemami płatności.",
+  },
+  {
+    id: 6,
+    text: "Wsparcie techniczne",
+    icon: <FaHeadset />,
+    description: "Pomogę Ci na każdym etapie działania strony.",
+  },
 ];
 
 const Offert = async () => {
@@ -115,70 +154,73 @@ const Offert = async () => {
             />
           </div>
         </div>
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 py-16 items-center lg:mt-24">
-          <div className="md:pr-6">
-            <h1 className="text-xl md:text-2xl font-bold text-customColor mb-4">
+        <div className="max-w-7xl mx-auto py-16 px-6 lg:mt-24">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-customColor mb-4">
               Co oferuję w ramach Strony i Sklepu internetowego?
-            </h1>
-            <p className="text-3xl md:text-3xl lg:text-4xl text-gray-800 font-medium mb-6">
+            </h2>
+            <h4 className="text-base md:text-lg lg:text-xl text-gray-600">
               Kompleksowe usługi dla Twojej strony i sklepu online!
-            </p>
-            <p className="text-base md:text-lg text-gray-700 mb-6">
-              Zapewniam pełne wsparcie w tworzeniu oraz utrzymaniu Twojej strony
-              i sklepu internetowego, od projektu po optymalizację SEO.
-            </p>
+            </h4>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 px-4 py-8">
-            {features.map((feature, index) => (
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature) => (
               <div
-                key={index}
-                className="flex items-center bg-white p-4 rounded-lg shadow-md w-full max-w-[95%]  sm:max-w-[85%] md:max-w-[80%] lg:max-w-[85%] xl:max-w-[95%] mx-auto"
+                key={feature.id}
+                className="bg-gradient-to-r from-white via-gray-100 to-white p-8 rounded-3xl shadow-lg"
               >
-                <div className="flex-shrink-0 mr-3">
-                  <FaCheck className="text-base text-green-500" />
-                </div>
-                <div className="flex-grow">
-                  <span className="text-sm md:text-base text-gray-700 font-normal">
+                <div className="flex items-center mb-6">
+                  <div className="p-4 rounded-full bg-gradient-to-r from-green-300 to-blue-400 text-white shadow-lg mr-6">
+                    {feature.icon}
+                  </div>
+                  <h2 className="text-xl font-semibold text-gray-800">
                     {feature.text}
-                  </span>
+                  </h2>
                 </div>
+                <p className="text-base text-gray-600">{feature.description}</p>
               </div>
             ))}
           </div>
         </div>
+
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-10 lg:mt-24">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+            <h2 className="text-2xl md:text-3xl font-bold text-customColor mb-4">
               Potrzebujesz większej widoczności w sieci dla Twojej firmy?
             </h2>
-            <h4 className="text-lg md:text-xl lg:text-2xl text-gray-600">
+            <h4 className="text-base md:text-lg lg:text-xl text-gray-600">
               Zobacz, jak mogę Ci pomóc rozwiązać te wyzwania:
             </h4>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-            <div className="bg-white shadow-md  p-6 border-l-4 shadow-red-200 border-[#df4f4f]">
-              <h3 className="text-xl md:text-2xl font-semibold text-red-600 mb-4 text-center">
+            <div className="bg-white rounded-lg shadow-md p-8 flex flex-col items-center text-center">
+              <div className="text-red-600 mb-6">
+                <FaExclamationTriangle className="text-6xl" />
+              </div>
+              <h3 className="text-xl md:text-2xl font-semibold text-red-600 mb-4">
                 Problemy, z którymi mogą się spotykać właściciele firm:
               </h3>
               <ul className="text-base md:text-lg text-gray-800 space-y-4">
                 {challenges.map((challenge, index) => (
                   <li key={index} className="flex items-start">
-                    <FaExclamationTriangle className="text-2xl text-red-600 mt-1 mr-3" />
                     <span className="leading-relaxed">{challenge}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="bg-white shadow-md p-6 border-l-4 border-[#2dcf91] shadow-green-200">
-              <h3 className="text-xl md:text-2xl font-semibold text-[#2dcf91] mb-4 text-center">
+            <div className="bg-white rounded-lg shadow-md p-8 flex flex-col items-center text-center">
+              <div className="text-[#2dcf91] mb-6">
+                <FaCheck className="text-6xl" />
+              </div>
+              <h3 className="text-xl md:text-2xl font-semibold text-[#2dcf91] mb-4">
                 Jakie korzyści możesz osiągnąć dzięki moim usługom:
               </h3>
               <ul className="text-base md:text-lg text-gray-800 space-y-4">
                 {benefits.map((benefit, index) => (
                   <li key={index} className="flex items-start">
-                    <FaCheck className="text-2xl text-[#2dcf91] mt-1 mr-3" />
                     <span className="leading-relaxed">{benefit}</span>
                   </li>
                 ))}
