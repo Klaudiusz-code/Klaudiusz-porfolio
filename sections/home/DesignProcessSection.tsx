@@ -55,13 +55,13 @@ const DesignProcessSection = ({
                   index % 2 === 0 ? "md:ml-auto" : "md:mr-auto"
                 }`}
               >
-                <div className="bg-blue-500 text-white py-2 px-4 rounded-full text-sm font-medium inline-block mb-6 shadow-md">
+                <div className="bg-blue-500 text-white py-2 px-4 rounded-full text-sm font-normal inline-block mb-6 shadow-md">
                   Krok {item.num}
                 </div>
-                <h4 className="text-[#0624B5] text-xl lg:text-2xl font-semibold mb-3 text-left">
+                <h4 className="text-[#3247ad] text-xl lg:text-2xl font-semibold mb-3 text-left">
                   {item.title}
                 </h4>
-                <p className="text-gray-700 text-base font-light leading-relaxed mb-6 text-left">
+                <p className="text-gray-600 text-base font-monserat font-normal leading-relaxed tracking-wide mb-6 text-left">
                   {item.description}
                 </p>
                 {index === 0 && (

@@ -9,10 +9,13 @@ type AboutSectionProps = {
 const AboutSection = ({ title, description }: AboutSectionProps) => {
   return (
     <section className="cnt flex flex-col mx-auto items-center text-center justify-center">
-      <h2 className="uppercase text-[#4f7cf7] font-sans tracking-wide font-bold text-lg mt-12">
+      <h2 className="uppercase text-[#4f7cf7] font-monserat tracking-wide font-bold text-lg mt-12">
         {title}
       </h2>
-      <div className="w-full md:max-w-[70%] lg:max-w-[60%] text-center font-thin font-arial tracking-wide text-base md:text-lg  mt-6 text-gray-700">
+      <div
+        style={{ fontFamily: "Montserrat, sans-serif" }}
+        className="w-full md:max-w-[70%] lg:max-w-[60%] text-center tracking-wide text-base md:text-[1rem] leading-[2rem]  mt-6 text-[#7e7d7d]"
+      >
         {ReactHtmlParser(description)}
       </div>
     </section>

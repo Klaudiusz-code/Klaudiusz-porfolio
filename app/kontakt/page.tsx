@@ -102,7 +102,7 @@ const ContactPage = async () => {
                         {item?.titleTwo}
                       </span>
                       <div className="text-left mt-1">
-                        <span className="text-slate-500 text-lg md:text-base lg:text-lg font-light transition-all duration-200 ">
+                        <span className="text-gray-500 text-lg md:text-base lg:text-lg font-normal transition-all duration-200 ">
                           {item?.title || "ABC"}
                         </span>
                       </div>

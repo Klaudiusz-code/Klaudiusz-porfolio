@@ -42,10 +42,10 @@ const CharacteristicsSection = () => {
               <span className="inline-block text-[#666666] text-xs sm:text-sm font-medium uppercase rounded-md py-1 mb-1">
                 {item.hashtag}
               </span>
-              <h3 className="text-sm sm:text-base lg:text-xl text-gray-800 font-semibold mb-1 py-1 tracking-wide">
+              <h3 className="text-sm sm:text-base lg:text-xl text-gray-700 font-monserat font-medium mb-1 py-1 tracking-wide">
                 {item.title}
               </h3>
-              <p className="text-xs sm:text-sm">{item.description}</p>
+              <p className="text-xs sm:text-sm font-monserat">{item.description}</p>
             </div>
           </div>
         ))}

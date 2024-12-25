@@ -28,6 +28,7 @@ const config: Config = {
         sm: "640px",
       },
       fontFamily: {
+        monserat: ['Montserrat', 'sans-serif'],
         arial: ["Arial", "sans-serif"],
         sans: ["Open Sans", "sans-serif"],
         bevan: ["Bevan", "serif"],

@@ -33,6 +33,10 @@ export default async function RootLayout({ children }: any) {
           `,
           }}
         />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Roboto:wght@100;400;700&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body>
         <Navbar data={header} />
