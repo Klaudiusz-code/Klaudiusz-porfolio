@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Metadata } from "next";
 import { IoCallOutline, IoMailOutline } from "react-icons/io5";
-import { FaFacebookMessenger, FaDiscord, FaLinkedin } from "react-icons/fa";
+import { FaFacebookMessenger, FaInstagram , FaLinkedin } from "react-icons/fa";
 import { ContactForm } from "@/components/ContactForm";
 import { query } from "@/ApolloClient";
 import { ContactQueryQuery, ContactQueryQueryVariables } from "@/gql/graphql";
@@ -11,7 +11,7 @@ const iconsKeyMap: Record<string, React.ElementType> = {
   IoCallOutline,
   IoMailOutline,
   FaFacebookMessenger,
-  FaDiscord,
+  FaInstagram,
   FaLinkedin,
 };
 
