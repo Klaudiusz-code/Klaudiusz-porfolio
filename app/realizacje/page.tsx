@@ -6,7 +6,6 @@ import { ProjectsPageQuery, ProjectsPageQueryVariables } from "@/gql/graphql";
 import GRAPHQL_QUERY from "@/gql-queries/projects_page.graphql";
 import { FaArrowRight } from "react-icons/fa";
 
-
 type OpenGraphType = "website" | "article" | "book" | "profile";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -62,6 +61,12 @@ const ProjectsPage = async () => {
       imageUrl: "/aas.jpg",
       link: "https://fenixtomaszow.pl/",
     },
+    {
+      id: 2,
+      title: "Lavato",
+      imageUrl: "/lavatoforkdev.jpg",
+      link: "https://www.lavato.eu/",
+    },
   ];
 
   return (
@@ -90,7 +95,7 @@ const ProjectsPage = async () => {
               <Link
                 href={project.link}
                 passHref
-                className="flex items-center justify-center space-x-3  text-white text-lg font-medium  transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+                className="flex items-center justify-center space-x-3 text-white text-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
               >
                 <span className="relative">
                   {project.title}
