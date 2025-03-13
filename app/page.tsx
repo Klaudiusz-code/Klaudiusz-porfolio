@@ -82,7 +82,30 @@ const HomePage = async () => {
           name="google-site-verification"
           content="_QkqDJ2yyltPwwi4lkThE7vqIHC4e4RdlkgOq1jlidA"
         />
+        <title>{seo?.title || "Klaudiuszdev"}</title>
+        <meta
+          name="description"
+          content={seo?.description || "Klaudiuszdev"}
+        />
+
+        <meta
+          property="og:title"
+          content={seo?.openGraph?.title || seo?.title || "Klaudiuszdev"}
+        />
+        <meta
+          property="og:description"
+          content={
+            seo?.openGraph?.description ||
+            seo?.description ||
+            "Default Description"
+          }
+        />
+        <meta
+          property="og:image"
+        />
+        <meta property="og:type" content={seo?.openGraph?.type || "website"} />
       </Head>
+
       <HeroSection
         title={hero?.title || ""}
         description={hero?.description || ""}
@@ -104,7 +127,7 @@ const HomePage = async () => {
       <ToolsSection
         title={tools?.title || ""}
         description={tools?.description || ""}
-        charts={tools?.charts as any[]} 
+        charts={tools?.charts as any[]}
       />
       <EncouragingSection
         title={whyme?.title || ""}
