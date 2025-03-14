@@ -97,13 +97,13 @@ const BlogPost = async ({ params }: any) => {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
         />
       </Head>
-      <header className="relative w-full h-[400px] bg-cover bg-center flex mt-6 items-center justify-center">
+      <header className="relative w-full h-[350px] lg:h-[400px] bg-cover bg-center flex mt-6 items-center justify-center">
         <div className="absolute inset-0 bg-blue-900 opacity-50 z-10"></div>
 
         <div className="absolute inset-0 bg-cover bg-center z-0 bg-[url('/photoforblog.jpg')]"></div>
 
         <div className="cnt relative z-20 text-center px-4">
-          <h1 className="text-5xl font-bold text-white drop-shadow-lg">
+          <h1 className="text-2xl lg:text-5xl font-bold text-white drop-shadow-lg">
             {data.post.title}
           </h1>
           <div

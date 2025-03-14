@@ -17,7 +17,6 @@ const BlogSidebar = async ({ currentSlug }: BlogSidebarProps) => {
       (post) => post.slug && post.slug !== currentSlug
     ) || [];
 
-  // Wyświetlamy tylko 3 ostatnie artykuły
   const recentPosts = filteredPosts.slice(0, 3);
 
   return (
@@ -33,7 +32,7 @@ const BlogSidebar = async ({ currentSlug }: BlogSidebarProps) => {
           >
             <Link
               href={`/blog/${post.slug}`}
-              className="text-base text-gray-900 font-medium group-hover:text-blue-600 transition-colors duration-300 flex items-center space-x-3"
+              className="text-sm md:text-base text-gray-900 font-medium group-hover:text-blue-600 transition-colors duration-300 flex items-center space-x-3"
             >
               <HiOutlineArrowRight className="text-gray-500 group-hover:text-blue-600" />
               <span>{post.title}</span>
