@@ -8,9 +8,10 @@ import BLOG_POSTS_QUERY from "@/gql-queries/blog_posts.graphql";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Blog - KlaudiuszDev | Tworzenie Stron, SEO, Web Development",
+    title:
+      "Blog o Tworzeniu Stron, SEO i Web Developmencie w Tomaszowie Lubelskim i Zamościu",
     description:
-      "Zobacz najnowsze wpisy na blogu KlaudiuszDev, poświęcone tworzeniu stron internetowych, SEO i web developmentowi.",
+      "Przeczytaj najnowsze wpisy na blogu o tworzeniu stron internetowych, SEO i web developmentzie, skierowane do firm z Tomaszowa Lubelskiego, Zamościa i okolic.",
   };
 }
 

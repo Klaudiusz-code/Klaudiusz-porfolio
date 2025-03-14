@@ -1,8 +1,12 @@
 .content {
   background-color: #ffffff;
+  max-width: 1200px;
   padding: 2rem;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 4rem;
   border-radius: 8px;
+  line-height: 1.75; /* Lepsze odstępy między liniami */
 }
 
 .title {
@@ -10,17 +14,19 @@
   color: #333333;
   margin-bottom: 1.5rem;
   font-weight: 700;
+  padding-bottom: 1rem; /* Dodajemy przestrzeń pod tytułem */
 }
 
 .prose {
   font-size: 1rem;
   line-height: 1.75;
   color: #555555;
+  margin-bottom: 2rem; 
 }
 
 .additionalInfo {
   font-size: 0.875rem;
-  color: #777777;
+  color: white;
   margin-top: 2rem;
 }
 
@@ -36,9 +42,10 @@
 .content h3,
 .content h4 {
   color: #333;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   margin-bottom: 1rem;
   font-weight: 600;
+  padding-top: 0.5rem; 
 }
 
 .content h2 {
@@ -57,6 +64,7 @@
   font-size: 1rem;
   line-height: 1.75;
   color: #555;
+  margin-bottom: 1rem;
 }
 
 .content ul,
@@ -94,6 +102,7 @@
 
   .title {
     font-size: 2rem;
+    margin-bottom: 1rem;
   }
 
   .prose {

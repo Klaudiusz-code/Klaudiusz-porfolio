@@ -63,7 +63,7 @@ const ProjectsPage = async () => {
     },
     {
       id: 2,
-      title: "Lavato",
+      title: "Sprawdź Online",
       imageUrl: "/lavatoforkdev.jpg",
       link: "https://www.lavato.eu/",
     },
