@@ -75,7 +75,7 @@ const ProjectsPage = async () => {
         <h1 className="text-white text-3xl md:text-4xl lg:text-5xl mb-8 font-bold bg-customColor inline-flex p-4 rounded-md shadow-md">
           {hero?.title}
         </h1>
-        <p className="text-gray-600 leading-8 mt-4 mb-8 font-sans text-lg md:text-xl lg:text-2xl max-w-2xl">
+        <p className="text-gray-600 leading-8 mt-4 mb-8 font-sans font-light text-lg md:text-xl lg:text-2xl max-w-2xl">
           {hero?.description}
         </p>
       </div>

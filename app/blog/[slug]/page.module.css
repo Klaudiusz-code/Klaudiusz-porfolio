@@ -7,7 +7,7 @@
   margin-top: 1rem;
   
   border-radius: 8px;
-  line-height: 1.75; /* Lepsze odstępy między liniami */
+  line-height: 1.75; 
 }
 
 .title {
@@ -15,7 +15,7 @@
   color: #333333;
   margin-bottom: 1.5rem;
   font-weight: 700;
-  padding-bottom: 1rem; /* Dodajemy przestrzeń pod tytułem */
+  padding-bottom: 1rem; 
 }
 
 .prose {

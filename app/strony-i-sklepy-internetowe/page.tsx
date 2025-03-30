@@ -2,15 +2,7 @@ import React from "react";
 import { Metadata } from "next";
 import { query } from "@/ApolloClient";
 import { OffertPagQuery, OffertPagQueryVariables } from "@/gql/graphql";
-import { FaCheck, FaExclamationTriangle } from "react-icons/fa";
-import {
-  FaDesktop,
-  FaMobileAlt,
-  FaCog,
-  FaTools,
-  FaCreditCard,
-  FaHeadset,
-} from "react-icons/fa";
+import { FaCheck, FaExclamationTriangle, FaDesktop, FaMobileAlt, FaCog, FaTools, FaCreditCard, FaHeadset } from "react-icons/fa";
 import CustomButton from "@/components/CustomButton";
 import EncouragingSection from "@/sections/common/EncouragingSection";
 import GRAPHQL_QUERY from "@/gql-queries/offert_page.graphql";
