@@ -18,6 +18,7 @@ import EstimationSection from "@/sections/home/EstimationSection";
 import LatestPostsSection from "@/sections/home/LatestPostsSection";
 import EncouragingSection from "@/sections/common/EncouragingSection";
 import FaqSection from "@/sections/common/FaqSection";
+import InstagramCTA from "@/components/InstagramCTA";
 
 type OpenGraphType = "website" | "article" | "book" | "profile";
 
@@ -83,10 +84,7 @@ const HomePage = async () => {
           content="_QkqDJ2yyltPwwi4lkThE7vqIHC4e4RdlkgOq1jlidA"
         />
         <title>{seo?.title || "Klaudiuszdev"}</title>
-        <meta
-          name="description"
-          content={seo?.description || "Klaudiuszdev"}
-        />
+        <meta name="description" content={seo?.description || "Klaudiuszdev"} />
 
         <meta
           property="og:title"
@@ -100,9 +98,7 @@ const HomePage = async () => {
             "Default Description"
           }
         />
-        <meta
-          property="og:image"
-        />
+        <meta property="og:image" />
         <meta property="og:type" content={seo?.openGraph?.type || "website"} />
       </Head>
 
@@ -143,6 +139,7 @@ const HomePage = async () => {
         }))}
       />
       <LatestPostsSection posts={posts?.nodes as any[]} />
+      <InstagramCTA />
       <FaqSection
         title={acordin?.title || ""}
         description={acordin?.description || ""}

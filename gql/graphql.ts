@@ -228,7 +228,7 @@ export enum CategoryIdType {
   Uri = 'URI'
 }
 
-/** The RankMath SEO meta settings for Categories. */
+/** The RankMath SEO meta settings for Kategorie. */
 export type CategoryMetaSettings = RankMathMetaSettingWithArchive & RankMathMetaSettingWithRobots & {
   __typename?: 'CategoryMetaSettings';
   /** Advanced robots meta tag settings. */
@@ -353,8 +353,6 @@ export type CategoryToCategoryConnectionWhereArgs = {
   search?: InputMaybe<Scalars['String']['input']>;
   /** Array of slugs to return term(s) for. Default empty. */
   slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  /** Array of term taxonomy IDs, to match when querying terms. */
-  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Array of term taxonomy IDs, to match when querying terms. */
   termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Whether to prime meta caches for matched terms. Default true. */
@@ -706,13 +704,13 @@ export enum CommentNodeIdTypeEnum {
 
 /** The status of the comment object. */
 export enum CommentStatusEnum {
-  /** Comments with the Approved status */
+  /** Comments with the Zatwierdzono status */
   Approve = 'APPROVE',
-  /** Comments with the Unapproved status */
+  /** Comments with the Odrzucony status */
   Hold = 'HOLD',
   /** Comments with the Spam status */
   Spam = 'SPAM',
-  /** Comments with the Bin status */
+  /** Comments with the W koszu status */
   Trash = 'TRASH'
 }
 
@@ -805,8 +803,8 @@ export type CommentToCommentConnectionWhereArgs = {
   parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Search term(s) to retrieve matching comments for. */
   search?: InputMaybe<Scalars['String']['input']>;
-  /** Comment status to limit results by. */
-  status?: InputMaybe<Scalars['String']['input']>;
+  /** One or more Comment Statuses to limit results by */
+  statusIn?: InputMaybe<Array<InputMaybe<CommentStatusEnum>>>;
   /** Include comments for a specific user ID. */
   userId?: InputMaybe<Scalars['ID']['input']>;
 };
@@ -902,8 +900,8 @@ export type CommentToParentCommentConnectionWhereArgs = {
   parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Search term(s) to retrieve matching comments for. */
   search?: InputMaybe<Scalars['String']['input']>;
-  /** Comment status to limit results by. */
-  status?: InputMaybe<Scalars['String']['input']>;
+  /** One or more Comment Statuses to limit results by */
+  statusIn?: InputMaybe<Array<InputMaybe<CommentStatusEnum>>>;
   /** Include comments for a specific user ID. */
   userId?: InputMaybe<Scalars['ID']['input']>;
 };
@@ -1477,7 +1475,9 @@ export type CreateCategoryInput = {
   description?: InputMaybe<Scalars['String']['input']>;
   /** The name of the category object to mutate */
   name: Scalars['String']['input'];
-  /** The ID of the category that should be set as the parent */
+  /** The database ID of the category that should be set as the parent. This field cannot be used in conjunction with parentId */
+  parentDatabaseId?: InputMaybe<Scalars['Int']['input']>;
+  /** The ID of the category that should be set as the parent. This field cannot be used in conjunction with parentDatabaseId */
   parentId?: InputMaybe<Scalars['ID']['input']>;
   /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -1494,8 +1494,6 @@ export type CreateCategoryPayload = {
 
 /** Input for the createComment mutation. */
 export type CreateCommentInput = {
-  /** The approval status of the comment. */
-  approved?: InputMaybe<Scalars['String']['input']>;
   /** The name of the comment's author. */
   author?: InputMaybe<Scalars['String']['input']>;
   /** The email of the comment's author. */
@@ -1971,9 +1969,9 @@ export type DeleteUserPayload = {
 /** The discussion setting type */
 export type DiscussionSettings = {
   __typename?: 'DiscussionSettings';
-  /** Allow people to submit comments on new posts. */
+  /** Zezwól na komentowanie nowych wpisów. */
   defaultCommentStatus?: Maybe<Scalars['String']['output']>;
-  /** Allow link notifications from other blogs (pingbacks and trackbacks) on new articles. */
+  /** Pozwala na powiadomienia z innych witryn (pingbacki i trackbacki) w nowych artykułach. */
   defaultPingStatus?: Maybe<Scalars['String']['output']>;
 };
 
@@ -2005,6 +2003,8 @@ export type EnqueuedAsset = {
    * @deprecated Use `EnqueuedScript.extraData` instead.
    */
   extra?: Maybe<Scalars['String']['output']>;
+  /** The loading group to which this asset belongs. */
+  group?: Maybe<Scalars['Int']['output']>;
   /** The handle of the enqueued asset */
   handle?: Maybe<Scalars['String']['output']>;
   /** The ID of the enqueued asset */
@@ -2038,6 +2038,10 @@ export type EnqueuedScript = EnqueuedAsset & Node & {
   extra?: Maybe<Scalars['String']['output']>;
   /** Extra data supplied to the enqueued script */
   extraData?: Maybe<Scalars['String']['output']>;
+  /** The loading group to which this asset belongs. */
+  group?: Maybe<Scalars['Int']['output']>;
+  /** The location where this script should be loaded */
+  groupLocation?: Maybe<ScriptLoadingGroupLocationEnum>;
   /** The handle of the enqueued asset */
   handle?: Maybe<Scalars['String']['output']>;
   /** The global ID of the enqueued script */
@@ -2101,6 +2105,8 @@ export type EnqueuedStylesheet = EnqueuedAsset & Node & {
    * @deprecated Use `EnqueuedScript.extraData` instead.
    */
   extra?: Maybe<Scalars['String']['output']>;
+  /** The loading group to which this asset belongs. */
+  group?: Maybe<Scalars['Int']['output']>;
   /** The handle of the enqueued asset */
   handle?: Maybe<Scalars['String']['output']>;
   /** The global ID of the enqueued stylesheet */
@@ -2156,23 +2162,23 @@ export type EnqueuedStylesheetConnectionPageInfo = {
 /** The general setting type */
 export type GeneralSettings = {
   __typename?: 'GeneralSettings';
-  /** A date format for all date strings. */
+  /** Format daty dla wszystkich wystąpeń */
   dateFormat?: Maybe<Scalars['String']['output']>;
-  /** Site tagline. */
+  /** Motto witryny. */
   description?: Maybe<Scalars['String']['output']>;
-  /** This address is used for admin purposes, like new user notification. */
+  /** Adres jest używany do celów administracyjnych, takich jak powiadomienia o nowych użytkownikach. */
   email?: Maybe<Scalars['String']['output']>;
-  /** WordPress locale code. */
+  /** Kod ustawień regionalnych WordPressa. */
   language?: Maybe<Scalars['String']['output']>;
-  /** A day number of the week that the week should start on. */
+  /** Numer dnia tygodnia, dla którego powinien się on zaczynać. */
   startOfWeek?: Maybe<Scalars['Int']['output']>;
-  /** A time format for all time strings. */
+  /** Format czasu dla wszystkich wystąpeń */
   timeFormat?: Maybe<Scalars['String']['output']>;
-  /** A city in the same timezone as you. */
+  /** Miasto w twojej strefie czasowej, */
   timezone?: Maybe<Scalars['String']['output']>;
-  /** Site title. */
+  /** Tytuł witryny. */
   title?: Maybe<Scalars['String']['output']>;
-  /** Site URL. */
+  /** Adres URL witryny. */
   url?: Maybe<Scalars['String']['output']>;
 };
 
@@ -2526,6 +2532,8 @@ export type MediaDetails = {
   __typename?: 'MediaDetails';
   /** The filename of the mediaItem */
   file?: Maybe<Scalars['String']['output']>;
+  /** The path to the mediaItem relative to the uploads directory */
+  filePath?: Maybe<Scalars['String']['output']>;
   /** The height of the mediaItem */
   height?: Maybe<Scalars['Int']['output']>;
   /** Meta information associated with the mediaItem */
@@ -2588,6 +2596,10 @@ export type MediaItem = ContentNode & DatabaseIdentifier & HierarchicalContentNo
   enqueuedScripts?: Maybe<ContentNodeToEnqueuedScriptConnection>;
   /** Connection between the ContentNode type and the EnqueuedStylesheet type */
   enqueuedStylesheets?: Maybe<ContentNodeToEnqueuedStylesheetConnection>;
+  /** The filename of the mediaItem for the specified size (default size is full) */
+  file?: Maybe<Scalars['String']['output']>;
+  /** The path to the original file relative to the uploads directory */
+  filePath?: Maybe<Scalars['String']['output']>;
   /** The filesize in bytes of the resource */
   fileSize?: Maybe<Scalars['Int']['output']>;
   /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
@@ -2721,6 +2733,18 @@ export type MediaItemEnqueuedStylesheetsArgs = {
   before?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** The mediaItem type */
+export type MediaItemFileArgs = {
+  size?: InputMaybe<MediaItemSizeEnum>;
+};
+
+
+/** The mediaItem type */
+export type MediaItemFilePathArgs = {
+  size?: InputMaybe<MediaItemSizeEnum>;
 };
 
 
@@ -2943,8 +2967,8 @@ export type MediaItemToCommentConnectionWhereArgs = {
   parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Search term(s) to retrieve matching comments for. */
   search?: InputMaybe<Scalars['String']['input']>;
-  /** Comment status to limit results by. */
-  status?: InputMaybe<Scalars['String']['input']>;
+  /** One or more Comment Statuses to limit results by */
+  statusIn?: InputMaybe<Array<InputMaybe<CommentStatusEnum>>>;
   /** Include comments for a specific user ID. */
   userId?: InputMaybe<Scalars['ID']['input']>;
 };
@@ -2954,6 +2978,8 @@ export type MediaSize = {
   __typename?: 'MediaSize';
   /** The filename of the referenced size */
   file?: Maybe<Scalars['String']['output']>;
+  /** The path of the file for the referenced size (default size is full) */
+  filePath?: Maybe<Scalars['String']['output']>;
   /** The filesize of the resource */
   fileSize?: Maybe<Scalars['Int']['output']>;
   /** The height of the referenced size */
@@ -3921,16 +3947,16 @@ export type PageInfo = {
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** The RankMath SEO meta settings for Pages. */
+/** The RankMath SEO meta settings for Strony. */
 export type PageMetaSettings = RankMathMetaSettingWithRobots & {
   __typename?: 'PageMetaSettings';
   /** Advanced robots meta tag settings. */
   advancedRobotsMeta?: Maybe<RankMathAdvancedRobotsMeta>;
   /** List of custom fields name to include in the Page analysis */
   analyzedFields?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  /** Default article type when creating a new Pages. */
+  /** Default article type when creating a new Strony. */
   articleType?: Maybe<RankMathArticleTypeEnum>;
-  /** Default description for single Pages pages. */
+  /** Default description for single Strony pages. */
   description?: Maybe<Scalars['String']['output']>;
   /** Whether to list bulk editing columns to the post listing screen. */
   hasBulkEditing?: Maybe<RankMathBulkEditingTypeEnum>;
@@ -3950,11 +3976,11 @@ export type PageMetaSettings = RankMathMetaSettingWithRobots & {
   snippetDescription?: Maybe<Scalars['String']['output']>;
   /** Default rich snippet headline. */
   snippetHeadline?: Maybe<Scalars['String']['output']>;
-  /** Default rich snippet select when creating a new Pages. */
+  /** Default rich snippet select when creating a new Strony. */
   snippetType?: Maybe<RankMathSnippetTypeEnum>;
   /** The default image to display when sharing this post type on social media */
   socialImage?: Maybe<MediaItem>;
-  /** Default title tag for single Pages pages. */
+  /** Default title tag for single Strony pages. */
   title?: Maybe<Scalars['String']['output']>;
 };
 
@@ -4047,8 +4073,8 @@ export type PageToCommentConnectionWhereArgs = {
   parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Search term(s) to retrieve matching comments for. */
   search?: InputMaybe<Scalars['String']['input']>;
-  /** Comment status to limit results by. */
-  status?: InputMaybe<Scalars['String']['input']>;
+  /** One or more Comment Statuses to limit results by */
+  statusIn?: InputMaybe<Array<InputMaybe<CommentStatusEnum>>>;
   /** Include comments for a specific user ID. */
   userId?: InputMaybe<Scalars['ID']['input']>;
 };
@@ -4412,7 +4438,16 @@ export type Page_Offert_Offerpagetypes = AcfFieldGroup & {
 /** Field Group */
 export type Page_Offert_Offerpagetypes_Items = AcfFieldGroup & {
   __typename?: 'Page_Offert_Offerpagetypes_items';
+  benefit?: Maybe<Array<Maybe<Page_Offert_Offerpagetypes_Items_Benefit>>>;
   description?: Maybe<Scalars['String']['output']>;
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+/** Field Group */
+export type Page_Offert_Offerpagetypes_Items_Benefit = AcfFieldGroup & {
+  __typename?: 'Page_Offert_Offerpagetypes_items_benefit';
   /** The name of the ACF Field Group */
   fieldGroupName?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
@@ -5085,7 +5120,7 @@ export enum PostFormatIdType {
   Uri = 'URI'
 }
 
-/** The RankMath SEO meta settings for Formats. */
+/** The RankMath SEO meta settings for Formaty. */
 export type PostFormatMetaSettings = RankMathMetaSettingWithArchive & RankMathMetaSettingWithRobots & {
   __typename?: 'PostFormatMetaSettings';
   /** Advanced robots meta tag settings. */
@@ -5295,16 +5330,16 @@ export enum PostIdType {
   Uri = 'URI'
 }
 
-/** The RankMath SEO meta settings for Posts. */
+/** The RankMath SEO meta settings for Wpisy. */
 export type PostMetaSettings = RankMathMetaSettingWithRobots & {
   __typename?: 'PostMetaSettings';
   /** Advanced robots meta tag settings. */
   advancedRobotsMeta?: Maybe<RankMathAdvancedRobotsMeta>;
   /** List of custom fields name to include in the Page analysis */
   analyzedFields?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  /** Default article type when creating a new Posts. */
+  /** Default article type when creating a new Wpisy. */
   articleType?: Maybe<RankMathArticleTypeEnum>;
-  /** Default description for single Posts pages. */
+  /** Default description for single Wpisy pages. */
   description?: Maybe<Scalars['String']['output']>;
   /** Whether to list bulk editing columns to the post listing screen. */
   hasBulkEditing?: Maybe<RankMathBulkEditingTypeEnum>;
@@ -5324,11 +5359,11 @@ export type PostMetaSettings = RankMathMetaSettingWithRobots & {
   snippetDescription?: Maybe<Scalars['String']['output']>;
   /** Default rich snippet headline. */
   snippetHeadline?: Maybe<Scalars['String']['output']>;
-  /** Default rich snippet select when creating a new Posts. */
+  /** Default rich snippet select when creating a new Wpisy. */
   snippetType?: Maybe<RankMathSnippetTypeEnum>;
   /** The default image to display when sharing this post type on social media */
   socialImage?: Maybe<MediaItem>;
-  /** Default title tag for single Posts pages. */
+  /** Default title tag for single Wpisy pages. */
   title?: Maybe<Scalars['String']['output']>;
 };
 
@@ -5522,8 +5557,6 @@ export type PostToCategoryConnectionWhereArgs = {
   /** Array of slugs to return term(s) for. Default empty. */
   slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Array of term taxonomy IDs, to match when querying terms. */
-  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** Array of term taxonomy IDs, to match when querying terms. */
   termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Whether to prime meta caches for matched terms. Default true. */
   updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
@@ -5618,8 +5651,8 @@ export type PostToCommentConnectionWhereArgs = {
   parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Search term(s) to retrieve matching comments for. */
   search?: InputMaybe<Scalars['String']['input']>;
-  /** Comment status to limit results by. */
-  status?: InputMaybe<Scalars['String']['input']>;
+  /** One or more Comment Statuses to limit results by */
+  statusIn?: InputMaybe<Array<InputMaybe<CommentStatusEnum>>>;
   /** Include comments for a specific user ID. */
   userId?: InputMaybe<Scalars['ID']['input']>;
 };
@@ -5746,8 +5779,6 @@ export type PostToPostFormatConnectionWhereArgs = {
   search?: InputMaybe<Scalars['String']['input']>;
   /** Array of slugs to return term(s) for. Default empty. */
   slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  /** Array of term taxonomy IDs, to match when querying terms. */
-  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Array of term taxonomy IDs, to match when querying terms. */
   termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Whether to prime meta caches for matched terms. Default true. */
@@ -5934,8 +5965,6 @@ export type PostToTagConnectionWhereArgs = {
   /** Array of slugs to return term(s) for. Default empty. */
   slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Array of term taxonomy IDs, to match when querying terms. */
-  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** Array of term taxonomy IDs, to match when querying terms. */
   termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Whether to prime meta caches for matched terms. Default true. */
   updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
@@ -6014,8 +6043,6 @@ export type PostToTermNodeConnectionWhereArgs = {
   slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** The Taxonomy to filter terms by */
   taxonomies?: InputMaybe<Array<InputMaybe<TaxonomyEnum>>>;
-  /** Array of term taxonomy IDs, to match when querying terms. */
-  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Array of term taxonomy IDs, to match when querying terms. */
   termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Whether to prime meta caches for matched terms. Default true. */
@@ -6226,9 +6253,9 @@ export type RankMathContentNodeSeo = {
 /** The RankMath SEO Post Type settings. */
 export type RankMathContentTypeMetaSettings = {
   __typename?: 'RankMathContentTypeMetaSettings';
-  /** The RankMath SEO meta settings for Pages. */
+  /** The RankMath SEO meta settings for Strony. */
   page?: Maybe<PageMetaSettings>;
-  /** The RankMath SEO meta settings for Posts. */
+  /** The RankMath SEO meta settings for Wpisy. */
   post?: Maybe<PostMetaSettings>;
 };
 
@@ -7075,17 +7102,17 @@ export type RankMathProduct = {
 
 /** Robot meta value tag. */
 export enum RankMathRobotsMetaValueEnum {
-  /** IndexInstructs search engines to index and show these pages in the search results. */
+  /** IndeksInstruuje wyszukiwarki do indeksowania i wyświetlania tych stron w wynikach wyszukiwania. */
   Index = 'INDEX',
-  /** No ArchivePrevents search engines from showing cached links for pages */
+  /** Brak archiwumZapobiega wyświetlaniu przez wyszukiwarki linków do stron w pamięci podręcznej */
   Noarchive = 'NOARCHIVE',
-  /** No FollowPrevents search engines from following links on the pages */
+  /** No FollowUniemożliwia wyszukiwarkom korzystanie z poniższych łączy na stronach */
   Nofollow = 'NOFOLLOW',
-  /** No Image IndexPrevents images on a page from being indexed by Google and other search engines */
+  /** No Image IndexZapobiega indeksowaniu obrazów na stronie przez Google i inne wyszukiwarki */
   Noimageindex = 'NOIMAGEINDEX',
-  /** No IndexPrevents pages from being indexed and displayed in search engine result pages */
+  /** No IndexZapobiega indeksowaniu stron i wyświetlaniu ich na stronach wyników wyszukiwania */
   Noindex = 'NOINDEX',
-  /** No SnippetPrevents a snippet from being shown in the search results */
+  /** Brak fragmentuZapobiega wyświetlaniu zajawek w wynikach wyszukiwania */
   Nosnippet = 'NOSNIPPET'
 }
 
@@ -7385,35 +7412,35 @@ export type RankMathSitemapTaxonomySettingsToTermNodeConnectionPageInfo = PageIn
 
 /** The rich snippet type. */
 export enum RankMathSnippetTypeEnum {
-  /** Article */
+  /** Artykuł */
   Article = 'ARTICLE',
-  /** Book */
+  /** Książka */
   Book = 'BOOK',
-  /** Course */
+  /** Kurs */
   Course = 'COURSE',
-  /** Event */
+  /** Wydarzenie */
   Event = 'EVENT',
-  /** Job Posting */
+  /** Stanowisko */
   Jobposting = 'JOBPOSTING',
   /** Local Business */
   LocalBusiness = 'LOCAL_BUSINESS',
-  /** Music */
+  /** Muzyka */
   Music = 'MUSIC',
   /** None. */
   Off = 'OFF',
-  /** Person */
+  /** Osoba */
   Person = 'PERSON',
-  /** Product */
+  /** Produkt */
   Product = 'PRODUCT',
-  /** Recipe */
+  /** Przepis */
   Recipe = 'RECIPE',
-  /** Restaurant */
+  /** Restauracja */
   Restaurant = 'RESTAURANT',
-  /** Service */
+  /** Usługa */
   Service = 'SERVICE',
-  /** Software Application */
+  /** Aplikacja */
   Software = 'SOFTWARE',
-  /** Video */
+  /** Wideo */
   Video = 'VIDEO'
 }
 
@@ -7460,11 +7487,11 @@ export type RankMathTagTermSeo = RankMathSeo & {
 /** The RankMath SEO Taxonomy meta settings. */
 export type RankMathTaxonomyMetaSettings = {
   __typename?: 'RankMathTaxonomyMetaSettings';
-  /** The RankMath SEO meta settings for Categories. */
+  /** The RankMath SEO meta settings for Kategorie. */
   category?: Maybe<CategoryMetaSettings>;
-  /** The RankMath SEO meta settings for Formats. */
+  /** The RankMath SEO meta settings for Formaty. */
   postFormat?: Maybe<PostFormatMetaSettings>;
-  /** The RankMath SEO meta settings for Tags. */
+  /** The RankMath SEO meta settings for Tagi. */
   tag?: Maybe<TagMetaSettings>;
 };
 
@@ -7529,13 +7556,13 @@ export type RankMathWebmaster = {
 /** The reading setting type */
 export type ReadingSettings = {
   __typename?: 'ReadingSettings';
-  /** The ID of the page that should display the latest posts */
+  /** Identyfikator strony, która powinna wyświetlać najnowsze wpisy */
   pageForPosts?: Maybe<Scalars['Int']['output']>;
-  /** The ID of the page that should be displayed on the front page */
+  /** Identyfikator strony, która powinna być wyświetlana na stronie głównej */
   pageOnFront?: Maybe<Scalars['Int']['output']>;
-  /** Blog pages show at most. */
+  /** Strony blogu wyświetlają maksymalnie tyle wpisów. */
   postsPerPage?: Maybe<Scalars['Int']['output']>;
-  /** What to show on the front page */
+  /** Co pokazać na stronie głównej */
   showOnFront?: Maybe<Scalars['String']['output']>;
 };
 
@@ -8417,8 +8444,6 @@ export type RootQueryToCategoryConnectionWhereArgs = {
   /** Array of slugs to return term(s) for. Default empty. */
   slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Array of term taxonomy IDs, to match when querying terms. */
-  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** Array of term taxonomy IDs, to match when querying terms. */
   termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Whether to prime meta caches for matched terms. Default true. */
   updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
@@ -8513,8 +8538,8 @@ export type RootQueryToCommentConnectionWhereArgs = {
   parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Search term(s) to retrieve matching comments for. */
   search?: InputMaybe<Scalars['String']['input']>;
-  /** Comment status to limit results by. */
-  status?: InputMaybe<Scalars['String']['input']>;
+  /** One or more Comment Statuses to limit results by */
+  statusIn?: InputMaybe<Array<InputMaybe<CommentStatusEnum>>>;
   /** Include comments for a specific user ID. */
   userId?: InputMaybe<Scalars['ID']['input']>;
 };
@@ -9151,8 +9176,6 @@ export type RootQueryToPostFormatConnectionWhereArgs = {
   /** Array of slugs to return term(s) for. Default empty. */
   slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Array of term taxonomy IDs, to match when querying terms. */
-  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** Array of term taxonomy IDs, to match when querying terms. */
   termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Whether to prime meta caches for matched terms. Default true. */
   updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
@@ -9303,8 +9326,6 @@ export type RootQueryToTagConnectionWhereArgs = {
   /** Array of slugs to return term(s) for. Default empty. */
   slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Array of term taxonomy IDs, to match when querying terms. */
-  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  /** Array of term taxonomy IDs, to match when querying terms. */
   termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Whether to prime meta caches for matched terms. Default true. */
   updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
@@ -9416,8 +9437,6 @@ export type RootQueryToTermNodeConnectionWhereArgs = {
   slug?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** The Taxonomy to filter terms by */
   taxonomies?: InputMaybe<Array<InputMaybe<TaxonomyEnum>>>;
-  /** Array of term taxonomy IDs, to match when querying terms. */
-  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Array of term taxonomy IDs, to match when querying terms. */
   termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Whether to prime meta caches for matched terms. Default true. */
@@ -9556,6 +9575,14 @@ export type RootQueryToUserRoleConnectionPageInfo = PageInfo & UserRoleConnectio
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']['output']>;
 };
+
+/** Location in the document where the script to be loaded */
+export enum ScriptLoadingGroupLocationEnum {
+  /** A script to be loaded in document at right before the closing `<body>` tag */
+  Footer = 'FOOTER',
+  /** A script to be loaded in document `<head>` tag */
+  Header = 'HEADER'
+}
 
 /** The strategy to use when loading the script */
 export enum ScriptLoadingStrategyEnum {
@@ -9766,7 +9793,7 @@ export enum TagIdType {
   Uri = 'URI'
 }
 
-/** The RankMath SEO meta settings for Tags. */
+/** The RankMath SEO meta settings for Tagi. */
 export type TagMetaSettings = RankMathMetaSettingWithArchive & RankMathMetaSettingWithRobots & {
   __typename?: 'TagMetaSettings';
   /** Advanced robots meta tag settings. */
@@ -10148,13 +10175,6 @@ export type TaxonomyToTermNodeConnectionPageInfo = PageInfo & TermNodeConnection
 };
 
 /** The template assigned to the node */
-export type Template_PageNoTitle = ContentTemplate & {
-  __typename?: 'Template_PageNoTitle';
-  /** The name of the template */
-  templateName?: Maybe<Scalars['String']['output']>;
-};
-
-/** The template assigned to the node */
 export type Template_PageWithSidebar = ContentTemplate & {
   __typename?: 'Template_PageWithSidebar';
   /** The name of the template */
@@ -10169,8 +10189,15 @@ export type Template_PageWithWideImage = ContentTemplate & {
 };
 
 /** The template assigned to the node */
-export type Template_SingleWithSidebar = ContentTemplate & {
-  __typename?: 'Template_SingleWithSidebar';
+export type Template_PojedynczyZPaskiemBocznym = ContentTemplate & {
+  __typename?: 'Template_PojedynczyZPaskiemBocznym';
+  /** The name of the template */
+  templateName?: Maybe<Scalars['String']['output']>;
+};
+
+/** The template assigned to the node */
+export type Template_StronaBezTytuu = ContentTemplate & {
+  __typename?: 'Template_StronaBezTytuu';
   /** The name of the template */
   templateName?: Maybe<Scalars['String']['output']>;
 };
@@ -10452,7 +10479,9 @@ export type UpdateCategoryInput = {
   id: Scalars['ID']['input'];
   /** The name of the category object to mutate */
   name?: InputMaybe<Scalars['String']['input']>;
-  /** The ID of the category that should be set as the parent */
+  /** The database ID of the category that should be set as the parent. This field cannot be used in conjunction with parentId */
+  parentDatabaseId?: InputMaybe<Scalars['Int']['input']>;
+  /** The ID of the category that should be set as the parent. This field cannot be used in conjunction with parentDatabaseId */
   parentId?: InputMaybe<Scalars['ID']['input']>;
   /** If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name. */
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -10469,8 +10498,6 @@ export type UpdateCategoryPayload = {
 
 /** Input for the updateComment mutation. */
 export type UpdateCommentInput = {
-  /** The approval status of the comment. */
-  approved?: InputMaybe<Scalars['String']['input']>;
   /** The name of the comment's author. */
   author?: InputMaybe<Scalars['String']['input']>;
   /** The email of the comment's author. */
@@ -10670,41 +10697,41 @@ export type UpdatePostPayload = {
 export type UpdateSettingsInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** Allow people to submit comments on new posts. */
+  /** Zezwól na komentowanie nowych wpisów. */
   discussionSettingsDefaultCommentStatus?: InputMaybe<Scalars['String']['input']>;
-  /** Allow link notifications from other blogs (pingbacks and trackbacks) on new articles. */
+  /** Pozwala na powiadomienia z innych witryn (pingbacki i trackbacki) w nowych artykułach. */
   discussionSettingsDefaultPingStatus?: InputMaybe<Scalars['String']['input']>;
-  /** A date format for all date strings. */
+  /** Format daty dla wszystkich wystąpeń */
   generalSettingsDateFormat?: InputMaybe<Scalars['String']['input']>;
-  /** Site tagline. */
+  /** Motto witryny. */
   generalSettingsDescription?: InputMaybe<Scalars['String']['input']>;
-  /** This address is used for admin purposes, like new user notification. */
+  /** Adres jest używany do celów administracyjnych, takich jak powiadomienia o nowych użytkownikach. */
   generalSettingsEmail?: InputMaybe<Scalars['String']['input']>;
-  /** WordPress locale code. */
+  /** Kod ustawień regionalnych WordPressa. */
   generalSettingsLanguage?: InputMaybe<Scalars['String']['input']>;
-  /** A day number of the week that the week should start on. */
+  /** Numer dnia tygodnia, dla którego powinien się on zaczynać. */
   generalSettingsStartOfWeek?: InputMaybe<Scalars['Int']['input']>;
-  /** A time format for all time strings. */
+  /** Format czasu dla wszystkich wystąpeń */
   generalSettingsTimeFormat?: InputMaybe<Scalars['String']['input']>;
-  /** A city in the same timezone as you. */
+  /** Miasto w twojej strefie czasowej, */
   generalSettingsTimezone?: InputMaybe<Scalars['String']['input']>;
-  /** Site title. */
+  /** Tytuł witryny. */
   generalSettingsTitle?: InputMaybe<Scalars['String']['input']>;
-  /** Site URL. */
+  /** Adres URL witryny. */
   generalSettingsUrl?: InputMaybe<Scalars['String']['input']>;
-  /** The ID of the page that should display the latest posts */
+  /** Identyfikator strony, która powinna wyświetlać najnowsze wpisy */
   readingSettingsPageForPosts?: InputMaybe<Scalars['Int']['input']>;
-  /** The ID of the page that should be displayed on the front page */
+  /** Identyfikator strony, która powinna być wyświetlana na stronie głównej */
   readingSettingsPageOnFront?: InputMaybe<Scalars['Int']['input']>;
-  /** Blog pages show at most. */
+  /** Strony blogu wyświetlają maksymalnie tyle wpisów. */
   readingSettingsPostsPerPage?: InputMaybe<Scalars['Int']['input']>;
-  /** What to show on the front page */
+  /** Co pokazać na stronie głównej */
   readingSettingsShowOnFront?: InputMaybe<Scalars['String']['input']>;
-  /** Default post category. */
+  /** Domyślna kategoria wpisu. */
   writingSettingsDefaultCategory?: InputMaybe<Scalars['Int']['input']>;
-  /** Default post format. */
+  /** Domyślny format wpisu. */
   writingSettingsDefaultPostFormat?: InputMaybe<Scalars['String']['input']>;
-  /** Convert emoticons like :-) and :-P to graphics on display. */
+  /** W czasie wyświetlania zmienia emotikony :-) i :-P na grafiki. */
   writingSettingsUseSmilies?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
@@ -11158,8 +11185,8 @@ export type UserToCommentConnectionWhereArgs = {
   parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Search term(s) to retrieve matching comments for. */
   search?: InputMaybe<Scalars['String']['input']>;
-  /** Comment status to limit results by. */
-  status?: InputMaybe<Scalars['String']['input']>;
+  /** One or more Comment Statuses to limit results by */
+  statusIn?: InputMaybe<Array<InputMaybe<CommentStatusEnum>>>;
   /** Include comments for a specific user ID. */
   userId?: InputMaybe<Scalars['ID']['input']>;
 };
@@ -11650,11 +11677,11 @@ export type WpPageInfo = {
 /** The writing setting type */
 export type WritingSettings = {
   __typename?: 'WritingSettings';
-  /** Default post category. */
+  /** Domyślna kategoria wpisu. */
   defaultCategory?: Maybe<Scalars['Int']['output']>;
-  /** Default post format. */
+  /** Domyślny format wpisu. */
   defaultPostFormat?: Maybe<Scalars['String']['output']>;
-  /** Convert emoticons like :-) and :-P to graphics on display. */
+  /** W czasie wyświetlania zmienia emotikony :-) i :-P na grafiki. */
   useSmilies?: Maybe<Scalars['Boolean']['output']>;
 };
 
@@ -11693,7 +11720,7 @@ export type MenusQuery = { __typename?: 'RootQuery', menus?: { __typename?: 'Roo
 export type OffertPagQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type OffertPagQuery = { __typename?: 'RootQuery', page?: { __typename?: 'Page', seo?: { __typename?: 'RankMathPageObjectSeo', title?: string | null, description?: string | null, openGraph?: { __typename?: 'RankMathOpenGraphMeta', description?: string | null, locale?: RankMathOpenGraphLocaleEnum | null, siteName?: string | null, title?: string | null, type?: string | null, updatedTime?: string | null } | null } | null, offert?: { __typename?: 'Page_Offert', hero?: { __typename?: 'Page_Offert_Hero', heroTitle?: { __typename?: 'Page_Offert_Hero_HeroTitle', titleone?: string | null, titletwo?: string | null, description?: string | null } | null } | null, offerpagetypes?: { __typename?: 'Page_Offert_Offerpagetypes', title?: string | null, items?: Array<{ __typename?: 'Page_Offert_Offerpagetypes_items', title?: string | null, description?: string | null } | null> | null } | null, whyme?: { __typename?: 'Page_Offert_Whyme', title?: string | null, boxs?: Array<{ __typename?: 'Page_Offert_Whyme_boxs', title?: string | null, description?: string | null } | null> | null } | null, acordion?: { __typename?: 'Page_Offert_Acordion', title?: string | null, description?: string | null, acordinItems?: Array<{ __typename?: 'Page_Offert_Acordion_acordinItems', question?: string | null, answer?: string | null } | null> | null } | null } | null } | null };
+export type OffertPagQuery = { __typename?: 'RootQuery', page?: { __typename?: 'Page', seo?: { __typename?: 'RankMathPageObjectSeo', title?: string | null, description?: string | null, openGraph?: { __typename?: 'RankMathOpenGraphMeta', description?: string | null, locale?: RankMathOpenGraphLocaleEnum | null, siteName?: string | null, title?: string | null, type?: string | null, updatedTime?: string | null } | null } | null, offert?: { __typename?: 'Page_Offert', hero?: { __typename?: 'Page_Offert_Hero', heroTitle?: { __typename?: 'Page_Offert_Hero_HeroTitle', titleone?: string | null, titletwo?: string | null, description?: string | null } | null } | null, offerpagetypes?: { __typename?: 'Page_Offert_Offerpagetypes', title?: string | null, items?: Array<{ __typename?: 'Page_Offert_Offerpagetypes_items', title?: string | null, description?: string | null, benefit?: Array<{ __typename?: 'Page_Offert_Offerpagetypes_items_benefit', title?: string | null } | null> | null } | null> | null } | null, whyme?: { __typename?: 'Page_Offert_Whyme', title?: string | null, boxs?: Array<{ __typename?: 'Page_Offert_Whyme_boxs', title?: string | null, description?: string | null } | null> | null } | null, acordion?: { __typename?: 'Page_Offert_Acordion', title?: string | null, description?: string | null, acordinItems?: Array<{ __typename?: 'Page_Offert_Acordion_acordinItems', question?: string | null, answer?: string | null } | null> | null } | null } | null } | null };
 
 export type OnlineStoresPageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -11727,7 +11754,7 @@ export const ContactQueryDocument = {"kind":"Document","definitions":[{"kind":"O
 export const HomePageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"HomePage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"StringValue","value":"cG9zdDoyMw==","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"seo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"openGraph"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"siteName"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"updatedTime"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"home"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hero"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"button"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"about"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"services"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}},{"kind":"Field","name":{"kind":"Name","value":"mediaDetails"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"width"}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"websiteprocces"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"itemsBlock"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"num"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"offertshome"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"mediaDetails"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sizes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"tools"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"charts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"icon"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"whyme"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"boxs"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}},{"kind":"Field","name":{"kind":"Name","value":"mediaDetails"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"width"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"freeprojectestimation"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"buttons"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"acordin"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"acordinItems"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"question"}},{"kind":"Field","name":{"kind":"Name","value":"answer"}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"posts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"3"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"excerpt"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"featuredImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<HomePageQuery, HomePageQueryVariables>;
 export const HomePage2Document = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"HomePage2"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"StringValue","value":"cG9zdDoyMw==","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"home"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"whyme"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"boxs"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}},{"kind":"Field","name":{"kind":"Name","value":"mediaDetails"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"width"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"acordin"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"acordinItems"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"question"}},{"kind":"Field","name":{"kind":"Name","value":"answer"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"freeprojectestimation"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"buttons"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<HomePage2Query, HomePage2QueryVariables>;
 export const MenusDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Menus"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"menus"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"footer"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"phone"}}]}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"databaseId"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"menuItems"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"path"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<MenusQuery, MenusQueryVariables>;
-export const OffertPagDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"OffertPag"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"StringValue","value":"cG9zdDo0ODY=","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"seo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"openGraph"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"siteName"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"updatedTime"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"offert"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hero"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroTitle"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"titleone"}},{"kind":"Field","name":{"kind":"Name","value":"titletwo"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"offerpagetypes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"whyme"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"boxs"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"acordion"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"acordinItems"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"question"}},{"kind":"Field","name":{"kind":"Name","value":"answer"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<OffertPagQuery, OffertPagQueryVariables>;
+export const OffertPagDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"OffertPag"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"StringValue","value":"cG9zdDo0ODY=","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"seo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"openGraph"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"siteName"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"updatedTime"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"offert"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hero"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroTitle"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"titleone"}},{"kind":"Field","name":{"kind":"Name","value":"titletwo"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"offerpagetypes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"benefit"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"whyme"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"boxs"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"acordion"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"acordinItems"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"question"}},{"kind":"Field","name":{"kind":"Name","value":"answer"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<OffertPagQuery, OffertPagQueryVariables>;
 export const OnlineStoresPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"OnlineStoresPage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"StringValue","value":"cG9zdDoyNDU=","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"seo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"openGraph"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"siteName"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"updatedTime"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"onlieStores"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hero"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"button"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"mediaDetails"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sizes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"storesBenefits"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"benefitsItems"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<OnlineStoresPageQuery, OnlineStoresPageQueryVariables>;
 export const OnlineStoresPageHomeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"OnlineStoresPageHome"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"StringValue","value":"cG9zdDoyMw==","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"home"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"whyme"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"boxs"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}},{"kind":"Field","name":{"kind":"Name","value":"mediaDetails"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"width"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"acordin"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"acordinItems"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"question"}},{"kind":"Field","name":{"kind":"Name","value":"answer"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<OnlineStoresPageHomeQuery, OnlineStoresPageHomeQueryVariables>;
 export const ProjectsPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ProjectsPage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"StringValue","value":"cG9zdDoyNzA=","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"seo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"openGraph"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"locale"}},{"kind":"Field","name":{"kind":"Name","value":"siteName"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"updatedTime"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"realisation"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hero"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"button"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<ProjectsPageQuery, ProjectsPageQueryVariables>;

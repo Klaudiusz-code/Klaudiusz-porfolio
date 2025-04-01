@@ -1,58 +1,97 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import CustomButton from "./CustomButton";
-import { FaFileAlt, FaBuilding, FaBlog } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
+import websblog from "@/public/webs.jpg";
+import blogs from "@/public/blog.jpg";
+import one from "@/public/onepe.jpg";
 
-const icons = [FaFileAlt, FaBuilding, FaBlog];
+const images = [one, websblog, blogs];
 
-const OfferPageTypes = ({ data }: any) => {
+interface OfferPageTypesProps {
+  data?: {
+    title?: string | null;
+    items?: Array<{
+      title?: string | null;
+      description?: string | null;
+      benefits?: string[];
+    } | null> | null;
+  } | null;
+}
+
+function OfferPageTypes({ data }: OfferPageTypesProps) {
   return (
-    <section className="container mx-auto mt-16 lg:mt-20 px-4">
-      <h3 className="text-center text-3xl  font-medium text-customColor mb-12 px-6 lg:px-12 py-4 border-b-2 border-gray-200">
-        {data.title}
+    <section className="w-full mx-auto mt-8 px-4 lg:px-2">
+      <h3 className="text-center text-3xl font-semibold text-customColor mb-2">
+        {data?.title || "Strony Internetowe"}
       </h3>
 
-      <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
-        {data.items.map((item: any, index: number) => {
-          const IconComponent = icons[index];
-
-          return (
-            <div
-              key={index}
-              className="relative flex flex-col items-center text-center text-customColor p-8 min-h-[380px] max-w-[380px] bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 group  transform hover:cursor-pointer"
-            >
-              {/* Number Badge */}
-              <div className="absolute top-[-16px] left-[-16px] bg-gradient-to-r from-indigo-500 to-blue-400 text-white font-semibold text-lg p-4 rounded-full border-2 border-white transform scale-90 hover:scale-100 transition-all duration-300">
-                {index + 1}
-              </div>
-
-              {/* Icon and Title */}
-              <div className="relative mt-16 mb-8">
-                <div className="bg-gradient-to-r from-indigo-500 to-blue-400 rounded-full h-20 w-20 flex items-center justify-center text-white text-3xl mb-6 shadow-lg">
-                  <IconComponent />
-                </div>
-                <h2 className="text-gray-800 font-sans text-2xl lg:text-3xl font-semibold mb-4 leading-tight">
-                  {item.title}
-                </h2>
-                <p className="text-gray-500 text-sm lg:text-base tracking-wide  font-light font-sans leading-8 mb-8 px-4">
-                  {item.description}
-                </p>
-                <div className="mt-auto w-full">
-                  <CustomButton
-                    bgColor="#0077cc"
-                    textColor="#fff"
-                    text="Darmowa Wycena Projektu"
-                    link="/kontakt"
+      <div className="flex flex-col">
+        {(data?.items ?? []).map((offer, index) => (
+          <div
+            key={index}
+            className={`w-full ${
+              index % 2 === 0 ? "bg-white" : "bg-gray-50"
+            } border-b border-gray-200`}
+          >
+            <div className="cnt mx-auto w-full max-w-[1200px] py-12">
+              <div
+                className={`flex flex-col lg:flex-row items-center w-full px-4 lg:px-8 gap-8 lg:gap-12 ${
+                  index % 2 !== 0 ? "lg:flex-row-reverse" : ""
+                }`}
+              >
+                <div className="w-full lg:w-1/2 h-96 relative rounded-lg overflow-hidden">
+                  <Image
+                    src={images[index % images.length]}
+                    alt={offer?.title || "Oferta"}
+                    layout="fill"
+                    objectFit="cover"
                   />
+                </div>
+
+                <div className="w-full lg:w-1/2 flex flex-col justify-center">
+                  <h2 className="text-gray-800 text-2xl lg:text-3xl font-bold mb-4">
+                    {offer?.title}
+                  </h2>
+                  <p className="text-gray-600 text-base leading-relaxed mb-6">
+                    {offer?.description}
+                  </p>
+
+                  {offer?.benefits && (
+                    <div className="mb-6">
+                      <h4 className="text-lg font-semibold mb-4">Korzyści:</h4>
+                      <ul className="space-y-3">
+                        {offer.benefits.map((benefit, i) => (
+                          <li
+                            key={i}
+                            className="flex items-center text-sm text-gray-700"
+                          >
+                            <FaCheck className="text-green-500 mr-3 w-3 h-3" />
+                            {benefit}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  <div className="mt-6">
+                    <CustomButton
+                      bgColor="#0077cc"
+                      textColor="#fff"
+                      text="Darmowa Wycena Projektu"
+                      link="/kontakt"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </section>
   );
-};
+}
 
 export default OfferPageTypes;

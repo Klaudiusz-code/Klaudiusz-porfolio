@@ -28,7 +28,7 @@ const ServicesSection = ({ services }: ServicesSectionProps) => {
           return (
             <div
               key={index}
-              className="flex flex-col items-center text-center text-customColor rounded-lg min-h-[280px] w-full bg-white shadow-lg transition-all duration-300 shadow-[#e0e0e0] hover:shadow-gColor"
+              className="flex flex-col items-center text-center text-customColor rounded-lg min-h-[280px] w-full bg-white border border-gray-100 shadow-lg transition-all duration-300 shadow-[#e0e0e0]"
             >
               {imageUrl ? (
                 <img

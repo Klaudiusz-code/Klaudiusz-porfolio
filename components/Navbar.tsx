@@ -31,7 +31,7 @@ const Navbar = ({ data }: any) => {
 
   return (
     <nav
-      className={`fixed w-full top-0 z-50 px-4 py-3 lg:py-5 transition-shadow duration-300 ${
+      className={`fixed w-full top-0 z-50 px-4 py-3 lg:py-3 border-b border-gray-200 transition-shadow duration-300 ${
         isSticky ? "shadow-lg bg-white" : "shadow-none"
       }`}
     >
@@ -106,7 +106,7 @@ const Navbar = ({ data }: any) => {
             <div className="flex-shrink-0 p-4">
               <Link
                 href="tel:+48519668439"
-                className="flex items-center justify-center bg-[#6e92f2] text-white px-4 py-2 rounded-sm shadow-sm shadow-[#6e92f2] animate-attention-button"
+                className="flex items-center justify-center bg-gradient-to-r from-[#4C9BFF] to-[#1D62F0] text-white px-4 py-2 rounded-xl shadow-sm shadow-[#6e92f2] animate-attention-button"
               >
                 <IoIosCall className="mr-2 text-2xl" />
                 <span className="text-lg font-semibold">+48 519 668 439</span>
@@ -131,13 +131,17 @@ const Navbar = ({ data }: any) => {
               ))}
             </ul>
           )}
-          <Link
-            href="tel:+48519668439"
-            className="flex items-center justify-center bg-[#6e92f2] text-white px-4 py-2 rounded-sm shadow-sm shadow-[#6e92f2] animate-attention-button"
-          >
-            <IoIosCall className="mr-2 text-2xl" />
-            <span className="text-lg font-semibold">+48 519 668 439</span>
-          </Link>
+          <div className="flex-shrink-0 py-2">
+            <Link
+              href="/kontakt"
+              className="flex items-center justify-center bg-gradient-to-r from-[#4C9BFF] to-[#1D62F0] text-white px-6 py-3 rounded-xl shadow-xl transform transition-all hover:scale-105  hover:shadow-2xl w-full lg:w-auto"
+            >
+              <span className="text-base font-bold uppercase tracking-wide">
+                Bezpłatna wycena
+              </span>
+              <IoIosArrowForward className="ml-3 text-2xl" />
+            </Link>
+          </div>
         </div>
       </div>
     </nav>

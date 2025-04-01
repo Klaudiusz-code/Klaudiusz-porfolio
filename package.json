@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.10.4",
-    "@apollo/experimental-nextjs-app-support": "^0.11.0",
+    "@apollo/experimental-nextjs-app-support": "^0.11.11",
     "framer-motion": "^10.17.9",
     "graphql": "^16.9.0",
     "graphql-request": "^7.1.0",

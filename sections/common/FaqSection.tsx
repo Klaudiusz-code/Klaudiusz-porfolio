@@ -1,35 +1,61 @@
-'use client'
-import React from "react";
-import Accordion from "@/components/Accordion";
+"use client";
+
+import React, { useState } from "react";
+import { FaChevronDown } from "react-icons/fa";
+
+type FaqItem = {
+  question: string;
+  answer: string;
+};
 
 type FaqSectionProps = {
   title: string;
   description: string;
-  items: {
-    question: string;
-    answer: string;
-  }[];
+  items: FaqItem[];
 };
 
-const FaqSection = ({ title, description, items = [] }: FaqSectionProps) => {
+const AccordionItem = ({ question, answer }: FaqItem) => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <div className="py-16 bg-white">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <h3 className="text-[#4f7cf7] text-3xl lg:text-4xl font-bold uppercase tracking-wide mb-2">
-            {title}
-          </h3>
-          <p className="text-lg lg:text-xl text-gray-800">{description}</p>
+    <div className="mb-4">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex justify-between items-center px-6 py-4 bg-white rounded-lg shadow-md transition-all duration-300 focus:outline-none hover:bg-gray-50"
+      >
+        <span className="text-lg font-medium text-gray-800">{question}</span>
+        <FaChevronDown
+          className={`transition-transform duration-300 ${
+            open ? "rotate-180" : ""
+          } text-gray-600`}
+        />
+      </button>
+      <div
+        className={`px-6 pt-2 overflow-hidden transition-all duration-500 ease-in-out ${
+          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <p className="text-gray-700 text-base">{answer}</p>
+      </div>
+    </div>
+  );
+};
+
+const FaqSection = ({ title, description, items }: FaqSectionProps) => {
+  return (
+    <section className="py-20 bg-white border-t border-gray-100">
+      <div className="max-w-5xl mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-5xl font-bold text-gray-900">{title}</h2>
+          <p className="mt-4 text-lg text-gray-700">{description}</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="space-y-6">
           {items.map((item, index) => (
-            <div key={index}>
-              <Accordion title={item.question} answer={item.answer} />
-            </div>
+            <AccordionItem key={index} {...item} />
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

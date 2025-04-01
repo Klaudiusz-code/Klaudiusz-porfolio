@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import { FaCheck } from "react-icons/fa";
 
 interface Service {
@@ -11,39 +13,79 @@ interface EncouragingSectionProps {
   services: Service[];
 }
 
-const EncouragingSection: React.FC<EncouragingSectionProps> = ({
-  title,
-  services,
+const ServiceCard = ({
+  service,
+  isFlipped,
+  onClick,
+}: {
+  service: Service;
+  isFlipped: boolean;
+  onClick: () => void;
 }) => {
   return (
-    <section className="container mx-auto mt-16 md:mt-20 lg:mt-28 mb-12 px-4">
-      <div className="text-center mb-16">
-        <h2 className="text-2xl md:text-3xl font-bold text-customColor mb-4">
+    <div
+      className="cursor-pointer relative hover:scale-105 transition-transform duration-300"
+      style={{ perspective: "1000px" }}
+      onClick={onClick}
+    >
+      <div
+        className="relative w-full h-64 transition-transform duration-500"
+        style={{
+          transformStyle: "preserve-3d",
+          transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
+        }}
+      >
+        <div
+          className="absolute inset-0 bg-white rounded-xl border border-gray-100 shadow-lg flex flex-col items-center justify-center p-6"
+          style={{ backfaceVisibility: "hidden" }}
+        >
+          <div className="bg-blue-100 rounded-full p-3 mb-4">
+            <FaCheck className="text-blue-500 text-2xl" />
+          </div>
+          <h3 className="text-xl font-semibold text-gray-800 text-center">
+            {service.title}
+          </h3>
+          <p className="mt-2 text-sm text-gray-500">
+            Kliknij, aby zobaczyć szczegóły
+          </p>
+        </div>
+        <div
+          className="absolute inset-0 bg-white rounded-xl border border-gray-100 shadow-lg flex items-center justify-center p-6"
+          style={{
+            backfaceVisibility: "hidden",
+            transform: "rotateY(180deg)",
+          }}
+        >
+          <p className="text-gray-700 text-center">{service.description}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const EncouragingSection = ({ title, services }: EncouragingSectionProps) => {
+  const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
+
+  const handleCardClick = (index: number) => {
+    setFlippedIndex((prevIndex) => (prevIndex === index ? null : index));
+  };
+
+  return (
+    <section className="py-16 bg-white">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-center text-customColor mb-12">
           {title}
         </h2>
-      </div>
-
-      <div className="space-y-12">
-        {services.map((service, index) => (
-          <div
-            key={index}
-            className="bg-white p-6 sm:p-8 md:p-10 rounded-2xl shadow-lg transition-all duration-500 max-w-6xl mx-auto"
-          >
-            <div className="flex flex-col sm:flex-row items-center gap-8 mb-8">
-              <div className="relative w-16 h-16 sm:w-16 sm:h-full bg-gradient-to-b  rounded-l-lg mb-4 sm:mb-0">
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-blue-400 flex items-center justify-center bg-transparent rounded-full text-2xl shadow-lg">
-                  <FaCheck />
-                </div>
-              </div>
-              <div className="text-center sm:text-left">
-                <h3 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-gray-700 text-lg">{service.description}</p>
-              </div>
-            </div>
-          </div>
-        ))}
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((service, index) => (
+            <ServiceCard
+              key={index}
+              service={service}
+              isFlipped={flippedIndex === index}
+              onClick={() => handleCardClick(index)}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
