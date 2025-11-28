@@ -20,6 +20,7 @@ import EncouragingSection from "@/sections/common/EncouragingSection";
 import FaqSection from "@/sections/common/FaqSection";
 import InstagramCTA from "@/components/InstagramCTA";
 import OfferTabs from "@/components/OfferTabs";
+import BusinessCTA from "@/components/BusinessCTA";
 
 type OpenGraphType = "website" | "article" | "book" | "profile";
 
@@ -116,6 +117,7 @@ const HomePage = async () => {
         title={about?.title || ""}
         description={about?.description || ""}
       />
+
       <ServicesSection
         services={about?.services as Page_Home_About_Services[] as any}
       />
@@ -129,6 +131,7 @@ const HomePage = async () => {
         description={tools?.description || ""}
         charts={tools?.charts as any[]}
       />
+
       <EncouragingSection
         title={whyme?.title || ""}
         services={whyme?.boxs || ([] as any)}
@@ -143,12 +146,13 @@ const HomePage = async () => {
         }))}
       />
       <LatestPostsSection posts={posts?.nodes as any[]} />
+      <InstagramCTA />
+
       <FaqSection
         title={acordin?.title || ""}
         description={acordin?.description || ""}
         items={acordin?.acordinItems as any[]}
       />
-      <InstagramCTA />
     </>
   );
 };
