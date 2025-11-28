@@ -10,23 +10,13 @@ const Navbar = ({ data }: any) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > 100);
-    };
-
+    const handleScroll = () => setIsSticky(window.scrollY > 100);
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -36,6 +26,7 @@ const Navbar = ({ data }: any) => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between flex-wrap">
+        {/* LOGO */}
         <Link
           href="/"
           className="flex items-center flex-shrink-0 text-2xl text-gray-800 mr-6"
@@ -43,12 +34,13 @@ const Navbar = ({ data }: any) => {
           <Image
             src="/hello.svg"
             alt="logo"
-            width={30}
-            height={30}
+            width={60}
+            height={60}
             className="h-auto py-1 lg:py-2 ml-2 w-[54px] lg:w-[60px]"
           />
         </Link>
 
+        {/* MOBILNE MENU */}
         <div className="block lg:hidden">
           <button
             className="flex items-center px-3 py-2 rounded-md bg-customColor text-white border-none focus:outline-none"
@@ -58,6 +50,7 @@ const Navbar = ({ data }: any) => {
           </button>
         </div>
 
+        {/* OVERLAY */}
         <div
           className={`fixed inset-0 bg-black bg-opacity-60 z-40 transition-opacity duration-300 ${
             isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
@@ -65,6 +58,7 @@ const Navbar = ({ data }: any) => {
           onClick={closeMenu}
         ></div>
 
+        {/* MOBILNE MENU PANEL */}
         <div
           className={`fixed top-0 right-0 w-64 bg-white h-full z-50 transform transition-transform duration-300 ease-in-out ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
@@ -80,6 +74,7 @@ const Navbar = ({ data }: any) => {
                 <IoCloseOutline className="text-3xl text-customColor" />
               </button>
             </div>
+
             <div className="flex-grow">
               <ul className="mt-16 space-y-6 px-4">
                 {data &&
@@ -103,6 +98,7 @@ const Navbar = ({ data }: any) => {
                   ))}
               </ul>
             </div>
+
             <div className="flex-shrink-0 p-4">
               <Link
                 href="tel:+48519668439"
@@ -115,14 +111,16 @@ const Navbar = ({ data }: any) => {
           </div>
         </div>
 
-        <div className="hidden lg:flex lg:items-center lg:space-x-4 lg:ml-auto">
+        {/* DESKTOP MENU */}
+        <div className="hidden lg:flex lg:items-center lg:ml-auto overflow-x-auto">
           {data && (
-            <ul className="flex items-center space-x-4">
+            <ul className="flex items-center space-x-2 md:space-x-4 flex-nowrap">
               {data.menuItems.edges.map((edge: any) => (
-                <li key={edge.node.id} className="relative group">
+                <li key={edge.node.id} className="relative group min-w-0">
                   <Link
                     href={edge.node.path || "/"}
-                    className="text-lg text-gray-600 font-medium font-roboto px-4 py-2 rounded-md transition duration-300 uppercase tracking-wide"
+                    className="font-roboto font-medium uppercase tracking-wide px-3 py-2 rounded-md transition duration-300
+                      text-[clamp(12px,1.5vw,16px)] text-gray-600 whitespace-nowrap"
                   >
                     {edge.node.label}
                     <span className="absolute bottom-[-6px] left-1/2 w-0 h-[2px] bg-[#6e92f2] rounded-full transition-all duration-500 ease-in-out transform -translate-x-1/2 group-hover:w-2/3"></span>
@@ -131,10 +129,11 @@ const Navbar = ({ data }: any) => {
               ))}
             </ul>
           )}
-          <div className="flex-shrink-0 py-2">
+
+          <div className="flex-shrink-0 py-2 ml-4">
             <Link
               href="/kontakt"
-              className="flex items-center justify-center bg-gradient-to-r from-[#4C9BFF] to-[#1D62F0] text-white px-6 py-3 rounded-xl shadow-xl transform transition-all hover:scale-105  hover:shadow-2xl w-full lg:w-auto"
+              className="flex items-center justify-center bg-gradient-to-r from-[#4C9BFF] to-[#1D62F0] text-white px-6 py-3 rounded-xl  transform transition-all  w-full lg:w-auto text-[clamp(14px,1.5vw,16px)]"
             >
               <span className="text-base font-bold uppercase tracking-wide">
                 Bezpłatna wycena

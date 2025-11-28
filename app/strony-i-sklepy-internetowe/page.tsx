@@ -108,7 +108,6 @@ const Offert = async () => {
     benefits: (item?.benefit ?? []).map((benefit) => benefit?.title || ""),
   }));
 
-  console.log(offerItems);
   return (
     <section className="mt-16 lg:mt-20">
       <div className="cnt mx-auto py-20 px-4 md:px-8">

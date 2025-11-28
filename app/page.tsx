@@ -19,6 +19,7 @@ import LatestPostsSection from "@/sections/home/LatestPostsSection";
 import EncouragingSection from "@/sections/common/EncouragingSection";
 import FaqSection from "@/sections/common/FaqSection";
 import InstagramCTA from "@/components/InstagramCTA";
+import OfferTabs from "@/components/OfferTabs";
 
 type OpenGraphType = "website" | "article" | "book" | "profile";
 
@@ -108,6 +109,9 @@ const HomePage = async () => {
         buttonText={hero?.button?.label || ""}
         buttonUrl={hero?.button?.url || ""}
       />
+      <section className=" py-16">
+        <OfferTabs />
+      </section>
       <AboutSection
         title={about?.title || ""}
         description={about?.description || ""}
@@ -139,12 +143,12 @@ const HomePage = async () => {
         }))}
       />
       <LatestPostsSection posts={posts?.nodes as any[]} />
-      <InstagramCTA />
       <FaqSection
         title={acordin?.title || ""}
         description={acordin?.description || ""}
         items={acordin?.acordinItems as any[]}
       />
+      <InstagramCTA />
     </>
   );
 };

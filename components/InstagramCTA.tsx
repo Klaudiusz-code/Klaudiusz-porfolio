@@ -3,7 +3,7 @@ import { FaInstagram } from "react-icons/fa";
 
 const InstagramCTA = () => {
   return (
-    <section className="w-full py-16 px-1 flex justify-center items-center bg-white">
+    <section className="w-full py-16  flex justify-center items-center bg-white">
       <div className="w-full bg-gradient-to-r from-pink-500 to-yellow-500 rounded-lg shadow-lg p-8 text-center">
         <div className="flex justify-center mb-4">
           <FaInstagram className="text-white text-6xl" />
