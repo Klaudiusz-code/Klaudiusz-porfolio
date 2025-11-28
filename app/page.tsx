@@ -20,7 +20,6 @@ import EncouragingSection from "@/sections/common/EncouragingSection";
 import FaqSection from "@/sections/common/FaqSection";
 import InstagramCTA from "@/components/InstagramCTA";
 import OfferTabs from "@/components/OfferTabs";
-import BusinessCTA from "@/components/BusinessCTA";
 
 type OpenGraphType = "website" | "article" | "book" | "profile";
 
