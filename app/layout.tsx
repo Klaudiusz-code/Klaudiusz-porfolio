@@ -40,6 +40,7 @@ export default async function RootLayout({ children }: any) {
       </head>
       <body>
         <Navbar data={header} />
+
         {children}
         <Footer data={footer} />
       </body>

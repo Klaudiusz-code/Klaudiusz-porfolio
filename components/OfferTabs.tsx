@@ -88,7 +88,7 @@ export default function BranzePage() {
   const [hovered, setHovered] = useState<string | null>(null);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 lg:py-10">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 lg:py-8">
       <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-gray-900">
         Wybierz swoją branżę
       </h2>

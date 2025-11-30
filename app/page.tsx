@@ -102,13 +102,12 @@ const HomePage = async () => {
         <meta property="og:image" />
         <meta property="og:type" content={seo?.openGraph?.type || "website"} />
       </Head>
-
       <HeroSection
         title={hero?.title || ""}
         description={hero?.description || ""}
         buttonText={hero?.button?.label || ""}
         buttonUrl={hero?.button?.url || ""}
-      />
+      />{" "}
       <section className=" py-16">
         <OfferTabs />
       </section>
@@ -116,7 +115,6 @@ const HomePage = async () => {
         title={about?.title || ""}
         description={about?.description || ""}
       />
-
       <ServicesSection
         services={about?.services as Page_Home_About_Services[] as any}
       />
@@ -130,12 +128,10 @@ const HomePage = async () => {
         description={tools?.description || ""}
         charts={tools?.charts as any[]}
       />
-
       <EncouragingSection
         title={whyme?.title || ""}
         services={whyme?.boxs || ([] as any)}
       />
-
       <EstimationSection
         title={estimation?.title || ""}
         description={estimation?.description || ""}
@@ -146,7 +142,6 @@ const HomePage = async () => {
       />
       <LatestPostsSection posts={posts?.nodes as any[]} />
       <InstagramCTA />
-
       <FaqSection
         title={acordin?.title || ""}
         description={acordin?.description || ""}

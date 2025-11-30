@@ -14,7 +14,7 @@ const Navbar = ({ data }: any) => {
   const closeMenu = () => setIsMenuOpen(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsSticky(window.scrollY > 100);
+    const handleScroll = () => setIsSticky(window.scrollY > 30);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
