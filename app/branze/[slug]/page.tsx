@@ -1,8 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { ReactNode } from "react";
 import { branze } from "../../data/branze";
 import BranzaHeroClient from "@/components/BranzaHeroClient";
-import { Metadata } from "next";
 import QuickTips from "@/components/QuickTips";
 
 interface PageProps {
@@ -15,38 +16,37 @@ interface Tip {
   text: string;
 }
 
+interface Highlight {
+  title: string;
+  description: string;
+}
+
+interface Tip {
+  icon: ReactNode;
+  label: string;
+  text: string;
+}
+
 interface BranżaType {
+  slug: string;
   title: string;
   tagline: string;
   heroText: string;
   heroImage: string;
-
   colors: {
     primary: string;
+    accent: string;
     bg: string;
     text: string;
-    accent: string;
   };
-
   benefits: string[];
-  industryHighlights: string[];
-
+  industryHighlights: Highlight[];
   services: Tip[];
 }
 
-type BranzeType = Record<string, BranżaType>;
-
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
-  const branża = (branze as BranzeType)[params.slug];
-  if (!branża) return { title: "Branża nie znaleziona", description: "" };
-
-  return { title: branża.title, description: branża.heroText };
-}
-
 export default function BranżaPage({ params }: PageProps) {
-  const branża = (branze as BranzeType)[params.slug];
+  const branża = branze[params.slug as keyof typeof branze];
+
   if (!branża) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-6 text-center">
@@ -80,6 +80,7 @@ export default function BranżaPage({ params }: PageProps) {
       </div>
     );
   }
+
   const { colors } = branża;
 
   return (
@@ -87,8 +88,9 @@ export default function BranżaPage({ params }: PageProps) {
       className="font-sans"
       style={{ backgroundColor: colors.bg, color: colors.text }}
     >
-      {/* HERO — klient */}
       <BranzaHeroClient branża={branża} />
+
+      {/* CO WYRÓŻNIA */}
       <section className="py-28 bg-white">
         <div className="max-w-5xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-24 leading-tight">
@@ -107,28 +109,33 @@ export default function BranżaPage({ params }: PageProps) {
                 >
                   {String(i + 1).padStart(2, "0")}
                 </div>
+
                 <div className="flex-1">
-                  <p className="text-xl md:text-2xl font-semibold mb-3 tracking-tight text-gray-900">
-                    {h.split(" ").slice(0, 3).join(" ")}
-                  </p>
-                  <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
-                    {h}
-                  </p>
+                  <h3 className="text-xl md:text-2xl font-bold mb-2 tracking-tight text-gray-900">
+                    {h.title}
+                  </h3>
+
+                  <span className="text-gray-600 text-lg md:text-xl leading-relaxed block">
+                    {h.description}
+                  </span>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* DLACZEGO WARTO */}
       <section className="py-28 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-20">
             Dlaczego warto?
           </h2>
+
           <div className="relative flex flex-col md:flex-row items-center md:items-start justify-between gap-16 text-center md:text-left">
             <div
               className="hidden md:block absolute top-12 left-0 right-0 h-[3px] rounded-full z-0"
-              style={{ backgroundColor: branża.colors.primary }}
+              style={{ backgroundColor: colors.primary }}
             ></div>
 
             {branża.benefits.map((b, i) => (
@@ -139,19 +146,18 @@ export default function BranżaPage({ params }: PageProps) {
                 <div
                   className="w-20 h-20 rounded-full flex items-center justify-center mb-6 shadow"
                   style={{
-                    border: `4px solid ${branża.colors.primary}`,
+                    border: `4px solid ${colors.primary}`,
                     backgroundColor: "#fff",
                   }}
                 >
                   <span
                     className="font-bold text-2xl"
-                    style={{ color: branża.colors.primary }}
+                    style={{ color: colors.primary }}
                   >
                     {i + 1}
                   </span>
                 </div>
 
-                {/* opis */}
                 <p className="text-gray-800 text-lg md:text-xl leading-relaxed max-w-xs mx-auto md:mx-0">
                   {b}
                 </p>
@@ -160,21 +166,19 @@ export default function BranżaPage({ params }: PageProps) {
           </div>
         </div>
       </section>
-      {/* STATYSTYKI BRANŻY — DO TESTU */}
-      {/* DLACZEGO WARTO — TEST */}
-      {/* QUICK TIPS — SZYBKIE TIPY DLA BRANŻY */}
-      <QuickTips
-        tips={branża.services}
-        accentColor={branża.colors.accent}
-      />{" "}
-      {/* CTA FINAL */}
+
+      {/* QUICK TIPS */}
+      <QuickTips tips={branża.services} accentColor={colors.accent} />
+
+      {/* CTA */}
       <section
         className="py-24 text-center text-white"
         style={{ backgroundColor: colors.primary }}
       >
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">
-          Oferta od KlaudiuszDev
+        <h2 className="text-4xl tracking-wide md:text-5xl font-extrabold mb-6 tracking-tight">
+          Oferta od KlaudiuszDEV
         </h2>
+
         <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto leading-relaxed mb-14">
           Tworzę nowoczesne, szybkie i estetyczne strony internetowe idealnie
           dopasowane do Twojej branży. Skontaktuj się, aby rozpocząć projekt.
@@ -187,6 +191,7 @@ export default function BranżaPage({ params }: PageProps) {
           >
             Zadzwoń
           </a>
+
           <a
             href="mailto:kontakt@klaudiuszdev.pl"
             className="inline-flex items-center justify-center px-10 py-3 rounded-full font-semibold text-lg text-white border border-white/40 bg-white/10 backdrop-blur-md shadow-lg shadow-black/20 transition-all duration-300 hover:bg-white/20 hover:border-white/60 hover:shadow-xl"

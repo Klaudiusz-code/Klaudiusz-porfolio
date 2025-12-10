@@ -19,7 +19,7 @@ export default function QuickTips({ tips, accentColor }: QuickTipsProps) {
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Nagłówek */}
-        <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 text-center mb-20">
+        <h2 className="text-4xl  font-bold text-gray-800 text-center mb-20">
           Szybkie tipy branżowe
         </h2>
 

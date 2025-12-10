@@ -45,6 +45,8 @@ const branze: Branża[] = [
     key: "kosmetyka",
     label: "Kosmetyczki / SPA",
     icon: <FaSprayCan size={28} />,
+    href: "/branze/kosmetyka",
+    heroBg: "/kosmetyka.jpg",
   },
   {
     key: "budowlanka",
@@ -73,9 +75,21 @@ const branze: Branża[] = [
     icon: <FaCar size={30} />,
     href: "/branze/autodetailing",
   },
-  { key: "szkoly", label: "Szkoły / Edukacja", icon: <FaBook size={28} /> },
-  { key: "gastronomia", label: "Gastronomia", icon: <FaUtensils size={28} /> },
-  { key: "inne", label: "Inne", icon: <FaQuestion size={28} /> },
+  {
+    key: "szkoly",
+    label: "Szkoły / Edukacja",
+    icon: <FaBook size={28} />,
+  },
+  {
+    key: "gastronomia",
+    label: "Gastronomia",
+    icon: <FaUtensils size={28} />,
+  },
+  {
+    key: "inne",
+    label: "Inne",
+    icon: <FaQuestion size={28} />,
+  },
   {
     key: "nowe",
     label: "Nowe branże w przygotowaniu",
@@ -105,7 +119,13 @@ export default function BranzePage() {
                 relative flex flex-col items-center justify-center p-6 rounded-2xl border transition-transform duration-300 shadow-md
                 ${hovered === b.key ? "scale-105 shadow-xl" : ""}
                 ${
-                  ["mechanik", "fotografia", "autodetailing","ogrodnictwo"].includes(b.key)
+                  [
+                    "mechanik",
+                    "fotografia",
+                    "autodetailing",
+                    "ogrodnictwo",
+                    "kosmetyka",
+                  ].includes(b.key)
                     ? "bg-gradient-to-b from-blue-50 via-blue-100 to-blue-50 text-blue-600 border-blue-400 font-semibold"
                     : "bg-gray-100 text-gray-800 border-gray-300"
                 }

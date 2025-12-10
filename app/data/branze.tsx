@@ -1,3 +1,5 @@
+// data/branze.ts
+import { ReactNode } from "react";
 import {
   FaWrench,
   FaMapMarkedAlt,
@@ -5,12 +7,44 @@ import {
   FaPhone,
   FaCamera,
   FaEnvelope,
+  FaSprayCan,
   FaBroom,
   FaStar,
   FaLeaf,
 } from "react-icons/fa";
 
-export const branze = {
+// Typy dla branży
+export interface Highlight {
+  title: string;
+  description: string;
+}
+
+export interface Service {
+  icon: ReactNode;
+  label: string;
+  text: string;
+}
+
+export interface BranżaType {
+  slug: string;
+  title: string;
+  tagline: string;
+  heroText: string;
+  heroImage: string;
+  gradient?: string;
+  colors: {
+    primary: string;
+    accent: string;
+    bg: string;
+    text: string;
+  };
+  benefits: string[];
+  industryHighlights: Highlight[];
+  services: Service[];
+}
+
+// Dane branż
+export const branze: Record<string, BranżaType> = {
   mechanik: {
     slug: "mechanik",
     title: "Strona dla Mechanika i Warsztatu",
@@ -43,9 +77,21 @@ export const branze = {
       },
     ],
     industryHighlights: [
-      "Mechanicy najczęściej tracą klientów przez brak informacji w Google",
-      "Strony bez adresu i mapy Google powodują odpływ klientów",
-      "Nowoczesny wygląd zwiększa liczbę zapytań nawet o 40%",
+      {
+        title: "Klienci oczekują jasnych informacji o warsztacie.",
+        description:
+          "Brak danych kontaktowych i godzin otwarcia powoduje rezygnację z usług.",
+      },
+      {
+        title: "Łatwy dojazd zwiększa liczbę klientów.",
+        description:
+          "Dzięki mapie i wskazówkom klient trafia bezproblemowo do Twojego warsztatu.",
+      },
+      {
+        title: "Nowoczesna strona buduje zaufanie.",
+        description:
+          "Profesjonalny wygląd strony zwiększa liczbę telefonów i zapytań.",
+      },
     ],
     benefits: [
       "Więcej klientów z lokalnych wyszukiwań",
@@ -87,9 +133,21 @@ export const branze = {
       },
     ],
     industryHighlights: [
-      "Strona to Twoje portfolio — musi wyglądać świetnie",
-      "Instagram to za mało — klienci chcą profesjonalnej prezentacji",
-      "Wysokiej jakości galeria potwierdza Twoje umiejętności",
+      {
+        title: "Profesjonalna strona buduje markę fotografa.",
+        description:
+          "Dzięki niej klienci postrzegają Cię jako eksperta i chętniej rezerwują sesje.",
+      },
+      {
+        title: "Obecność w social mediach nie wystarczy.",
+        description:
+          "Pełne portfolio na stronie pozwala klientom zobaczyć wszystkie Twoje prace.",
+      },
+      {
+        title: "Galeria zdjęć zwiększa zaufanie.",
+        description:
+          "Pokazanie najlepszych realizacji w atrakcyjny sposób przekłada się na więcej zapytań.",
+      },
     ],
     benefits: [
       "Więcej rezerwacji sesji",
@@ -106,8 +164,8 @@ export const branze = {
     heroImage: "/backgroundmechanic.jpg",
     gradient: "from-indigo-500 via-blue-500 to-sky-500",
     colors: {
-      primary: "#4B5563", 
-      accent: "#8B5CF6", 
+      primary: "#4B5563",
+      accent: "#8B5CF6",
       bg: "#F3F4F6",
       text: "#374151",
     },
@@ -131,9 +189,21 @@ export const branze = {
       },
     ],
     industryHighlights: [
-      "Detailing potrzebuje mocnej prezentacji wizualnej",
-      "Estetyczna galeria mocno zwiększa szanse na kontakt",
-      "Profesjonalna strona to przewaga nad konkurencją",
+      {
+        title: "Pokaz efektów pracy przyciąga klientów.",
+        description:
+          "Klienci wolą szczegółowo zobaczyć rezultaty przed podjęciem decyzji o usłudze.",
+      },
+      {
+        title: "Galerie Before/After zwiększają zaufanie.",
+        description:
+          "Pokazanie metamorfoz auta daje poczucie jakości i profesjonalizmu.",
+      },
+      {
+        title: "Dobrze zaprojektowana strona wyróżnia na tle konkurencji.",
+        description:
+          "Estetyczny wygląd strony sprawia, że klienci wybierają Twoje usługi częściej.",
+      },
     ],
     benefits: [
       "Wzrost liczby klientów",
@@ -175,15 +245,83 @@ export const branze = {
       },
     ],
     industryHighlights: [
-      "Dobrze pokazana oferta roślin przyciąga więcej klientów",
-      "Łatwy kontakt i lokalizacja redukują straty klientów",
-      "Estetyczny wygląd strony buduje wizerunek profesjonalisty",
+      {
+        title: "Atrakcyjna prezentacja roślin przyciąga klientów.",
+        description:
+          "Estetyczne zdjęcia i dokładne opisy pomagają klientom w wyborze.",
+      },
+      {
+        title: "Łatwy dostęp do kontaktu i mapy.",
+        description:
+          "Klienci szybko znajdują informacje o lokalizacji i godzinach otwarcia.",
+      },
+      {
+        title: "Profesjonalna strona buduje zaufanie.",
+        description:
+          "Nowoczesny wizerunek wzmacnia markę i zachęca do odwiedzin.",
+      },
     ],
     benefits: [
       "Większa widoczność w Google i social mediach",
       "Profesjonalny i przyjazny wizerunek online",
       "Czytelna prezentacja oferty dla klientów",
       "Responsywność na telefonach i tabletach",
+    ],
+  },
+
+  kosmetyka: {
+    slug: "kosmetyka",
+    title: "Strona dla Kosmetyczki / Salonu SPA",
+    tagline: "Elegancja • Komfort • Profesjonalizm",
+    heroImage: "/kosmetyka.jpg",
+    gradient: "from-pink-300 via-rose-400 to-fuchsia-400",
+    colors: {
+      primary: "#DB2777",
+      accent: "#F472B6",
+      bg: "#FFF1F2",
+      text: "#831843",
+    },
+    heroText:
+      "Nowoczesna, elegancka strona dla kosmetyczki lub spa, która profesjonalnie prezentuje Twoje usługi i pomaga zdobywać nowe klientki.",
+    services: [
+      {
+        icon: <FaSprayCan size={28} />,
+        label: "Prezentacja zabiegów",
+        text: "Czytelna prezentacja oferty – manicure, zabiegi twarzy, masaże i więcej.",
+      },
+      {
+        icon: <FaEnvelope size={28} />,
+        label: "Łatwy kontakt i rezerwacje",
+        text: "Twoje klientki mogą szybko zapisać się na wizytę.",
+      },
+      {
+        icon: <FaCheck size={28} />,
+        label: "Luksusowy styl",
+        text: "Nowoczesny wygląd strony buduje prestiż i zaufanie.",
+      },
+    ],
+    industryHighlights: [
+      {
+        title: "Klientki chcą pełnej oferty przed wizytą.",
+        description:
+          "Pokazanie usług i opinii zwiększa zaufanie i chęć zapisów.",
+      },
+      {
+        title: "Estetyczny wygląd strony zachęca do wizyty.",
+        description:
+          "Eleganckie zdjęcia i spójny styl budują wizerunek profesjonalnego salonu.",
+      },
+      {
+        title: "Rezerwacje online ułatwiają klientkom zapis.",
+        description:
+          "Szybkie i wygodne zapisanie wizyty daje przewagę nad konkurencją.",
+      },
+    ],
+    benefits: [
+      "Więcej klientek z Google i social mediów",
+      "Elegancka prezentacja zabiegów",
+      "Profesjonalny wizerunek salonu",
+      "Przyjazna i łatwa nawigacja na telefonie",
     ],
   },
 };

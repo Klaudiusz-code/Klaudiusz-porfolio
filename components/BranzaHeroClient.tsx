@@ -1,6 +1,10 @@
 "use client";
 
 import React from "react";
+interface Highlight {
+  title: string;
+  description: string;
+}
 
 interface BranżaType {
   title: string;
@@ -9,7 +13,7 @@ interface BranżaType {
   heroImage: string;
   colors: { primary: string; bg: string; text: string };
   benefits: string[];
-  industryHighlights: string[];
+  industryHighlights: Highlight[];
   icons?: string[];
 }
 
@@ -44,7 +48,9 @@ const BranżaHeroClient: React.FC<Props> = ({ branża }) => {
           {branża.title}
         </h1>
 
-        <p className="text-lg md:text-xl opacity-90 leading-relaxed">{branża.heroText}</p>
+        <p className="text-lg md:text-xl opacity-90 leading-relaxed">
+          {branża.heroText}
+        </p>
       </div>
 
       {/* LEJEK SPRZEDAŻOWY */}
@@ -55,14 +61,19 @@ const BranżaHeroClient: React.FC<Props> = ({ branża }) => {
           { n: "3", t: "Otrzymasz ofertę" },
           { n: "4", t: "Startujemy projekt" },
         ].map((step, i) => (
-          <div key={i} className="flex-1 flex flex-col items-center text-center relative">
+          <div
+            key={i}
+            className="flex-1 flex flex-col items-center text-center relative"
+          >
             <div
               className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shadow-lg"
               style={{ backgroundColor: colors.primary }}
             >
               {step.n}
             </div>
-            <p className="mt-4 text-white font-medium text-sm md:text-base max-w-[160px]">{step.t}</p>
+            <p className="mt-4 text-white font-medium text-sm md:text-base max-w-[160px]">
+              {step.t}
+            </p>
 
             {i < 3 && (
               <>
