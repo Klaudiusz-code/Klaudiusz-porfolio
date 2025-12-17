@@ -19,8 +19,8 @@ const OffertHero = () => {
 
         {/* Podtytuł */}
         <p className="text-base sm:text-lg text-gray-600 max-w-2xl">
-          Minimalistyczne, szybkie i estetyczne strony, które przyciągają klientów
-          i wspierają rozwój Twojego biznesu online.
+          Minimalistyczne, szybkie i estetyczne strony, które przyciągają
+          klientów i wspierają rozwój Twojego biznesu online.
         </p>
 
         {/* Lista cech w poziomie */}
@@ -37,14 +37,6 @@ const OffertHero = () => {
             </li>
           ))}
         </ul>
-
-        {/* CTA */}
-        <CustomButton
-          text="Skontaktuj się ze mną"
-          link="/kontakt"
-          bgColor="#FFD700"
-          textColor="#fff"
-        />
       </div>
     </section>
   );

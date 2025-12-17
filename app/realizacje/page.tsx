@@ -5,6 +5,7 @@ import { query } from "@/ApolloClient";
 import { ProjectsPageQuery, ProjectsPageQueryVariables } from "@/gql/graphql";
 import GRAPHQL_QUERY from "@/gql-queries/projects_page.graphql";
 import { FaArrowRight } from "react-icons/fa";
+import CTA from "@/components/BriefCta";
 
 type OpenGraphType = "website" | "article" | "book" | "profile";
 
@@ -80,7 +81,7 @@ const ProjectsPage = async () => {
         </p>
       </div>
 
-      <div className="cnt mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="cnt mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
         {ProjectsData.map((project) => (
           <div
             key={project.id}

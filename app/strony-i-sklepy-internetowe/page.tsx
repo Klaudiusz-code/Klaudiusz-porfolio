@@ -15,6 +15,7 @@ import GRAPHQL_QUERY from "@/gql-queries/offert_page.graphql";
 import OfferPageTypes from "@/components/OfferPageTypes";
 import FaqSection from "@/sections/common/FaqSection";
 import OffertHero from "@/components/OffertHero";
+import BriefCTA from "@/components/BriefCta";
 
 type OpenGraphType = "website" | "article" | "book" | "profile";
 

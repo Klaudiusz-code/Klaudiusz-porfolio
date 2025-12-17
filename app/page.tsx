@@ -20,6 +20,7 @@ import EncouragingSection from "@/sections/common/EncouragingSection";
 import FaqSection from "@/sections/common/FaqSection";
 import InstagramCTA from "@/components/InstagramCTA";
 import OfferTabs from "@/components/OfferTabs";
+import CTA from "@/components/BriefCta";
 
 type OpenGraphType = "website" | "article" | "book" | "profile";
 
@@ -128,6 +129,7 @@ const HomePage = async () => {
         description={tools?.description || ""}
         charts={tools?.charts as any[]}
       />
+      <CTA />
       <EncouragingSection
         title={whyme?.title || ""}
         services={whyme?.boxs || ([] as any)}
