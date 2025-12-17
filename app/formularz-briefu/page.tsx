@@ -35,7 +35,6 @@ const Page = () => {
 
   return (
     <main className="bg-white text-black overflow-x-hidden">
-      {/* ================= HERO ================= */}
       <section className="bg-white py-24 md:py-32 px-6 border-b border-gray-100">
         <div className="max-w-6xl mx-auto">
           <div className="mb-6 flex items-center gap-3 text-sm text-gray-400">
@@ -55,7 +54,6 @@ const Page = () => {
             Dzięki temu projekt nie jest tylko ładny — jest użyteczny.
           </p>
 
-          {/* ===== PODPUNKTY – MOBILE FRIENDLY ===== */}
           <div className="grid gap-6 md:gap-10 md:grid-cols-3 max-w-5xl">
             <div className="flex gap-4 items-start p-5 md:p-0 rounded-2xl border border-gray-100 md:border-none">
               <FaBuilding className="text-[#4F7CFF] text-3xl shrink-0 mt-1" />
@@ -109,7 +107,6 @@ const Page = () => {
           method="POST"
           className="space-y-10"
         >
-          {/* DANE FIRMY */}
           <div className="bg-gray-50 p-6 md:p-8 rounded-3xl border border-gray-200 space-y-6">
             <h3 className="text-xl font-semibold">Dane firmy</h3>
 
@@ -136,7 +133,6 @@ const Page = () => {
             </div>
           </div>
 
-          {/* O FIRMIE */}
           <div className="bg-gray-50 p-6 md:p-8 rounded-3xl border border-gray-200 space-y-6">
             <h3 className="text-xl font-semibold">O firmie</h3>
 
@@ -173,7 +169,6 @@ const Page = () => {
             </div>
           </div>
 
-          {/* SZCZEGÓŁY */}
           <div className="bg-gray-50 p-6 md:p-8 rounded-3xl border border-gray-200 space-y-6">
             <h3 className="text-xl font-semibold">Szczegóły projektu</h3>
 
