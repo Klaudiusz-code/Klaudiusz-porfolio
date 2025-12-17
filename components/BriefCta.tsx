@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
+import { FiClock, FiMail, FiSlash } from "react-icons/fi";
 
 const CTA = () => {
   return (
@@ -30,33 +31,53 @@ const CTA = () => {
             krótki brief projektowy
           </span>
 
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-semibold text-white leading-snug">
-            Wypełnij brief i sprawdź,
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-semibold text-white leading-snug">
+            Wypełnij brief i odbierz
             <br />
-            <span className="text-customColor">czy ten projekt ma sens</span>
+            <span className="text-customColor">
+              darmowy podgląd kierunku strony
+            </span>
           </h2>
 
-          <p className="text-sm sm:text-base md:text-base lg:text-base text-white/75 max-w-xl">
-            Kilka konkretnych pytań o Twoją firmę i cele. Na tej podstawie
-            przygotuję kierunek projektu i propozycję działania.
+          <p className="text-sm sm:text-base md:text-[15px] lg:text-base text-white/80 max-w-xl">
+            Odpowiesz na kilka konkretnych pytań o biznes i cele. Na tej
+            podstawie przygotuję <strong>kierunek projektu</strong>, strukturę
+            strony i rekomendację dalszych działań. Bez spiny, bez zobowiązań.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start">
+          <div className="flex flex-col gap-3">
             <Link
               href="/formularz-briefu"
-              className="group inline-flex items-center gap-4 px-7 sm:px-9 py-3.5 sm:py-4 bg-white text-black font-semibold rounded-xl sm:rounded-2xl text-base sm:text-lg"
+              className="group inline-flex items-center gap-4
+              px-7 sm:px-9 py-3.5 sm:py-4
+              bg-white text-black font-semibold
+              rounded-xl sm:rounded-2xl
+              text-base sm:text-lg w-fit
+              shadow-xl hover:shadow-2xl transition"
             >
               Przejdź do briefu
               <FaArrowRight className="transition-transform group-hover:translate-x-1" />
             </Link>
+          </div>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs sm:text-sm text-white/55">
+            <span className="inline-flex items-center gap-1.5">
+              <FiClock className="text-customColor/80" />
+              5–7 minut
+            </span>
 
-            <div className="text-xs sm:text-sm text-white/60 leading-relaxed pt-1">
-              ⏱ 5–7 minut
-              <br />
-              📩 odpowiedź do 48h
-              <br />
-              🚫 bez zobowiązań
-            </div>
+            <span className="hidden sm:inline text-white/30">•</span>
+
+            <span className="inline-flex items-center gap-1.5">
+              <FiMail className="text-customColor/80" />
+              odpowiedź do 48h
+            </span>
+
+            <span className="hidden sm:inline text-white/30">•</span>
+
+            <span className="inline-flex items-center gap-1.5">
+              <FiSlash className="text-customColor/80" />
+              bez zobowiązań
+            </span>
           </div>
         </div>
       </div>

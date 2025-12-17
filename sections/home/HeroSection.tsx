@@ -177,8 +177,8 @@ const HeroSection = ({
             {/* CTA */}
             <div className="flex justify-center mt-2">
               <CustomButton
-                text="Złap okazję"
-                link="/kontakt"
+                text="Przejdź Do Briefu"
+                link="/formularz-briefu"
                 bgColor="#D63636"
                 textColor="#fff"
               />
