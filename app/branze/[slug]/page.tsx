@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 import { branze } from "../../data/branze";
 import BranzaHeroClient from "@/components/BranzaHeroClient";
 import QuickTips from "@/components/QuickTips";
+import CTA from "@/components/BriefCta";
 
 interface PageProps {
   params: { slug: string };
@@ -124,6 +125,7 @@ export default function BranżaPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+      <CTA />
 
       {/* DLACZEGO WARTO */}
       <section className="py-28 bg-gray-50">
@@ -166,7 +168,6 @@ export default function BranżaPage({ params }: PageProps) {
           </div>
         </div>
       </section>
-
       {/* QUICK TIPS */}
       <QuickTips tips={branża.services} accentColor={colors.accent} />
 
