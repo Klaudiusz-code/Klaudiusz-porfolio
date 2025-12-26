@@ -1,4 +1,3 @@
-// data/branze.ts
 import { ReactNode } from "react";
 import {
   FaWrench,
@@ -9,11 +8,14 @@ import {
   FaEnvelope,
   FaSprayCan,
   FaBroom,
+  FaPalette,
+  FaUsers,
   FaStar,
   FaLeaf,
+  FaCar,
+  FaImages,
 } from "react-icons/fa";
 
-// Typy dla branży
 export interface Highlight {
   title: string;
   description: string;
@@ -41,9 +43,9 @@ export interface BranżaType {
   benefits: string[];
   industryHighlights: Highlight[];
   services: Service[];
+  techSpecs: string[];
 }
 
-// Dane branż
 export const branze: Record<string, BranżaType> = {
   mechanik: {
     slug: "mechanik",
@@ -92,6 +94,13 @@ export const branze: Record<string, BranżaType> = {
         description:
           "Profesjonalny wygląd strony zwiększa liczbę telefonów i zapytań.",
       },
+    ],
+    techSpecs: [
+      "Interaktywna Mapa Google (Dojazd)",
+      "Cennik usług i listy napraw",
+      "Galeria zdjęć (Przed/Po)",
+      "Integracja z WhatsApp/SMS",
+      "Działanie 24/7 (Informacje o warsztacie)",
     ],
     benefits: [
       "Więcej klientów z lokalnych wyszukiwań",
@@ -149,6 +158,14 @@ export const branze: Record<string, BranżaType> = {
           "Pokazanie najlepszych realizacji w atrakcyjny sposób przekłada się na więcej zapytań.",
       },
     ],
+    techSpecs: [
+      "Galeria Lightbox (Powiększanie)",
+      "Ochrona praw autorskich (Watermark)",
+      "Formularz zapytania o sesję",
+      "Linki do Instagram/Pinterest",
+      "Szybkie ładowanie zdjęć (WebP)",
+      "Podział na kategorie (Ślub, Portret)",
+    ],
     benefits: [
       "Więcej rezerwacji sesji",
       "Profesjonalny wizerunek",
@@ -175,35 +192,39 @@ export const branze: Record<string, BranżaType> = {
       {
         icon: <FaStar size={28} />,
         label: "Pakiety Detailingu",
-        text: "Wyraźnie zaprezentowane usługi — klient od razu widzi różnice.",
+        text: "Wyraźnie zaprezentowane usługi.",
       },
       {
         icon: <FaBroom size={28} />,
         label: "Galerie realizacji",
-        text: "Nowoczesne Before / After — klucz do budowania zaufania.",
+        text: "Nowoczesne Before / After.",
       },
       {
         icon: <FaPhone size={28} />,
         label: "Wygodny kontakt",
-        text: "Szybkie umawianie wizyt i łatwy dostęp do informacji.",
+        text: "Szybkie umawianie wizyt.",
       },
     ],
     industryHighlights: [
       {
         title: "Pokaz efektów pracy przyciąga klientów.",
-        description:
-          "Klienci wolą szczegółowo zobaczyć rezultaty przed podjęciem decyzji o usłudze.",
+        description: "Klienci wolą szczegółowo zobaczyć rezultaty.",
       },
       {
         title: "Galerie Before/After zwiększają zaufanie.",
-        description:
-          "Pokazanie metamorfoz auta daje poczucie jakości i profesjonalizmu.",
+        description: "Pokazanie metamorfoz auta daje poczucie jakości.",
       },
       {
         title: "Dobrze zaprojektowana strona wyróżnia na tle konkurencji.",
-        description:
-          "Estetyczny wygląd strony sprawia, że klienci wybierają Twoje usługi częściej.",
+        description: "Estetyczny wygląd strony zachęca do wyboru.",
       },
+    ],
+    techSpecs: [
+      "Galeria Przed/Po (Slider)",
+      "Cennik pakietów detailingowych",
+      "Integracja z Kalendarzem",
+      "Sekcja O firmie (Załoga)",
+      "Szybki kontakt telefoniczny",
     ],
     benefits: [
       "Wzrost liczby klientów",
@@ -230,36 +251,41 @@ export const branze: Record<string, BranżaType> = {
     services: [
       {
         icon: <FaLeaf size={28} />,
-        label: "Prezentacja roślin i usług",
-        text: "Pokaż wszystkie swoje uprawy i usługi w atrakcyjny sposób.",
+        label: "Prezentacja roślin",
+        text: "Pokaż wszystkie swoje uprawy.",
       },
       {
         icon: <FaMapMarkedAlt size={28} />,
-        label: "Lokalizacja i kontakt",
-        text: "Klient od razu wie, gdzie Cię znaleźć i jak się skontaktować.",
+        label: "Lokalizacja",
+        text: "Klient od razu wie gdzie jesteś.",
       },
       {
         icon: <FaCheck size={28} />,
         label: "Profesjonalny wizerunek",
-        text: "Nowoczesna strona zwiększa zaufanie i liczbę zapytań.",
+        text: "Nowoczesna strona zwiększa zaufanie.",
       },
     ],
     industryHighlights: [
       {
-        title: "Atrakcyjna prezentacja roślin przyciąga klientów.",
-        description:
-          "Estetyczne zdjęcia i dokładne opisy pomagają klientom w wyborze.",
+        title: "Atrakcyjna prezentacja roślin przyciąga.",
+        description: "Estetyczne zdjęcia pomagają w wyborze.",
       },
       {
         title: "Łatwy dostęp do kontaktu i mapy.",
-        description:
-          "Klienci szybko znajdują informacje o lokalizacji i godzinach otwarcia.",
+        description: "Klienci szybko znajdują informacje.",
       },
       {
         title: "Profesjonalna strona buduje zaufanie.",
-        description:
-          "Nowoczesny wizerunek wzmacnia markę i zachęca do odwiedzin.",
+        description: "Nowoczesny wizerunek wzmacnia markę.",
       },
+    ],
+    techSpecs: [
+      "Katalog roślin z opisami",
+      "Mapa dojazdu do plantacji",
+      "Galeria zdjęć z sezonów",
+      "Formularz zapytań o uprawy",
+      "Opis usług pielęgnacyjnych",
+      "Informacje o dostępności (Godziny)",
     ],
     benefits: [
       "Większa widoczność w Google i social mediach",
@@ -287,41 +313,109 @@ export const branze: Record<string, BranżaType> = {
       {
         icon: <FaSprayCan size={28} />,
         label: "Prezentacja zabiegów",
-        text: "Czytelna prezentacja oferty – manicure, zabiegi twarzy, masaże i więcej.",
+        text: "Czytelna prezentacja oferty.",
       },
       {
         icon: <FaEnvelope size={28} />,
-        label: "Łatwy kontakt i rezerwacje",
-        text: "Twoje klientki mogą szybko zapisać się na wizytę.",
+        label: "Łatwy kontakt",
+        text: "Twoje klientki mogą szybko zapisać się.",
       },
       {
         icon: <FaCheck size={28} />,
         label: "Luksusowy styl",
-        text: "Nowoczesny wygląd strony buduje prestiż i zaufanie.",
+        text: "Nowoczesny wygląd buduje prestiż.",
       },
     ],
     industryHighlights: [
       {
         title: "Klientki chcą pełnej oferty przed wizytą.",
-        description:
-          "Pokazanie usług i opinii zwiększa zaufanie i chęć zapisów.",
+        description: "Pokazanie usług zwiększa zaufanie.",
       },
       {
         title: "Estetyczny wygląd strony zachęca do wizyty.",
-        description:
-          "Eleganckie zdjęcia i spójny styl budują wizerunek profesjonalnego salonu.",
+        description: "Eleganckie zdjęcia budują wizerunek.",
       },
       {
         title: "Rezerwacje online ułatwiają klientkom zapis.",
-        description:
-          "Szybkie i wygodne zapisanie wizyty daje przewagę nad konkurencją.",
+        description: "Szybkie zapisanie daje przewagę.",
       },
+    ],
+    techSpecs: [
+      "Wizualny cennik zabiegów",
+      "Galeria wnętrz salonu",
+      "Integracja z systemem rezerwacji (Booksy)",
+      "Profil stylistki / Zespół",
+      "Sekcja Cennik i Promocje",
+      "Elegancki formularz kontaktowy",
     ],
     benefits: [
       "Więcej klientek z Google i social mediów",
       "Elegancka prezentacja zabiegów",
       "Profesjonalny wizerunek salonu",
       "Przyjazna i łatwa nawigacja na telefonie",
+    ],
+  },
+  fryzjerstwo: {
+    slug: "fryzjerstwo",
+    title: "Strona dla Fryzjera i Salonów",
+    tagline: "Styl • Kreatywność • Profesjonalizm",
+    heroImage: "/hairdresser.jpg",
+    gradient: "from-pink-300 via-rose-400 to-fuchsia-400",
+    colors: {
+      primary: "#E11D48", 
+      accent: "#FB7185",
+      bg: "#FFF1F2", 
+      text: "#881337",
+    },
+    heroText:
+      "Stworzę stronę, która prezentuje Twoje fryzury i styl w najlepszym świetle. Zdjęcia, ceny i portfolio w jednym miejscu.",
+    services: [
+      {
+        icon: <FaImages size={28} />,
+        label: "Portfolio Przed / Po",
+        text: "Zdjęcia prezentujące metamorfozy klientów – Twoja najlepsza wizytówka.",
+      },
+      {
+        icon: <FaPalette size={28} />,
+        label: "Cennik Stylizacji",
+        text: "Jasne i przejrzyste ceny fryzur, koloryzacji i zabiegów pielęgnacyjnych.",
+      },
+      {
+        icon: <FaUsers size={28} />, 
+        label: "Nasz Zespół",
+        text: "Przedstaw stylistów i barberów, aby klient wiedział do kogo idzie.",
+      },
+    ],
+    industryHighlights: [
+      {
+        title: "Zdjęcia fryzur to podstawa.",
+        description:
+          "Klienci patrzą na dłonie stylisty i efekty Twojej pracy przed wyborem.",
+      },
+      {
+        title: "Portfolio online ułatwia podjęcie decyzji.",
+        description:
+          "Pokazanie metamorfoz w estetyczny sposób zachęca do wizyty w salonie.",
+      },
+      {
+        title: "Jasny cennik online buduje zaufanie.",
+        description:
+          "Unikaj nieporozumień i pokazuj ceny za poszczególne usługi w jednym miejscu.",
+      },
+    ],
+    techSpecs: [
+      "Galeria zdjęć Before / After",
+      "Wizytówka Zespołu (Stylistki)",
+      "Cennik usług fryzjerskich",
+      "Działanie na Instagram / TikTok",
+      "Mapa dojazdu do salonu",
+      "Szybki formularz kontaktowy",
+    ],
+    benefits: [
+      "Więcej wizyt w salonie",
+      "Profesjonalny wizerunek stylisty",
+      "Lepsza sprzedaż dodatkowych usług",
+      "Więcej zapytań o zapisy",
     ],
   },
 };

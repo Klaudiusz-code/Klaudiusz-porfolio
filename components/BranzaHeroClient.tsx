@@ -1,101 +1,83 @@
 "use client";
 
 import React from "react";
-interface Highlight {
-  title: string;
-  description: string;
-}
+import { FaArrowRight, FaComments, FaPencilRuler, FaCheck, FaMobileAlt } from "react-icons/fa";
 
 interface BranżaType {
   title: string;
   tagline: string;
   heroText: string;
   heroImage: string;
-  colors: { primary: string; bg: string; text: string };
-  benefits: string[];
-  industryHighlights: Highlight[];
-  icons?: string[];
+  colors: { primary: string; bg: string; text: string; accent: string };
 }
 
 interface Props {
   branża: BranżaType;
 }
 
-const BranżaHeroClient: React.FC<Props> = ({ branża }) => {
+const BranzaHeroClient: React.FC<Props> = ({ branża }) => {
   const { colors } = branża;
 
-  return (
-    <section
-      className="relative w-full mt-24"
-      style={{
-        backgroundImage: `url(${branża.heroImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="absolute inset-0 bg-black/45"></div>
+  const steps = [
+    { icon: <FaComments />, label: "01. Brief", desc: "Dopasowanie" },
+    { icon: <FaPencilRuler />, label: "02. Design", desc: "Koncepcja" },
+    { icon: <FaMobileAlt />, label: "03. Kod", desc: "Realizacja" },
+    { icon: <FaCheck />, label: "04. Wdrożenie", desc: "Efekt" },
+  ];
 
-      {/* HERO TEXT */}
-      <div className="relative max-w-3xl mx-auto text-center text-white py-16 px-6">
-        <span
-          className="inline-block px-4 py-1 mb-4 text-sm font-semibold rounded-full"
-          style={{ backgroundColor: colors.primary }}
-        >
+  return (
+    <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-[#0a0a0a] text-white pt-24 md:pt-32 pb-20">
+      
+      {/* TŁO */}
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center opacity-50 scale-105"
+        style={{ backgroundImage: `url(${branża.heroImage})` }}
+      />
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/80 via-[#0a0a0a]/90 to-[#0a0a0a]" />
+      
+      <div 
+        className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[color:var(--primary)] opacity-20 blur-[100px] rounded-full pointer-events-none"
+        style={{ '--primary': colors.primary } as any}
+      ></div>
+
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6 text-center w-full flex flex-col items-center">
+        
+        <span className="inline-block px-4 py-1.5 mb-8 text-xs font-bold tracking-[0.2em] uppercase border border-white/10 rounded-full bg-white/5 backdrop-blur-sm" style={{ color: colors.accent }}>
           {branża.tagline}
         </span>
 
-        <h1 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-[1.05] max-w-5xl">
           {branża.title}
         </h1>
 
-        <p className="text-lg md:text-xl opacity-90 leading-relaxed">
+        <p className="text-lg md:text-xl text-gray-300 mb-16 max-w-2xl font-normal leading-relaxed">
           {branża.heroText}
         </p>
-      </div>
 
-      {/* LEJEK SPRZEDAŻOWY */}
-      <div className="relative max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10 px-6 pb-20">
-        {[
-          { n: "1", t: "Napisz do mnie" },
-          { n: "2", t: "Omówimy potrzeby" },
-          { n: "3", t: "Otrzymasz ofertę" },
-          { n: "4", t: "Startujemy projekt" },
-        ].map((step, i) => (
-          <div
-            key={i}
-            className="flex-1 flex flex-col items-center text-center relative"
-          >
-            <div
-              className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shadow-lg"
-              style={{ backgroundColor: colors.primary }}
-            >
-              {step.n}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-5xl mb-16">
+          {steps.map((step, i) => (
+            <div key={i} className="group relative flex flex-col items-center justify-center p-6 rounded-2xl bg-[#111] border border-white/5 hover:border-[color:var(--primary)]/50 hover:bg-[#161616] transition-all duration-500">
+              <div className="w-12 h-12 rounded-full bg-[#1a1a1a] flex items-center justify-center text-[color:var(--accent)] mb-4 text-lg group-hover:scale-110 transition-transform" style={{ '--accent': colors.accent } as any}>
+                {step.icon}
+              </div>
+              <div className="font-bold text-sm mb-1 tracking-wide">{step.label}</div>
+              <div className="text-xs text-gray-500 font-medium uppercase tracking-wider">{step.desc}</div>
             </div>
-            <p className="mt-4 text-white font-medium text-sm md:text-base max-w-[160px]">
-              {step.t}
-            </p>
+          ))}
+        </div>
 
-            {i < 3 && (
-              <>
-                <div className="hidden md:block absolute top-1/2 left-full w-16 h-[2px] bg-white/40"></div>
-                <div className="block md:hidden w-[2px] h-6 bg-white/40 mt-3"></div>
-              </>
-            )}
-          </div>
-        ))}
-      </div>
-
-      {/* CTA */}
-      <div className="relative text-center pb-28">
         <a
-          href="tel:+48730735048"
-          className="inline-flex items-center justify-center px-8 py-3 rounded-full font-semibold text-base md:text-lg text-white border border-white/40 bg-white/10 backdrop-blur-md shadow-lg shadow-black/20 transition-all duration-300 hover:bg-white/20 hover:border-white/60 hover:shadow-xl"
+           href="/formularz-briefu"
+           className="inline-flex items-center gap-4 px-10 py-4 bg-white text-black font-bold text-lg rounded-full hover:bg-[color:var(--accent)] hover:text-white hover:scale-105 transition-all duration-300 shadow-2xl shadow-white/10"
+           style={{ '--accent': colors.accent } as any}
         >
-          Zadzwoń i zacznijmy
+          Wycena indywidualna
+          <FaArrowRight className="text-base" />
         </a>
+        
       </div>
     </section>
   );
 };
 
-export default BranżaHeroClient;
+export default BranzaHeroClient;

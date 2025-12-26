@@ -4,6 +4,7 @@ import Link from "next/link";
 import {
   FaWrench,
   FaCamera,
+  FaCut,
   FaSprayCan,
   FaHammer,
   FaLeaf,
@@ -79,11 +80,12 @@ const branze: Branża[] = [
     href: "/branze/autodetailing",
     heroBg: "/backgroundmechanic.jpg",
   },
-  {
-    key: "szkoly",
-    label: "Szkoły / Edukacja",
-    icon: <FaBook size={40} />,
-    heroBg: "/default-bg.jpg",
+   {
+    key: "fryzjerstwo", 
+    label: "Fryzjerstwo / Salony",
+    icon: <FaCut size={32} />,
+    href: "/branze/fryzjerstwo",
+    heroBg: "/hairdresser.jpg",
   },
   {
     key: "gastronomia",

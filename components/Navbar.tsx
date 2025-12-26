@@ -21,7 +21,7 @@ const Navbar = ({ data }: any) => {
 
   return (
     <nav
-      className={`fixed w-full top-0 z-50 px-4 py-3 lg:py-3 border-b border-gray-200 transition-shadow duration-300 ${
+      className={`fixed w-full top-0 z-50 px-4 py-3 lg:py-3 border-b bg-white border-gray-200 transition-shadow duration-300 ${
         isSticky ? "shadow-lg bg-white" : "shadow-none"
       }`}
     >
