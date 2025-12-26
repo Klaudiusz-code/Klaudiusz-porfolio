@@ -97,7 +97,6 @@ export default function BranżaPage({ params }: PageProps) {
                   </div>
                 </div>
 
-                {/* TEKST */}
                 <div className="w-full md:w-1/2 text-left">
                   <div className="mb-6">
                     <span
@@ -122,7 +121,6 @@ export default function BranżaPage({ params }: PageProps) {
       </section>
 
       
-      {/* SEKCJA: BRIEF CTA (VALUE CARD STYLE) */}
       <section className="py-24 relative bg-[#050505] border-t border-white/5 overflow-hidden">
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[color:var(--primary)] opacity-5 blur-[100px] rounded-full pointer-events-none"
@@ -146,7 +144,6 @@ export default function BranżaPage({ params }: PageProps) {
                 GIFT
               </div>
 
-              {/* Badge: "Bezpłatne" */}
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
                 <span className="text-xs font-bold tracking-widest uppercase text-gray-400">
@@ -168,7 +165,7 @@ export default function BranżaPage({ params }: PageProps) {
 
               <Link
                 href="/formularz-briefu"
-                className="inline-flex items-center gap-3 px-10 py-5 bg-white text-black font-bold text-xl rounded-full hover:bg-[color:var(--accent)] hover:text-white hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all duration-300"
+                className="inline-flex items-center gap-3 px-4 md:px-10  py-3 md:py-5 bg-white text-black font-bold md:text-xl rounded-full hover:bg-[color:var(--accent)] hover:text-white hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all duration-300"
                 style={{ "--accent": colors.accent } as any}
               >
                 Wypełnij Brief
