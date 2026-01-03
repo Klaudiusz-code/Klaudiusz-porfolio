@@ -3,147 +3,223 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { IoIosMenu, IoIosArrowForward, IoIosCall } from "react-icons/io";
+import { IoIosMenu, IoIosArrowForward } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
+import { FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const Navbar = ({ data }: any) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSticky, setIsSticky] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsSticky(window.scrollY > 30);
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <nav
-      className={`fixed w-full top-0 z-50 px-4 py-3 lg:py-3 border-b bg-white border-gray-200 transition-shadow duration-300 ${
-        isSticky ? "shadow-lg bg-white" : "shadow-none"
-      }`}
-    >
-      <div className="container mx-auto flex items-center justify-between flex-wrap">
-        {/* LOGO */}
-        <Link
-          href="/"
-          className="flex items-center flex-shrink-0 text-2xl text-gray-800 mr-6"
-        >
-          <Image
-            src="/hello.svg"
-            alt="logo"
-            width={60}
-            height={60}
-            className="h-auto py-1 lg:py-2 ml-2 w-[54px] lg:w-[60px]"
-          />
-        </Link>
+    <>
+      {/* ================= NAVBAR ================= */}
+      <nav
+        className={`
+          fixed top-0 left-0 w-full z-50 transition-all duration-300
+          ${
+            isScrolled
+              ? "bg-white/90 backdrop-blur-xl border-b border-slate-200 py-3"
+              : "bg-transparent py-6"
+          }
+        `}
+      >
+        <div className="container mx-auto max-w-7xl px-4 flex items-center justify-between">
+          {/* LOGO */}
+          <Link href="/" className="flex items-center gap-3 z-50 group">
+            <Image
+              src="/hello.svg"
+              alt="logo"
+              width={42}
+              height={42}
+              className="object-contain"
+            />
+          </Link>
 
-        {/* MOBILNE MENU */}
-        <div className="block lg:hidden">
+          {/* ================= DESKTOP ================= */}
+          <div className="hidden lg:flex items-center gap-14">
+            <ul className="flex items-center gap-10">
+              {data?.menuItems?.edges.map((edge: any) => (
+                <li key={edge.node.id} className="relative group">
+                  <Link
+                    href={edge.node.path || "/"}
+                    className="
+                      text-[15px] font-medium text-slate-700
+                      transition-colors
+                      group-hover:text-customColor
+                    "
+                  >
+                    {edge.node.label}
+                  </Link>
+                  <span
+                    className="
+                      absolute -bottom-1 left-0 h-[2px] w-full
+                      bg-customColor
+                      scale-x-0 origin-left
+                      transition-transform duration-300
+                      group-hover:scale-x-100
+                    "
+                  />
+                </li>
+              ))}
+            </ul>
+
+            {/* SOCIALS */}
+            <div className="flex items-center gap-5 border-l border-slate-200 pl-8">
+              <a
+                className="text-slate-400 hover:text-slate-900 transition-colors"
+                href="#"
+              >
+                <FaInstagram />
+              </a>
+              <a
+                className="text-slate-400 hover:text-slate-900 transition-colors"
+                href="#"
+              >
+                <FaLinkedin />
+              </a>
+            </div>
+
+            {/* CTA */}
+            <Link
+              href="/kontakt"
+              className="
+                flex items-center gap-2
+                px-7 py-3
+                bg-slate-900 text-white
+                text-sm font-semibold
+                rounded-xl
+                hover:bg-customColor hover:text-white
+                transition-colors
+              "
+            >
+              Bezpłatna wycena
+              <IoIosArrowForward />
+            </Link>
+          </div>
+
+          {/* ================= MOBILE TRIGGER ================= */}
           <button
-            className="flex items-center px-3 py-2 rounded-md bg-customColor text-white border-none focus:outline-none"
             onClick={toggleMenu}
+            className="lg:hidden p-2 rounded-lg text-slate-900 hover:bg-slate-100 transition"
+            aria-label="Menu"
           >
             <IoIosMenu className="text-3xl" />
           </button>
         </div>
+      </nav>
 
-        {/* OVERLAY */}
+      {/* ================= MOBILE MENU ================= */}
+      <div
+        className={`
+          fixed inset-0 z-40 transition-opacity duration-300
+          ${
+            isMenuOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }
+        `}
+      >
+        {/* BACKDROP */}
         <div
-          className={`fixed inset-0 bg-black bg-opacity-60 z-40 transition-opacity duration-300 ${
-            isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-          }`}
+          className="absolute inset-0 bg-black/40 backdrop-blur-sm"
           onClick={closeMenu}
-        ></div>
+        />
 
-        {/* MOBILNE MENU PANEL */}
+        {/* PANEL */}
         <div
-          className={`fixed top-0 right-0 w-64 bg-white h-full z-50 transform transition-transform duration-300 ease-in-out ${
-            isMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+          className={`
+            absolute right-0 top-0 h-full w-full sm:w-[420px]
+            bg-white/95 backdrop-blur-2xl
+            shadow-2xl
+            transition-transform duration-300
+            ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
+          `}
         >
-          <div className="flex flex-col h-full">
-            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-gray-50">
-              <h2 className="text-lg font-bold text-gray-600">Menu</h2>
-              <button
-                className="text-gray-600 hover:text-gray-800"
-                onClick={closeMenu}
-              >
-                <IoCloseOutline className="text-3xl text-customColor" />
-              </button>
-            </div>
-
-            <div className="flex-grow">
-              <ul className="mt-16 space-y-6 px-4">
-                {data &&
-                  data.menuItems.edges.map((edge: any) => (
-                    <li
-                      key={edge.node.id}
-                      className="border-b border-gray-300 pb-4 transition-colors duration-300 group hover:border-[#4d69c5]"
-                    >
-                      <Link href={edge.node.path || "/"} passHref>
-                        <div
-                          onClick={closeMenu}
-                          className="cursor-pointer font-medium text-lg text-gray-600 flex items-center justify-between hover:text-[#4d69c5] transition-colors duration-300"
-                        >
-                          <span className="group-hover:text-[#4d69c5]">
-                            {edge.node.label}
-                          </span>
-                          <IoIosArrowForward className="ml-2 text-xl text-[#4d69c5] group-hover:translate-x-2 transition-transform duration-300" />
-                        </div>
-                      </Link>
-                    </li>
-                  ))}
-              </ul>
-            </div>
-
-            <div className="flex-shrink-0 p-4">
-              <Link
-                href="tel:+48519668439"
-                className="flex items-center justify-center bg-gradient-to-r from-[#4C9BFF] to-[#1D62F0] text-white px-4 py-2 rounded-xl shadow-sm shadow-[#6e92f2] animate-attention-button"
-              >
-                <IoIosCall className="mr-2 text-2xl" />
-                <span className="text-lg font-semibold">+48 519 668 439</span>
-              </Link>
-            </div>
+          {/* HEADER */}
+          <div className="flex items-center justify-between px-6 py-6 border-b border-slate-200">
+            <span className="text-xs font-semibold tracking-widest text-slate-400 uppercase">
+              Menu
+            </span>
+            <button
+              onClick={closeMenu}
+              className="text-slate-500 hover:text-slate-900 transition"
+            >
+              <IoCloseOutline className="text-3xl" />
+            </button>
           </div>
-        </div>
 
-        {/* DESKTOP MENU */}
-        <div className="hidden lg:flex lg:items-center lg:ml-auto overflow-x-auto">
-          {data && (
-            <ul className="flex items-center space-x-2 md:space-x-4 flex-nowrap">
-              {data.menuItems.edges.map((edge: any) => (
-                <li key={edge.node.id} className="relative group min-w-0">
+          {/* LINKS */}
+          <div className="flex flex-col h-full px-8 pt-20">
+            <ul className="space-y-8">
+              {data?.menuItems?.edges.map((edge: any) => (
+                <li key={edge.node.id}>
                   <Link
                     href={edge.node.path || "/"}
-                    className="font-roboto font-medium uppercase tracking-wide px-3 py-2 rounded-md transition duration-300
-                      text-[clamp(12px,1.5vw,16px)] text-gray-600 whitespace-nowrap"
+                    onClick={closeMenu}
+                    className="
+                      text-3xl md:text-4xl
+                      font-semibold
+                      text-slate-900
+                      tracking-tight
+                      hover:text-customColor
+                      transition-colors
+                    "
                   >
                     {edge.node.label}
-                    <span className="absolute bottom-[-6px] left-1/2 w-0 h-[2px] bg-[#6e92f2] rounded-full transition-all duration-500 ease-in-out transform -translate-x-1/2 group-hover:w-2/3"></span>
                   </Link>
                 </li>
               ))}
             </ul>
-          )}
 
-          <div className="flex-shrink-0 py-2 ml-4">
-            <Link
-              href="/kontakt"
-              className="flex items-center justify-center bg-gradient-to-r from-[#4C9BFF] to-[#1D62F0] text-white px-6 py-3 rounded-xl  transform transition-all  w-full lg:w-auto text-[clamp(14px,1.5vw,16px)]"
-            >
-              <span className="text-base font-bold uppercase tracking-wide">
+            {/* SOCIALS */}
+            <div className="mt-16 pt-8 border-t border-slate-200 flex justify-center gap-8">
+              <a
+                className="text-slate-400 hover:text-slate-900 transition-colors"
+                href="#"
+              >
+                <FaInstagram className="text-xl" />
+              </a>
+              <a
+                className="text-slate-400 hover:text-slate-900 transition-colors"
+                href="#"
+              >
+                <FaLinkedin className="text-xl" />
+              </a>
+            </div>
+
+            {/* CTA */}
+            <div className="mt-10">
+              <Link
+                href="/kontakt"
+                onClick={closeMenu}
+                className="
+                  flex items-center justify-center gap-3
+                  px-8 py-4
+                  bg-slate-900 text-white
+                  text-sm font-semibold
+                  rounded-xl
+                  hover:bg-customColor hover:text-slate-900
+                  transition-colors
+                "
+              >
                 Bezpłatna wycena
-              </span>
-              <IoIosArrowForward className="ml-3 text-2xl" />
-            </Link>
+                <IoIosArrowForward />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
-    </nav>
+    </>
   );
 };
 

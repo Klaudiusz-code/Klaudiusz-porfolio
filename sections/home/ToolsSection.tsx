@@ -24,18 +24,18 @@ interface Props {
 
 function ToolsSection({ title, description, charts }: Props) {
   const iconMap: { [key: string]: JSX.Element | null } = {
-    "FaHtml5: html": <FaHtml5 size={48} />,
-    "FaSass: ScSS": <FaSass size={48} />,
-    "SiTailwindcss: Tailwind": <SiTailwindcss size={48} />,
-    "FaJs: JS": <FaJs size={48} />,
-    "SiExpress: express": <SiExpress size={48} />,
-    "FaNodeJs: nodejs": <FaNodeJs size={48} />,
-    "FaReact: react": <FaReact size={48} />,
-    "wordpress: FaWordpress": <FaWordpress size={48} />,
-    "SiMongodb: MongoDb": <SiMongodb size={48} />,
-    "FaFigma: figma": <FaFigma size={48} />,
-    "SiTypescript: typescript": <SiTypescript size={48} />,
-    "SiNextdotjs: next": <SiNextdotjs size={48} />,
+    "FaHtml5: html": <FaHtml5 size={16} />,
+    "FaSass: ScSS": <FaSass size={16} />,
+    "SiTailwindcss: Tailwind": <SiTailwindcss size={16} />,
+    "FaJs: JS": <FaJs size={16} />,
+    "SiExpress: express": <SiExpress size={16} />,
+    "FaNodeJs: nodejs": <FaNodeJs size={16} />,
+    "FaReact: react": <FaReact size={16} />,
+    "wordpress: FaWordpress": <FaWordpress size={16} />,
+    "SiMongodb: MongoDb": <SiMongodb size={16} />,
+    "FaFigma: figma": <FaFigma size={16} />,
+    "SiTypescript: typescript": <SiTypescript size={16} />,
+    "SiNextdotjs: next": <SiNextdotjs size={16} />,
   };
 
   const technologies = charts.map((chart) => ({
@@ -44,27 +44,40 @@ function ToolsSection({ title, description, charts }: Props) {
   }));
 
   return (
-    <div className="container mx-auto mt-16 mb-8 text-center">
-      <h2 className="text-3xl font-semibold text-blue-600 mt-8 tracking-wide">
-        {title}
-      </h2>
-      <p className="max-w-full md:max-w-3xl mx-auto text-xl leading-7 text-gray-700 mt-4 font-[400]">
-        {description}
-      </p>
-      <div className="mt-12 flex flex-wrap justify-center">
-        {technologies.map((tech, index) => (
-          <div
-            key={index}
-            className="rounded-lg overflow-hidden shadow-lg m-4 w-[140px] h-[140px] p-4 flex flex-col items-center justify-center bg-[#ecf4ff]"
-          >
-            <div className="text-3xl mb-2 text-customColor">{tech.icon}</div>
-            <h4 className="text-lg font-medium text-customColor">
-              {tech.name}
-            </h4>
+    <section className="py-24 bg-white border-b border-slate-100">
+      <div className="container mx-auto px-4">
+        {/* Góra: Nagłówek w linii */}
+        <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-16 gap-6 border-b border-slate-100 pb-8">
+          <div className="text-left max-w-xl">
+            <h2 className="text-xs md:text-sm font-bold text-[#6e92f2] tracking-[0.2em] uppercase mb-2">
+              {title}
+            </h2>
+            <p className="text-2xl md:text-3xl font-bold text-slate-900 leading-tight">
+              {description}
+            </p>
           </div>
-        ))}
+          {/* Dekoracja po prawej */}
+        
+        </div>
+
+        {/* Dół: Horyzontalna wstęga kapsułek */}
+        <div className="flex flex-wrap justify-center md:justify-between items-center gap-y-6 gap-x-4">
+          {technologies.map((tech, index) => (
+            <div
+              key={index}
+              className="group flex items-center gap-3 px-4 py-3 bg-slate-50 border border-slate-100 rounded-lg hover:border-[#6e92f2] hover:bg-[#6e92f2] transition-all duration-300 cursor-default"
+            >
+              <span className="text-slate-400 group-hover:text-white transition-colors">
+                {tech.icon}
+              </span>
+              <span className="text-xs md:text-sm font-mono font-medium text-slate-600 group-hover:text-white">
+                {tech.name}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 

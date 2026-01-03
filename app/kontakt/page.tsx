@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Metadata } from "next";
 import { IoCallOutline, IoMailOutline } from "react-icons/io5";
-import { FaFacebookMessenger, FaInstagram , FaLinkedin } from "react-icons/fa";
-import { ContactForm } from "@/components/ContactForm";
+import { FaFacebookMessenger, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { ContactForm } from "@/components/ContactForm"; 
 import { query } from "@/ApolloClient";
 import { ContactQueryQuery, ContactQueryQueryVariables } from "@/gql/graphql";
 import GRAPHQL_QUERY from "@/gql-queries/contact_page.graphql";
@@ -70,70 +70,104 @@ const ContactPage = async () => {
   const contactMethods = page?.contact?.contactMethods || [];
   const additionalLinks = page?.contact?.iconsContact || [];
   const heroTitle = page?.contact?.hero?.title || "Kontakt";
-  const heroDescription = page?.contact?.hero?.descritpion || "abc";
+  const heroDescription = page?.contact?.hero?.descritpion || "Skontaktuj się z nami";
 
   return (
-    <section className="mt-16 lg:mt-20">
-      <div className="max-w-[90%] lg:max-w-[80%] mx-auto py-12">
-        <div className="cnt p-6 sm:p-10 rounded-lg grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-12 lg:gap-x-16 mb-24 bg-white shadow-lg">
-          <div className="w-full flex flex-col justify-center items-start text-center md:text-left ">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold font-sans mb-4 text-customColor leading-tight tracking-wide">
-              {heroTitle}
-            </h2>
-            <p className="text-base lg:text-lg mb-8 mt-4 leading-7 text-[#5b66a0]">
-              {heroDescription}
-            </p>
-            {contactMethods.length > 0 && (
-              <div className="flex flex-col  gap-1">
-                {contactMethods.map((item, index) => {
-                  const iconKey = item?.icon?.split(":")[0] ?? null;
-                  return (
-                    <Link
-                      key={index}
-                      href={item?.url || "#"}
-                      className="flex flex-col rounded-md border-transparent  group p-2  transition-all duration-300 hover:bg-[#e1e7ff] hover:border-[#3b46a8] hover:scale-105"
-                    >
-                      <div className=" text-left py-1 mb-2  transition-transform duration-300">
-                        <span className="text-customColor text-3xl md:text-2xl lg:text-2xl">
+    <section className="pt-32 pb-24 bg-white">
+      <div className="container mx-auto px-4 max-w-[1400px]">
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start">
+          
+          <div className="flex flex-col justify-center h-full space-y-12">
+            
+            <div>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 tracking-tight mb-6 leading-[0.95]">
+                {heroTitle}
+              </h1>
+              <p className="text-lg md:text-xl text-slate-500 leading-relaxed font-light max-w-lg">
+                {heroDescription}
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {contactMethods.map((item, index) => {
+                const iconKey = item?.icon?.split(":")[0] ?? null;
+                return (
+                  <Link
+                    key={index}
+                    href={item?.url || "#"}
+                    className="group flex items-center justify-between p-5 rounded-2xl border border-slate-100 hover:border-[#6e92f2]/30 hover:bg-[#6e92f2]/5 transition-all duration-300"
+                  >
+                    <div className="flex items-center gap-6">
+                      {/* Ikona w kółku */}
+                      <div className="w-14 h-14 rounded-full bg-blue-50 text-customColor flex items-center justify-center text-2xl group-hover:bg-[#6e92f2] group-hover:text-white transition-colors duration-300 shadow-sm">
+                        {iconKey && getIconByString(iconKey)}
+                      </div>
+                      
+                      <div className="flex flex-col">
+                        <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">
+                          {item?.titleTwo || "Typ"}
+                        </span>
+                        <span className="text-lg font-bold text-slate-900 group-hover:text-customColor transition-colors">
+                          {item?.title || "Wartość"}
+                        </span>
+                      </div>
+                    </div>
+                    
+                    <span className="text-slate-300 group-hover:text-customColor transition-transform duration-300 group-hover:translate-x-1">
+                      &rarr;
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+
+            {additionalLinks.length > 0 && (
+              <div className="pt-8 border-t border-slate-100">
+                <span className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-5">
+                  Znajdź mnie
+                </span>
+                <div className="flex gap-4">
+                  {additionalLinks.map((item, index) => {
+                    const iconKey = item?.icon?.split(":")[0] ?? null;
+                    return (
+                      <Link
+                        key={index}
+                        href={item?.url || "#"}
+                        className="w-12 h-12 rounded-full border border-slate-200 text-customColor flex items-center justify-center hover:bg-customColor hover:text-white hover:shadow-lg hover:shadow-[#6e92f2]/40 hover:-translate-y-1 transition-all duration-300"
+                      >
+                        <span className="text-xl">
                           {iconKey && getIconByString(iconKey)}
                         </span>
-                      </div>
-                      <span className="text-[#3b46a8] font-[400] font-source text-left text-base md:text-sm lg:text-base">
-                        {item?.titleTwo}
-                      </span>
-                      <div className="text-left mt-1">
-                        <span className="text-gray-500 text-lg md:text-base lg:text-lg font-normal transition-all duration-200 ">
-                          {item?.title || "ABC"}
-                        </span>
-                      </div>
-                    </Link>
-                  );
-                })}
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
             )}
 
-            {additionalLinks.length > 0 && (
-              <div className="mt-6 flex gap-x-4 mx-auto md:mx-0">
-                {additionalLinks.map((item, index) => {
-                  const iconKey = item?.icon?.split(":")[0] ?? null;
-                  return (
-                    <div
-                      key={index}
-                      className="border p-3 rounded-xl transition-all hover:border-[#3b46a8]"
-                    >
-                      <Link
-                        href={item?.url || "#"}
-                        className="text-3xl text-customColor hover:scale-110 transition-all duration-400"
-                      >
-                        {iconKey && getIconByString(iconKey)}
-                      </Link>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
           </div>
-          <ContactForm />
+
+          <div className="relative">
+            <div className="sticky top-8">
+               <div className="bg-slate-50 p-8 md:p-12 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50">
+                
+                <div className="mb-8 pb-8 border-b border-slate-200/60">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                    Napisz do mnie
+                  </h3>
+                  <p className="text-sm text-slate-500">
+                    Odpowiadam zazwyczaj w ciągu 24h.
+                  </p>
+                </div>
+
+    
+                <ContactForm />
+              
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

@@ -1,28 +1,43 @@
 import Link from "next/link";
 import React from "react";
 import { GoArrowUpRight } from "react-icons/go";
+
 type CustomButtonProps = {
   text: string;
   link: string;
-  bgColor: string;
-  textColor: string;
+  bgColor?: string; // Opcjonalny, jeśli nie podasz, domyślny będzie niebieski
+  textColor?: string; // Opcjonalny, domyślnie biały
+  fullWidth?: boolean; // Opcjonalny, czy na całą szerokość
+  extraClass?: string; // Dodatkowe klasy Tailwind
 };
 
-const CustomButton = (props: CustomButtonProps) => {
-  const { text, link, bgColor, textColor } = props;
-
+const CustomButton = ({
+  text,
+  link,
+  bgColor = "bg-[#6e92f2]",
+  textColor = "text-white",
+  fullWidth = false,
+  extraClass = "",
+}: CustomButtonProps) => {
   return (
-    <Link href={link} passHref>
+    <Link href={link} passHref legacyBehavior={false}>
       <button
-        style={{color: textColor }}
-        className="mt-2 px-4 py-4 lg:px-6 lg:py-4 h-13 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 hover:text-customColor hover:scale-105 transition-all duration-200 relative"
+        className={`
+          relative inline-flex items-center justify-center gap-2
+          px-8 py-4 lg:px-10 lg:py-5 
+          rounded-lg font-bold text-sm md:text-base lg:text-lg
+          transition-all duration-300
+          active:scale-95 hover:scale-[1.02]
+          shadow-[0_4px_14px_rgba(110,146,242,0.4)] hover:shadow-[0_6px_20px_rgba(110,146,242,0.6)]
+          ${bgColor} ${textColor} ${fullWidth ? "w-full" : ""} ${extraClass}
+        `}
       >
-        <span className="flex items-center justify-center">
-          <span className="text-[0.80rem] md:[0.85rem] xl:text-[1rem] font-bold mr-2">
-            {text}
-          </span>
-          <GoArrowUpRight className="text-lg sm:text-lg md:text-xl" />{" "}
-        </span>
+        <span>{text}</span>
+        
+        {/* Strzałka z animacją przesunięcia przy hover */}
+        <GoArrowUpRight 
+          className="text-lg md:text-xl transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" 
+        />
       </button>
     </Link>
   );
