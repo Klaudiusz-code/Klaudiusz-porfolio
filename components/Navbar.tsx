@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { IoIosMenu, IoIosArrowForward } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
-import { FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const Navbar = ({ data }: any) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -77,15 +77,15 @@ const Navbar = ({ data }: any) => {
             <div className="flex items-center gap-5 border-l border-slate-200 pl-8">
               <a
                 className="text-slate-400 hover:text-slate-900 transition-colors"
-                href="#"
+                href="https://www.instagram.com/klaudiuszdev.pl/"
               >
                 <FaInstagram />
               </a>
               <a
                 className="text-slate-400 hover:text-slate-900 transition-colors"
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61586322127679"
               >
-                <FaLinkedin />
+                <FaFacebook />
               </a>
             </div>
 

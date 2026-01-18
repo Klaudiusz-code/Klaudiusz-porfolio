@@ -68,6 +68,12 @@ const ProjectsPage = async () => {
       imageUrl: "/lavatoforkdev.jpg",
       link: "https://www.lavato.eu/",
     },
+    {
+      id: 3,
+      title: "Sprawdź Online",
+      imageUrl: "/instogrod.jpg",
+      link: "https://www.ogrodzagrosze.pl/",
+    },
   ];
 
   return (
