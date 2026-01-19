@@ -124,11 +124,7 @@ const HomePage = async () => {
         description={websiteprocces?.description || ""}
         items={websiteprocces?.itemsBlock as any[]}
       />
-      <ToolsSection
-        title={tools?.title || ""}
-        description={tools?.description || ""}
-        charts={tools?.charts as any[]}
-      />
+      <ToolsSection />
       <CTA />
       <EncouragingSection
         title={whyme?.title || ""}
