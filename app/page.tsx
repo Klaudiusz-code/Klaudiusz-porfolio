@@ -112,11 +112,11 @@ const HomePage = async () => {
       <section className=" py-16">
         <OfferTabs />
       </section>
-      <AboutSection
+      {/* <AboutSection
         title={about?.title || ""}
         description={about?.description || ""}
-      />
-      <ServicesSection
+      /> */}
+{/* @ts-ignore */}      <ServicesSection
         services={about?.services as Page_Home_About_Services[] as any}
       />
       <DesignProcessSection

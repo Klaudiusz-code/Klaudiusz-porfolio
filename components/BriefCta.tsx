@@ -96,7 +96,7 @@ const CTA = () => {
               <div className="flex justify-center">
                 <Link
                   href="/formularz-briefu"
-                  className="group relative w-full md:w-auto px-10 py-6 bg-white text-slate-900 font-black text-xl uppercase tracking-wider rounded-xl hover:scale-105 transition-all duration-300 shadow-[0_10px_40px_-10px_rgba(255,255,255,0.3)] hover:shadow-[0_20px_50px_-12px_rgba(59,130,246,0.6)] flex items-center justify-center gap-3"
+                  className="group relative w-full md:w-auto px-10 py-6 bg-white text-slate-900 font-black text-[14px] md:text-xl uppercase tracking-wider rounded-xl hover:scale-105 transition-all duration-300 shadow-[0_10px_40px_-10px_rgba(255,255,255,0.3)] hover:shadow-[0_20px_50px_-12px_rgba(59,130,246,0.6)] flex items-center justify-center gap-3"
                 >
                   <FaGift className="text-blue-600" />
                   Chcę Darmowy Podgląd
