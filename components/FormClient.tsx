@@ -1,55 +1,62 @@
 "use client";
 
 import React, { useState, ChangeEvent } from "react";
-import { FaFacebookMessenger, FaRocket } from "react-icons/fa";
+import {
+  FaFacebookMessenger,
+  FaCheck,
+  FaRegLightbulb,
+  FaRocket,
+  FaPlus,
+} from "react-icons/fa";
 import {
   RiFilePaper2Line,
   RiBuilding4Line,
   RiPhoneLine,
   RiWhatsappLine,
   RiMailSendLine,
-  RiCheckLine,
   RiPaletteLine,
-  RiLightbulbLine,
-  RiServerLine,
   RiArrowRightLine,
+  RiShoppingBag2Line,
+  RiLayoutMasonryLine,
+  RiUserVoiceLine,
+  RiCheckboxCircleFill,
 } from "react-icons/ri";
 
 type FormData = {
-  company_name: string;
-  email: string;
-  project_type: string;
-  description: string;
-  who_calls: string;
-  unique_value: string;
-  contact_method: string;
-  contact_details: string;
-  situation: string;
-  logo: string;
-  photos: string;
-  color_palette: string;
-  custom_color_idea: string;
-  tone: string;
-  domain_status: string;
+  "Nazwa firmy": string;
+  "Adres e-mail": string;
+  "Rodzaj projektu": string;
+  "Opis działalności": string;
+  "Grupa docelowa": string;
+  "Unikalna przewaga": string;
+  "Preferowany kontakt": string;
+  "Szczegóły kontaktu": string;
+  "Obecna sytuacja": string;
+  "Status loga": string;
+  "Status zdjęć": string;
+  "Paleta kolorów": string;
+  "Własny pomysł na kolory": string;
+  "Atmosfera strony": string;
+  "Domena i hosting": string;
 };
 
 const FormClient = () => {
   const [formData, setFormData] = useState<FormData>({
-    company_name: "",
-    email: "",
-    project_type: "",
-    description: "",
-    who_calls: "",
-    unique_value: "",
-    contact_method: "",
-    contact_details: "",
-    situation: "",
-    logo: "",
-    photos: "",
-    color_palette: "",
-    custom_color_idea: "",
-    tone: "",
-    domain_status: "",
+    "Nazwa firmy": "",
+    "Adres e-mail": "",
+    "Rodzaj projektu": "",
+    "Opis działalności": "",
+    "Grupa docelowa": "",
+    "Unikalna przewaga": "",
+    "Preferowany kontakt": "",
+    "Szczegóły kontaktu": "",
+    "Obecna sytuacja": "",
+    "Status loga": "",
+    "Status zdjęć": "",
+    "Paleta kolorów": "",
+    "Własny pomysł na kolory": "",
+    "Atmosfera strony": "",
+    "Domena i hosting": "",
   });
 
   const handleChange = (
@@ -68,694 +75,696 @@ const FormClient = () => {
     {
       value: "Biznesowy (Niebieski)",
       label: "Biznesowy",
-      class: "bg-blue-500",
-      ring: "ring-blue-500",
+      color: "bg-blue-600",
+      ring: "ring-blue-600",
     },
     {
       value: "Energiczny (Pomarańczowy)",
       label: "Energiczny",
-      class: "bg-orange-500",
+      color: "bg-orange-500",
       ring: "ring-orange-500",
     },
     {
       value: "Naturalny (Zielony)",
       label: "Naturalny",
-      class: "bg-green-500",
-      ring: "ring-green-500",
+      color: "bg-emerald-500",
+      ring: "ring-emerald-500",
     },
     {
       value: "Elegancki (Ciemny)",
       label: "Elegancki",
-      class: "bg-gray-900",
-      ring: "ring-gray-900",
+      color: "bg-slate-800",
+      ring: "ring-slate-800",
     },
     {
       value: "Kreatywny (Różowy)",
       label: "Kreatywny",
-      class: "bg-pink-500",
+      color: "bg-pink-500",
       ring: "ring-pink-500",
     },
     {
       value: "Mój pomysł",
-      label: "Mój pomysł",
-      class: "bg-gradient-to-br from-gray-200 to-gray-400",
-      ring: "ring-gray-500",
+      label: "Własny",
+      color: "bg-gradient-to-br from-slate-100 to-slate-200",
+      ring: "ring-slate-400",
       isCustom: true,
+      isDashed: true,
     },
   ];
 
   return (
-    <form
-      action="https://formspree.io/f/mjknqvgw"
-      method="POST"
-      className="space-y-8 max-w-6xl mx-auto pb-20"
-    >
+    <div className="min-h-screen  text-slate-800 font-sans selection:bg-blue-100 selection:text-blue-900">
+      <div className="fixed top-0 left-0 w-full h-[500px] bg-gradient-to-b from-blue-50/50 to-transparent -z-10 pointer-events-none"></div>
 
-
-      {/* Sekcja 1: Dane kontaktowe */}
-      <div className="bg-white/80 backdrop-blur-sm p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] shadow-xl shadow-gray-200/50 border border-gray-100/80 space-y-6 md:space-y-8 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>
-        <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>
-
-        <div className="relative z-10 flex items-center space-x-3 mb-2">
-          <span className="bg-blue-600 text-white p-2 md:p-2.5 rounded-xl md:rounded-2xl shadow-lg shadow-blue-500/20">
-            <RiFilePaper2Line />
-          </span>
-          <div>
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900">
-              1. Dane kontaktowe
-            </h3>
-            <p className="text-xs md:text-sm text-gray-500 font-medium">
-              Bez tajemnic.
-            </p>
+      <form
+        action="https://formspree.io/f/mjknqvgw"
+        method="POST"
+        className="max-w-5xl mx-auto px-4 py-12 md:py-20 space-y-14"
+      >
+        <div className="space-y-6">
+          <div className="flex items-center gap-4 mb-2">
+            <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-blue-600 text-white font-bold shadow-lg shadow-blue-500/30">
+              1
+            </span>
+            <h2 className="text-2xl font-bold text-slate-900">
+              Podstawowe informacje
+            </h2>
           </div>
-        </div>
 
-        <div className="relative z-10 grid md:grid-cols-2 gap-6 md:gap-8">
-          <div className="space-y-2">
-            <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">
-              Nazwa firmy
-            </label>
-            <input
-              type="text"
-              name="company_name"
-              value={formData.company_name}
-              onChange={handleChange}
-              placeholder="np. Studio Design, Pizzeria Italia"
-              required
-              className="w-full rounded-2xl border border-gray-200 bg-white px-6 md:px-8 py-4 md:py-5 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-bold text-base md:text-lg placeholder:text-gray-300 shadow-sm"
-            />
-          </div>
-          <div className="space-y-2">
-            <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">
-              Twój e-mail
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="kontakt@firma.pl"
-              required
-              className="w-full rounded-2xl border border-gray-200 bg-white px-6 md:px-8 py-4 md:py-5 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-bold text-base md:text-lg placeholder:text-gray-300 shadow-sm"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Sekcja 2: Struktura strony */}
-      <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-        <div className="md:col-span-2 bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] shadow-xl shadow-gray-200/50 border border-gray-100/80 space-y-6 md:space-y-8">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center space-x-3">
-              <span className="bg-purple-600 text-white p-2 md:p-2.5 rounded-xl md:rounded-2xl shadow-lg shadow-purple-500/20">
-                <RiBuilding4Line />
-              </span>
-              <div>
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900">
-                  2. Struktura strony
-                </h3>
-                <p className="text-xs md:text-sm text-gray-500 font-medium">
-                  Jaka skala?
-                </p>
+          <div className="bg-white rounded-3xl p-8 md:p-10 shadow-xl shadow-slate-200/60 border border-slate-100">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="space-y-2 group">
+                <label className="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1 block">
+                  Nazwa Firmy
+                </label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    name="Nazwa firmy"
+                    value={formData["Nazwa firmy"]}
+                    onChange={handleChange}
+                    placeholder="np. Restauracja 'Pod Klonem'"
+                    required
+                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-6 py-5 text-slate-800 font-medium placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:bg-white transition-all duration-300 shadow-inner"
+                  />
+                  <RiBuilding4Line className="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-blue-500 transition-colors text-xl" />
+                </div>
+              </div>
+              <div className="space-y-2 group">
+                <label className="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1 block">
+                  Twój e-mail
+                </label>
+                <div className="relative">
+                  <input
+                    type="email"
+                    name="Adres e-mail"
+                    value={formData["Adres e-mail"]}
+                    onChange={handleChange}
+                    placeholder="kontakt@firma.pl"
+                    required
+                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-6 py-5 text-slate-800 font-medium placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:bg-white transition-all duration-300 shadow-inner"
+                  />
+                  <RiMailSendLine className="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-blue-500 transition-colors text-xl" />
+                </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+        <div className="space-y-6">
+          <div className="flex items-center gap-4 mb-2">
+            <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-purple-600 text-white font-bold shadow-lg shadow-purple-500/30">
+              2
+            </span>
+            <h2 className="text-2xl font-bold text-slate-900">
+              Jaki rodzaj strony Cię interesuje?
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 gap-5">
             <label
-              className={`cursor-pointer relative rounded-2xl md:rounded-3xl border-2 p-6 md:p-8 flex flex-col h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${
-                formData.project_type === "Szybka wizytówka"
-                  ? "border-blue-500 bg-blue-50/30 ring-4 ring-blue-500/10 shadow-xl shadow-blue-500/10"
-                  : "border-gray-100 bg-white hover:border-gray-200"
+              className={`group relative cursor-pointer rounded-3xl border-2 p-1 transition-all duration-300 hover:shadow-xl ${
+                formData["Rodzaj projektu"] === "Szybka wizytówka"
+                  ? "border-blue-500 bg-blue-50/40 shadow-[0_0_0_4px_rgba(37,99,235,0.1)]"
+                  : "border-slate-200 bg-white hover:border-blue-200"
               }`}
             >
-              <input
-                type="radio"
-                name="project_type"
-                value="Szybka wizytówka"
-                onChange={handleRadioChange}
-                className="sr-only"
-                checked={formData.project_type === "Szybka wizytówka"}
-              />
-              <div
-                className={`w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 transition-colors ${
-                  formData.project_type === "Szybka wizytówka"
-                    ? "bg-blue-500 text-white shadow-lg shadow-blue-500/40"
-                    : "bg-gray-50 text-gray-400 border border-gray-100"
-                }`}
-              >
-                <RiFilePaper2Line />
+              <div className="bg-white/50 backdrop-blur-sm rounded-[1.6rem] p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-10">
+                <input
+                  type="radio"
+                  name="Rodzaj projektu"
+                  value="Szybka wizytówka"
+                  onChange={handleRadioChange}
+                  className="sr-only"
+                  checked={formData["Rodzaj projektu"] === "Szybka wizytówka"}
+                />
+
+                <div
+                  className={`shrink-0 w-20 h-20 md:w-24 md:h-24 rounded-3xl flex items-center justify-center text-4xl transition-all duration-300 ${
+                    formData["Rodzaj projektu"] === "Szybka wizytówka"
+                      ? "bg-blue-600 text-white shadow-xl shadow-blue-500/30 scale-100"
+                      : "bg-slate-100 text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-500 scale-95 group-hover:scale-100"
+                  }`}
+                >
+                  <RiFilePaper2Line />
+                </div>
+
+                <div className="flex-1">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-xl md:text-2xl font-bold text-slate-900">
+                      Szybka Wizytówka
+                    </h3>
+                    <div
+                      className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+                        formData["Rodzaj projektu"] === "Szybka wizytówka"
+                          ? "bg-blue-600 text-white"
+                          : "bg-slate-100"
+                      }`}
+                    >
+                      <FaCheck className="text-sm opacity-0 group-hover:opacity-50 transition-opacity" />
+                      {formData["Rodzaj projektu"] === "Szybka wizytówka" && (
+                        <FaCheck className="text-sm text-white opacity-100" />
+                      )}
+                    </div>
+                  </div>
+                  <p className="text-slate-500 mb-4 leading-relaxed">
+                    Idealna dla małych usług i lokalnych firm. Wszystkie
+                    najważniejsze informacje na jednej stronie, bez zbędnego
+                    klikania.
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-slate-600">
+                    <div className="flex items-center gap-2">
+                      <RiCheckboxCircleFill className="text-blue-200" /> Szybkie
+                      ładowanie
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <RiCheckboxCircleFill className="text-blue-200" /> Idealna
+                      na mobile
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <RiCheckboxCircleFill className="text-blue-200" />{" "}
+                      Wizytówka + Kontakt
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <RiCheckboxCircleFill className="text-blue-200" /> Mapa
+                      dojazdu
+                    </div>
+                  </div>
+                </div>
               </div>
-              <span className="font-bold text-gray-900 text-lg md:text-xl mb-2">
-                Szybka wizytówka
-              </span>
-              <span className="text-sm text-gray-500 leading-relaxed">
-                Kompaktowa strona &quot;One Page&quot;. Wystarczy, żeby pokazać
-                ofertę, realizacje i numer telefonu.
-              </span>
             </label>
 
             <label
-              className={`cursor-pointer relative rounded-2xl md:rounded-3xl border-2 p-6 md:p-8 flex flex-col h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${
-                formData.project_type === "Pełna strona firmowa"
-                  ? "border-purple-500 bg-purple-50/30 ring-4 ring-purple-500/10 shadow-xl shadow-purple-500/10"
-                  : "border-gray-100 bg-white hover:border-gray-200"
+              className={`group relative cursor-pointer rounded-3xl border-2 p-1 transition-all duration-300 hover:shadow-xl ${
+                formData["Rodzaj projektu"] === "Pełna strona firmowa"
+                  ? "border-purple-500 bg-purple-50/40 shadow-[0_0_0_4px_rgba(147,51,234,0.1)]"
+                  : "border-slate-200 bg-white hover:border-purple-200"
               }`}
             >
-              <input
-                type="radio"
-                name="project_type"
-                value="Pełna strona firmowa"
-                onChange={handleRadioChange}
-                className="sr-only"
-                checked={formData.project_type === "Pełna strona firmowa"}
-              />
-              <div
-                className={`w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 transition-colors ${
-                  formData.project_type === "Pełna strona firmowa"
-                    ? "bg-purple-600 text-white shadow-lg shadow-purple-500/40"
-                    : "bg-gray-50 text-gray-400 border border-gray-100"
-                }`}
-              >
-                <RiBuilding4Line />
+              <div className="bg-white/50 backdrop-blur-sm rounded-[1.6rem] p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-10">
+                <input
+                  type="radio"
+                  name="Rodzaj projektu"
+                  value="Pełna strona firmowa"
+                  onChange={handleRadioChange}
+                  className="sr-only"
+                  checked={
+                    formData["Rodzaj projektu"] === "Pełna strona firmowa"
+                  }
+                />
+
+                <div
+                  className={`shrink-0 w-20 h-20 md:w-24 md:h-24 rounded-3xl flex items-center justify-center text-4xl transition-all duration-300 ${
+                    formData["Rodzaj projektu"] === "Pełna strona firmowa"
+                      ? "bg-purple-600 text-white shadow-xl shadow-purple-500/30 scale-100"
+                      : "bg-slate-100 text-slate-400 group-hover:bg-purple-50 group-hover:text-purple-500 scale-95 group-hover:scale-100"
+                  }`}
+                >
+                  <RiBuilding4Line />
+                </div>
+
+                <div className="flex-1">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-xl md:text-2xl font-bold text-slate-900">
+                      Strona Firmowa
+                    </h3>
+                    <div
+                      className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+                        formData["Rodzaj projektu"] === "Pełna strona firmowa"
+                          ? "bg-purple-600 text-white"
+                          : "bg-slate-100"
+                      }`}
+                    >
+                      <FaCheck className="text-sm opacity-0 group-hover:opacity-50 transition-opacity" />
+                      {formData["Rodzaj projektu"] ===
+                        "Pełna strona firmowa" && (
+                        <FaCheck className="text-sm text-white opacity-100" />
+                      )}
+                    </div>
+                  </div>
+                  <p className="text-slate-500 mb-4 leading-relaxed">
+                    Dla firm, które chcą budować markę i autorytet. Rozbudowana
+                    struktura z pełną ofertą.
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-slate-600">
+                    <div className="flex items-center gap-2">
+                      <RiCheckboxCircleFill className="text-purple-200" />{" "}
+                      Osobne podstrony
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <RiCheckboxCircleFill className="text-purple-200" />{" "}
+                      Galeria realizacji
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <RiCheckboxCircleFill className="text-purple-200" />{" "}
+                      Sekcja "O nas"
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <RiCheckboxCircleFill className="text-purple-200" />{" "}
+                      Cennik usług
+                    </div>
+                  </div>
+                </div>
               </div>
-              <span className="font-bold text-gray-900 text-lg md:text-xl mb-2">
-                Pełna strona firmowa
-              </span>
-              <span className="text-sm text-gray-500 leading-relaxed">
-                Rozbudowana strona z menu, zakładkami &quot;O nas&quot;,
-                &quot;Galeria&quot; i &quot;Cennik&quot;. Buduje dużą
-                wiarygodność.
-              </span>
+            </label>
+
+            <label
+              className={`group relative cursor-pointer rounded-3xl border-2 p-1 transition-all duration-300 hover:shadow-xl ${
+                formData["Rodzaj projektu"] === "Sklep internetowy"
+                  ? "border-emerald-500 bg-emerald-50/40 shadow-[0_0_0_4px_rgba(16,185,129,0.1)]"
+                  : "border-slate-200 bg-white hover:border-emerald-200"
+              }`}
+            >
+              <div className="bg-white/50 backdrop-blur-sm rounded-[1.6rem] p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-10">
+                <input
+                  type="radio"
+                  name="Rodzaj projektu"
+                  value="Sklep internetowy"
+                  onChange={handleRadioChange}
+                  className="sr-only"
+                  checked={formData["Rodzaj projektu"] === "Sklep internetowy"}
+                />
+
+                <div
+                  className={`shrink-0 w-20 h-20 md:w-24 md:h-24 rounded-3xl flex items-center justify-center text-4xl transition-all duration-300 ${
+                    formData["Rodzaj projektu"] === "Sklep internetowy"
+                      ? "bg-emerald-500 text-white shadow-xl shadow-emerald-500/30 scale-100"
+                      : "bg-slate-100 text-slate-400 group-hover:bg-emerald-50 group-hover:text-emerald-500 scale-95 group-hover:scale-100"
+                  }`}
+                >
+                  <RiShoppingBag2Line />
+                </div>
+
+                <div className="flex-1">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-xl md:text-2xl font-bold text-slate-900">
+                      Sklep Internetowy
+                    </h3>
+                    <div
+                      className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+                        formData["Rodzaj projektu"] === "Sklep internetowy"
+                          ? "bg-emerald-500 text-white"
+                          : "bg-slate-100"
+                      }`}
+                    >
+                      <FaCheck className="text-sm opacity-0 group-hover:opacity-50 transition-opacity" />
+                      {formData["Rodzaj projektu"] === "Sklep internetowy" && (
+                        <FaCheck className="text-sm text-white opacity-100" />
+                      )}
+                    </div>
+                  </div>
+                  <p className="text-slate-500 mb-4 leading-relaxed">
+                    Do sprzedaży produktów online 24/7. Gotowy na przyjmowanie
+                    zamówień i płatności.
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-slate-600">
+                    <div className="flex items-center gap-2">
+                      <RiCheckboxCircleFill className="text-emerald-200" />{" "}
+                      Panel produktów
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <RiCheckboxCircleFill className="text-emerald-200" />{" "}
+                      Koszyk zakupowy
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <RiCheckboxCircleFill className="text-emerald-200" />{" "}
+                      Płatności (BLIK/Karta)
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <RiCheckboxCircleFill className="text-emerald-200" />{" "}
+                      Statusy zamówień
+                    </div>
+                  </div>
+                </div>
+              </div>
             </label>
           </div>
         </div>
 
-        {/* Sidebar: Sytuacja */}
-        <div className="bg-gray-900 text-white p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] shadow-2xl shadow-gray-900/40 space-y-6 md:space-y-8 flex flex-col justify-between relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-24 h-24 bg-white opacity-5 rounded-full blur-2xl"></div>
+        <div className="space-y-6">
+          <div className="flex items-center gap-4 mb-2">
+            <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-orange-500 text-white font-bold shadow-lg shadow-orange-500/30">
+              3
+            </span>
+            <h2 className="text-2xl font-bold text-slate-900">
+              Szczegóły i styl
+            </h2>
+          </div>
 
-          <div className="relative z-10">
-            <div className="flex items-center space-x-2 text-blue-400 mb-4 md:mb-6">
-              <FaRocket className="text-xl md:text-2xl" />
-              <h3 className="text-base md:text-lg font-bold uppercase tracking-wide">
-                Twoja sytuacja
+          <div className="bg-white rounded-3xl p-8 md:p-10 shadow-xl shadow-slate-200/60 border border-slate-100 space-y-10">
+            <div>
+              <h3 className="text-lg font-bold text-slate-900 mb-4">
+                Gdzie teraz jesteś?
               </h3>
-            </div>
-            <p className="text-gray-400 text-xs md:text-sm mb-4 md:mb-6 leading-relaxed">
-              W jakim punkcie jesteśmy teraz?
-            </p>
-
-            <div className="space-y-3 md:space-y-4">
-              <label
-                className={`flex items-start p-3 md:p-4 rounded-xl md:rounded-2xl border transition-all cursor-pointer hover:bg-gray-800 ${
-                  formData.situation === "Start od zera"
-                    ? "bg-blue-600 border-blue-500 shadow-lg shadow-blue-900/40 ring-1 ring-blue-400"
-                    : "bg-gray-800/50 border-gray-700"
-                }`}
-              >
-                <input
-                  type="radio"
-                  name="situation"
-                  value="Start od zera"
-                  onChange={handleRadioChange}
-                  className="sr-only"
-                />
-                <div
-                  className={`mr-3 md:mr-4 mt-1 w-4 h-4 rounded-full border flex items-center justify-center ${
-                    formData.situation === "Start od zera"
-                      ? "border-white"
-                      : "border-gray-500"
-                  }`}
-                >
-                  {formData.situation === "Start od zera" && (
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                  )}
-                </div>
-                <div>
-                  <span className="block font-bold text-xs md:text-sm">
-                    Start od zera
-                  </span>
-                  <span className="text-xs text-gray-400 block mt-1 leading-relaxed">
-                    Nie mam żadnej strony, zaczynamy na czysto.
-                  </span>
-                </div>
-              </label>
-
-              <label
-                className={`flex items-start p-3 md:p-4 rounded-xl md:rounded-2xl border transition-all cursor-pointer hover:bg-gray-800 ${
-                  formData.situation === "Remont obecnej"
-                    ? "bg-purple-600 border-purple-500 shadow-lg shadow-purple-900/40 ring-1 ring-purple-400"
-                    : "bg-gray-800/50 border-gray-700"
-                }`}
-              >
-                <input
-                  type="radio"
-                  name="situation"
-                  value="Remont obecnej"
-                  onChange={handleRadioChange}
-                  className="sr-only"
-                />
-                <div
-                  className={`mr-3 md:mr-4 mt-1 w-4 h-4 rounded-full border flex items-center justify-center ${
-                    formData.situation === "Remont obecnej"
-                      ? "border-white"
-                      : "border-gray-500"
-                  }`}
-                >
-                  {formData.situation === "Remont obecnej" && (
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                  )}
-                </div>
-                <div>
-                  <span className="block font-bold text-xs md:text-sm">
-                    Remont obecnej
-                  </span>
-                  <span className="text-xs text-gray-400 block mt-1 leading-relaxed">
-                    Mam stronę, ale jest przestarzała i brzydka.
-                  </span>
-                </div>
-              </label>
-
-              <label
-                className={`flex items-start p-3 md:p-4 rounded-xl md:rounded-2xl border transition-all cursor-pointer hover:bg-gray-800 ${
-                  formData.situation === "Brak efektów"
-                    ? "bg-orange-600 border-orange-500 shadow-lg shadow-orange-900/40 ring-1 ring-orange-400"
-                    : "bg-gray-800/50 border-gray-700"
-                }`}
-              >
-                <input
-                  type="radio"
-                  name="situation"
-                  value="Brak efektów"
-                  onChange={handleRadioChange}
-                  className="sr-only"
-                />
-                <div
-                  className={`mr-3 md:mr-4 mt-1 w-4 h-4 rounded-full border flex items-center justify-center ${
-                    formData.situation === "Brak efektów"
-                      ? "border-white"
-                      : "border-gray-500"
-                  }`}
-                >
-                  {formData.situation === "Brak efektów" && (
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                  )}
-                </div>
-                <div>
-                  <span className="block font-bold text-xs md:text-sm">
-                    Brak efektów
-                  </span>
-                  <span className="text-xs text-gray-400 block mt-1 leading-relaxed">
-                    Mam stronę, ale nie przynosi nowych telefonów.
-                  </span>
-                </div>
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] shadow-xl shadow-gray-200/50 border border-gray-100/80 space-y-8 md:space-y-12">
-        <div className="grid md:grid-cols-2 gap-6 md:gap-12">
-          <div className="space-y-2">
-            <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">
-              Opis działalności
-            </label>
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              rows={5}
-              placeholder="Czym zajmuje się firma na co dzień?"
-              className="w-full rounded-2xl border border-gray-200 bg-gray-50/50 px-6 md:px-8 py-4 md:py-6 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-medium resize-none placeholder:text-gray-300 shadow-inner"
-            />
-          </div>
-          <div className="space-y-2">
-            <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">
-              Kto jest Twoim klientem?
-            </label>
-            <textarea
-              name="who_calls"
-              value={formData.who_calls}
-              onChange={handleChange}
-              rows={5}
-              placeholder="np. Młode rodziny, lokalne firmy..."
-              className="w-full rounded-2xl border border-gray-200 bg-gray-50/50 px-6 md:px-8 py-4 md:py-6 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all font-medium resize-none placeholder:text-gray-300 shadow-inner"
-            />
-          </div>
-        </div>
-
-        {/* X Factor */}
-        <div className="space-y-2">
-          <div className="flex items-center space-x-2">
-            <RiLightbulbLine className="text-yellow-500 text-xl" />
-            <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider">
-              Twoja przewaga (X-Factor)
-            </label>
-          </div>
-          <input
-            type="text"
-            name="unique_value"
-            value={formData.unique_value}
-            onChange={handleChange}
-            placeholder="Czym wyróżniasz się na tle konkurencji?"
-            className="w-full rounded-2xl border border-yellow-200 bg-yellow-50/50 px-6 md:px-8 py-4 md:py-6 focus:outline-none focus:ring-2 focus:ring-yellow-500/20 focus:border-yellow-500 transition-all font-medium placeholder:text-yellow-400/60 shadow-inner"
-          />
-        </div>
-
-        {/* Atmosfera - PL Values */}
-        <div className="space-y-4">
-          <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">
-            Atmosfera strony
-          </label>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
-            <label
-              className={`cursor-pointer border-2 rounded-2xl md:rounded-3xl p-4 md:p-6 text-center transition-all hover:-translate-y-1 ${
-                formData.tone === "Prestiż"
-                  ? "border-gray-900 bg-gray-900 text-white shadow-xl shadow-gray-900/20"
-                  : "border-gray-100 bg-white hover:border-gray-200"
-              }`}
-            >
-              <input
-                type="radio"
-                name="tone"
-                value="Prestiż"
-                onChange={handleRadioChange}
-                className="sr-only"
-                checked={formData.tone === "Prestiż"}
-              />
-              <span className="block text-2xl md:text-3xl mb-2 md:mb-3">
-                🎩
-              </span>
-              <span className="font-bold text-xs md:text-sm">Prestiż</span>
-              <span className="text-xs block mt-1 md:mt-2 opacity-70 leading-relaxed">
-                Elegancko, poważnie
-              </span>
-            </label>
-
-            <label
-              className={`cursor-pointer border-2 rounded-2xl md:rounded-3xl p-4 md:p-6 text-center transition-all hover:-translate-y-1 ${
-                formData.tone === "Zaufanie"
-                  ? "border-blue-600 bg-blue-600 text-white shadow-xl shadow-blue-600/20"
-                  : "border-gray-100 bg-white hover:border-gray-200"
-              }`}
-            >
-              <input
-                type="radio"
-                name="tone"
-                value="Zaufanie"
-                onChange={handleRadioChange}
-                className="sr-only"
-                checked={formData.tone === "Zaufanie"}
-              />
-              <span className="block text-2xl md:text-3xl mb-2 md:mb-3">
-                🤝
-              </span>
-              <span className="font-bold text-xs md:text-sm">Zaufanie</span>
-              <span className="text-xs block mt-1 md:mt-2 opacity-70 leading-relaxed">
-                Na luzie, po ludzku
-              </span>
-            </label>
-
-            <label
-              className={`cursor-pointer border-2 rounded-2xl md:rounded-3xl p-4 md:p-6 text-center transition-all hover:-translate-y-1 ${
-                formData.tone === "Nowoczesność"
-                  ? "border-orange-500 bg-orange-500 text-white shadow-xl shadow-orange-600/20"
-                  : "border-gray-100 bg-white hover:border-gray-200"
-              }`}
-            >
-              <input
-                type="radio"
-                name="tone"
-                value="Nowoczesność"
-                onChange={handleRadioChange}
-                className="sr-only"
-                checked={formData.tone === "Nowoczesność"}
-              />
-              <span className="block text-2xl md:text-3xl mb-2 md:mb-3">
-                ⚡
-              </span>
-              <span className="font-bold text-xs md:text-sm">Nowoczesność</span>
-              <span className="text-xs block mt-1 md:mt-2 opacity-70 leading-relaxed">
-                Odważnie, dynamicznie
-              </span>
-            </label>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] shadow-xl shadow-gray-200/50 border border-gray-100/80 space-y-6 md:space-y-8">
-        <div className="flex items-center space-x-3 mb-2">
-          <span className="bg-green-600 text-white p-2 md:p-2.5 rounded-xl md:rounded-2xl shadow-lg shadow-green-500/20">
-            <RiPhoneLine />
-          </span>
-          <div>
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900">
-              3. Komunikacja
-            </h3>
-            <p className="text-xs md:text-sm text-gray-500 font-medium">
-              Gdzie najwygodniej Ci pracować?
-            </p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-          <label
-            className={`cursor-pointer rounded-xl md:rounded-2xl border-2 p-3 md:p-5 flex flex-col items-center justify-center text-center transition-all hover:-translate-y-1 hover:shadow-lg ${
-              formData.contact_method === "Telefon"
-                ? "border-green-500 bg-green-50"
-                : "border-gray-100 bg-white"
-            }`}
-          >
-            <input
-              type="radio"
-              name="contact_method"
-              value="Telefon"
-              onChange={handleRadioChange}
-              className="sr-only"
-              checked={formData.contact_method === "Telefon"}
-            />
-            <RiPhoneLine className="text-2xl md:text-3xl mb-1 md:mb-2 text-gray-600" />
-            <span className="font-bold text-xs md:text-sm">Telefon</span>
-          </label>
-          <label
-            className={`cursor-pointer rounded-xl md:rounded-2xl border-2 p-3 md:p-5 flex flex-col items-center justify-center text-center transition-all hover:-translate-y-1 hover:shadow-lg ${
-              formData.contact_method === "WhatsApp"
-                ? "border-green-600 bg-green-50"
-                : "border-gray-100 bg-white"
-            }`}
-          >
-            <input
-              type="radio"
-              name="contact_method"
-              value="WhatsApp"
-              onChange={handleRadioChange}
-              className="sr-only"
-              checked={formData.contact_method === "WhatsApp"}
-            />
-            <RiWhatsappLine className="text-2xl md:text-3xl mb-1 md:mb-2 text-gray-600" />
-            <span className="font-bold text-xs md:text-sm">WhatsApp</span>
-          </label>
-          <label
-            className={`cursor-pointer rounded-xl md:rounded-2xl border-2 p-3 md:p-5 flex flex-col items-center justify-center text-center transition-all hover:-translate-y-1 hover:shadow-lg ${
-              formData.contact_method === "E-mail"
-                ? "border-blue-500 bg-blue-50"
-                : "border-gray-100 bg-white"
-            }`}
-          >
-            <input
-              type="radio"
-              name="contact_method"
-              value="E-mail"
-              onChange={handleRadioChange}
-              className="sr-only"
-              checked={formData.contact_method === "E-mail"}
-            />
-            <RiMailSendLine className="text-2xl md:text-3xl mb-1 md:mb-2 text-gray-600" />
-            <span className="font-bold text-xs md:text-sm">E-mail</span>
-          </label>
-          <label
-            className={`cursor-pointer rounded-xl md:rounded-2xl border-2 p-3 md:p-5 flex flex-col items-center justify-center text-center transition-all hover:-translate-y-1 hover:shadow-lg ${
-              formData.contact_method === "Messenger"
-                ? "border-indigo-500 bg-indigo-50"
-                : "border-gray-100 bg-white"
-            }`}
-          >
-            <input
-              type="radio"
-              name="contact_method"
-              value="Messenger"
-              onChange={handleRadioChange}
-              className="sr-only"
-              checked={formData.contact_method === "Messenger"}
-            />
-            <FaFacebookMessenger className="text-2xl md:text-3xl mb-1 md:mb-2 text-gray-600" />
-            <span className="font-bold text-xs md:text-sm">Messenger</span>
-          </label>
-        </div>
-
-        <input
-          type="text"
-          name="contact_details"
-          value={formData.contact_details}
-          onChange={handleChange}
-          placeholder="Dodatkowa uwaga do kontaktu (opcjonalne)..."
-          className="w-full rounded-xl md:rounded-2xl border border-gray-200 px-6 md:px-8 py-3 md:py-4 text-sm focus:outline-none focus:border-gray-400 bg-gray-50/50"
-        />
-      </div>
-
-      <div className="bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] shadow-xl shadow-gray-200/50 border border-gray-100/80 space-y-8 md:space-y-10">
-        <div className="flex items-center space-x-3 mb-2">
-          <span className="bg-pink-600 text-white p-2 md:p-2.5 rounded-xl md:rounded-2xl shadow-lg shadow-pink-500/20">
-            <RiPaletteLine />
-          </span>
-          <div>
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900">
-              4. Materiały i Technika
-            </h3>
-            <p className="text-xs md:text-sm text-gray-500 font-medium">
-              To, co masz na start.
-            </p>
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-          <div className="space-y-4 md:space-y-6">
-            <div className="space-y-2">
-              <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">
-                Domena / Hosting
-              </label>
-              <select
-                name="domain_status"
-                value={formData.domain_status}
-                onChange={handleChange}
-                className="w-full rounded-xl md:rounded-2xl border border-gray-200 bg-white px-6 md:px-6 py-3 md:py-4 focus:outline-none focus:ring-2 focus:ring-pink-500/20 focus:border-pink-500 transition-all font-bold text-gray-700 shadow-sm"
-              >
-                <option value="" disabled>
-                  Czy masz domenę / hosting?
-                </option>
-                <option value="Mam wszystko">Mam wszystko</option>
-                <option value="Mam domenę, brak hostingu">
-                  Mam domenę, brak hostingu
-                </option>
-                <option value="Nie mam nic, potrzebuję pomocy">
-                  Nie mam nic, potrzebuję pomocy
-                </option>
-              </select>
-            </div>
-            <div className="grid grid-cols-2 gap-3 md:gap-4">
-              <div className="space-y-2">
-                <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">
-                  Logo
-                </label>
-                <select
-                  name="logo"
-                  value={formData.logo}
-                  onChange={handleChange}
-                  className="w-full rounded-xl md:rounded-2xl border border-gray-200 bg-white px-3 md:px-4 py-3 md:py-4 focus:outline-none focus:ring-2 focus:ring-pink-500/20 focus:border-pink-500 transition-all font-bold text-gray-700 shadow-sm"
-                >
-                  <option value="" disabled>
-                    Logo
-                  </option>
-                  <option value="Mam logo">Mam logo</option>
-                  <option value="Wyślę później">Wyślę później</option>
-                  <option value="Nie mam, pomóż!">Nie mam, pomóż!</option>
-                </select>
-              </div>
-              <div className="space-y-2">
-                <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">
-                  Zdjęcia
-                </label>
-                <select
-                  name="photos"
-                  value={formData.photos}
-                  onChange={handleChange}
-                  className="w-full rounded-xl md:rounded-2xl border border-gray-200 bg-white px-3 md:px-4 py-3 md:py-4 focus:outline-none focus:ring-2 focus:ring-pink-500/20 focus:border-pink-500 transition-all font-bold text-gray-700 shadow-sm"
-                >
-                  <option value="" disabled>
-                    Zdjęcia
-                  </option>
-                  <option value="Mam własne">Mam własne</option>
-                  <option value="Brak zdjęć">Brak zdjęć</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          {/* Prawa: Kolory */}
-          <div className="space-y-4">
-            <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">
-              Klimat strony
-            </label>
-            <div className="flex flex-wrap gap-3 md:gap-5">
-              {palettes.map((p) => (
-                <label
-                  key={p.value}
-                  className="cursor-pointer flex flex-col items-center space-y-2 group"
-                >
-                  <div className="relative group-hover:scale-110 transition-transform duration-200">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {[
+                  {
+                    val: "Start od zera",
+                    desc: "Nie mam żadnej strony",
+                    icon: <FaRocket className="text-2xl" />,
+                  },
+                  {
+                    val: "Remont obecnej",
+                    desc: "Mam starą stronę do wymiany",
+                    icon: <FaRegLightbulb className="text-2xl" />,
+                  },
+                  {
+                    val: "Brak efektów",
+                    desc: "Mam stronę, ale nie działa",
+                    icon: <RiUserVoiceLine className="text-2xl" />,
+                  },
+                ].map((item) => (
+                  <label
+                    key={item.val}
+                    className={`cursor-pointer rounded-2xl border-2 p-6 flex flex-col items-center justify-center text-center transition-all duration-300 hover:shadow-lg ${
+                      formData["Obecna sytuacja"] === item.val
+                        ? "border-slate-900 bg-slate-900 text-white shadow-2xl shadow-slate-900/20"
+                        : "border-slate-100 bg-white hover:border-slate-300"
+                    }`}
+                  >
                     <input
                       type="radio"
-                      name="color_palette"
-                      value={p.value}
+                      name="Obecna sytuacja"
+                      value={item.val}
                       onChange={handleRadioChange}
                       className="sr-only"
-                      checked={formData.color_palette === p.value}
                     />
                     <div
-                      className={`w-10 h-10 md:w-14 md:h-14 rounded-full border-4 border-white shadow-lg transition-all ${
-                        formData.color_palette === p.value
-                          ? `ring-4 ${p.ring}/30 scale-110`
-                          : ""
-                      } ${p.class}`}
-                    ></div>
-                    {formData.color_palette === p.value && (
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <RiCheckLine
-                          className={`text-white drop-shadow-md text-lg md:text-2xl ${p.ring.replace(
-                            "ring",
-                            "text",
-                          )}`}
-                        />
-                      </div>
-                    )}
+                      className={`mb-3 transition-transform duration-300 ${
+                        formData["Obecna sytuacja"] === item.val
+                          ? "scale-110"
+                          : "scale-100"
+                      }`}
+                    >
+                      {formData["Obecna sytuacja"] === item.val ? (
+                        <span className="text-orange-400">{item.icon}</span>
+                      ) : (
+                        <span className="text-slate-400">{item.icon}</span>
+                      )}
+                    </div>
+                    <span className="font-bold text-base block mb-1">
+                      {item.val}
+                    </span>
+                    <span
+                      className={`text-xs font-medium ${
+                        formData["Obecna sytuacja"] === item.val
+                          ? "text-slate-300"
+                          : "text-slate-500"
+                      }`}
+                    >
+                      {item.desc}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            {/* Opisy */}
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1 block">
+                  Opis działalności
+                </label>
+                <textarea
+                  name="Opis działalności"
+                  value={formData["Opis działalności"]}
+                  onChange={handleChange}
+                  rows={3}
+                  placeholder="Czym zajmuje się firma na co dzień? Im więcej, tym lepiej."
+                  className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-6 py-4 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-slate-400 focus:bg-white transition-all resize-none"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1 block">
+                  Kto jest Twoim klientem?
+                </label>
+                <textarea
+                  name="Grupa docelowa"
+                  value={formData["Grupa docelowa"]}
+                  onChange={handleChange}
+                  rows={3}
+                  placeholder="Do kogo kierujesz ofertę? Kto kupuje najczęściej?"
+                  className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-6 py-4 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-slate-400 focus:bg-white transition-all resize-none"
+                />
+              </div>
+            </div>
+
+            {/* Atmosfera */}
+            <div className="pt-8 border-t border-slate-100">
+              <h3 className="text-lg font-bold text-slate-900 mb-4">
+                Jaka atmosfera?
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {[
+                  {
+                    val: "Prestiż",
+                    label: "Elegancko i poważnie",
+                    emoji: "🎩",
+                  },
+                  {
+                    val: "Zaufanie",
+                    label: "Przyjaznie i po ludzku",
+                    emoji: "🤝",
+                  },
+                  {
+                    val: "Nowoczesność",
+                    label: "Dynamicznie i odważnie",
+                    emoji: "⚡",
+                  },
+                ].map((item) => (
+                  <label
+                    key={item.val}
+                    className={`cursor-pointer rounded-2xl border-2 p-5 flex items-center gap-4 transition-all hover:shadow-md ${
+                      formData["Atmosfera strony"] === item.val
+                        ? "border-blue-500 bg-blue-50/30 shadow-md"
+                        : "border-slate-100 bg-white"
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="Atmosfera strony"
+                      value={item.val}
+                      onChange={handleRadioChange}
+                      className="sr-only"
+                    />
+                    <span className="text-3xl">{item.emoji}</span>
+                    <div>
+                      <span className="block font-bold text-slate-900">
+                        {item.val}
+                      </span>
+                      <span className="block text-xs text-slate-500">
+                        {item.label}
+                      </span>
+                    </div>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* SEKCJA 4: MATERIAŁY I KONTAKT */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Kontakt */}
+          <div className="bg-white rounded-3xl p-8 md:p-10 shadow-xl shadow-slate-200/60 border border-slate-100 space-y-8">
+            <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+              <RiPhoneLine className="text-blue-500" /> Kontakt
+            </h3>
+            <div className="grid grid-cols-2 gap-4">
+              {["Telefon", "WhatsApp", "E-mail", "Messenger"].map((method) => (
+                <label
+                  key={method}
+                  className={`cursor-pointer rounded-2xl border-2 p-5 flex flex-col items-center justify-center gap-2 transition-all duration-300 ${
+                    formData["Preferowany kontakt"] === method
+                      ? "border-blue-500 bg-blue-500 text-white shadow-lg scale-105"
+                      : "border-slate-100 bg-white hover:bg-slate-50 text-slate-500 hover:border-blue-200"
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    name="Preferowany kontakt"
+                    value={method}
+                    onChange={handleRadioChange}
+                    className="sr-only"
+                  />
+                  <div className="text-2xl">
+                    {method === "Telefon" && <RiPhoneLine />}
+                    {method === "WhatsApp" && <RiWhatsappLine />}
+                    {method === "E-mail" && <RiMailSendLine />}
+                    {method === "Messenger" && <FaFacebookMessenger />}
                   </div>
-                  <span className="text-[10px] md:text-xs font-bold text-gray-500 uppercase tracking-wide group-hover:text-gray-900 transition-colors">
-                    {p.label}
+                  <span className="text-xs font-bold uppercase tracking-wide">
+                    {method}
                   </span>
                 </label>
               ))}
             </div>
-            {formData.color_palette === "Mój pomysł" && (
+            <div className="space-y-2">
               <input
                 type="text"
-                name="custom_color_idea"
-                value={formData.custom_color_idea}
+                name="Szczegóły kontaktu"
+                value={formData["Szczegóły kontaktu"]}
                 onChange={handleChange}
-                placeholder="Np. Złoto na czarnym, Neon, Pastele..."
-                className="mt-4 w-full rounded-xl md:rounded-2xl border-dashed border-2 border-gray-300 px-4 md:px-6 py-3 text-sm focus:outline-none focus:border-pink-500 focus:bg-white transition-all font-medium"
+                placeholder="Nr telefonu lub inny szczegół..."
+                className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-blue-500 transition-all"
               />
-            )}
+            </div>
+          </div>
+
+          {/* Materiały + Paleta */}
+          <div className="bg-white rounded-3xl p-8 md:p-10 shadow-xl shadow-slate-200/60 border border-slate-100 space-y-8">
+            <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+              <RiPaletteLine className="text-purple-500" /> Materiały
+            </h3>
+
+            <div className="space-y-4">
+              <div>
+                <label className="text-xs font-bold text-slate-400 uppercase tracking-wider ml-1 block mb-2">
+                  Domena / Hosting
+                </label>
+                <select
+                  name="Domena i hosting"
+                  value={formData["Domena i hosting"]}
+                  onChange={handleChange}
+                  className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-6 py-4 text-slate-800 focus:outline-none focus:border-purple-500 appearance-none font-medium"
+                >
+                  <option value="" disabled>
+                    Wybierz opcję...
+                  </option>
+                  <option value="Mam wszystko">Mam domenę i hosting</option>
+                  <option value="Mam domenę, brak hostingu">
+                    Mam tylko domenę
+                  </option>
+                  <option value="Nie mam nic, potrzebuję pomocy">
+                    Nie mam nic
+                  </option>
+                </select>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="text-xs font-bold text-slate-400 uppercase tracking-wider ml-1 block mb-2">
+                    Logo
+                  </label>
+                  <select
+                    name="Status loga"
+                    value={formData["Status loga"]}
+                    onChange={handleChange}
+                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-6 py-4 text-slate-800 focus:outline-none focus:border-purple-500 appearance-none font-medium"
+                  >
+                    <option value="" disabled>
+                      Stan
+                    </option>
+                    <option value="Mam logo">Mam pliki</option>
+                    <option value="Nie mam, pomóż!">Projektujcie</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="text-xs font-bold text-slate-400 uppercase tracking-wider ml-1 block mb-2">
+                    Zdjęcia
+                  </label>
+                  <select
+                    name="Status zdjęć"
+                    value={formData["Status zdjęć"]}
+                    onChange={handleChange}
+                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-6 py-4 text-slate-800 focus:outline-none focus:border-purple-500 appearance-none font-medium"
+                  >
+                    <option value="" disabled>
+                      Stan
+                    </option>
+                    <option value="Mam własne">Mam własne</option>
+                    <option value="Brak zdjęć">Brak zdjęć</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            {/* PALETA KOLORÓW Z POPRAWKĄ */}
+            <div className="pt-6 border-t border-slate-100">
+              <label className="text-xs font-bold text-slate-400 uppercase tracking-wider ml-1 block mb-4">
+                Podstawowy kolor
+              </label>
+              <div className="flex justify-between items-center">
+                {palettes.map((p) => (
+                  <label
+                    key={p.value}
+                    className="relative cursor-pointer group"
+                  >
+                    <input
+                      type="radio"
+                      name="Paleta kolorów"
+                      value={p.value}
+                      onChange={handleRadioChange}
+                      className="sr-only"
+                    />
+                    <div
+                      className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 border-2 border-white shadow-sm 
+                      ${
+                        formData["Paleta kolorów"] === p.value
+                          ? `ring-4 ring-offset-2 ${p.ring}/20 scale-110 shadow-lg`
+                          : "group-hover:scale-105"
+                      }
+                      ${
+                        p.isDashed
+                          ? "border-2 border-dashed border-slate-400 bg-slate-50"
+                          : ""
+                      }
+                      ${!p.isDashed ? p.color : ""}
+                    `}
+                    >
+                      {p.isCustom && (
+                        <FaPlus
+                          className={`text-xl transition-colors ${
+                            formData["Paleta kolorów"] === p.value
+                              ? "text-slate-600"
+                              : "text-slate-400"
+                          }`}
+                        />
+                      )}
+
+                      {!p.isCustom &&
+                        formData["Paleta kolorów"] === p.value && (
+                          <FaCheck className="text-white text-sm drop-shadow-md" />
+                        )}
+                    </div>
+                  </label>
+                ))}
+              </div>
+              {formData["Paleta kolorów"] === "Mój pomysł" && (
+                <div className="mt-4 animate-in fade-in slide-in-from-top-2 duration-300">
+                  <input
+                    type="text"
+                    name="Własny pomysł na kolory"
+                    value={formData["Własny pomysł na kolory"]}
+                    onChange={handleChange}
+                    placeholder="np. Granatowy + Złoty akcent..."
+                    className="w-full bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl px-6 py-3 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-all"
+                  />
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="pt-8 md:pt-12">
-        <button
-          type="submit"
-          className="w-full py-5 md:py-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-lg md:text-xl font-bold rounded-2xl md:rounded-3xl shadow-2xl shadow-blue-600/40 transition-all transform hover:-translate-y-1 active:scale-95 flex items-center justify-center space-x-3 group"
-        >
-          <span>Wyślij zapytanie</span>
-          <RiArrowRightLine className="group-hover:translate-x-2 transition-transform text-xl md:text-2xl" />
-        </button>
-        <p className="text-sm text-center text-gray-400 mt-4 md:mt-6 max-w-lg mx-auto leading-relaxed px-4">
-          Przesłanie formularza nie zobowiązuje do niczego. Jest to pierwsze
-          spotkanie na drodze do Twojej nowej strony.
-        </p>
-      </div>
-    </form>
+        {/* FOOTER / CTA */}
+        <div className="pt-8 text-center">
+          <button
+            type="submit"
+            className="group relative w-full md:w-auto inline-flex items-center justify-center px-12 py-5 bg-slate-900 hover:bg-slate-800 text-white text-lg font-bold rounded-2xl shadow-xl shadow-slate-900/20 transition-all duration-300 transform hover:-translate-y-1 active:scale-95"
+          >
+            <span>Wyślij zapytanie</span>
+            <RiArrowRightLine className="ml-2 text-xl group-hover:translate-x-1 transition-transform" />
+          </button>
+          <p className="mt-6 text-slate-400 text-sm max-w-lg mx-auto">
+            Przesłanie formularza jest bezpieczne i niezobowiązujące. Odpiszemy
+            w ciągu 24h roboczych.
+          </p>
+        </div>
+      </form>
+    </div>
   );
 };
 
