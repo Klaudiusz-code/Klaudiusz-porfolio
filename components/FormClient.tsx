@@ -143,7 +143,7 @@ const FormClient = () => {
                     name="Nazwa firmy"
                     value={formData["Nazwa firmy"]}
                     onChange={handleChange}
-                    placeholder="np. Restauracja 'Pod Klonem'"
+                    placeholder="np. Restauracja Pod Klonem"
                     required
                     className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl px-6 py-5 text-slate-800 font-medium placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:bg-white transition-all duration-300 shadow-inner"
                   />
@@ -319,7 +319,7 @@ const FormClient = () => {
                     </div>
                     <div className="flex items-center gap-2">
                       <RiCheckboxCircleFill className="text-purple-200" />{" "}
-                      Sekcja "O nas"
+                      Sekcja O nas
                     </div>
                     <div className="flex items-center gap-2">
                       <RiCheckboxCircleFill className="text-purple-200" />{" "}
