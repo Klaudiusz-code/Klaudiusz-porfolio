@@ -15,7 +15,6 @@ import {
   RiArrowRightLine,
 } from "react-icons/ri";
 
-// Typ danych teraz pasuje do polskich wartości
 type FormData = {
   company_name: string;
   email: string;
@@ -111,21 +110,9 @@ const FormClient = () => {
       method="POST"
       className="space-y-8 max-w-6xl mx-auto pb-20"
     >
-      {/* Header - Responsywny */}
-      <div className="text-center space-y-3 mb-10 px-4">
-        <span className="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-widest border border-blue-100 mb-2">
-          Brief Projektowy
-        </span>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight">
-          Zaprojektujmy Twój sukces
-        </h2>
-        <p className="text-lg text-gray-500 max-w-xl mx-auto">
-          Wypełnij formularz, a ja przygotuję propozycję idealnie dopasowaną do
-          Twojej branży.
-        </p>
-      </div>
 
-      {/* Sekcja 1: Podstawy - Mniej paddingu na mobile */}
+
+      {/* Sekcja 1: Dane kontaktowe */}
       <div className="bg-white/80 backdrop-blur-sm p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] shadow-xl shadow-gray-200/50 border border-gray-100/80 space-y-6 md:space-y-8 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>
@@ -176,7 +163,7 @@ const FormClient = () => {
         </div>
       </div>
 
-      {/* Sekcja 2: Co budujemy + SYTUACJA */}
+      {/* Sekcja 2: Struktura strony */}
       <div className="grid md:grid-cols-3 gap-6 md:gap-8">
         <div className="md:col-span-2 bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] shadow-xl shadow-gray-200/50 border border-gray-100/80 space-y-6 md:space-y-8">
           <div className="flex items-center justify-between mb-2">
@@ -196,7 +183,6 @@ const FormClient = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            {/* Landing - Wartość po polsku */}
             <label
               className={`cursor-pointer relative rounded-2xl md:rounded-3xl border-2 p-6 md:p-8 flex flex-col h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${
                 formData.project_type === "Szybka wizytówka"
@@ -225,12 +211,11 @@ const FormClient = () => {
                 Szybka wizytówka
               </span>
               <span className="text-sm text-gray-500 leading-relaxed">
-                Kompaktowa strona "One Page". Wystarczy, żeby pokazać ofertę,
-                realizacje i numer telefonu.
+                Kompaktowa strona &quot;One Page&quot;. Wystarczy, żeby pokazać
+                ofertę, realizacje i numer telefonu.
               </span>
             </label>
 
-            {/* Multi-page - Wartość po polsku */}
             <label
               className={`cursor-pointer relative rounded-2xl md:rounded-3xl border-2 p-6 md:p-8 flex flex-col h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${
                 formData.project_type === "Pełna strona firmowa"
@@ -259,14 +244,15 @@ const FormClient = () => {
                 Pełna strona firmowa
               </span>
               <span className="text-sm text-gray-500 leading-relaxed">
-                Rozbudowana strona z menu, zakładkami "O nas", "Galeria" i
-                "Cennik". Buduje dużą wiarygodność.
+                Rozbudowana strona z menu, zakładkami &quot;O nas&quot;,
+                &quot;Galeria&quot; i &quot;Cennik&quot;. Buduje dużą
+                wiarygodność.
               </span>
             </label>
           </div>
         </div>
 
-        {/* Sidebar: SYTUACJA */}
+        {/* Sidebar: Sytuacja */}
         <div className="bg-gray-900 text-white p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] shadow-2xl shadow-gray-900/40 space-y-6 md:space-y-8 flex flex-col justify-between relative overflow-hidden">
           <div className="absolute top-0 right-0 w-24 h-24 bg-white opacity-5 rounded-full blur-2xl"></div>
 
