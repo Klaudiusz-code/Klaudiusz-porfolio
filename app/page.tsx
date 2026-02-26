@@ -21,6 +21,7 @@ import FaqSection from "@/sections/common/FaqSection";
 import InstagramCTA from "@/components/InstagramCTA";
 import OfferTabs from "@/components/OfferTabs";
 import CTA from "@/components/BriefCta";
+import ProjectsSection from "@/sections/home/ProjectsSection";
 
 type OpenGraphType = "website" | "article" | "book" | "profile";
 
@@ -32,31 +33,59 @@ export async function generateMetadata(): Promise<Metadata> {
 
     const seoData = data.page?.seo;
 
+    const title =
+      seoData?.title ||
+      "Tworzenie Stron Internetowych i SEO | Tomaszów Lubelski, Zamość, Biłgoraj - klaudiuszdev.pl";
+
+    const description =
+      seoData?.description ||
+      "Nowoczesne strony internetowe, SEO i sklepy online dla firm z Tomaszowa Lubelskiego, Zamościa, Biłgoraja i okolic. Klaudiuszdev - web developer.";
+
     return {
-      title: seoData?.title || "",
-      description: seoData?.description || "",
-      openGraph: {
-        title: seoData?.openGraph?.title || seoData?.title || "",
-        description:
-          seoData?.openGraph?.description || seoData?.description || "",
-        locale: seoData?.openGraph?.locale || "",
-        siteName: seoData?.openGraph?.siteName || "",
-        type: (seoData?.openGraph?.type as OpenGraphType) || "website",
-      },
+      title,
+      description,
       metadataBase: new URL("https://klaudiuszdev.pl"),
+      alternates: {
+        canonical: "/",
+      },
+      robots: {
+        index: true,
+        follow: true,
+      },
+      openGraph: {
+        title: seoData?.openGraph?.title || title,
+        description: seoData?.openGraph?.description || description,
+        url: "https://klaudiuszdev.pl",
+        siteName: "klaudiuszdev.pl",
+        type: "website",
+        locale: "pl_PL",
+        images: [
+          {
+            url: "/part.svg",
+            width: 1200,
+            height: 630,
+            alt: "Tworzenie stron internetowych - klaudiuszdev",
+          },
+        ],
+      },
+
+      keywords: [
+        "tworzenie stron internetowych",
+        "strony www Tomaszów Lubelski",
+        "strony internetowe Zamość",
+        "SEO Tomaszów Lubelski",
+        "web developer Biłgoraj",
+        "klaudiuszdev",
+      ],
     };
   } catch (error) {
     console.error("Error fetching SEO data:", error);
+
     return {
-      title: "",
-      description: "",
-      openGraph: {
-        title: "",
-        description: "",
-        locale: "",
-        siteName: "",
-        type: "website",
-      },
+      title:
+        "Tworzenie Stron Internetowych | Tomaszów Lubelski, Zamość - klaudiuszdev.pl",
+      description:
+        "Profesjonalne strony internetowe i SEO dla lokalnych firm z Tomaszowa Lubelskiego, Zamościa i Biłgoraja.",
       metadataBase: new URL("https://klaudiuszdev.pl"),
     };
   }
@@ -112,18 +141,9 @@ const HomePage = async () => {
       <section className=" py-16">
         <OfferTabs />
       </section>
-      {/* <AboutSection
-        title={about?.title || ""}
-        description={about?.description || ""}
-      /> */}
-{/* @ts-ignore */}      <ServicesSection
-        services={about?.services as Page_Home_About_Services[] as any}
-      />
-      <DesignProcessSection
-        title={websiteprocces?.title || ""}
-        description={websiteprocces?.description || ""}
-        items={websiteprocces?.itemsBlock as any[]}
-      />
+      <ServicesSection {...({ services: about?.services } as any)} />
+      <ProjectsSection />
+      <DesignProcessSection />
       <ToolsSection />
       <CTA />
       <EncouragingSection

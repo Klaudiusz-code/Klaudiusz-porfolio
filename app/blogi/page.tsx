@@ -9,9 +9,27 @@ import BLOG_POSTS_QUERY from "@/gql-queries/blog_posts.graphql";
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title:
-      "Blog o Tworzeniu Stron, SEO i Web Developmencie w Tomaszowie Lubelskim i Zamościu",
+      "Blog o Tworzeniu Stron, SEO i Web Developmencie | Tomaszów Lubelski, Zamość, Biłgoraj",
     description:
-      "Przeczytaj najnowsze wpisy na blogu o tworzeniu stron internetowych, SEO i web developmentzie, skierowane do firm z Tomaszowa Lubelskiego, Zamościa i okolic.",
+      "Przeczytaj najnowsze poradniki i artykuły o tworzeniu stron internetowych, SEO i web developmentzie. Skierowane do firm i osób z Tomaszowa Lubelskiego, Zamościa, Biłgoraja i okolic.",
+    openGraph: {
+      title:
+        "Blog o Tworzeniu Stron, SEO i Web Developmencie | Tomaszów Lubelski, Zamość, Biłgoraj",
+      description:
+        "Najnowsze artykuły o tworzeniu stron, SEO i web developmencie dla lokalnych firm i osób z Tomaszowa Lubelskiego, Zamościa, Biłgoraja.",
+      type: "website",
+      siteName: "klaudiuszdev.pl",
+      url: "https://klaudiuszdev.pl/blog",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title:
+        "Blog o Tworzeniu Stron, SEO i Web Developmencie | Tomaszów Lubelski, Zamość, Biłgoraj",
+      description:
+        "Przeczytaj najnowsze artykuły o tworzeniu stron internetowych, SEO i web developmentzie.",
+      site: "@klaudiuszdev",
+      creator: "@klaudiuszdev",
+    },
   };
 }
 

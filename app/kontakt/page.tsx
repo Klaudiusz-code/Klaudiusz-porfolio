@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { IoCallOutline, IoMailOutline } from "react-icons/io5";
 import { FaFacebookMessenger, FaInstagram, FaLinkedin } from "react-icons/fa";
-import { ContactForm } from "@/components/ContactForm"; 
+import { ContactForm } from "@/components/ContactForm";
 import { query } from "@/ApolloClient";
 import { ContactQueryQuery, ContactQueryQueryVariables } from "@/gql/graphql";
 import GRAPHQL_QUERY from "@/gql-queries/contact_page.graphql";
@@ -23,38 +23,40 @@ const getIconByString = (iconKey: string) => {
 type OpenGraphType = "website" | "article" | "book" | "profile";
 
 export async function generateMetadata(): Promise<Metadata> {
+  const defaultTitle = "Kontakt - Strony i sklepy www, SEO – klaudiuszdev.pl";
+  const defaultDescription =
+    "Skontaktuj się z Klaudiuszem Adamaszkiem – tworzenie stron, sklepów online i SEO pod Tomaszów Lubelski, Zamość, Biłgoraj i okolice Lublina.";
+
   try {
     const { data } = await query<ContactQueryQuery, ContactQueryQueryVariables>(
       {
         query: GRAPHQL_QUERY,
-      }
+      },
     );
 
-    const seoData = data.page?.seo;
     return {
-      title: seoData?.title || "",
-      description: seoData?.description || "",
+      title: defaultTitle,
+      description: defaultDescription,
       openGraph: {
-        title: seoData?.openGraph?.title || seoData?.title || "",
-        description:
-          seoData?.openGraph?.description || seoData?.description || "",
-        locale: seoData?.openGraph?.locale || "",
-        siteName: seoData?.openGraph?.siteName || "",
-        type: (seoData?.openGraph?.type as OpenGraphType) || "website",
+        title: defaultTitle,
+        description: defaultDescription,
+        locale: "pl_PL",
+        siteName: "klaudiuszdev.pl",
+        type: "website" as OpenGraphType,
       },
       metadataBase: new URL("https://klaudiuszdev.pl"),
     };
   } catch (error) {
-    console.error("Error fetching SEO data:", error);
+    console.error("Error fetching data:", error);
     return {
-      title: "",
-      description: "",
+      title: defaultTitle,
+      description: defaultDescription,
       openGraph: {
-        title: "",
-        description: "",
-        locale: "",
-        siteName: "",
-        type: "website",
+        title: defaultTitle,
+        description: defaultDescription,
+        locale: "pl_PL",
+        siteName: "klaudiuszdev.pl",
+        type: "website" as OpenGraphType,
       },
       metadataBase: new URL("https://klaudiuszdev.pl"),
     };
@@ -70,16 +72,14 @@ const ContactPage = async () => {
   const contactMethods = page?.contact?.contactMethods || [];
   const additionalLinks = page?.contact?.iconsContact || [];
   const heroTitle = page?.contact?.hero?.title || "Kontakt";
-  const heroDescription = page?.contact?.hero?.descritpion || "Skontaktuj się z nami";
+  const heroDescription =
+    page?.contact?.hero?.descritpion || "Skontaktuj się z nami";
 
   return (
     <section className="pt-32 pb-24 bg-white">
       <div className="container mx-auto px-4 max-w-[1400px]">
-        
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start">
-          
           <div className="flex flex-col justify-center h-full space-y-12">
-            
             <div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 tracking-tight mb-6 leading-[0.95]">
                 {heroTitle}
@@ -103,7 +103,7 @@ const ContactPage = async () => {
                       <div className="w-14 h-14 rounded-full bg-blue-50 text-customColor flex items-center justify-center text-2xl group-hover:bg-[#6e92f2] group-hover:text-white transition-colors duration-300 shadow-sm">
                         {iconKey && getIconByString(iconKey)}
                       </div>
-                      
+
                       <div className="flex flex-col">
                         <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">
                           {item?.titleTwo || "Typ"}
@@ -113,7 +113,7 @@ const ContactPage = async () => {
                         </span>
                       </div>
                     </div>
-                    
+
                     <span className="text-slate-300 group-hover:text-customColor transition-transform duration-300 group-hover:translate-x-1">
                       &rarr;
                     </span>
@@ -145,13 +145,11 @@ const ContactPage = async () => {
                 </div>
               </div>
             )}
-
           </div>
 
           <div className="relative">
             <div className="sticky top-8">
-               <div className="bg-slate-50 p-8 md:p-12 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50">
-                
+              <div className="bg-slate-50 p-8 md:p-12 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50">
                 <div className="mb-8 pb-8 border-b border-slate-200/60">
                   <h3 className="text-2xl font-bold text-slate-900 mb-2">
                     Napisz do mnie
@@ -161,13 +159,10 @@ const ContactPage = async () => {
                   </p>
                 </div>
 
-    
                 <ContactForm />
-              
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>

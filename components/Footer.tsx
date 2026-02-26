@@ -31,7 +31,6 @@ const Footer = ({ data }: FooterProps) => {
           </Link>
         </div>
 
-        {/* Prawa strona: Copyright + Nowy tekst + Polityka */}
         <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-2 text-gray-600 text-sm mt-4 md:mt-0">
           <span>
             © {currentYear} <span className="text-customColor">Klaudiusz Adamaszek</span>

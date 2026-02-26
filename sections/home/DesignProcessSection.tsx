@@ -1,95 +1,92 @@
 "use client";
 
-import CustomButton from "@/components/CustomButton";
+import React from "react";
 import {
   FaCalculator,
   FaPencilAlt,
   FaLaptopCode,
   FaFlask,
 } from "react-icons/fa";
+import Link from "next/link";
 
-type DesignProcessSectionProps = {
-  title: string;
-  description: string;
-  items: {
-    num: number;
-    title: string;
-    description: string;
-  }[];
-};
+const steps = [
+  {
+    id: 1,
+    icon: <FaCalculator />,
+    title: "Analiza",
+    description:
+      "Poznaję Twoje cele i biznes, aby projekt idealnie trafił do odbiorców.",
+  },
+  {
+    id: 2,
+    icon: <FaPencilAlt />,
+    title: "Projektowanie",
+    description:
+      "Tworzę design, który jest estetyczny i intuicyjny dla użytkownika.",
+  },
+  {
+    id: 3,
+    icon: <FaLaptopCode />,
+    title: "Programowanie",
+    description:
+      "Buduję szybką i bezpieczną stronę opartą na najlepszych technologiach.",
+  },
+  {
+    id: 4,
+    icon: <FaFlask />,
+    title: "Wdrożenie",
+    description:
+      "Testuję, uruchamiam i oddaję w pełni działający produkt w Twoje ręce.",
+  },
+];
 
-const DesignProcessSection = ({
-  title,
-  description,
-  items,
-}: DesignProcessSectionProps) => {
-  const icons = [
-    <FaCalculator />,
-    <FaPencilAlt />,
-    <FaLaptopCode />,
-    <FaFlask />,
-  ];
-
+const DesignProcessSection = () => {
   return (
-    <div className="w-full mx-auto mb-8 lg:mb-14 mt-24 lg:mt-16 bg-gradient-to-r from-blue-500 to-[#0624B5] py-24">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h3 className="text-[#eaebf0] uppercase font-semibold tracking-wide text-lg mb-2">
-            {title}
-          </h3>
-          <p className="text-white font-bold tracking-wide text-[1rem] lg:text-3xl xl:text-4xl leading-7 mb-8">
-            {description}
-          </p>
+    <section className="bg-white py-20 border-b border-slate-100">
+      <div className="container mx-auto px-6 max-w-5xl">
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-slate-900 mb-3">
+            Proces współpracy
+          </h2>
+          <div className="w-12 h-1 bg-slate-900"></div>
         </div>
-        <div className="relative">
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-200 rounded-3xl"></div>
-          {items.map((item, index) => (
-            <div
-              key={index}
-              className={`relative flex flex-col md:flex-row items-center mb-16 ${
-                index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
-              }`}
-            >
-              <div
-                className={`relative bg-white rounded-lg shadow-lg p-8 w-full md:w-5/12 ${
-                  index % 2 === 0 ? "md:ml-auto" : "md:mr-auto"
-                }`}
-              >
-                <div className="bg-blue-500 text-white py-2 px-4 rounded-full text-sm font-normal inline-block mb-6 shadow-md">
-                  Krok {item.num}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+          {steps.map((step) => (
+            <div key={step.id} className="group relative">
+              <span className="absolute -top-4 -left-2 text-7xl font-bold text-slate-50 select-none group-hover:text-slate-100 transition-colors">
+                0{step.id}
+              </span>
+
+              <div className="relative z-10 pt-2">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-white border border-slate-200 rounded-lg flex items-center justify-center text-slate-700 shadow-sm group-hover:border-slate-900 group-hover:text-slate-900 transition-colors">
+                    {step.icon}
+                  </div>
+
+                  <h3 className="text-xl font-bold text-slate-900">
+                    {step.title}
+                  </h3>
                 </div>
-                <h4 className="text-[#3247ad] text-xl lg:text-2xl font-semibold mb-3 text-left">
-                  {item.title}
-                </h4>
-                <p className="text-gray-600 text-base font-monserat font-normal leading-relaxed tracking-wide mb-6 text-left">
-                  {item.description}
+
+                <p className="text-slate-600 leading-relaxed pl-16 border-l border-slate-100">
+                  {step.description}
                 </p>
-                {index === 0 && (
-                  <CustomButton
-                    text="Umów się na konsultację"
-                    bgColor="#0077cc"
-                    textColor="#fff"
-                    link="/kontakt"
-                  />
-                )}
-              </div>
-              <div
-                className={`w-20 h-20 flex items-center justify-center bg-blue-500 text-white rounded-full shadow-xl ${
-                  index % 2 === 0
-                    ? "md:absolute md:left-1/2 md:transform md:-translate-x-1/2 md:top-1/2"
-                    : "md:absolute md:right-1/2 md:transform md:translate-x-1/2 md:top-1/2"
-                }`}
-                aria-hidden="true"
-              >
-                <div className="w-16 h-16 flex items-center justify-center bg-white text-blue-500 rounded-full border-4 border-blue-500">
-                  {icons[index]}
-                </div>
               </div>
             </div>
           ))}
         </div>
+
+        <div className="mt-20 pt-10 border-t border-slate-100 flex justify-center md:justify-start">
+          <Link
+            href="/kontakt"
+            className="bg-slate-900 text-white font-medium px-8 py-3 rounded hover:bg-slate-800 transition-colors"
+          >
+            Napisz do mnie
+          </Link>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

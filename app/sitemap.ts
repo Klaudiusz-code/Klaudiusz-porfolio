@@ -4,44 +4,55 @@ import { MetadataRoute } from "next";
 import { SitemapQuery, SitemapQueryVariables } from "@/gql/graphql";
 import SITEMAP_QUERY from "@/gql-queries/sitemap.graphql";
 
+const branzeSlugi = [
+  "mechanik",
+  "fotografia",
+  "autodetailing",
+  "ogrodnictwo",
+  "kosmetyka",
+  "fryzjerstwo",
+];
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    let items: MetadataRoute.Sitemap = [];
-    
-    try {
-        const { data } = await query<SitemapQuery, SitemapQueryVariables>(
-          {
-            query: SITEMAP_QUERY,
-          }
-        );
+  let items: MetadataRoute.Sitemap = [];
 
-        data.pages?.nodes.forEach(page => {
-            let priority = 0.8;
-            let slug = page.slug;
+  try {
+    const { data } = await query<SitemapQuery, SitemapQueryVariables>({
+      query: SITEMAP_QUERY,
+    });
 
-            if (page.slug === 'strona-glowna') {
-                priority = 1;
-                slug = '';
-            }
+    data.pages?.nodes.forEach((page) => {
+      if (!page.slug) return; // <- ignorujemy jeśli slug jest null/undefined
+      if (branzeSlugi.includes(page.slug)) return; // <- ignorujemy branże
 
-            items.push({
-                url: `https://klaudiuszdev.pl/${slug}`,
-                lastModified: new Date(page.modified || ''),
-                changeFrequency: 'always',
-                priority,
-            });
-        });
+      let priority = 0.8;
+      let slug = page.slug;
 
-        data.posts?.nodes.forEach(post => {
-            items.push({
-                url: `https://klaudiuszdev.pl/blog/${post.slug}`,
-                lastModified: new Date(post.modified || ''),
-                changeFrequency: 'always',
-                priority: 0.8,
-            });
-        });
-    } catch (error) {
-        console.error(error);
-    }
+      if (page.slug === "strona-glowna") {
+        priority = 1;
+        slug = "";
+      }
 
-    return items;
+      items.push({
+        url: `https://klaudiuszdev.pl/${slug}`,
+        lastModified: page.modified ? new Date(page.modified) : undefined,
+        changeFrequency: "always",
+        priority,
+      });
+    });
+
+    data.posts?.nodes.forEach((post) => {
+      if (!post.slug) return;
+      items.push({
+        url: `https://klaudiuszdev.pl/blog/${post.slug}`,
+        lastModified: post.modified ? new Date(post.modified) : undefined,
+        changeFrequency: "always",
+        priority: 0.8,
+      });
+    });
+  } catch (error) {
+    console.error(error);
+  }
+
+  return items;
 }
