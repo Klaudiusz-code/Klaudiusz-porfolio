@@ -61,7 +61,7 @@ export async function generateMetadata(): Promise<Metadata> {
         locale: "pl_PL",
         images: [
           {
-            url: "/part.svg",
+            url: "/part.png",
             width: 1200,
             height: 630,
             alt: "Tworzenie stron internetowych - klaudiuszdev",
@@ -114,7 +114,7 @@ const HomePage = async () => {
           name="google-site-verification"
           content="_QkqDJ2yyltPwwi4lkThE7vqIHC4e4RdlkgOq1jlidA"
         />
-        <title>{seo?.title || "Klaudiuszdev"}</title>
+        <title>{seo?.title || "klaudiuszdev.pl"}</title>
         <meta name="description" content={seo?.description || "Klaudiuszdev"} />
 
         <meta
