@@ -6,8 +6,8 @@ const Icons = {
   Layout: () => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="32"
-      height="32"
+      width="28"
+      height="28"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -23,8 +23,8 @@ const Icons = {
   Globe: () => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="32"
-      height="32"
+      width="28"
+      height="28"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -40,8 +40,8 @@ const Icons = {
   Tool: () => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="32"
-      height="32"
+      width="28"
+      height="28"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -55,8 +55,8 @@ const Icons = {
   Check: () => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="18"
-      height="18"
+      width="16"
+      height="16"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -68,6 +68,7 @@ const Icons = {
     </svg>
   ),
 };
+
 const services = [
   {
     title: "Sklep lub Strona",
@@ -102,22 +103,22 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section className="py-32 bg-white text-slate-800 overflow-hidden relative">
+    <section className="py-16 md:py-32 bg-white text-slate-800 overflow-hidden relative">
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-3xl translate-y-1/3 translate-x-1/3 pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-10 max-w-7xl">
-        <div className="max-w-4xl mx-auto text-center mb-24">
-          <span className="inline-block py-1 px-4 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-bold uppercase tracking-[0.2em] mb-8 shadow-sm">
+      <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-7xl">
+        <div className="max-w-4xl mx-auto text-center mb-16 md:mb-24">
+          <span className="inline-block py-1 px-3 md:px-4 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-6 md:mb-8 shadow-sm">
             KlaudiuszDev - Klaudiusz Adamaszek
           </span>
 
-          <div className="max-w-3xl mx-auto space-y-6">
-            <p className="text-lg text-slate-600 leading-relaxed font-medium">
+          <div className="max-w-3xl mx-auto space-y-4 md:space-y-6">
+            <p className="text-base md:text-lg text-slate-600 leading-relaxed font-medium">
               Nazywam się <strong>Klaudiusz</strong>. Jestem programistą i
               tworzę strony internetowe oraz sklepy. Rozumiem, że nie chcesz
               tracić czasu na techniczne problemy.
             </p>
-            <p className="text-lg text-slate-500 leading-relaxed font-light">
+            <p className="text-sm md:text-lg text-slate-500 leading-relaxed font-light">
               Dlatego dbam o stabilność Twojej strony i jestem bezpośrednim
               kontaktem – nie musisz przechodzić przez dział obsługi klienta.
               Moim celem jest technika, która działa i wspiera Twój biznes.
@@ -125,68 +126,68 @@ const ServicesSection = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-          <article className="group bg-white rounded-3xl p-10 border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/10 hover:-translate-y-1 transition-all duration-500 relative overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-10">
+          <article className="group bg-white rounded-2xl md:rounded-3xl p-6 md:p-10 border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/10 hover:-translate-y-1 transition-all duration-500 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             <div className="relative z-10">
-              <div className="w-16 h-16 bg-white border border-slate-100 text-blue-600 rounded-2xl flex items-center justify-center mb-8 shadow-sm group-hover:border-blue-200 group-hover:scale-105 transition-all duration-300">
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-white border border-slate-100 text-blue-600 rounded-xl md:rounded-2xl flex items-center justify-center mb-6 md:mb-8 shadow-sm group-hover:border-blue-200 group-hover:scale-105 transition-all duration-300">
                 <Icons.Layout />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3 tracking-tight">
+              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-2 md:mb-3 tracking-tight">
                 {services[0].title}
               </h3>
-              <p className="text-blue-600 font-bold text-xs uppercase tracking-widest mb-4">
+              <p className="text-blue-600 font-bold text-[10px] md:text-xs uppercase tracking-widest mb-3 md:mb-4">
                 {services[0].subtitle}
               </p>
-              <p className="text-slate-500 leading-relaxed mb-8 text-sm">
+              <p className="text-slate-500 leading-relaxed mb-6 md:mb-8 text-sm">
                 {services[0].description}
               </p>
-              <ul className="space-y-3">
+              <ul className="space-y-2 md:space-y-3">
                 {services[0].features.map((f, i) => (
                   <li
                     key={i}
-                    className="flex items-center gap-3 text-slate-700 text-sm font-medium"
+                    className="flex items-start gap-3 text-slate-700 text-xs md:text-sm font-medium"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-200 group-hover:bg-blue-600 transition-colors" />
-                    {f}
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-200 group-hover:bg-blue-600 transition-colors mt-1.5 md:mt-0.5 shrink-0" />
+                    <span>{f}</span>
                   </li>
                 ))}
               </ul>
             </div>
           </article>
 
-          <article className="group bg-white rounded-3xl p-10 border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/10 hover:-translate-y-1 transition-all duration-500 relative overflow-hidden">
+          <article className="group bg-white rounded-2xl md:rounded-3xl p-6 md:p-10 border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/10 hover:-translate-y-1 transition-all duration-500 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             <div className="relative z-10">
-              <div className="w-16 h-16 bg-white border border-slate-100 text-blue-600 rounded-2xl flex items-center justify-center mb-8 shadow-sm group-hover:border-blue-200 group-hover:scale-105 transition-all duration-300">
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-white border border-slate-100 text-blue-600 rounded-xl md:rounded-2xl flex items-center justify-center mb-6 md:mb-8 shadow-sm group-hover:border-blue-200 group-hover:scale-105 transition-all duration-300">
                 <Icons.Globe />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3 tracking-tight">
+              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-2 md:mb-3 tracking-tight">
                 {services[1].title}
               </h3>
-              <p className="text-blue-600 font-bold text-xs uppercase tracking-widest mb-4">
+              <p className="text-blue-600 font-bold text-[10px] md:text-xs uppercase tracking-widest mb-3 md:mb-4">
                 {services[1].subtitle}
               </p>
-              <p className="text-slate-500 leading-relaxed mb-8 text-sm">
+              <p className="text-slate-500 leading-relaxed mb-6 md:mb-8 text-sm">
                 {services[1].description}
               </p>
-              <ul className="space-y-3">
+              <ul className="space-y-2 md:space-y-3">
                 {services[1].features.map((f, i) => (
                   <li
                     key={i}
-                    className="flex items-center gap-3 text-slate-700 text-sm font-medium"
+                    className="flex items-start gap-3 text-slate-700 text-xs md:text-sm font-medium"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-200 group-hover:bg-blue-600 transition-colors" />
-                    {f}
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-200 group-hover:bg-blue-600 transition-colors mt-1.5 md:mt-0.5 shrink-0" />
+                    <span>{f}</span>
                   </li>
                 ))}
               </ul>
             </div>
           </article>
 
-          <article className="group md:col-span-2 bg-gradient-to-br from-blue-900 to-slate-900 text-white rounded-[2rem] p-10 md:p-14 relative overflow-hidden shadow-2xl shadow-blue-900/20 border border-blue-800/50">
+          <article className="group md:col-span-2 bg-gradient-to-br from-blue-900 to-slate-900 text-white rounded-[1.5rem] md:rounded-[2rem] p-8 md:p-14 relative overflow-hidden shadow-2xl shadow-blue-900/20 border border-blue-800/50">
             <div
               className="absolute inset-0 opacity-10"
               style={{
@@ -196,31 +197,31 @@ const ServicesSection = () => {
             ></div>
             <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600 rounded-full blur-[100px] opacity-40 translate-x-1/2 -translate-y-1/2" />
 
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
               <div>
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="w-16 h-16 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                <div className="flex items-center gap-3 md:gap-4 mb-6 md:mb-8">
+                  <div className="w-12 h-12 md:w-16 md:h-16 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-xl md:rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                     <Icons.Tool />
                   </div>
-                  <span className="px-4 py-2 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-xs font-bold uppercase tracking-widest backdrop-blur-sm">
+                  <span className="px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-[10px] md:text-xs font-bold uppercase tracking-widest backdrop-blur-sm">
                     Rekomendowane
                   </span>
                 </div>
 
-                <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+                <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4 tracking-tight">
                   {services[2].title}
                 </h3>
-                <p className="text-blue-200 font-bold text-xs uppercase tracking-widest mb-8">
+                <p className="text-blue-200 font-bold text-[10px] md:text-xs uppercase tracking-widest mb-6 md:mb-8">
                   {services[2].subtitle}
                 </p>
 
-                <p className="text-blue-100/80 leading-relaxed mb-10 text-lg font-light">
+                <p className="text-blue-100/80 leading-relaxed mb-8 md:mb-10 text-base md:text-lg font-light">
                   {services[2].description}
                 </p>
 
                 <a
                   href="/kontakt"
-                  className="group/btn inline-flex items-center gap-3 px-8 py-4 bg-white text-blue-900 font-bold rounded-xl hover:bg-blue-50 transition-all shadow-xl shadow-white/10 hover:shadow-white/20 hover:-translate-y-1"
+                  className="group/btn inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 bg-white text-blue-900 font-bold rounded-lg md:rounded-xl hover:bg-blue-50 transition-all shadow-xl shadow-white/10 hover:shadow-white/20 hover:-translate-y-1 text-sm md:text-base"
                 >
                   Zacznij współpracę
                   <svg
@@ -239,24 +240,24 @@ const ServicesSection = () => {
                 </a>
               </div>
 
-              <div className="bg-white/5 border border-white/10 rounded-3xl p-10 backdrop-blur-sm relative">
-                <div className="absolute top-0 right-0 p-8 opacity-20">
+              <div className="bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-10 backdrop-blur-sm relative">
+                <div className="absolute top-0 right-0 p-6 md:p-8 opacity-20">
                   <Icons.Tool />
                 </div>
 
-                <p className="text-sm font-bold uppercase tracking-widest text-blue-300 mb-8">
+                <p className="text-xs md:text-sm font-bold uppercase tracking-widest text-blue-300 mb-6 md:mb-8">
                   W ramach opieki:
                 </p>
-                <ul className="space-y-5">
+                <ul className="space-y-4 md:space-y-5">
                   {services[2].features.map((f, i) => (
                     <li
                       key={i}
-                      className="flex items-center gap-4 text-white text-lg font-medium"
+                      className="flex items-start gap-3 md:gap-4 text-white text-base md:text-lg font-medium"
                     >
-                      <span className="text-blue-400 bg-blue-900/50 rounded-full p-1">
+                      <span className="text-blue-400 bg-blue-900/50 rounded-full p-1 shrink-0 mt-0.5">
                         <Icons.Check />
                       </span>
-                      {f}
+                      <span>{f}</span>
                     </li>
                   ))}
                 </ul>
