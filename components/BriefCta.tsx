@@ -2,124 +2,104 @@
 
 import React from "react";
 import Link from "next/link";
-import { FaArrowRight, FaGift } from "react-icons/fa";
-import { FiClock, FiFileText, FiEye } from "react-icons/fi";
+import { FaArrowRight } from "react-icons/fa";
+import { FiFileText, FiEdit3, FiEye } from "react-icons/fi";
 
 const CTA = () => {
   return (
-    <section className="relative w-screen left-1/2 -translate-x-1/2 overflow-hidden bg-[#0B0F19] text-white py-16 md:py-32 border-t border-white/5">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-blue-600/20 rounded-full blur-[100px] pointer-events-none"></div>
+    <section className="relative w-full bg-gradient-to-br from-blue-700 via-blue-600 to-blue-800 text-white py-20 md:py-28 lg:py-36 overflow-hidden">
+      {/* Światła w tle - skalowane, żeby nie obciążać słabszych urządzeń */}
+      <div className="absolute top-0 right-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-white/5 rounded-full blur-[100px] md:blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-blue-900/30 rounded-full blur-[80px] md:blur-[100px] pointer-events-none" />
 
-      <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.4] pointer-events-none"></div>
+      <div className="container mx-auto px-5 md:px-8 lg:px-12 relative z-10 max-w-5xl">
+        {/* Nagłówek - rośnie wraz z ekranem, zachowuje czytelność */}
+        <div className="text-center mb-14 md:mb-20 lg:mb-24">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-light tracking-tight leading-tight mb-5 md:mb-6">
+            Zobacz swoją stronę
+            <br />
+            <span className="font-medium">zanim cokolwiek zapłacisz.</span>
+          </h2>
+          <p className="text-blue-100 text-base md:text-lg leading-relaxed font-light max-w-lg lg:max-w-xl mx-auto">
+            Prosty proces, dzięki któremu w 24 godziny zobaczysz, jak może
+            wyglądać Twój biznes w sieci. Bez zobowiązań.
+          </p>
+        </div>
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
-          <div className="lg:col-span-5 space-y-6 md:space-y-8">
-            <div className="inline-flex items-center gap-2 text-blue-400 text-xs md:text-sm font-bold uppercase tracking-widest">
-              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-              Oferta specjalna
-            </div>
+        {/* Oś czasu (Timeline) - responsywna magia */}
+        <div className="relative mb-14 md:mb-20 lg:mb-24">
+          {/* Linia pozioma (tylko od tabletu w górę) */}
+          <div className="hidden md:block absolute top-6 lg:top-7 left-[16%] right-[16%] h-px bg-white/20"></div>
 
-            <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-              Twoja wizja, <br />
-              <span className="text-white/50">mój plan działania.</span>
-            </h2>
+          {/* Linia pionowa (tylko na mobile) */}
+          <div className="md:hidden absolute left-5 top-8 bottom-8 w-px bg-white/20"></div>
 
-            <p className="text-slate-400 text-base md:text-lg leading-relaxed">
-              Wypełnij krótki brief, a pokażę Ci darmowy podgląd Twojej
-              przyszłej strony internetowej.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-0 relative">
+            {[
+              {
+                icon: <FiFileText className="text-base md:text-lg" />,
+                title: "Wypełniasz brief",
+                desc: "Opisujesz swój biznes i to, co jest dla Ciebie ważne.",
+              },
+              {
+                icon: <FiEdit3 className="text-base md:text-lg" />,
+                title: "Projektuję widok",
+                desc: "Przygotowuję wizualizację głównej strony Twojej witryny.",
+              },
+              {
+                icon: <FiEye className="text-base md:text-lg" />,
+                title: "Odbierasz podgląd",
+                desc: "Oceniasz efekt i decydujesz, czy idziemy dalej.",
+              },
+            ].map((step, index) => (
+              <div
+                key={index}
+                className="relative flex items-start md:flex-col md:items-center md:text-center pl-12 md:pl-0"
+              >
+                {/* Kółko z ikoną - dopasowane do dotyku na mobile */}
+                <div className="absolute left-0 md:relative w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm flex items-center justify-center text-white shrink-0 z-10">
+                  {step.icon}
+                </div>
 
-            <div className="flex gap-8 pt-4 border-t border-white/5">
-              <div>
-                <p className="text-xl md:text-2xl font-bold text-white">0 zł</p>
-                <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wider">
-                  Koszt wyceny
-                </p>
+                {/* Tekst - optymalny padding na mobile */}
+                <div className="md:mt-4 lg:mt-5 pt-0.5 md:pt-0">
+                  <h3 className="text-sm md:text-base font-semibold text-white mb-1 md:mb-1.5">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-blue-100/80 font-light leading-relaxed max-w-xs md:max-w-none mx-auto">
+                    {step.desc}
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="text-xl md:text-2xl font-bold text-white">24h</p>
-                <p className="text-[10px] md:text-xs text-slate-500 uppercase tracking-wider">
-                  Czas na decyzję
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
+        </div>
 
-          <div className="lg:col-span-7 relative">
-            <div className="relative bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-12 shadow-2xl">
-              <div className="mb-6 md:mb-8 text-center">
-                <p className="text-xs md:text-sm font-bold text-slate-400 uppercase tracking-[0.2em] mb-2 md:mb-3">
-                  Prosta wymiana
-                </p>
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
-                  Wypełnij <span className="text-blue-400">Brief</span> i
-                  odbierz
-                  <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-blue-400 drop-shadow-[0_0_15px_rgba(96,165,250,0.5)]">
-                    DARMOWY PODGLĄD
-                  </span>
-                  <br />
-                  Twojej strony
-                </h3>
-              </div>
+        {/* Sekcja końcowa - Przycisk i mikro-dowody */}
+        <div className="text-center">
+          {/* Przycisk: na całą szerokość na mobile, wyśrodkowany na desktopie */}
+          <Link
+            href="/formularz-briefu"
+            className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 bg-white text-blue-700 font-semibold rounded-full shadow-xl shadow-blue-900/30 hover:shadow-blue-900/50 hover:scale-[1.02] sm:hover:scale-105 transition-all duration-300 text-base"
+          >
+            Chcę darmowy podgląd
+            <FaArrowRight className="text-sm transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
 
-              <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-4 mb-8 md:mb-10">
-                {/* Krok 1 */}
-                <div className="flex-1 w-full bg-[#111827] border border-white/5 rounded-xl md:rounded-2xl p-4 md:p-5 flex items-center gap-3 md:gap-4 group hover:border-blue-500/50 transition-colors">
-                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-slate-800 flex items-center justify-center text-slate-400 group-hover:text-blue-400 group-hover:bg-blue-500/10 transition-all shrink-0">
-                    <FiFileText className="text-lg md:text-xl" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] md:text-xs text-slate-500 uppercase font-bold">
-                      Krok 1
-                    </p>
-                    <p className="text-sm md:text-base text-white font-bold">
-                      Twój Biznes
-                    </p>
-                  </div>
-                </div>
-
-                <div className="text-slate-600 my-1 md:my-0">
-                  <FaArrowRight className="rotate-90 md:rotate-0 text-lg md:text-xl" />
-                </div>
-
-                <div className="flex-1 w-full bg-[#111827] border-2 border-blue-500/30 rounded-xl md:rounded-2xl p-4 md:p-5 flex items-center gap-3 md:gap-4 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-blue-500/5"></div>
-                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-[0_0_15px_rgba(37,99,235,0.5)] shrink-0">
-                    <FiEye className="text-lg md:text-xl" />
-                  </div>
-                  <div className="relative z-10">
-                    <p className="text-[10px] md:text-xs text-blue-400 uppercase font-bold">
-                      Krok 2
-                    </p>
-                    <p className="text-sm md:text-base text-white font-bold">
-                      Widok Efektu
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex justify-center">
-                <Link
-                  href="/formularz-briefu"
-                  className="group relative w-full md:w-auto px-6 md:px-10 py-4 md:py-6 bg-white text-slate-900 font-black text-[13px] md:text-xl uppercase tracking-wider rounded-xl hover:scale-105 transition-all duration-300 shadow-[0_10px_40px_-10px_rgba(255,255,255,0.3)] hover:shadow-[0_20px_50px_-12px_rgba(59,130,246,0.6)] flex items-center justify-center gap-2 md:gap-3"
-                >
-                  <FaGift className="text-blue-600 text-lg md:text-xl" />
-                  <span className="whitespace-nowrap">
-                    Chcę Darmowy Podgląd
-                  </span>
-                  <FaArrowRight className="transition-transform group-hover:translate-x-2 text-sm md:text-base" />
-                </Link>
-              </div>
-
-              <p className="text-center text-[10px] md:text-xs text-slate-500 mt-4 md:mt-6 font-mono">
-                <FiClock className="inline mr-1 mb-0.5" /> Zajmie to mniej niż 5
-                minut
-              </p>
-            </div>
-
-            <div className="absolute -inset-4 bg-gradient-to-tr from-blue-600/20 to-purple-600/20 rounded-[2rem] md:rounded-[3rem] blur-2xl -z-10 opacity-50"></div>
+          {/* Tagi na dole - łamią się w ładny blok na bardzo małych ekranach */}
+          <div className="mt-8 flex flex-wrap justify-center gap-x-4 gap-y-2 text-blue-100/60 text-xs font-light">
+            <span className="flex items-center gap-1.5">
+              <span className="w-1 h-1 bg-blue-200 rounded-full shrink-0"></span>
+              0 zł
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-1 h-1 bg-blue-200 rounded-full shrink-0"></span>
+              5 minut
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-1 h-1 bg-blue-200 rounded-full shrink-0"></span>
+              Bez spamu
+            </span>
           </div>
         </div>
       </div>
