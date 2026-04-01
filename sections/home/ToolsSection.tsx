@@ -2,95 +2,63 @@
 
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { FaArrowRight, FaCheck, FaMobileAlt, FaFeather } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 
 export default function LatestProjectSection() {
   return (
-    <section className="relative w-full bg-white text-slate-600 py-32 overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.2] bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:32px_32px] pointer-events-none" />
+    <section className="relative w-full bg-white overflow-hidden">
+      
+      <div className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10 max-w-7xl">
-        <div className="max-w-3xl mb-24">
-          <span className="text-sm font-medium text-slate-400 uppercase tracking-[0.2em] mb-4 block">
-            Ostatnia realizacja
-          </span>
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-16 py-24 md:py-36">
+        
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-20 border-b border-slate-100 pb-10">
+          <div>
+            <p className="text-[11px] font-bold text-blue-500 uppercase tracking-[0.25em] mb-4">
+              Ostatnia realizacja
+            </p>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 leading-none">
+              Śnieżka na dłoni
+            </h2>
+          </div>
+          
+          <Link
+            href="https://sniezkanadloni.pl"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2.5 text-sm font-medium text-slate-400 hover:text-blue-600 transition-colors"
+          >
+            sniezkanadloni.pl
+            <FaArrowRight className="text-[10px] transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
 
-          <h2 className="text-3xl md:text-4xl font-medium text-slate-800 tracking-tight leading-[1.2] mb-6">
-            Ogród <span className="text-blue-500">Zagrosze</span>
-          </h2>
-          <p className="text-lg text-slate-500 leading-relaxed font-light max-w-xl">
-            Projekt, w którym priorytetem było cisza, przestrzeń i naturalna
-            estetyka. Design, który nie dominuje nad treścią, ją ją wyraża.
+        <div className="max-w-4xl">
+          
+          <p className="text-2xl md:text-3xl font-medium tracking-tight text-slate-800 leading-snug mb-10">
+            Z pełnym przekonaniem polecam współpracę z Panem Klaudiuszem.
+          </p>
+
+          <div className="space-y-6 text-lg text-slate-500 leading-[1.85] font-light">
+            <p>
+              Wykonał dla mnie stronę internetową obiektu „Ścieżka na Dłoni” i od samego początku wykazał się <span className="text-blue-600 font-medium">pełnym profesjonalizmem oraz ogromną wiedzą</span>. Wszystko zostało zrealizowane terminowo, z dbałością o każdy detal, a wszystkie zgłaszane przeze mnie uwagi były wdrażane na bieżąco i bez żadnych problemów.
+            </p>
+            <p>
+              Całą współpracę realizowaliśmy zdalnie, bez spotkań, a mimo to ustalenia przebiegały bardzo sprawnie i efektywnie. Świetny kontakt, szybkie odpowiedzi i duże zaangażowanie sprawiły, że cały proces był wygodny i bezproblemowy.
+            </p>
+            
+            <p className="text-slate-700 font-normal">
+              Strona działa bez zarzutu, jest dopracowana i dokładnie taka, jakiej oczekiwałam. Pan Klaudiusz to osoba rzetelna, pomocna.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-16 pt-8 border-t border-slate-100 max-w-4xl">
+          <p className="text-slate-900 text-sm font-medium">
+            Właściciel obiektu „Śnieżka na dłoni”
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          <div className="lg:col-span-7 relative group">
-            <div className="relative aspect-[4/3] bg-slate-100 rounded-3xl overflow-hidden">
-              <Image
-                src="/instogrod.jpg"
-                alt="Projekt strony Ogród Zagrosze"
-                fill
-                className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                priority
-              />
-            </div>
-          </div>
-
-          <div className="lg:col-span-5 flex flex-col justify-center space-y-12">
-            <h3 className="text-2xl font-medium text-slate-800 leading-relaxed">
-              Detale, które <br />
-              <span className="text-slate-400 font-normal">robią różnicę</span>
-            </h3>
-
-            <ul className="space-y-10">
-              {[
-                {
-                  icon: <FaMobileAlt />,
-                  title: "Adaptacyjność",
-                  desc: "Strona płynnie dostosowuje się do każdej wielkości ekranu, zachowując elegancki układ.",
-                },
-                {
-                  icon: <FaFeather />,
-                  title: "Minimalizm",
-                  desc: "Usunąłem hałas wizualny, pozostawiając tylko to, co istotne dla użytkownika.",
-                },
-                {
-                  icon: <FaCheck />,
-                  title: "Jakość kodu",
-                  desc: "Szybkie ładowanie i bezbłędne działanie to standard, nie dodatek.",
-                },
-              ].map((item, index) => (
-                <li key={index} className="flex gap-4">
-                  <div className="flex-shrink-0 pt-1 text-slate-300">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <h4 className="text-base font-medium text-slate-700 mb-1">
-                      {item.title}
-                    </h4>
-                    <p className="text-slate-400 text-sm leading-relaxed font-light">
-                      {item.desc}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-
-            <div className="pt-4">
-              <Link
-                href="https://www.ogrodzagrosze.pl/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-8 py-3 border border-slate-200 rounded-full text-slate-500 font-medium hover:border-slate-800 hover:text-slate-900 transition-all duration-500"
-              >
-                Zobacz projekt
-                <FaArrowRight className="text-xs" />
-              </Link>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
