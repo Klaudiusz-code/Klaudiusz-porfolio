@@ -23,7 +23,7 @@ const ProjectsData: Project[] = [
   },
   {
     id: 2,
-    title: "Ogrod za Grosze",
+    title: "Ogród za Grosze",
     imageUrl: "/instogrod.jpg",
     link: "https://www.ogrodzagrosze.pl/",
     description:
