@@ -133,6 +133,7 @@ const HomePage = async () => {
         <meta property="og:type" content={seo?.openGraph?.type || "website"} />
       </Head>
       <HeroSection
+      // @ts-ignore
         title={hero?.title || ""}
         description={hero?.description || ""}
         buttonText={hero?.button?.label || ""}

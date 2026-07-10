@@ -13,8 +13,10 @@ export default async function RootLayout({ children }: any) {
     query: GRAPHQL_QUERY,
   });
 
-  const header = data.menus?.nodes.find((node: any) => node.slug === "header");
-  const footer = data.menus?.nodes.find((node: any) => node.slug === "footer");
+  const header =
+    data.menus?.nodes.find((node: any) => node.slug === "header") || {};
+  const footer =
+    data.menus?.nodes.find((node: any) => node.slug === "footer") || {};
 
   return (
     <html lang="pl">

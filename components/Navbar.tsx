@@ -1,91 +1,132 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { IoIosMenu, IoIosArrowForward } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
-const Navbar = ({ data }: any) => {
+// Zdefiniowanie typów zamiast 'any'
+type MenuItemNode = {
+  id: string;
+  label: string;
+  path: string;
+};
+
+type NavbarData = {
+  menuItems?: {
+    edges: { node: MenuItemNode }[];
+  };
+};
+
+const Navbar = ({ data }: { data: NavbarData }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const closeMenu = () => setIsMenuOpen(false);
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+  const closeMenu = useCallback(() => setIsMenuOpen(false), []);
 
+  // 1. Nasłuchiwanie scrolla dla tła paska
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // 2. BLOKADA SCROLLU CIAŁA STRONY NA MOBILCE (Kluczowe dla UX)
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    // Cleanup na wypadek odmontowania komponentu
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
+  // 3. Zamknięcie menu klawiszem Escape (Dostępność)
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeMenu();
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, [closeMenu]);
+
+  const menuItems = data?.menuItems?.edges || [];
 
   return (
     <>
       {/* ================= NAVBAR ================= */}
       <nav
         className={`
-          fixed top-0 left-0 w-full z-50 transition-all duration-300
+          fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-out
           ${
             isScrolled
-              ? "bg-white/90 backdrop-blur-xl border-b border-slate-200 py-3"
+              ? "bg-white/80 backdrop-blur-2xl border-b border-slate-100 shadow-sm py-4"
               : "bg-transparent py-6"
           }
         `}
       >
-        <div className="container mx-auto max-w-7xl px-4 flex items-center justify-between">
+        <div className="container mx-auto max-w-7xl px-6 flex items-center justify-between">
           {/* LOGO */}
-          <Link href="/" className="flex items-center gap-3 z-50 group">
+          <Link
+            href="/"
+            className="flex items-center gap-3 z-50 group"
+            onClick={closeMenu}
+          >
             <Image
               src="/hello.svg"
-              alt="logo"
+              alt="Logo"
               width={42}
               height={42}
-              className="object-contain"
+              className="object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
 
           {/* ================= DESKTOP ================= */}
-          <div className="hidden lg:flex items-center gap-14">
-            <ul className="flex items-center gap-10">
-              {data?.menuItems?.edges.map((edge: any) => (
-                <li key={edge.node.id} className="relative group">
+          <div className="hidden lg:flex items-center gap-10">
+            <ul className="flex items-center gap-2">
+              {menuItems.map((edge) => (
+                <li key={edge.node.id}>
                   <Link
                     href={edge.node.path || "/"}
                     className="
-                      text-[15px] font-medium text-slate-700
-                      transition-colors
-                      group-hover:text-customColor
+                      relative px-5 py-2.5
+                      text-[15px] font-medium text-slate-600
+                      rounded-full
+                      transition-all duration-300
+                      hover:bg-slate-100 hover:text-slate-900
                     "
                   >
                     {edge.node.label}
                   </Link>
-                  <span
-                    className="
-                      absolute -bottom-1 left-0 h-[2px] w-full
-                      bg-customColor
-                      scale-x-0 origin-left
-                      transition-transform duration-300
-                      group-hover:scale-x-100
-                    "
-                  />
                 </li>
               ))}
             </ul>
 
             {/* SOCIALS */}
-            <div className="flex items-center gap-5 border-l border-slate-200 pl-8">
+            <div className="flex items-center gap-4 border-l border-slate-200 pl-6">
               <a
-                className="text-slate-400 hover:text-slate-900 transition-colors"
+                className="p-2 text-slate-400 hover:text-slate-900 hover:bg-slate-100 rounded-full transition-all"
                 href="https://www.instagram.com/klaudiuszdev.pl/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
               >
-                <FaInstagram />
+                <FaInstagram className="text-lg" />
               </a>
               <a
-                className="text-slate-400 hover:text-slate-900 transition-colors"
+                className="p-2 text-slate-400 hover:text-slate-900 hover:bg-slate-100 rounded-full transition-all"
                 href="https://www.facebook.com/profile.php?id=61586322127679"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
               >
-                <FaFacebook />
+                <FaFacebook className="text-lg" />
               </a>
             </div>
 
@@ -93,27 +134,45 @@ const Navbar = ({ data }: any) => {
             <Link
               href="/kontakt"
               className="
-                flex items-center gap-2
+                group flex items-center gap-2.5
                 px-7 py-3
                 bg-slate-900 text-white
                 text-sm font-semibold
-                rounded-xl
-                hover:bg-customColor hover:text-white
-                transition-colors
+                rounded-full
+                hover:bg-customColor
+                transition-all duration-300
+                shadow-lg shadow-slate-900/20 hover:shadow-customColor/30
               "
             >
               Bezpłatna wycena
-              <IoIosArrowForward />
+              <IoIosArrowForward className="transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
 
           {/* ================= MOBILE TRIGGER ================= */}
           <button
             onClick={toggleMenu}
-            className="lg:hidden p-2 rounded-lg text-slate-900 hover:bg-slate-100 transition"
-            aria-label="Menu"
+            className="lg:hidden relative z-50 p-3 -mr-3 rounded-xl text-slate-900 hover:bg-slate-100 transition-colors"
+            aria-label={isMenuOpen ? "Zamknij menu" : "Otwórz menu"}
+            aria-expanded={isMenuOpen}
           >
-            <IoIosMenu className="text-3xl" />
+            <div className="relative w-6 h-5">
+              <span
+                className={`absolute left-0 w-6 h-0.5 bg-current transition-all duration-300 ${
+                  isMenuOpen ? "top-2 rotate-45" : "top-0"
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-2 w-6 h-0.5 bg-current transition-all duration-300 ${
+                  isMenuOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"
+                }`}
+              />
+              <span
+                className={`absolute left-0 w-6 h-0.5 bg-current transition-all duration-300 ${
+                  isMenuOpen ? "top-2 -rotate-45" : "top-4"
+                }`}
+              />
+            </div>
           </button>
         </div>
       </nav>
@@ -121,100 +180,150 @@ const Navbar = ({ data }: any) => {
       {/* ================= MOBILE MENU ================= */}
       <div
         className={`
-          fixed inset-0 z-40 transition-opacity duration-300
+          fixed inset-0 z-40 lg:hidden
+          transition-opacity duration-500 ease-out
           ${
             isMenuOpen
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
           }
         `}
+        aria-hidden={!isMenuOpen}
       >
         {/* BACKDROP */}
         <div
-          className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+          className="absolute inset-0 bg-slate-950/60 backdrop-blur-md"
           onClick={closeMenu}
         />
 
         {/* PANEL */}
         <div
           className={`
-            absolute right-0 top-0 h-full w-full sm:w-[420px]
-            bg-white/95 backdrop-blur-2xl
-            shadow-2xl
-            transition-transform duration-300
+            absolute right-0 top-0 h-full w-full sm:w-[450px]
+            bg-gradient-to-b from-white to-slate-50
+            shadow-2xl shadow-black/20
+            flex flex-col
+            transition-transform duration-500 cubic-bezier(0.22, 1, 0.36, 1)
             ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
           `}
+          role="dialog"
+          aria-modal="true"
         >
           {/* HEADER */}
-          <div className="flex items-center justify-between px-6 py-6 border-b border-slate-200">
-            <span className="text-xs font-semibold tracking-widest text-slate-400 uppercase">
-              Menu
+          <div className="flex items-center justify-between px-8 py-8">
+            <span className="text-xs font-bold tracking-[0.2em] text-slate-300 uppercase">
+              Nawigacja
             </span>
+            {/* Przycisk X jest opcjonalny, bo hamburger na zewnątrz animuje się w krzyżyk, ale zostawiam dla jasności */}
             <button
               onClick={closeMenu}
-              className="text-slate-500 hover:text-slate-900 transition"
+              className="p-2 -mr-2 text-slate-400 hover:text-slate-900 transition-colors"
+              aria-label="Zamknij menu"
             >
-              <IoCloseOutline className="text-3xl" />
+              <IoCloseOutline className="text-2xl" />
             </button>
           </div>
 
-          {/* LINKS */}
-          <div className="flex flex-col h-full px-8 pt-20">
-            <ul className="space-y-8">
-              {data?.menuItems?.edges.map((edge: any) => (
+          {/* LINKS - Główna zawartość */}
+          <div className="flex-1 overflow-y-auto px-8 pt-8">
+            <ul className="space-y-2">
+              {menuItems.map((edge, index) => (
                 <li key={edge.node.id}>
                   <Link
                     href={edge.node.path || "/"}
                     onClick={closeMenu}
                     className="
-                      text-3xl md:text-4xl
-                      font-semibold
-                      text-slate-900
-                      tracking-tight
-                      hover:text-customColor
-                      transition-colors
+                      group flex items-center gap-5 py-4
+                      border-b border-slate-100
+                      transition-all duration-500
                     "
+                    style={{
+                      // Animacja kaskadowa (stagger) - każdy link wchodzi z opóźnieniem
+                      opacity: isMenuOpen ? 1 : 0,
+                      transform: isMenuOpen
+                        ? "translateX(0)"
+                        : "translateX(40px)",
+                      transitionDelay: isMenuOpen
+                        ? `${150 + index * 75}ms`
+                        : "0ms",
+                    }}
                   >
-                    {edge.node.label}
+                    <span className="text-sm font-bold text-slate-200 group-hover:text-customColor transition-colors">
+                      0{index + 1}
+                    </span>
+                    <span className="text-2xl md:text-3xl font-semibold text-slate-800 tracking-tight group-hover:text-customColor transition-colors">
+                      {edge.node.label}
+                    </span>
+                    <IoIosArrowForward className="ml-auto text-slate-300 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-customColor transition-all duration-300" />
                   </Link>
                 </li>
               ))}
             </ul>
+          </div>
 
-            {/* SOCIALS */}
-            <div className="mt-16 pt-8 border-t border-slate-200 flex justify-center gap-8">
-              <a
-                className="text-slate-400 hover:text-slate-900 transition-colors"
-                href="#"
-              >
-                <FaInstagram className="text-xl" />
-              </a>
-              <a
-                className="text-slate-400 hover:text-slate-900 transition-colors"
-                href="#"
-              >
-                <FaLinkedin className="text-xl" />
-              </a>
-            </div>
+          {/* BOTTOM SECTION - Przyklejone do dołu dla łatwego dostępu kciukiem */}
+          <div
+            className="px-8 pb-10 pt-6 border-t border-slate-200 bg-white"
+            style={{
+              opacity: isMenuOpen ? 1 : 0,
+              transform: isMenuOpen ? "translateY(0)" : "translateY(20px)",
+              transitionDelay: isMenuOpen
+                ? `${150 + menuItems.length * 75}ms`
+                : "0ms",
+              transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
+            }}
+          >
+            {/* CTA BUTTON */}
+            <Link
+              href="/kontakt"
+              onClick={closeMenu}
+              className="
+                group flex items-center justify-center gap-3 w-full
+                px-8 py-4 mb-8
+                bg-slate-900 text-white
+                text-base font-semibold
+                rounded-2xl
+                hover:bg-customColor
+                transition-all duration-300
+                shadow-xl shadow-slate-900/20
+              "
+            >
+              Bezpłatna wycena
+              <IoIosArrowForward className="transition-transform group-hover:translate-x-1" />
+            </Link>
 
-            {/* CTA */}
-            <div className="mt-10">
-              <Link
-                href="/kontakt"
-                onClick={closeMenu}
-                className="
-                  flex items-center justify-center gap-3
-                  px-8 py-4
-                  bg-slate-900 text-white
-                  text-sm font-semibold
-                  rounded-xl
-                  hover:bg-customColor hover:text-slate-900
-                  transition-colors
-                "
-              >
-                Bezpłatna wycena
-                <IoIosArrowForward />
-              </Link>
+            {/* SOCIALS & COPYRIGHT */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <a
+                  className="p-2.5 bg-slate-100 text-slate-500 hover:bg-customColor hover:text-white rounded-xl transition-all duration-300"
+                  href="https://www.instagram.com/klaudiuszdev.pl/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
+                  <FaInstagram className="text-lg" />
+                </a>
+                <a
+                  className="p-2.5 bg-slate-100 text-slate-500 hover:bg-customColor hover:text-white rounded-xl transition-all duration-300"
+                  href="https://www.facebook.com/profile.php?id=61586322127679"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                >
+                  <FaFacebook className="text-lg" />
+                </a>
+                <a
+                  className="p-2.5 bg-slate-100 text-slate-500 hover:bg-customColor hover:text-white rounded-xl transition-all duration-300"
+                  href="#"
+                  aria-label="LinkedIn"
+                >
+                  <FaLinkedin className="text-lg" />
+                </a>
+              </div>
+              <span className="text-xs text-slate-400 tracking-wide">
+                © {new Date().getFullYear()}
+              </span>
             </div>
           </div>
         </div>
