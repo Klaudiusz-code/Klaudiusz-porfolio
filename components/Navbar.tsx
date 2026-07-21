@@ -27,27 +27,23 @@ const Navbar = ({ data }: { data: NavbarData }) => {
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
   const closeMenu = useCallback(() => setIsMenuOpen(false), []);
 
-  // 1. Nasłuchiwanie scrolla dla tła paska
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 2. BLOKADA SCROLLU CIAŁA STRONY NA MOBILCE (Kluczowe dla UX)
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
-    // Cleanup na wypadek odmontowania komponentu
     return () => {
       document.body.style.overflow = "";
     };
   }, [isMenuOpen]);
 
-  // 3. Zamknięcie menu klawiszem Escape (Dostępność)
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeMenu();
@@ -60,10 +56,9 @@ const Navbar = ({ data }: { data: NavbarData }) => {
 
   return (
     <>
-      {/* ================= NAVBAR ================= */}
       <nav
         className={`
-          fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-out
+          fixed top-0 bg-white left-0 w-full z-50 transition-all duration-500 ease-out
           ${
             isScrolled
               ? "bg-white/80 backdrop-blur-2xl border-b border-slate-100 shadow-sm py-4"
