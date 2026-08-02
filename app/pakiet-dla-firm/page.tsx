@@ -10,13 +10,35 @@ import {
 } from "react-icons/hi2";
 
 export const metadata: Metadata = {
-  title: "Pakiet Zaistnij w sieci - Strona WWW i Google Maps | Klaudiuszdev.pl",
+  title:
+    "Strona WWW dla Firm + Google Maps | Pakiet Zaistniej w Sieci – KlaudiuszDev.pl",
+
   description:
-    "Kompleksowy pakiet dla lokalnych firm: nowoczesna strona WWW, optymalizacja wizytówki Google Maps i podpięcie social mediów.",
+    "Kompletny pakiet dla lokalnych firm: profesjonalna strona internetowa, optymalizacja wizytówki Google Maps i połączenie social mediów. Zdobądź klientów online.",
+
+  metadataBase: new URL("https://klaudiuszdev.pl"),
+
+  alternates: {
+    canonical: "/zaistniej-w-sieci",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
   openGraph: {
-    title: "Pakiet: Zaistnij w sieci | Klaudiuszdev.pl",
+    title: "Strona WWW + Google Maps dla Firm | Klaudiuszdev.pl",
+
     description:
-      "Wszystko pod ręką. Zobacz zakres, realizacje i orientacyjne koszty bez ukrytych haczyków.",
+      "Tworzę strony internetowe dla firm i pomagam zwiększyć widoczność lokalnie dzięki Google Maps.",
+
+    url: "https://klaudiuszdev.pl/zaistniej-w-sieci",
+
+    siteName: "KlaudiuszDev.pl",
+
+    locale: "pl_PL",
+
     type: "website",
   },
 };
@@ -98,9 +120,11 @@ export default function OfertaPage() {
             </span>
 
             <h1 className="text-4xl sm:text-6xl font-extrabold text-slate-900 leading-[1.05] tracking-tight mb-12">
-              Pakiet:
+              Profesjonalna strona WWW
               <br />
-              <span className="text-blue-600">Twoja Firma w Sieci</span>
+              <span className="text-blue-600">
+                dla Twojej firmy + Google Maps
+              </span>
             </h1>
 
             <div className="relative bg-slate-50/80 backdrop-blur-sm rounded-3xl border border-slate-100 p-6 sm:p-10 mb-8 overflow-hidden">
@@ -149,7 +173,9 @@ export default function OfertaPage() {
               <div className="p-6 sm:p-8">
                 <p className="text-[15px] sm:text-base text-slate-600 leading-relaxed mb-4">
                   Właśnie dlatego stworzyłem pakiet{" "}
-                  <strong className="text-slate-900">„Twoja Firma w Sieci”</strong>
+                  <strong className="text-slate-900">
+                    „Twoja Firma w Sieci”
+                  </strong>
                   . Zebrałem wszystko w jedno miejsce. Klient ma od razu przed
                   oczami zakres, realizacje, orientacyjne koszty i jasne zasady.
                 </p>

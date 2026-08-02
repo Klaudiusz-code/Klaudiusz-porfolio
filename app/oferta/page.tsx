@@ -9,28 +9,40 @@ import {
 } from "react-icons/fa6";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = "Oferta - Tworzenie Stron i Sklepów | Klaudiusz Dev";
+  const title =
+    "Tworzenie Stron Internetowych i Sklepów WooCommerce | Oferta KlaudiuszDev.pl";
+
   const description =
-    "Tworzę szybkie strony internetowe, sklepy e-commerce i landing page'e. Nowoczesne technologie, dbam o SEO i wydajność. Sprawdź ofertę!";
+    "Projektuję profesjonalne strony internetowe, sklepy WooCommerce i aplikacje webowe dla firm. Sprawdź ofertę KlaudiuszDev.pl – nowoczesny design, SEO i wysoka wydajność.";
 
   return {
     title,
     description,
+
     metadataBase: new URL("https://klaudiuszdev.pl"),
+
     alternates: {
       canonical: "/strony-i-sklepy-internetowe",
     },
+
     robots: {
       index: true,
       follow: true,
     },
+
     openGraph: {
       title,
       description,
       url: "https://klaudiuszdev.pl/strony-i-sklepy-internetowe",
-      siteName: "Klaudiusz Dev",
+      siteName: "KlaudiuszDev.pl",
       locale: "pl_PL",
       type: "website",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
     },
   };
 }
@@ -116,15 +128,16 @@ const Offert = () => {
           </div>
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-8 leading-[1.1]">
-            <span className="text-gray-900 block">Strony i sklepy</span>
+            <span className="text-gray-900 block">Tworzenie stron</span>
+
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0077cc] to-[#00a3ff] block mt-2">
-              internetowe
+              internetowych i sklepów WooCommerce
             </span>
           </h1>
 
           <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto mb-12 leading-relaxed">
-            Tworzę nowoczesne strony wizytówki, rozbudowane portale oraz sklepy
-            e-commerce.
+            Tworzę szybkie, nowoczesne strony internetowe, sklepy WooCommerce
+            oraz aplikacje webowe dla firm, które chcą rozwijać biznes online.
           </p>
 
           <a

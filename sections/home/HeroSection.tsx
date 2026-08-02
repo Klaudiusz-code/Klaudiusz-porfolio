@@ -66,8 +66,8 @@ const HeroSection = ({ buttonText, buttonUrl = "/" }: HeroSectionProps) => {
       <div className="container mx-auto px-5 sm:px-6 max-w-[1200px] pt-20 pb-12 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-28 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           <div className="space-y-6 lg:self-center">
-            <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-100">
-              Strony dla lokalnych firm
+            <span className="inline-flex items-center mt-2 md:mt-0 gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-100">
+              Projekty dla lokalnych firm
             </span>
 
             <h1
