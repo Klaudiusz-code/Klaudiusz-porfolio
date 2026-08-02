@@ -1,34 +1,56 @@
-
 import FormClient from "../../components/FormClient";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: "Brief dla Twojej firmy • klaudiuszdev.pl",
+export const metadata: Metadata = {
+  title:
+    "Zaplanuuj swoją stronę internetową | Darmowy brief projektu | Klaudiuszdev.pl",
+
   description:
-    "Wypełnij brief i pozwól mi stworzyć projekt dopasowany do Twojej firmy, klientów i potrzeb. Szybko, profesjonalnie i bez zobowiązań.",
-  keywords: [
-    "brief firmy",
-    "projekt strony internetowej",
-    "klaudiuszdev",
-    "projekt graficzny",
-    "branding",
-  ],
-  authors: [{ name: "Klaudiusz Adamaszek", url: "https://klaudiuszdev.pl" }],
+    "Wypełnij darmowy brief i opowiedz o swojej firmie. Na tej podstawie przygotuję propozycję projektu strony WWW, sklepu internetowego lub dedykowanego rozwiązania online.",
+
+  metadataBase: new URL("https://klaudiuszdev.pl"),
+
+  alternates: {
+    canonical: "/formularz-briefu",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
   openGraph: {
-    title: "Brief dla Twojej firmy • klaudiuszdev.pl",
+    title:
+      "Zaplanuuj swoją stronę internetową | Darmowy brief projektu | Klaudiuszdev.pl",
+
     description:
-      "Wypełnij brief i pozwól mi stworzyć projekt dopasowany do Twojej firmy, klientów i potrzeb.",
-    url: "https://klaudiuszdev.pl",
-    siteName: "klaudiuszdev.pl",
+      "Wypełnij darmowy brief i opowiedz o swojej firmie. Na tej podstawie przygotuję propozycję projektu strony WWW, sklepu internetowego lub dedykowanego rozwiązania online.",
+
+    url: "https://klaudiuszdev.pl/formularz-briefu",
+
+    siteName: "KlaudiuszDev",
+
+    locale: "pl_PL",
+
+    type: "website",
+
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Brief dla Twojej firmy",
+        alt: "Brief projektu strony internetowej Klaudiuszdev.pl",
       },
     ],
-    locale: "pl_PL",
-    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+
+    title: "Brief na stronę internetową i sklep WooCommerce | Klaudiuszdev.pl",
+
+    description:
+      "Wypełnij brief i otrzymaj dopasowaną ofertę na stronę WWW, sklep WooCommerce lub aplikację webową.",
   },
 };
 

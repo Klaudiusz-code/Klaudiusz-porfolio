@@ -33,7 +33,6 @@ export interface Highlight {
   title: string;
   description: string;
 }
-
 export interface Service {
   icon: React.ReactNode;
   label: string;
@@ -47,12 +46,7 @@ export interface BranżaType {
   heroText: string;
   heroImage: string;
   gradient?: string;
-  colors: {
-    primary: string;
-    accent: string;
-    bg: string;
-    text: string;
-  };
+  colors: { primary: string; accent: string; bg: string; text: string };
   benefits: string[];
   industryHighlights: Highlight[];
   services: Service[];
@@ -122,7 +116,6 @@ export const branze: Record<string, BranżaType> = {
       "Super czytelność na telefonach",
     ],
   },
-
   fotografia: {
     slug: "fotografia",
     title: "Strona dla Fotografa",
@@ -186,7 +179,6 @@ export const branze: Record<string, BranżaType> = {
       "Świetna prezentacja zdjęć",
     ],
   },
-
   autodetailing: {
     slug: "autodetailing",
     title: "Strona dla Auto Detailingu",
@@ -246,7 +238,6 @@ export const branze: Record<string, BranżaType> = {
       "Nowoczesny wygląd strony",
     ],
   },
-
   ogrodnictwo: {
     slug: "ogrodnictwo",
     title: "Strona dla Plantacji i Ogrodnictwa",
@@ -307,7 +298,6 @@ export const branze: Record<string, BranżaType> = {
       "Responsywność na telefonach i tabletach",
     ],
   },
-
   kosmetyka: {
     slug: "kosmetyka",
     title: "Strona dla Kosmetyczki / Salonu SPA",
@@ -460,6 +450,25 @@ const getIconForSlug = (slug: string) => {
   }
 };
 
+const getTaglineColor = (slug: string) => {
+  switch (slug) {
+    case "mechanik":
+      return "text-blue-600";
+    case "fotografia":
+      return "text-violet-600";
+    case "autodetailing":
+      return "text-sky-600";
+    case "ogrodnictwo":
+      return "text-green-600";
+    case "kosmetyka":
+      return "text-pink-600";
+    case "fryzjerstwo":
+      return "text-rose-600";
+    default:
+      return "text-slate-500";
+  }
+};
+
 interface BranżaDisplay {
   type: "active" | "inactive";
   slug: string;
@@ -469,8 +478,6 @@ interface BranżaDisplay {
   gradient?: string;
   description?: string;
 }
-
-
 
 export default function OfferTabs() {
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -529,8 +536,7 @@ export default function OfferTabs() {
   const scroll = (direction: "left" | "right") => {
     if (sliderRef.current) {
       const isMobile = window.innerWidth < 768;
-      const scrollAmount = isMobile ? 300 : 340;
-
+      const scrollAmount = isMobile ? 310 : 400;
       sliderRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -539,142 +545,106 @@ export default function OfferTabs() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#020617] text-white font-sans selection:bg-white selection:text-black overflow-hidden relative">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-[#020617] to-black pointer-events-none" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="container mx-auto px-4 py-16 md:py-24 max-w-7xl relative z-10 flex flex-col items-center">
-        <div className="text-center mb-12 md:mb-20 max-w-2xl">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-400">
-            Wybierz branżę
-          </h1>
-          <p className="text-neutral-400 text-base md:text-lg leading-relaxed px-2">
-            Wybierz odpowiednią kategorię, aby zobaczyć dedykowaną ofertę dla
-            Twojej firmy.
+    <div className="w-full bg-[#fafafa] text-slate-900 font-sans selection:bg-slate-300 selection:text-slate-900 overflow-hidden relative antialiased">
+      <div className="container mx-auto px-4 sm:px-6 py-20 md:py-28 max-w-7xl relative z-10 flex flex-col items-center">
+        {/* PIĘKNY NAGŁÓWEK - Z strukturą i autorytetem */}
+        <div className="text-center mb-14 md:mb-20 max-w-2xl">
+          <span className="inline-block text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">
+            Oferty branżowe
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight mb-5">
+            Rozwiązania dopasowane
+            <br className="hidden sm:block" /> do Twojej branży
+          </h2>
+          <p className="text-slate-500 text-base md:text-lg leading-relaxed max-w-lg mx-auto">
+            Każda branża ma swoje unikalne potrzeby. Wybierz swoją i sprawdź, co
+            dokładnie przygotowaliśmy.
           </p>
         </div>
 
         <div className="w-full relative group/slider">
           <button
             onClick={() => scroll("left")}
-    
-            className={`
-              absolute top-1/2 -translate-y-1/2 z-30 rounded-full 
-              bg-slate-900/90 backdrop-blur border border-white/10 
-              flex items-center justify-center text-white 
-              hover:bg-white hover:text-black transition-all duration-300 shadow-2xl
-              
-              // Mobile Styles
-              left-2 w-10 h-10 opacity-100
-              
-              // Desktop Overrides
-              md:left-0 md:w-16 md:h-16 md:opacity-0 
-              md:-translate-x-12 md:group-hover/slider:opacity-100 md:group-hover/slider:-translate-x-4
-            `}
+            className="absolute top-1/2 -translate-y-1/2 z-30 left-0 md:-left-6 w-12 h-12 rounded-full bg-white border border-slate-200/80 flex items-center justify-center text-slate-400 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all duration-300 shadow-xl shadow-slate-200/50 opacity-100 md:opacity-0 md:group-hover/slider:opacity-100"
           >
-            <FaChevronLeft className="text-sm md:text-xl" />
+            <FaChevronLeft className="text-sm" />
           </button>
 
           <button
             onClick={() => scroll("right")}
-            className={`
-              absolute top-1/2 -translate-y-1/2 z-30 rounded-full 
-              bg-slate-900/90 backdrop-blur border border-white/10 
-              flex items-center justify-center text-white 
-              hover:bg-white hover:text-black transition-all duration-300 shadow-2xl
-              
-              // Mobile Styles
-              right-2 w-10 h-10 opacity-100
-              
-              // Desktop Overrides
-              md:right-0 md:w-16 md:h-16 md:opacity-0 
-              md:translate-x-12 md:group-hover/slider:opacity-100 md:group-hover/slider:translate-x-4
-            `}
+            className="absolute top-1/2 -translate-y-1/2 z-30 right-0 md:-right-6 w-12 h-12 rounded-full bg-white border border-slate-200/80 flex items-center justify-center text-slate-400 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all duration-300 shadow-xl shadow-slate-200/50 opacity-100 md:opacity-0 md:group-hover/slider:opacity-100"
           >
-            <FaChevronRight className="text-sm md:text-xl" />
+            <FaChevronRight className="text-sm" />
           </button>
 
           <div
             ref={sliderRef}
-            className="flex gap-6 md:gap-8 overflow-x-auto pb-20 pt-4 px-2 md:px-12 scroll-smooth snap-x snap-mandatory no-scrollbar"
+            className="flex gap-5 md:gap-7 overflow-x-auto pb-8 pt-2 px-1 md:px-4 scroll-smooth snap-x snap-mandatory no-scrollbar"
             style={{ scrollbarWidth: "none" }}
           >
-            {allItems.map((item, index) => (
+            {allItems.map((item) => (
               <div
                 key={item.slug}
-                className="min-w-[280px] md:min-w-[400px] snap-center transition-all duration-500 ease-out hover:-translate-y-3"
+                className="min-w-[280px] md:min-w-[380px] snap-center flex-shrink-0 transition-all duration-500 ease-out hover:-translate-y-2"
               >
                 {item.type === "inactive" ? (
-                  <div
-                    className="relative h-[420px] md:h-[480px] rounded-[1.5rem] md:rounded-[2rem] bg-slate-900 border border-white/5 overflow-hidden flex flex-col items-center justify-center p-6 md:p-8 text-center group/card shadow-xl hover:shadow-2xl hover:shadow-black/40 transition-all duration-500 animate-fade-in-up"
-                    style={{ animationDelay: `${index * 50}ms` }}
-                  >
-                    <div className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
-
-                    <div className="relative z-10 w-16 h-16 md:w-20 md:h-20 rounded-full bg-slate-800 text-neutral-500 flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 border border-white/5 group-hover/card:border-neutral-600 transition-colors shadow-inner">
+                  /* NIEAKTYWNE - Czysty, subtelny minimalizm */
+                  <div className="relative h-[380px] md:h-[440px] rounded-3xl bg-white border border-slate-100 flex flex-col items-center justify-center p-8 text-center group/card shadow-sm">
+                    <div className="w-16 h-16 rounded-2xl bg-slate-50 text-slate-200 flex items-center justify-center text-2xl mb-6 group-hover/card:bg-slate-100 transition-colors">
                       <FaLock />
                     </div>
-
-                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3 tracking-tight">
+                    <h3 className="text-xl font-bold text-slate-700 mb-2 tracking-tight">
                       {item.title}
                     </h3>
-
-                    <p className="text-neutral-500 text-xs md:text-sm leading-relaxed max-w-[220px] mb-6 md:mb-8">
+                    <p className="text-slate-400 text-sm leading-relaxed max-w-[220px] mb-8">
                       {item.description}
                     </p>
-
-                    <button
-                      disabled
-                      className="relative z-10 px-4 md:px-6 py-2 md:py-3 rounded-xl bg-slate-800/50 text-neutral-500 font-semibold text-[10px] md:text-xs uppercase tracking-widest cursor-not-allowed border border-white/5 hover:border-white/10 transition-colors"
-                    >
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-300 border border-slate-100 px-4 py-1.5 rounded-full">
                       Wkrótce
-                    </button>
+                    </span>
                   </div>
                 ) : (
-                  <div
-                    className="relative h-[420px] md:h-[480px] rounded-[1.5rem] md:rounded-[2rem] bg-slate-900 border border-white/10 overflow-hidden group/card flex flex-col shadow-2xl shadow-black/60 hover:shadow-blue-900/30 transition-all duration-500 animate-fade-in-up"
-                    style={{ animationDelay: `${index * 50}ms` }}
-                  >
-                    <div className="relative h-[50%] md:h-[55%] overflow-hidden">
+                  /* AKTYWNE - Kafelki Premium z głębią */
+                  <div className="relative h-[380px] md:h-[440px] rounded-3xl bg-white border border-slate-100 overflow-hidden group/card flex flex-col shadow-sm hover:shadow-2xl hover:shadow-slate-300/40 transition-all duration-500">
+                    {/* Zdjęcie z kinowym winietowaniem */}
+                    <div className="relative h-[60%] overflow-hidden">
                       <img
                         src={item.heroImage}
                         alt={item.title}
                         className="w-full h-full object-cover transition-transform duration-1000 group-hover/card:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/10 to-slate-900" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
 
-                      <div className="absolute top-3 md:top-4 right-3 md:right-4 w-10 h-10 md:w-12 md:h-12 bg-black/40 backdrop-blur-md rounded-xl md:rounded-2xl flex items-center justify-center text-white border border-white/10 text-lg md:text-xl shadow-lg">
-                        {getIconForSlug(item.slug)}
-                      </div>
-                    </div>
-
-                    <div className="relative h-[50%] md:h-[45%] p-6 md:p-8 flex flex-col justify-between bg-slate-900 z-10">
-                      <div>
+                      <div className="absolute bottom-4 left-5 right-5 z-10 flex items-end justify-between">
                         {item.tagline && (
                           <div
-                            className={`text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] mb-2 md:mb-3 bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}
+                            className={`text-[10px] font-bold uppercase tracking-[0.15em] ${getTaglineColor(
+                              item.slug,
+                            )} bg-white/90 backdrop-blur-sm px-3 py-1 rounded-md`}
                           >
                             {item.tagline}
                           </div>
                         )}
-
-                        <h3 className="text-xl md:text-2xl font-bold text-white mb-2 leading-tight tracking-tight group-hover/card:text-blue-400 transition-colors">
-                          {item.title}
-                        </h3>
+                        <div className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center text-slate-700 border border-white/50 text-base shadow-lg">
+                          {getIconForSlug(item.slug)}
+                        </div>
                       </div>
+                    </div>
 
-                      <div className="mt-auto pt-4 md:pt-6">
+                    {/* Tekst z eleganckim przyciskiem */}
+                    <div className="relative h-[40%] p-6 md:p-7 flex flex-col justify-between bg-white">
+                      <h3 className="text-lg md:text-xl font-bold text-slate-900 leading-tight tracking-tight group-hover/card:text-blue-600 transition-colors">
+                        {item.title}
+                      </h3>
+
+                      <div className="mt-auto">
                         <Link
                           href={`/branze/${item.slug}`}
                           className="block w-full"
                         >
-                          <button className="w-full relative overflow-hidden group/btn bg-white text-slate-900 py-3 md:py-4 rounded-xl font-bold text-xs md:text-sm flex items-center justify-center gap-2 transition-all hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:-translate-y-1">
-                            <span className="relative z-10">Zobacz ofertę</span>
-                            <span className="relative z-10 group-hover/btn:translate-x-1 transition-transform duration-300">
-                              →
-                            </span>
-
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
+                          <button className="w-full py-3 rounded-xl border-2 border-slate-200 text-slate-600 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-300 group/btn hover:bg-slate-900 hover:text-white hover:border-slate-900 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-slate-900/20">
+                            Poznaj szczegóły
+                            <FaArrowRight className="text-[10px] group-hover/btn:translate-x-1 transition-transform" />
                           </button>
                         </Link>
                       </div>
@@ -688,20 +658,6 @@ export default function OfferTabs() {
       </div>
 
       <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fade-in-up {
-          animation: fadeInUp 0.6s ease-out forwards;
-          opacity: 0;
-        }
         .no-scrollbar::-webkit-scrollbar {
           display: none;
         }
