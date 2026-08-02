@@ -5,7 +5,6 @@ import { HomePageQuery, HomePageQueryVariables } from "@/gql/graphql";
 import GRAPHQL_QUERY from "@/gql-queries/home_page.graphql";
 
 import HeroSection from "@/sections/home/HeroSection";
-import AboutSection from "@/sections/home/AboutSection";
 import ServicesSection from "@/sections/home/ServicesSection";
 import DesignProcessSection from "@/sections/home/DesignProcessSection";
 import ToolsSection from "@/sections/home/ToolsSection";
@@ -134,7 +133,7 @@ const HomePage = async () => {
         buttonUrl={hero?.button?.url || ""}
       />
 
-      <section className="py-16">
+      <section className="py-2">
         <OfferTabs />
       </section>
 

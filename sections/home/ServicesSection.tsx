@@ -20,7 +20,7 @@ const Icons = {
       <line x1="9" y1="21" x2="9" y2="9" />
     </svg>
   ),
-  Globe: () => (
+  ShoppingBag: () => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="28"
@@ -32,9 +32,9 @@ const Icons = {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <circle cx="12" cy="12" r="10" />
-      <path d="M2 12h20" />
-      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+      <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <path d="M16 10a4 4 0 01-8 0" />
     </svg>
   ),
   Tool: () => (
@@ -69,87 +69,62 @@ const Icons = {
   ),
 };
 
-const services = [
-  {
-    title: "Sklep lub Strona",
-    subtitle: "Solidne narzędzie sprzedaży.",
-    description:
-      "Buduję strony i sklepy, które są przejrzyste dla klienta i łatwe w obsłudze dla Ciebie. Dobre techniczne podstawy to podstawa zaufania.",
-    features: [
-      "Stabilne działanie",
-      "Łatwy panel edycji",
-      "Szybkość działania",
-    ],
-  },
-  {
-    title: "Widoczność",
-    subtitle: "Być tam, gdzie szukają.",
-    description:
-      "Dbam o techniczną poprawność Twojej strony w Google. To gwarantuje, że Twoja firma jest widoczna dla klientów z Twojej okolicy.",
-    features: ["Google Maps", "Podstawy techniczne SEO", "Dostępność mobilna"],
-  },
-  {
-    title: "Stała Wsparcie",
-    subtitle: "Odpowiadam za stabilność.",
-    description:
-      "Strona wymaga regularnej uwagi. Prowadzę aktualizacje, dbam o bezpieczeństwo i zajmuję się bieżącą obsługą – od edycji tekstów po dodawanie zdjęć.",
-    features: [
-      "Edycja treści",
-      "Aktualizacja zdjęć",
-      "Serwis i bezpieczeństwo",
-    ],
-  },
-];
-
 const ServicesSection = () => {
   return (
-    <section className="py-16 md:py-32 bg-white text-slate-800 overflow-hidden relative">
-      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-3xl translate-y-1/3 translate-x-1/3 pointer-events-none" />
+    <section className="py-12 sm:py-16 md:py-24 lg:py-32 bg-white text-slate-800 overflow-hidden relative">
+      <div className="absolute bottom-0 right-0 w-[400px] sm:w-[500px] md:w-[600px] h-[400px] sm:h-[500px] md:h-[600px] bg-blue-500/5 rounded-full blur-3xl translate-y-1/3 translate-x-1/3 pointer-events-none" />
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-7xl">
-        <div className="max-w-4xl mx-auto text-center mb-16 md:mb-24">
-          <span className="inline-block py-1 px-3 md:px-4 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-6 md:mb-8 shadow-sm">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 max-w-7xl">
+        {/* NAGŁÓWEK - Płynne skalowanie tekstu */}
+        <div className="max-w-4xl mx-auto text-center mb-10 sm:mb-14 md:mb-20 lg:mb-24">
+          <span className="inline-block py-1 px-3 sm:px-4 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-4 sm:mb-6 md:mb-8 shadow-sm">
             KlaudiuszDev - Klaudiusz Adamaszek
           </span>
 
-          <div className="max-w-3xl mx-auto space-y-4 md:space-y-6">
-            <p className="text-base md:text-lg text-slate-600 leading-relaxed font-medium">
-              Nazywam się <strong>Klaudiusz</strong>. Jestem programistą i
-              tworzę strony internetowe oraz sklepy. Rozumiem, że nie chcesz
-              tracić czasu na techniczne problemy.
+          <div className="max-w-3xl mx-auto space-y-3 sm:space-y-4 md:space-y-6">
+            <p className="text-[15px] sm:text-base md:text-lg text-slate-600 leading-relaxed font-medium">
+              Nazywam się <strong>Klaudiusz</strong>. Tworzę solidne strony
+              internetowe, wydajne sklepy oparte o WooCommerce oraz zapewniam
+              ich ciągłą opiekę. W razie potrzeby piszę też prostsze aplikacje
+              webowe, które usprawniają pracę.
             </p>
-            <p className="text-sm md:text-lg text-slate-500 leading-relaxed font-light">
-              Dlatego dbam o stabilność Twojej strony i jestem bezpośrednim
-              kontaktem – nie musisz przechodzić przez dział obsługi klienta.
-              Moim celem jest technika, która działa i wspiera Twój biznes.
+            <p className="text-[13px] sm:text-sm md:text-base text-slate-500 leading-relaxed font-light">
+              Cenię czysty kod i stabilne rozwiązania. Jestem osobą
+              bezpośrednią, więc komunikacja ze mną jest szybka i bez
+              pośredników.
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-10">
-          <article className="group bg-white rounded-2xl md:rounded-3xl p-6 md:p-10 border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/10 hover:-translate-y-1 transition-all duration-500 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
+          <article className="group bg-white rounded-2xl sm:rounded-[1.5rem] md:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/10 hover:-translate-y-1 transition-all duration-500 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 sm:w-40 sm:h-40 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="relative z-10">
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-white border border-slate-100 text-blue-600 rounded-xl md:rounded-2xl flex items-center justify-center mb-6 md:mb-8 shadow-sm group-hover:border-blue-200 group-hover:scale-105 transition-all duration-300">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-white border border-slate-100 text-blue-600 rounded-xl sm:rounded-xl md:rounded-2xl flex items-center justify-center mb-5 sm:mb-6 md:mb-8 shadow-sm group-hover:border-blue-200 group-hover:scale-105 transition-all duration-300">
                 <Icons.Layout />
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-2 md:mb-3 tracking-tight">
-                {services[0].title}
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-1.5 sm:mb-2 md:mb-3 tracking-tight">
+                Strony Internetowe
               </h3>
-              <p className="text-blue-600 font-bold text-[10px] md:text-xs uppercase tracking-widest mb-3 md:mb-4">
-                {services[0].subtitle}
+              <p className="text-blue-600 font-bold text-[9px] sm:text-[10px] md:text-xs uppercase tracking-widest mb-2.5 sm:mb-3 md:mb-4">
+                Szybkość, użyteczność, wizerunek
               </p>
-              <p className="text-slate-500 leading-relaxed mb-6 md:mb-8 text-sm">
-                {services[0].description}
+              <p className="text-slate-500 leading-relaxed mb-5 sm:mb-6 md:mb-8 text-[13px] sm:text-sm">
+                Buduję strony, które ładują się błyskawicznie i są poprawnie
+                zoptymalizowane pod Google. Stawiam na przejrzysty układ i dobry
+                UX, aby każdy użytkownik od razu znalazł to, czego szuka.
               </p>
-              <ul className="space-y-2 md:space-y-3">
-                {services[0].features.map((f, i) => (
+              <ul className="space-y-1.5 sm:space-y-2 md:space-y-3">
+                {[
+                  "Nowoczesne technologie (Next.js / React)",
+                  "Podstawy techniczne SEO",
+                  "Perfekcyjne dopasowanie do mobile",
+                ].map((f, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-3 text-slate-700 text-xs md:text-sm font-medium"
+                    className="flex items-start gap-2.5 sm:gap-3 text-slate-700 text-[11px] sm:text-xs md:text-sm font-medium"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-200 group-hover:bg-blue-600 transition-colors mt-1.5 md:mt-0.5 shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-200 group-hover:bg-blue-600 transition-colors mt-1 sm:mt-1.5 md:mt-0.5 shrink-0" />
                     <span>{f}</span>
                   </li>
                 ))}
@@ -157,29 +132,36 @@ const ServicesSection = () => {
             </div>
           </article>
 
-          <article className="group bg-white rounded-2xl md:rounded-3xl p-6 md:p-10 border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/10 hover:-translate-y-1 transition-all duration-500 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
+          {/* KAFEL 2: SKLEPY INTERNETOWE */}
+          <article className="group bg-white rounded-2xl sm:rounded-[1.5rem] md:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/10 hover:-translate-y-1 transition-all duration-500 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 sm:w-40 sm:h-40 bg-gradient-to-bl from-blue-50 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="relative z-10">
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-white border border-slate-100 text-blue-600 rounded-xl md:rounded-2xl flex items-center justify-center mb-6 md:mb-8 shadow-sm group-hover:border-blue-200 group-hover:scale-105 transition-all duration-300">
-                <Icons.Globe />
+              <div className="w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-white border border-slate-100 text-blue-600 rounded-xl sm:rounded-xl md:rounded-2xl flex items-center justify-center mb-5 sm:mb-6 md:mb-8 shadow-sm group-hover:border-blue-200 group-hover:scale-105 transition-all duration-300">
+                <Icons.ShoppingBag />
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-2 md:mb-3 tracking-tight">
-                {services[1].title}
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 mb-1.5 sm:mb-2 md:mb-3 tracking-tight">
+                Sklepy Internetowe
               </h3>
-              <p className="text-blue-600 font-bold text-[10px] md:text-xs uppercase tracking-widest mb-3 md:mb-4">
-                {services[1].subtitle}
+              <p className="text-blue-600 font-bold text-[9px] sm:text-[10px] md:text-xs uppercase tracking-widest mb-2.5 sm:mb-3 md:mb-4">
+                Wydajna sprzedaż na WooCommerce
               </p>
-              <p className="text-slate-500 leading-relaxed mb-6 md:mb-8 text-sm">
-                {services[1].description}
+              <p className="text-slate-500 leading-relaxed mb-5 sm:mb-6 md:mb-8 text-[13px] sm:text-sm">
+                Konfiguruję zaawansowane sklepy na WooCommerce, dbając o
+                płynność zakupów i integrację z systemami płatności. Jeśli
+                standardowe rozwiązania nie wystarczają, tworzę również
+                dedykowane aplikacje webowe usprawniające procesy w firmie.
               </p>
-              <ul className="space-y-2 md:space-y-3">
-                {services[1].features.map((f, i) => (
+              <ul className="space-y-1.5 sm:space-y-2 md:space-y-3">
+                {[
+                  "Kompleksowe sklepy WooCommerce",
+                  "Bezproblemowe płatności i kurierzy",
+                  "Proste aplikacje wspierające sprzedaż",
+                ].map((f, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-3 text-slate-700 text-xs md:text-sm font-medium"
+                    className="flex items-start gap-2.5 sm:gap-3 text-slate-700 text-[11px] sm:text-xs md:text-sm font-medium"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-200 group-hover:bg-blue-600 transition-colors mt-1.5 md:mt-0.5 shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-200 group-hover:bg-blue-600 transition-colors mt-1 sm:mt-1.5 md:mt-0.5 shrink-0" />
                     <span>{f}</span>
                   </li>
                 ))}
@@ -187,7 +169,8 @@ const ServicesSection = () => {
             </div>
           </article>
 
-          <article className="group md:col-span-2 bg-gradient-to-br from-blue-900 to-slate-900 text-white rounded-[1.5rem] md:rounded-[2rem] p-8 md:p-14 relative overflow-hidden shadow-2xl shadow-blue-900/20 border border-blue-800/50">
+          {/* KAFEL 3: DUŻY CIEMNY - OPIEKA */}
+          <article className="group md:col-span-2 bg-gradient-to-br from-blue-900 to-slate-900 text-white rounded-[1.25rem] sm:rounded-[1.5rem] md:rounded-[2rem] p-6 sm:p-8 md:p-10 lg:p-14 relative overflow-hidden shadow-2xl shadow-blue-900/20 border border-blue-800/50">
             <div
               className="absolute inset-0 opacity-10"
               style={{
@@ -195,37 +178,40 @@ const ServicesSection = () => {
                 backgroundSize: "32px 32px",
               }}
             ></div>
-            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600 rounded-full blur-[100px] opacity-40 translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute top-0 right-0 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-blue-600 rounded-full blur-[100px] opacity-40 translate-x-1/2 -translate-y-1/2" />
 
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-16 items-center">
               <div>
-                <div className="flex items-center gap-3 md:gap-4 mb-6 md:mb-8">
-                  <div className="w-12 h-12 md:w-16 md:h-16 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-xl md:rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                <div className="flex items-center gap-2.5 sm:gap-3 md:gap-4 mb-4 sm:mb-6 md:mb-8">
+                  <div className="w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-xl sm:rounded-xl md:rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                     <Icons.Tool />
                   </div>
-                  <span className="px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-[10px] md:text-xs font-bold uppercase tracking-widest backdrop-blur-sm">
-                    Rekomendowane
+                  <span className="px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-widest backdrop-blur-sm">
+                    Stała współpraca
                   </span>
                 </div>
 
-                <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4 tracking-tight">
-                  {services[2].title}
+                <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 sm:mb-3 md:mb-4 tracking-tight">
+                  Opieka i Serwis
                 </h3>
-                <p className="text-blue-200 font-bold text-[10px] md:text-xs uppercase tracking-widest mb-6 md:mb-8">
-                  {services[2].subtitle}
+                <p className="text-blue-200 font-bold text-[9px] sm:text-[10px] md:text-xs uppercase tracking-widest mb-4 sm:mb-6 md:mb-8">
+                  Bezpieczeństwo, aktualizacje, rozwój
                 </p>
 
-                <p className="text-blue-100/80 leading-relaxed mb-8 md:mb-10 text-base md:text-lg font-light">
-                  {services[2].description}
+                <p className="text-blue-100/80 leading-relaxed mb-6 sm:mb-8 md:mb-10 text-[13px] sm:text-sm md:text-base lg:text-lg font-light">
+                  Strona i sklep to żywy organizm. Prowadzę regularny serwis dla
+                  WordPress i WooCommerce – od aktualizacji i kopii zapasowych,
+                  po dbanie o techniczne aspekty SEO. Zapewniam również bieżące
+                  wsparcie dla stworzonych aplikacji webowych.
                 </p>
 
                 <a
                   href="/kontakt"
-                  className="group/btn inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3 md:py-4 bg-white text-blue-900 font-bold rounded-lg md:rounded-xl hover:bg-blue-50 transition-all shadow-xl shadow-white/10 hover:shadow-white/20 hover:-translate-y-1 text-sm md:text-base"
+                  className="group/btn inline-flex items-center gap-2 sm:gap-2.5 md:gap-3 px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-white text-blue-900 font-bold rounded-lg sm:rounded-lg md:rounded-xl hover:bg-blue-50 transition-all shadow-xl shadow-white/10 hover:shadow-white/20 hover:-translate-y-1 text-[13px] sm:text-sm md:text-base"
                 >
-                  Zacznij współpracę
+                  Porozmawiajmy o Twoim projekcie
                   <svg
-                    className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform"
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover/btn:translate-x-1 transition-transform"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -240,21 +226,26 @@ const ServicesSection = () => {
                 </a>
               </div>
 
-              <div className="bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-10 backdrop-blur-sm relative">
-                <div className="absolute top-0 right-0 p-6 md:p-8 opacity-20">
+              <div className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 backdrop-blur-sm relative">
+                <div className="absolute top-0 right-0 p-5 sm:p-6 md:p-8 opacity-20">
                   <Icons.Tool />
                 </div>
 
-                <p className="text-xs md:text-sm font-bold uppercase tracking-widest text-blue-300 mb-6 md:mb-8">
-                  W ramach opieki:
+                <p className="text-[10px] sm:text-xs md:text-sm font-bold uppercase tracking-widest text-blue-300 mb-4 sm:mb-6 md:mb-8">
+                  W ramach opieki zapewniam:
                 </p>
-                <ul className="space-y-4 md:space-y-5">
-                  {services[2].features.map((f, i) => (
+                <ul className="space-y-3 sm:space-y-4 md:space-y-5">
+                  {[
+                    "Utrzymanie WordPress i WooCommerce",
+                    "Kopie zapasowe i bezpieczeństwo",
+                    "Poprawki techniczne i dbanie o SEO",
+                    "Wsparcie dla stworzonych aplikacji",
+                  ].map((f, i) => (
                     <li
                       key={i}
-                      className="flex items-start gap-3 md:gap-4 text-white text-base md:text-lg font-medium"
+                      className="flex items-start gap-2.5 sm:gap-3 md:gap-4 text-white text-sm sm:text-base md:text-lg font-medium"
                     >
-                      <span className="text-blue-400 bg-blue-900/50 rounded-full p-1 shrink-0 mt-0.5">
+                      <span className="text-blue-400 bg-blue-900/50 rounded-full p-0.5 sm:p-1 shrink-0 mt-0.5">
                         <Icons.Check />
                       </span>
                       <span>{f}</span>

@@ -17,26 +17,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 1,
     },
-
     {
-      url: `${SITE_URL}/strony-i-sklepy-internetowe`,
+      url: `${SITE_URL}/oferta`,
       lastModified: currentDate,
       changeFrequency: "weekly",
       priority: 0.95,
     },
-
     {
-      url: `${SITE_URL}/zaistniej-w-sieci`,
+      url: `${SITE_URL}/pakiet-dla-firm`,
       lastModified: currentDate,
       changeFrequency: "weekly",
       priority: 0.9,
-    },
-
-    {
-      url: `${SITE_URL}/realizacje`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.85,
     },
 
     {
@@ -45,7 +36,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.8,
     },
-
     {
       url: `${SITE_URL}/formularz-briefu`,
       lastModified: currentDate,
@@ -66,11 +56,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
       blogPosts.push({
         url: `${SITE_URL}/blog/${post.slug}`,
-
         lastModified: currentDate,
-
         changeFrequency: "monthly",
-
         priority: 0.6,
       });
     });

@@ -182,7 +182,7 @@ export const branze: Record<string, BranżaType> = {
   autodetailing: {
     slug: "autodetailing",
     title: "Strona dla Auto Detailingu",
-    tagline: "Perfekcyjna czystość • Nowoczesny wygląd • Więcej klientów",
+    tagline: "Perfekcyjna czystość • Nowoczesny wygląd",
     heroImage: "/backgroundmechanic.jpg",
     gradient: "from-indigo-500 via-blue-500 to-sky-500",
     colors: {
@@ -241,7 +241,7 @@ export const branze: Record<string, BranżaType> = {
   ogrodnictwo: {
     slug: "ogrodnictwo",
     title: "Strona dla Plantacji i Ogrodnictwa",
-    tagline: "Profesjonalna prezentacja Twojej plantacji",
+    tagline: "Zieleń • Profesjonalizm • Estetyka",
     heroImage: "/backgroundplants.jpg",
     gradient: "from-green-400 via-lime-400 to-emerald-500",
     colors: {
@@ -300,8 +300,8 @@ export const branze: Record<string, BranżaType> = {
   },
   kosmetyka: {
     slug: "kosmetyka",
-    title: "Strona dla Kosmetyczki / Salonu SPA",
-    tagline: "Elegancja • Komfort • Profesjonalizm",
+    title: "Strona dla Kosmetyczki / SPA",
+    tagline: "Elegancja • Komfort • Relaks",
     heroImage: "/kosmetyka.jpg",
     gradient: "from-pink-300 via-rose-400 to-fuchsia-400",
     colors: {
@@ -352,7 +352,7 @@ export const branze: Record<string, BranżaType> = {
       "Elegancki formularz kontaktowy",
     ],
     benefits: [
-      "Więcej klientek z Google i social mediów",
+      "Więcej klientek z Google i social mediach",
       "Elegancka prezentacja zabiegów",
       "Profesjonalny wizerunek salonu",
       "Przyjazna i łatwa nawigacja na telefonie",
@@ -361,7 +361,7 @@ export const branze: Record<string, BranżaType> = {
   fryzjerstwo: {
     slug: "fryzjerstwo",
     title: "Strona dla Fryzjera i Salonów",
-    tagline: "Styl • Kreatywność • Profesjonalizm",
+    tagline: "Styl • Kreatywność • Sznyt",
     heroImage: "/hairdresser.jpg",
     gradient: "from-pink-300 via-rose-400 to-fuchsia-400",
     colors: {
@@ -421,33 +421,6 @@ export const branze: Record<string, BranżaType> = {
       "Więcej zapytań o zapisy",
     ],
   },
-};
-
-const getIconForSlug = (slug: string) => {
-  switch (slug) {
-    case "mechanik":
-      return <FaWrench />;
-    case "fotografia":
-      return <FaCamera />;
-    case "autodetailing":
-      return <FaCar />;
-    case "ogrodnictwo":
-      return <FaLeaf />;
-    case "kosmetyka":
-      return <FaSprayCan />;
-    case "fryzjerstwo":
-      return <FaCut />;
-    case "budowlanka":
-      return <FaHammer />;
-    case "fitness":
-      return <FaDumbbell />;
-    case "transport":
-      return <FaBus />;
-    case "gastronomia":
-      return <FaUtensils />;
-    default:
-      return <FaQuestion />;
-  }
 };
 
 const getTaglineColor = (slug: string) => {
@@ -536,7 +509,7 @@ export default function OfferTabs() {
   const scroll = (direction: "left" | "right") => {
     if (sliderRef.current) {
       const isMobile = window.innerWidth < 768;
-      const scrollAmount = isMobile ? 310 : 400;
+      const scrollAmount = isMobile ? 280 : 400;
       sliderRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -544,11 +517,15 @@ export default function OfferTabs() {
     }
   };
 
+  /* STRZAŁKI: Widoczne zawsze. Na mobile mniejsze i przyklejone do wewnątrz, na desktopie wysunięte poza kontener */
+  const arrowBaseClasses =
+    "absolute top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200/80 flex items-center justify-center text-slate-600 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all duration-300 shadow-xl opacity-80 hover:opacity-100";
+
   return (
     <div className="w-full bg-[#fafafa] text-slate-900 font-sans selection:bg-slate-300 selection:text-slate-900 overflow-hidden relative antialiased">
-      <div className="container mx-auto px-4 sm:px-6 py-20 md:py-28 max-w-7xl relative z-10 flex flex-col items-center">
-        {/* PIĘKNY NAGŁÓWEK - Z strukturą i autorytetem */}
-        <div className="text-center mb-14 md:mb-20 max-w-2xl">
+      <div className="container mx-auto px-4 sm:px-6 py-16 md:py-24 max-w-7xl relative z-10 flex flex-col items-center">
+        {/* NAGŁÓWEK */}
+        <div className="text-center mb-10 md:mb-16 max-w-2xl">
           <span className="inline-block text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">
             Oferty branżowe
           </span>
@@ -556,47 +533,52 @@ export default function OfferTabs() {
             Rozwiązania dopasowane
             <br className="hidden sm:block" /> do Twojej branży
           </h2>
-          <p className="text-slate-500 text-base md:text-lg leading-relaxed max-w-lg mx-auto">
+          <p className="text-slate-500 text-sm md:text-base leading-relaxed max-w-lg mx-auto">
             Każda branża ma swoje unikalne potrzeby. Wybierz swoją i sprawdź, co
             dokładnie przygotowaliśmy.
           </p>
         </div>
 
         <div className="w-full relative group/slider">
+          {/* STRZAŁKA LEWA - na mobile przy lewej krawędzi kontenera, na desktopie wysunięta */}
           <button
             onClick={() => scroll("left")}
-            className="absolute top-1/2 -translate-y-1/2 z-30 left-0 md:-left-6 w-12 h-12 rounded-full bg-white border border-slate-200/80 flex items-center justify-center text-slate-400 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all duration-300 shadow-xl shadow-slate-200/50 opacity-100 md:opacity-0 md:group-hover/slider:opacity-100"
+            className={`${arrowBaseClasses} left-1 md:-left-6`}
+            aria-label="Poprzednie"
           >
             <FaChevronLeft className="text-sm" />
           </button>
 
+          {/* STRZAŁKA PRAWA - na mobile przy prawej krawędzi kontenera, na desktopie wysunięta */}
           <button
             onClick={() => scroll("right")}
-            className="absolute top-1/2 -translate-y-1/2 z-30 right-0 md:-right-6 w-12 h-12 rounded-full bg-white border border-slate-200/80 flex items-center justify-center text-slate-400 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all duration-300 shadow-xl shadow-slate-200/50 opacity-100 md:opacity-0 md:group-hover/slider:opacity-100"
+            className={`${arrowBaseClasses} right-1 md:-right-6`}
+            aria-label="Następne"
           >
             <FaChevronRight className="text-sm" />
           </button>
 
+          {/* SLIDER */}
           <div
             ref={sliderRef}
-            className="flex gap-5 md:gap-7 overflow-x-auto pb-8 pt-2 px-1 md:px-4 scroll-smooth snap-x snap-mandatory no-scrollbar"
+            className="flex gap-4 md:gap-6 overflow-x-auto pb-6 pt-2 pl-4 pr-14 md:pl-2 md:pr-2 scroll-smooth snap-x snap-mandatory no-scrollbar"
             style={{ scrollbarWidth: "none" }}
           >
             {allItems.map((item) => (
               <div
                 key={item.slug}
-                className="min-w-[280px] md:min-w-[380px] snap-center flex-shrink-0 transition-all duration-500 ease-out hover:-translate-y-2"
+                className="min-w-[calc(100vw-5rem)] sm:min-w-[300px] md:min-w-[360px] lg:min-w-[380px] snap-center flex-shrink-0 transition-all duration-300 ease-out hover:-translate-y-1.5"
               >
                 {item.type === "inactive" ? (
-                  /* NIEAKTYWNE - Czysty, subtelny minimalizm */
-                  <div className="relative h-[380px] md:h-[440px] rounded-3xl bg-white border border-slate-100 flex flex-col items-center justify-center p-8 text-center group/card shadow-sm">
-                    <div className="w-16 h-16 rounded-2xl bg-slate-50 text-slate-200 flex items-center justify-center text-2xl mb-6 group-hover/card:bg-slate-100 transition-colors">
+                  /* NIEAKTYWNE */
+                  <div className="relative h-[320px] sm:h-[380px] md:h-[440px] rounded-2xl md:rounded-3xl bg-white border border-slate-100 flex flex-col items-center justify-center p-8 text-center group/card shadow-sm">
+                    <div className="w-14 h-14 rounded-2xl bg-slate-50 text-slate-200 flex items-center justify-center text-xl mb-5 group-hover/card:bg-slate-100 transition-colors">
                       <FaLock />
                     </div>
-                    <h3 className="text-xl font-bold text-slate-700 mb-2 tracking-tight">
+                    <h3 className="text-lg font-bold text-slate-700 mb-2 tracking-tight">
                       {item.title}
                     </h3>
-                    <p className="text-slate-400 text-sm leading-relaxed max-w-[220px] mb-8">
+                    <p className="text-slate-400 text-sm leading-relaxed max-w-[220px] mb-6">
                       {item.description}
                     </p>
                     <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-300 border border-slate-100 px-4 py-1.5 rounded-full">
@@ -604,45 +586,39 @@ export default function OfferTabs() {
                     </span>
                   </div>
                 ) : (
-                  /* AKTYWNE - Kafelki Premium z głębią */
-                  <div className="relative h-[380px] md:h-[440px] rounded-3xl bg-white border border-slate-100 overflow-hidden group/card flex flex-col shadow-sm hover:shadow-2xl hover:shadow-slate-300/40 transition-all duration-500">
-                    {/* Zdjęcie z kinowym winietowaniem */}
-                    <div className="relative h-[60%] overflow-hidden">
+                  /* AKTYWNE */
+                  <div className="relative h-[320px] sm:h-[380px] md:h-[440px] rounded-2xl md:rounded-3xl bg-white border border-slate-100 overflow-hidden group/card flex flex-col shadow-sm hover:shadow-xl hover:shadow-slate-200/60 transition-all duration-300">
+                    <div className="relative h-[45%] sm:h-[55%] md:h-[60%] overflow-hidden">
                       <img
                         src={item.heroImage}
                         alt={item.title}
-                        className="w-full h-full object-cover transition-transform duration-1000 group-hover/card:scale-110"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-105"
+                        loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
-
-                      <div className="absolute bottom-4 left-5 right-5 z-10 flex items-end justify-between">
-                        {item.tagline && (
-                          <div
-                            className={`text-[10px] font-bold uppercase tracking-[0.15em] ${getTaglineColor(
-                              item.slug,
-                            )} bg-white/90 backdrop-blur-sm px-3 py-1 rounded-md`}
-                          >
-                            {item.tagline}
-                          </div>
-                        )}
-                        <div className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center text-slate-700 border border-white/50 text-base shadow-lg">
-                          {getIconForSlug(item.slug)}
-                        </div>
-                      </div>
+                      <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-white to-transparent" />
                     </div>
 
-                    {/* Tekst z eleganckim przyciskiem */}
-                    <div className="relative h-[40%] p-6 md:p-7 flex flex-col justify-between bg-white">
-                      <h3 className="text-lg md:text-xl font-bold text-slate-900 leading-tight tracking-tight group-hover/card:text-blue-600 transition-colors">
+                    <div className="flex-1 p-5 sm:p-6 md:p-7 flex flex-col bg-white">
+                      {item.tagline && (
+                        <span
+                          className={`text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] ${getTaglineColor(
+                            item.slug,
+                          )} mb-1.5 sm:mb-2`}
+                        >
+                          {item.tagline}
+                        </span>
+                      )}
+
+                      <h3 className="text-base sm:text-lg md:text-xl font-bold text-slate-900 leading-snug tracking-tight group-hover/card:text-blue-600 transition-colors line-clamp-2">
                         {item.title}
                       </h3>
 
-                      <div className="mt-auto">
+                      <div className="mt-auto pt-4 sm:pt-5">
                         <Link
                           href={`/branze/${item.slug}`}
                           className="block w-full"
                         >
-                          <button className="w-full py-3 rounded-xl border-2 border-slate-200 text-slate-600 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-300 group/btn hover:bg-slate-900 hover:text-white hover:border-slate-900 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-slate-900/20">
+                          <button className="w-full py-2.5 sm:py-3 rounded-xl border-2 border-slate-200 text-slate-600 font-bold text-[11px] sm:text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-300 group/btn hover:bg-slate-900 hover:text-white hover:border-slate-900 hover:shadow-lg hover:shadow-slate-900/20">
                             Poznaj szczegóły
                             <FaArrowRight className="text-[10px] group-hover/btn:translate-x-1 transition-transform" />
                           </button>

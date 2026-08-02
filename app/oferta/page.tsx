@@ -10,7 +10,7 @@ import {
 
 export async function generateMetadata(): Promise<Metadata> {
   const title =
-    "Tworzenie Stron Internetowych i Sklepów WooCommerce | Oferta KlaudiuszDev.pl";
+    "Tworzenie Stron Internetowych i Sklepów WooCommerce | Oferta Klaudiuszdev.pl";
 
   const description =
     "Projektuję profesjonalne strony internetowe, sklepy WooCommerce i aplikacje webowe dla firm. Sprawdź ofertę KlaudiuszDev.pl – nowoczesny design, SEO i wysoka wydajność.";
@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL("https://klaudiuszdev.pl"),
 
     alternates: {
-      canonical: "/strony-i-sklepy-internetowe",
+      canonical: "/oferta",
     },
 
     robots: {
@@ -33,8 +33,8 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title,
       description,
-      url: "https://klaudiuszdev.pl/strony-i-sklepy-internetowe",
-      siteName: "KlaudiuszDev.pl",
+      url: "https://klaudiuszdev.pl/oferta",
+      siteName: "Klaudiuszdev.pl",
       locale: "pl_PL",
       type: "website",
     },
