@@ -37,11 +37,11 @@ const ProjectsData: Project[] = [
   },
   {
     id: 4,
-    title: "Ogród za Grosze",
-    imageUrl: "/instogrod.jpg",
-    link: "https://www.ogrodzagrosze.pl/",
+    title: "Komplex-bud",
+    imageUrl: "/komplexbud1080.jpg",
+    link: "http://komplex-bud.com/",
     description:
-      "Landing page promujący ofertę firmy ogrodniczej z naciskiem na wysoką konwersję.",
+      "Landing page promujący ofertę firmy remontowo wykończeniowej.",
   },
 ];
 

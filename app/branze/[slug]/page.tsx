@@ -1,14 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa"; 
+import { FaArrowRight } from "react-icons/fa";
 import { branze } from "../../data/branze";
 import BranzaHeroClient from "@/components/BranzaHeroClient";
 
 interface PageProps {
   params: { slug: string };
 }
-
 interface Tip {
   icon: any;
   label: string;
@@ -46,7 +45,10 @@ export default function BranżaPage({ params }: PageProps) {
       <div className="min-h-screen bg-white text-slate-900 flex items-center justify-center flex-col gap-4">
         <h1 className="text-4xl font-bold">404</h1>
         <p className="text-slate-400">Nie znaleziono branży</p>
-        <Link href="/" className="text-slate-600 hover:text-slate-900 hover:underline transition-colors">
+        <Link
+          href="/"
+          className="text-slate-600 hover:text-slate-900 hover:underline transition-colors"
+        >
           Wróć na stronę główną
         </Link>
       </div>
@@ -107,7 +109,10 @@ export default function BranżaPage({ params }: PageProps) {
                     <h3 className="text-2xl md:text-3xl font-bold mt-2 mb-4 leading-tight text-slate-900">
                       {h.title}
                     </h3>
-                    <div className="h-1 w-20 rounded-full mb-6" style={{ backgroundColor: `${colors.primary}30` }}></div>
+                    <div
+                      className="h-1 w-20 rounded-full mb-6"
+                      style={{ backgroundColor: `${colors.primary}30` }}
+                    ></div>
                   </div>
                   <p className="text-lg text-slate-500 leading-relaxed">
                     {h.description}
@@ -119,14 +124,12 @@ export default function BranżaPage({ params }: PageProps) {
         </div>
       </section>
 
-      
-      <section 
+      <section
         className="py-24 relative overflow-hidden border-y border-slate-100"
-        style={{ backgroundColor: colors.bg }} 
+        style={{ backgroundColor: colors.bg }}
       >
         <div className="max-w-3xl mx-auto px-6 relative z-10">
           <div className="relative bg-white rounded-3xl p-10 md:p-16 text-center shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
-            
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-50 border border-green-200 mb-8">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
               <span className="text-xs font-bold tracking-widest uppercase text-green-700">
@@ -156,12 +159,31 @@ export default function BranżaPage({ params }: PageProps) {
 
             <div className="mt-12 pt-8 border-t border-slate-100 flex justify-center gap-8 text-sm text-slate-400 font-medium">
               <span className="flex items-center gap-2">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
                 Trwa 5 minut
               </span>
               <span className="w-1 h-1 bg-slate-200 rounded-full"></span>
               <span className="flex items-center gap-2">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
                 Odpowiedź do 24h
               </span>
             </div>
@@ -171,12 +193,17 @@ export default function BranżaPage({ params }: PageProps) {
 
       <section className="py-24 md:py-32 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-          
           <div className="space-y-12">
             <div>
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-1 rounded-full" style={{ backgroundColor: colors.primary }}></div>
-                <span className="text-sm font-bold tracking-[0.2em] uppercase" style={{ color: colors.primary }}>
+                <div
+                  className="w-12 h-1 rounded-full"
+                  style={{ backgroundColor: colors.primary }}
+                ></div>
+                <span
+                  className="text-sm font-bold tracking-[0.2em] uppercase"
+                  style={{ color: colors.primary }}
+                >
                   Standard KlaudiuszDev
                 </span>
               </div>
@@ -196,24 +223,48 @@ export default function BranżaPage({ params }: PageProps) {
 
             <div className="space-y-8">
               {[
-                { title: "Czysty kod", desc: "Struktura zrozumiała dla każdego, łatwa do edycji w przyszłości." },
-                { title: "Własność", desc: "Dostajesz pełne prawa do domeny i kodu źródłowego." },
-                { title: "Szybkość", desc: "Strona ładuje się błyskawicznie, żeby klient nie czekał." },
-                { title: "Bezpieczeństwo", desc: "Certyfikat SSL i bezpieczne formularze kontaktowe." },
+                {
+                  title: "Czysty kod",
+                  desc: "Struktura zrozumiała dla każdego, łatwa do edycji w przyszłości.",
+                },
+                {
+                  title: "Własność",
+                  desc: "Dostajesz pełne prawa do domeny i kodu źródłowego.",
+                },
+                {
+                  title: "Szybkość",
+                  desc: "Strona ładuje się błyskawicznie, żeby klient nie czekał.",
+                },
+                {
+                  title: "Bezpieczeństwo",
+                  desc: "Certyfikat SSL i bezpieczne formularze kontaktowe.",
+                },
               ].map((item, i) => (
                 <div key={i} className="flex gap-5 group">
-                  <div 
+                  <div
                     className="mt-1 w-9 h-9 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-300 group-hover:text-white transition-all duration-300"
-                    style={{ '--primary': colors.primary } as any}
+                    style={{ "--primary": colors.primary } as any}
                     // Dynamiczny hover przez inline style w zdarzeniu onHover nie jest eleganckie, użyjmy Tailwindowego group-hover z generycznym kolorem
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      className="group-hover:stroke-white"
                     >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="group-hover:stroke-white">
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-slate-900 mb-1">{item.title}</h4>
-                    <p className="text-sm text-slate-400 leading-relaxed">{item.desc}</p>
+                    <h4 className="text-lg font-bold text-slate-900 mb-1">
+                      {item.title}
+                    </h4>
+                    <p className="text-sm text-slate-400 leading-relaxed">
+                      {item.desc}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -223,16 +274,27 @@ export default function BranżaPage({ params }: PageProps) {
           <div className="relative lg:sticky lg:top-32">
             <div className="bg-white rounded-3xl p-8 md:p-10 shadow-xl shadow-slate-100/50 border border-slate-100">
               <div className="flex justify-between items-center mb-10 pb-8 border-b border-slate-100">
-                <span className="text-lg font-bold text-slate-900">CO ZAWIERA STRONA?</span>
-                <span className="text-xs font-mono tracking-wider" style={{ color: colors.primary }}>
+                <span className="text-lg font-bold text-slate-900">
+                  CO ZAWIERA STRONA?
+                </span>
+                <span
+                  className="text-xs font-mono tracking-wider"
+                  style={{ color: colors.primary }}
+                >
                   SPECYFIKACJA
                 </span>
               </div>
 
               <ul className="space-y-5 mb-12">
                 {(branża.techSpecs || branża.benefits).map((spec, i) => (
-                  <li key={i} className="flex items-center gap-4 text-slate-600">
-                    <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: colors.primary }}></span>
+                  <li
+                    key={i}
+                    className="flex items-center gap-4 text-slate-600"
+                  >
+                    <span
+                      className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: colors.primary }}
+                    ></span>
                     <span className="text-base font-medium">{spec}</span>
                   </li>
                 ))}
@@ -277,11 +339,18 @@ export default function BranżaPage({ params }: PageProps) {
                 </div>
 
                 <div className="flex items-center gap-4 mb-4">
-                  <div 
+                  <div
                     className="w-10 h-10 rounded-lg bg-slate-50 flex items-center justify-center"
                     style={{ color: colors.accent }}
                   >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                    >
                       <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
                     </svg>
                   </div>
