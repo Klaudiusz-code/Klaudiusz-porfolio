@@ -185,7 +185,7 @@ const FormClient: React.FC = () => {
         Oczekiwania: formData.expectations,
       };
 
-      const response = await fetch("https://formspree.io/f/mjknqvgw", {
+      const response = await fetch("https://formspree.io/f/moejnnew", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
