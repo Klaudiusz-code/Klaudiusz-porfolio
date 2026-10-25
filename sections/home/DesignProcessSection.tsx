@@ -1,93 +1,96 @@
-"use client";
-
-import React from "react";
-import {
-  FaCalculator,
-  FaPencilAlt,
-  FaLaptopCode,
-  FaFlask,
-} from "react-icons/fa";
 import Link from "next/link";
+import {
+  HiOutlineChatAlt2,
+  HiOutlineDocumentText,
+  HiOutlineDesktopComputer,
+  HiOutlineCode,
+} from "react-icons/hi";
 
 const steps = [
   {
-    id: 1,
-    icon: <FaCalculator />,
-    title: "Analiza",
+    id: "1",
+    Icon: HiOutlineChatAlt2,
+    title: "Rozmowa i ustalenia",
     description:
-      "Poznaję Twoje cele i biznes, aby projekt idealnie trafił do odbiorców.",
+      "Poznaję Twoją firmę, ofertę i oczekiwania. Ustalamy zakres strony, potrzebne funkcje i budżet.",
   },
   {
-    id: 2,
-    icon: <FaPencilAlt />,
-    title: "Projektowanie",
+    id: "2",
+    Icon: HiOutlineDocumentText,
+    title: "Wycena i akceptacja",
     description:
-      "Tworzę design, który jest estetyczny i intuicyjny dla użytkownika.",
+      "Przygotowuję ofertę z zakresem prac i ceną. Po jej akceptacji ustalamy szczegóły rozpoczęcia projektu.",
   },
   {
-    id: 3,
-    icon: <FaLaptopCode />,
-    title: "Programowanie",
+    id: "3",
+    Icon: HiOutlineDesktopComputer,
+    title: "Projekt i podgląd",
     description:
-      "Buduję szybką i bezpieczną stronę opartą na najlepszych technologiach.",
+      "Przygotowuję projekt strony, abyś mógł zobaczyć kierunek wizualny i ocenić go przed dalszą realizacją.",
   },
   {
-    id: 4,
-    icon: <FaFlask />,
-    title: "Wdrożenie",
+    id: "4",
+    Icon: HiOutlineCode,
+    title: "Realizacja i publikacja",
     description:
-      "Testuję, uruchamiam i oddaję w pełni działający produkt w Twoje ręce.",
+      "Po akceptacji projektu przechodzę do właściwej realizacji. Testuję stronę, wprowadzam ustalone poprawki i przygotowuję ją do publikacji.",
   },
 ];
 
-const DesignProcessSection = () => {
+export default function DesignProcessSection() {
   return (
-    <section className="bg-white py-20 border-b border-slate-100">
-      <div className="container mx-auto px-6 max-w-5xl">
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-slate-900 mb-3">
-            Proces współpracy
+    <section className="bg-blue-950 py-20 sm:py-24">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+        <div className="mb-12 max-w-2xl sm:mb-16">
+          <p className="mb-3 text-sm font-semibold text-blue-300">
+            Jak pracuję
+          </p>
+
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Od pomysłu do gotowej strony
           </h2>
-          <div className="w-12 h-1 bg-slate-900"></div>
+
+          <p className="mt-4 text-base leading-7 text-blue-100/75">
+            Każdy etap omawiam z Tobą na bieżąco. Wiesz, co ustalamy, za co
+            płacisz i na jakim etapie jest projekt.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
-          {steps.map((step) => (
-            <div key={step.id} className="group relative">
-              <span className="absolute -top-4 -left-2 text-7xl font-bold text-slate-50 select-none group-hover:text-slate-100 transition-colors">
-                0{step.id}
-              </span>
+        <div className="grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2 lg:gap-x-14 lg:gap-y-12">
+          {steps.map(({ id, Icon, title, description }) => (
+            <article key={id} className="flex gap-5">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-blue-800 bg-blue-900/50 text-blue-300">
+                <Icon className="h-5 w-5" />
+              </div>
 
-              <div className="relative z-10 pt-2">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-white border border-slate-200 rounded-lg flex items-center justify-center text-slate-700 shadow-sm group-hover:border-slate-900 group-hover:text-slate-900 transition-colors">
-                    {step.icon}
-                  </div>
+              <div>
+                <p className="mb-2 text-xs font-semibold tracking-wide text-blue-300/70">
+                  ETAP {id}
+                </p>
 
-                  <h3 className="text-xl font-bold text-slate-900">
-                    {step.title}
-                  </h3>
-                </div>
+                <h3 className="text-lg font-semibold text-white">{title}</h3>
 
-                <p className="text-slate-600 leading-relaxed pl-16 border-l border-slate-100">
-                  {step.description}
+                <p className="mt-2 text-sm leading-6 text-blue-100/75">
+                  {description}
                 </p>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
-        <div className="mt-20 pt-10 border-t border-slate-100 flex justify-center md:justify-start">
+        <div className="mt-14 border-t border-blue-800 pt-8">
+          <p className="mb-5 text-sm text-blue-100/75">
+            Masz pomysł na stronę? Porozmawiajmy o zakresie i wycenie.
+          </p>
+
           <Link
             href="/kontakt"
-            className="bg-slate-900 text-white font-medium px-8 py-3 rounded hover:bg-slate-800 transition-colors"
+            className="inline-flex items-center justify-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-blue-950 transition-colors hover:bg-blue-100"
           >
-            Napisz do mnie
+            Omówmy Twój projekt
           </Link>
         </div>
       </div>
     </section>
   );
-};
-
-export default DesignProcessSection;
+}

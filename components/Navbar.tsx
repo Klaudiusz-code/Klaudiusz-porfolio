@@ -133,7 +133,7 @@ const Navbar = ({ data }: { data: NavbarData }) => {
                 px-7 py-3
                 bg-slate-900 text-white
                 text-sm font-semibold
-                rounded-full
+                rounded-xl
                 hover:bg-customColor
                 transition-all duration-300
                 shadow-lg shadow-slate-900/20 hover:shadow-customColor/30
@@ -277,7 +277,7 @@ const Navbar = ({ data }: { data: NavbarData }) => {
                 px-8 py-4 mb-8
                 bg-slate-900 text-white
                 text-base font-semibold
-                rounded-2xl
+                rounded-xl
                 hover:bg-customColor
                 transition-all duration-300
                 shadow-xl shadow-slate-900/20

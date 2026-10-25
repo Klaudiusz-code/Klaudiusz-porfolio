@@ -75,9 +75,6 @@ const ProjectCard = ({ project }: { project: Project }) => {
           {/* Obszar tekstu */}
           <div className="relative w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
             {/* Wielki rozmyty numer w tle */}
-            <span className="absolute -top-4 -right-2 text-[120px] md:text-[150px] font-black text-slate-100 select-none pointer-events-none leading-none">
-              0{project.id}
-            </span>
 
             <div className="relative z-10">
               <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4 leading-tight tracking-tight">
@@ -141,7 +138,7 @@ const ProjectsSection = () => {
 
           <Link
             href="/kontakt"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 text-white font-bold text-base md:text-lg px-8 md:px-10 py-4 rounded-full hover:bg-blue-500 hover:scale-105 transition-all duration-300 shadow-lg shadow-blue-600/25"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 text-white font-bold text-base md:text-lg px-8 md:px-10 py-4 rounded-xl hover:bg-blue-500 hover:scale-105 transition-all duration-300 shadow-lg shadow-blue-600/25"
           >
             Napisz do mnie
             <FaArrowRight className="text-sm" />

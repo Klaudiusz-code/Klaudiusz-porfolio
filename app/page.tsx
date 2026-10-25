@@ -7,8 +7,6 @@ import GRAPHQL_QUERY from "@/gql-queries/home_page.graphql";
 import HeroSection from "@/sections/home/HeroSection";
 import ServicesSection from "@/sections/home/ServicesSection";
 import DesignProcessSection from "@/sections/home/DesignProcessSection";
-import ToolsSection from "@/sections/home/ToolsSection";
-import EstimationSection from "@/sections/home/EstimationSection";
 import LatestPostsSection from "@/sections/home/LatestPostsSection";
 import EncouragingSection from "@/sections/common/EncouragingSection";
 import FaqSection from "@/sections/common/FaqSection";
@@ -17,6 +15,7 @@ import InstagramCTA from "@/components/InstagramCTA";
 import OfferTabs from "@/components/OfferTabs";
 import CTA from "@/components/BriefCta";
 import ProjectsSection from "@/sections/home/ProjectsSection";
+import Testimonials from "@/sections/home/Testimonials";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
@@ -133,10 +132,6 @@ const HomePage = async () => {
         buttonUrl={hero?.button?.url || ""}
       />
 
-      <section className="py-2">
-        <OfferTabs />
-      </section>
-
       <ServicesSection
         {...({
           services: about?.services,
@@ -147,7 +142,7 @@ const HomePage = async () => {
 
       <DesignProcessSection />
 
-      <ToolsSection />
+      <Testimonials />
 
       <CTA />
 
@@ -155,16 +150,6 @@ const HomePage = async () => {
         title={whyme?.title || ""}
         // @ts-ignore
         services={whyme?.boxs || []}
-      />
-
-      <EstimationSection
-        title={estimation?.title || ""}
-        description={estimation?.description || ""}
-        buttons={buttons.map((button) => ({
-          label: button?.text || "",
-
-          url: button?.url || "/",
-        }))}
       />
 
       <LatestPostsSection posts={posts?.nodes as any[]} />
